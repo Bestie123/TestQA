@@ -405,6 +405,20 @@ app.get('/api/reports/test-case/:key', async (req: any, reply: any) => {
   return execs;
 });
 
+function gracefulShutdown(signal: string) {
+  console.log(`[${signal}] Shutting down execution-service...`);
+  app.close().then(() => {
+    db.close();
+    console.log('execution-service stopped');
+    process.exit(0);
+  }).catch(() => process.exit(1));
+  setTimeout(() => process.exit(1), 5000);
+}
+
+process.on('SIGINT', () => gracefulShutdown('SIGINT'));
+process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+process.on('SIGBREAK', () => gracefulShutdown('SIGBREAK'));
+
 async function start() {
   try {
     await app.listen({ port: PORT, host: '0.0.0.0' });

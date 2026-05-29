@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { DiffResult, syncFromZephyr, diffExcel, fetchCoverage } from '../api';
+import * as XLSX from 'xlsx';
 
 interface Props { api: string }
 
@@ -22,9 +23,20 @@ export function SyncPage({ api }: Props) {
   async function handleDiff() {
     const file = fileInput.current?.files?.[0];
     if (!file) { setStatus('Выберите Excel-файл'); return; }
-    setStatus('Сравнение...');
+    setStatus('Чтение файла...');
     setDiffResults(null);
-    setStatus('Готово');
+    try {
+      const data = await file.arrayBuffer();
+      const workbook = XLSX.read(data, { type: 'array' });
+      const sheet = workbook.Sheets[workbook.SheetNames[0]];
+      const rows: string[][] = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+      setStatus('Сравнение...');
+      const results = await diffExcel(api, rows);
+      setDiffResults(results);
+      setStatus('Готово');
+    } catch {
+      setStatus('Ошибка сравнения');
+    }
   }
 
   async function handleCoverage() {

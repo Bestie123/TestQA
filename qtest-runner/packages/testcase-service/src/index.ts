@@ -137,6 +137,20 @@ app.get<{ Params: { issueKey: string } }>('/api/coverage/:issueKey', async (req,
   return rows;
 });
 
+function gracefulShutdown(signal: string) {
+  console.log(`[${signal}] Shutting down testcase-service...`);
+  app.close().then(() => {
+    closeDb();
+    console.log('testcase-service stopped');
+    process.exit(0);
+  }).catch(() => process.exit(1));
+  setTimeout(() => process.exit(1), 5000);
+}
+
+process.on('SIGINT', () => gracefulShutdown('SIGINT'));
+process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+process.on('SIGBREAK', () => gracefulShutdown('SIGBREAK'));
+
 // ── Start ──
 async function start() {
   try {

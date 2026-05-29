@@ -88,6 +88,19 @@ const server = http.createServer((req, res) => {
   req.pipe(proxyReq);
 });
 
+function gracefulShutdown(signal: string) {
+  console.log(`[${signal}] Shutting down api-gateway...`);
+  server.close(() => {
+    console.log('api-gateway stopped');
+    process.exit(0);
+  });
+  setTimeout(() => process.exit(1), 5000);
+}
+
+process.on('SIGINT', () => gracefulShutdown('SIGINT'));
+process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+process.on('SIGBREAK', () => gracefulShutdown('SIGBREAK'));
+
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`api-gateway running on port ${PORT}`);
 });

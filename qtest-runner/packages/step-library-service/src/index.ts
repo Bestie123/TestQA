@@ -268,7 +268,7 @@ function seed() {
       'Создание новой задачи: открыть форму создания, заполнить поля, создать',
       'Задачи',
       JSON.stringify([
-        { name: 'project', label: 'Проект', type: 'string', options: [], required: true, defaultValue: '' },
+        { name: 'projectUrl', label: 'URL проекта', type: 'url', options: [], required: true, defaultValue: '' },
         { name: 'summary', label: 'Тема', type: 'string', options: [], required: true, defaultValue: '' },
         { name: 'description', label: 'Описание', type: 'string', options: [], required: false, defaultValue: '' },
       ]),
@@ -293,6 +293,20 @@ function seed() {
 }
 
 seed();
+
+function gracefulShutdown(signal: string) {
+  console.log(`[${signal}] Shutting down step-library-service...`);
+  app.close().then(() => {
+    db.close();
+    console.log('step-library-service stopped');
+    process.exit(0);
+  }).catch(() => process.exit(1));
+  setTimeout(() => process.exit(1), 5000);
+}
+
+process.on('SIGINT', () => gracefulShutdown('SIGINT'));
+process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+process.on('SIGBREAK', () => gracefulShutdown('SIGBREAK'));
 
 async function start() {
   try {

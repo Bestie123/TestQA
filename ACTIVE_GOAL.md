@@ -1,34 +1,33 @@
-# Активная цель (сохранено 29.05.2026, Сессия #~46)
+# Активная цель (сохранено 30.05.2026, Сессия #~47)
 
 ## Главная цель
-Доработать qtest-runner до уровня Playwright (или лучше): запись взаимодействий пользователя с браузером для генерации тест-кейсов Zephyr Scale.
+Завершить все запланированные итерации по доработке qtest-runner: критичные фиксы, Chrome Extension, инфраструктура, тесты, E2E Course.
+Подробный план: `.opencode/plans/EXPANDED_PLAN.md`
 
 ## Текущая подзадача
-**Iteration 12-15 завершёны.** Exhaustive recording verification всех 17 INJECT_SCRIPT модулей (175 actions, 0 JS errors). Исправлены SQLite double-quote баг и press→keypress mapping.
+**Iteration 0 (✅ завершена):** Реструктуризация AGENTS.md — правила оформления перенесены в `Test-cases&Bug-reports/`, бэклог создан.
+**→ Iteration 1:** Исправить ImportPage, SyncPage, seed data, CAPTCHA path.
 
 ## Статус
 
-### ✅ Завершённые шаги
-- **Iteration 1-5:** CAPTCHA, INJECT_SCRIPT архитектура, Shadow DOM, SPA навигация, Error Tracking
-- **Iteration 6:** 11 INJECT_SCRIPT модулей (inject-helpers.ts), assertion engine, touch/wheel, animation, lifecycle, file upload
-- **Iteration 7:** Iframe Bridge (same-origin + cross-origin postMessage)
-- **Iteration 8:** CAPTCHA детекция (ReCaptcha v2, Turnstile, hCaptcha), фикс INJECT_SCRIPT SyntaxError
-- **Iteration 9:** Скриншоты на каждом шаге, multi-tab (switchTab/listTabs), 8 MCP инструментов
-- **Iteration 9.5:** 6 критических багов записи в БД (headers JSON.stringify, postJson reject, retry race condition и др.)
-- **Iteration 10:** User Switch (Ctrl+Shift+U), Drag & Drop, programmatic API
-- **Iteration 11:** Media Events, Popover API
-- **Iteration 12:** Composite Steps — CRUD, expand endpoint, execution integration
-- **Iteration 13:** IME Composition
-- **Iteration 14:** ResizeObserver / IntersectionObserver monkey-patch
-- **Iteration 15:** SQLite double-quote fix + exhaustive recording verification (175 actions, 17/17 modules) + press→keypress fix
-- **Iteration 16:** Canvas click recording (x,y coordinates, full pipeline) + Video recording (Playwright recordVideo, save as <sid>.webm, download API) + Selection tracking (selectionchange, debounce 400ms, DB `selection_length/selection_text`) + Multilingual CAPTCHA (русские сообщения) + DblClick/RightClick executor
-- **Documentation:** AGENTS.md, ARCHITECTURE.md, STATUS.md, USAGE.md — обновлены
+### ✅ Завершённые шаги (до Iteration 0)
+- **Iteration 1-16:** Все предыдущие итерации по разработке qtest-runner (CAPTCHA, INJECT_SCRIPT, Shadow DOM, SPA, Composite Steps, Canvas, Video, Selection, DblClick/RightClick и т.д.)
+
+### ✅ Iteration 0 — Реструктуризация
+- `Test-cases&Bug-reports/RULES.md` — все правила оформления тест-кейсов и баг-репортов
+- `Test-cases&Bug-reports/BACKLOG.md` — отложенные фичи с причинами
+- AGENTS.md — очищен (оставлены только auto-continue, микросервисная архитектура, карта проекта, best practices, composite steps)
+- `.opencode/plans/EXPANDED_PLAN.md` — детальный план всех итераций
 
 ### 🔄 В процессе
-- Ожидание новых задач от пользователя
+- Iteration 1: ImportPage, SyncPage, seed data, CAPTCHA test-pages
 
 ### ⬜ Следующие шаги
-1. (Предложите задачу)
+- Iteration 2: Chrome Extension (Shadow DOM + icons)
+- Iteration 3: Graceful shutdown (6 сервисов)
+- Iteration 4: Cross-origin iframe test server
+- Iteration 5: Unit-тесты (vitest)
+- Iteration 6: E2E Interactive Course (MCP)
 
 ## Принятые решения
 - **Shadow DOM:** использовать `composedPath()` + `deepActiveElement()` вместо `e.target`
@@ -45,8 +44,6 @@
 - **press→keypress mapping:** parseStep() + ws-server fallback должны оба обрабатывать `action === 'press'`
 
 ## Заметки / вопросы
-- 17 INJECT_SCRIPT модулей работают стабильно (включая CAPTCHA_DETECTOR)
-- Всего 8 MCP инструментов
-- Всего исправлено 17+ багов
-- Exhaustive recording test: 175 actions → 139 steps, 0 JS errors
-- Что делать дальше?
+- 17 INJECT_SCRIPT модулей работают стабильно
+- EXPANDED_PLAN.md в `.opencode/plans/` — общий план на все итерации
+- Архитектурные решения по проектированию сохраняются здесь для перекрёстных сессий

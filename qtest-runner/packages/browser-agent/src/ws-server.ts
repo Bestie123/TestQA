@@ -412,6 +412,20 @@ async function handleMessage(clientId: string, msg: any, ws: WebSocket) {
   }
 }
 
+function gracefulShutdown(signal: string) {
+  console.log(`[${signal}] Shutting down browser-agent...`);
+  wss.clients.forEach((client) => client.close());
+  httpServer.close(() => {
+    console.log('browser-agent stopped');
+    process.exit(0);
+  });
+  setTimeout(() => process.exit(1), 5000);
+}
+
+process.on('SIGINT', () => gracefulShutdown('SIGINT'));
+process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+process.on('SIGBREAK', () => gracefulShutdown('SIGBREAK'));
+
 export function startWSServer(): void {
   httpServer.listen(PORT, '0.0.0.0', () => {
     console.log(`browser-agent WebSocket running on port ${PORT}`);

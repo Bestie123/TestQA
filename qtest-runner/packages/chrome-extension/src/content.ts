@@ -1,3 +1,8 @@
+function deepEventTarget(event: Event): Element | null {
+  const path = event.composedPath();
+  return path && path.length > 0 ? (path[0] as Element) : null;
+}
+
 let isCapturing = false;
 let sessionId: string | null = null;
 const filledValues = new Map<string, string>();
@@ -26,6 +31,12 @@ function getInteractiveParent(el: Element): Element {
 
 function getSelector(el: Element): string {
   const target = getInteractiveParent(el);
+  const root = target.getRootNode();
+  if (root instanceof ShadowRoot) {
+    const host = root.host;
+    const localSel = target.id ? `#${target.id}` : target.tagName.toLowerCase();
+    return `${getSelector(host)} >> ${localSel}`;
+  }
   if (target.id) return `#${target.id}`;
   if (target.className && typeof target.className === 'string') {
     const cls = target.className.trim().split(/\s+/).slice(0, 2).join('.');
@@ -54,7 +65,7 @@ function sendAction(data: any) {
 
 function handleClick(e: MouseEvent) {
   if (!isCapturing) return;
-  const el = e.target as Element;
+  const el = deepEventTarget(e);
   if (!el) return;
   const tag = el.tagName.toLowerCase();
   if (tag === 'html' || tag === 'body') return;
@@ -72,7 +83,7 @@ const inputTimers = new Map<string, ReturnType<typeof setTimeout>>();
 
 function handleInput(e: Event) {
   if (!isCapturing) return;
-  const el = e.target as HTMLInputElement | HTMLTextAreaElement;
+  const el = deepEventTarget(e) as HTMLInputElement | HTMLTextAreaElement;
   if (!el || (el.tagName !== 'INPUT' && el.tagName !== 'TEXTAREA')) return;
   const key = getSelector(el);
   const currentVal = el.value || '';
@@ -101,7 +112,7 @@ function handleInput(e: Event) {
 
 function handleChange(e: Event) {
   if (!isCapturing) return;
-  const el = e.target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+  const el = deepEventTarget(e) as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
   if (!el) return;
   const tag = el.tagName.toLowerCase();
 
@@ -144,7 +155,7 @@ function handleChange(e: Event) {
 
 function handleSubmit(e: SubmitEvent) {
   if (!isCapturing) return;
-  const form = e.target as HTMLFormElement;
+  const form = deepEventTarget(e) as HTMLFormElement;
   if (!form) return;
   sendAction({
     actionType: 'submit',

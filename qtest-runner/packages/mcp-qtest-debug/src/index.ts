@@ -374,6 +374,171 @@ server.tool(
 );
 
 // ══════════════════════════════════════════════════════════════
+// Course definitions
+// ══════════════════════════════════════════════════════════════
+
+interface CourseStep {
+  instruction: string;
+  expectedAction: string;
+  hint: string;
+}
+
+const COURSES: Record<string, { name: string; description: string; testPage: string; steps: CourseStep[] }> = {
+  "basic": {
+    name: "Базовый курс",
+    description: "Проверка записи базовых действий: клик, fill, select, клавиши, hover",
+    testPage: "http://localhost:3006/advanced-test.html",
+    steps: [
+      { instruction: "Нажми на КНОПКУ 1 (обычная кнопка, не Shadow DOM)", expectedAction: "click", hint: "Кликни по кнопке 'Button 1' в секции 'Basic Interactions'" },
+      { instruction: "Введи текст 'Тестовое значение' в поле ввода 'Text Input'", expectedAction: "fill", hint: "Кликни на поле 'Text Input' и введи текст" },
+      { instruction: "Выбери опцию 'Option 2' в выпадающем списке 'Select'", expectedAction: "select", hint: "Открой выпадающий список 'Select' и выбери 'Option 2'" },
+      { instruction: "Наведи курсор на ссылку в секции 'Basic Interactions' (не кликай)", expectedAction: "hover", hint: "Просто наведи мышь на ссылку, не нажимая" },
+      { instruction: "Сделай двойной клик на кнопке 'Double Click'", expectedAction: "dblclick", hint: "Быстро кликни два раза по кнопке 'Double Click Area'" },
+    ],
+  },
+  "click": {
+    name: "Курс кликов",
+    description: "Проверка записи различных типов кликов",
+    testPage: "http://localhost:3006/advanced-test.html",
+    steps: [
+      { instruction: "Обычный клик по кнопке 'Button 1'", expectedAction: "click", hint: "Кликни по кнопке 'Button 1'" },
+      { instruction: "Двойной клик по кнопке 'Double Click'", expectedAction: "dblclick", hint: "Дважды кликни по 'Double Click Area'" },
+      { instruction: "Правый клик (контекстное меню) по кнопке 'Right Click'", expectedAction: "contextmenu", hint: "Кликни правой кнопкой по 'Right Click Area'" },
+    ],
+  },
+};
+
+// ══════════════════════════════════════════════════════════════
+// Tool: qtest_test_course — Set up interactive test course
+// ══════════════════════════════════════════════════════════════
+server.tool(
+  "qtest_test_course",
+  "Запустить интерактивный курс тестирования записи действий. Устанавливает браузер, начинает запись, возвращает пошаговые инструкции.",
+  {
+    courseName: z.enum(["basic", "click"]).optional().describe("Название курса: basic (5 шагов), click (3 шага)"),
+  },
+  async ({ courseName }) => {
+    const course = COURSES[courseName || "basic"];
+    if (!course) {
+      return { content: [{ type: "text", text: `Курс "${courseName}" не найден. Доступны: ${Object.keys(COURSES).join(", ")}` }], isError: true };
+    }
+
+    try {
+      // Step 1: Launch browser
+      const launchResult = await httpPost(`${AGENT_URL}/api/launch`, { profileName: "Auto" });
+      const profileId = launchResult?.profileId || "Auto";
+
+      // Step 2: Start recording
+      const sessionName = `TestCourse-${courseName || "basic"}-${Date.now()}`;
+      const session = await httpPost(`${RECORDER_URL}/api/recordings/start`, { name: sessionName, profileId });
+      const sessionId = session?.id;
+      if (!sessionId) {
+        return { content: [{ type: "text", text: `Не удалось создать сессию: ${JSON.stringify(session)}` }], isError: true };
+      }
+
+      // Step 3: Start recording in browser-agent
+      await httpPost(`${AGENT_URL}/api/record/start`, { profileId, sessionId, recorderUrl: RECORDER_URL });
+
+      // Step 4: Navigate to test page
+      await httpPost(`${AGENT_URL}/api/execute-step`, { action: "navigate", url: course.testPage });
+
+      // Build instructions
+      const stepsText = course.steps.map((s, i) =>
+        `📋 Шаг ${i + 1}:\n${s.instruction}\n💡 Подсказка: ${s.hint}`
+      ).join("\n\n");
+
+      return {
+        content: [{
+          type: "text",
+          text: `🎯 **${course.name}**\n${course.description}\n\n` +
+            `✅ Браузер запущен\n✅ Запись начата (Session ID: \`${sessionId}\`)\n✅ Страница открыта: ${course.testPage}\n\n` +
+            `**Выполни следующие действия по порядку:**\n\n${stepsText}\n\n` +
+            `---\nПосле выполнения всех шагов вызови \`qtest_test_course_verify\` с sessionId: \`${sessionId}\``
+        }]
+      };
+    } catch (e: any) {
+      return { content: [{ type: "text", text: `Ошибка при запуске курса: ${e.message}` }], isError: true };
+    }
+  }
+);
+
+// ══════════════════════════════════════════════════════════════
+// Tool: qtest_test_course_verify — Verify completed course
+// ══════════════════════════════════════════════════════════════
+server.tool(
+  "qtest_test_course_verify",
+  "Проверить результаты интерактивного курса. Сравнивает записанные действия с ожидаемыми шагами.",
+  {
+    sessionId: z.string().describe("Session ID from qtest_test_course"),
+    courseName: z.enum(["basic", "click"]).optional().describe("Название курса"),
+  },
+  async ({ sessionId, courseName }) => {
+    const course = COURSES[courseName || "basic"];
+    if (!course) {
+      return { content: [{ type: "text", text: `Курс не найден. Доступны: ${Object.keys(COURSES).join(", ")}` }], isError: true };
+    }
+
+    try {
+      // Stop recording first
+      await httpPost(`${AGENT_URL}/api/record/stop`, { sessionId }).catch(() => {});
+      await httpPost(`${RECORDER_URL}/api/recordings/${sessionId}/stop`, {}).catch(() => {});
+
+      // Get recorded actions
+      const session = await httpGet(`${RECORDER_URL}/api/recordings/${sessionId}`);
+      if (!session || !session.actions) {
+        return { content: [{ type: "text", text: `Сессия не найдена или не содержит действий. Session: ${JSON.stringify(session)}` }], isError: true };
+      }
+
+      const actions = session.actions.filter((a: any) =>
+        !['focus', 'scroll', 'resize'].includes(a.actionType)
+      );
+
+      // Check each step
+      const results: string[] = [];
+      let passed = 0;
+      const matchedIndices = new Set<number>();
+
+      for (let i = 0; i < course.steps.length; i++) {
+        const step = course.steps[i];
+        const idx = actions.findIndex((a: any, j: number) =>
+          a.actionType === step.expectedAction && !matchedIndices.has(j)
+        );
+        if (idx >= 0) {
+          matchedIndices.add(idx);
+          passed++;
+          results.push(`✅ Шаг ${i + 1}: ${step.expectedAction} — OK`);
+        } else {
+          // Check if any action of expected type exists
+          const similar = actions.find((a: any) => a.actionType === step.expectedAction);
+          const detail = similar
+            ? ` (найден ${step.expectedAction}, но возможно не тот элемент)`
+            : ` (${step.expectedAction} не найден)`;
+          results.push(`❌ Шаг ${i + 1}: ${step.instruction}\n   Ожидалось: ${step.expectedAction}${detail}\n   💡 ${step.hint}`);
+        }
+      }
+
+      const total = course.steps.length;
+      const pct = Math.round((passed / total) * 100);
+
+      // Summary
+      const summary = [
+        `📊 **${course.name}**`,
+        `Пройдено: ${passed}/${total} шагов (${pct}%)`,
+        `Всего действий записано: ${actions.length}`,
+        ``,
+        ...results,
+        ``,
+        `Чтобы посмотреть все записанные действия, используй qtest_get_actions с sessionId: ${sessionId}`,
+      ].join("\n");
+
+      return { content: [{ type: "text", text: summary }] };
+    } catch (e: any) {
+      return { content: [{ type: "text", text: `Ошибка проверки: ${e.message}` }], isError: true };
+    }
+  }
+);
+
+// ══════════════════════════════════════════════════════════════
 // Start server
 // ══════════════════════════════════════════════════════════════
 async function main() {

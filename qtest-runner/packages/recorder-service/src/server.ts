@@ -237,6 +237,21 @@ wss.on('connection', (ws) => {
   });
 });
 
+function gracefulShutdown(signal: string) {
+  console.log(`[${signal}] Shutting down recorder-service...`);
+  wss?.clients?.forEach((client) => client.close());
+  httpServer.close(() => {
+    try { getDb().close(); } catch {}
+    console.log('recorder-service stopped');
+    process.exit(0);
+  });
+  setTimeout(() => process.exit(1), 5000);
+}
+
+process.on('SIGINT', () => gracefulShutdown('SIGINT'));
+process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+process.on('SIGBREAK', () => gracefulShutdown('SIGBREAK'));
+
 export function startRecorderServer(): void {
   httpServer.listen(PORT, '0.0.0.0', () => {
     console.log(`recorder-service running on port ${PORT}`);

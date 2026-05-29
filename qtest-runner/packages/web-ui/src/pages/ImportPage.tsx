@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { importExcel } from '../api';
+import * as XLSX from 'xlsx';
 
 interface Props {
   api: string;
@@ -16,8 +17,20 @@ export function ImportPage({ api }: Props) {
     if (!file) { setError('Выберите Excel-файл'); return; }
     setError('');
     setResult(null);
-    setStatus('Импорт выполняется на сервере...');
-    setStatus('Готово');
+    setStatus('Чтение файла...');
+    try {
+      const data = await file.arrayBuffer();
+      const workbook = XLSX.read(data, { type: 'array' });
+      const sheet = workbook.Sheets[workbook.SheetNames[0]];
+      const rows: string[][] = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+      setStatus('Импорт...');
+      const res = await importExcel(api, rows);
+      setResult(res);
+      setStatus('Готово');
+    } catch (e: any) {
+      setError(e?.message || 'Ошибка импорта');
+      setStatus('');
+    }
   }
 
   return (
