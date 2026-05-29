@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Zephyr Scale Sort",
+  "version": "1.0",
+  "description": "Добавляет сортировку тест-кейсов по названию и ID в Zephyr Scale Test Player",
+  "permissions": [],
+  "host_permissions": [
+    "https://jira.ifellow.ru/secure/Tests.jspa*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://jira.ifellow.ru/secure/Tests.jspa*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}

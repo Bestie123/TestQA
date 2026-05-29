@@ -1,0 +1,18 @@
+{
+  "name": "@qtest/api-gateway",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc && node dist/index.js",
+    "start": "node dist/index.js",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "fastify": "^5.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  }
+}

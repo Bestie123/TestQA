@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "QTest Runner — Execution Panel",
+  "version": "0.1.0",
+  "description": "Панель выполнения тест-кейсов QTest Runner. Отображает текущий шаг, управляет браузером через Desktop Agent.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "QTest Runner",
+    "default_icon": {
+      "16": "icon-16.png",
+      "48": "icon-48.png",
+      "128": "icon-128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["indicator.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["indicator.css"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

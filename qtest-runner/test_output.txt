@@ -1,0 +1,31 @@
+=== QTest Runner - Iteration 6 ===
+
+[1/2] Checking build status...
+     All packages already built. Skipping build.
+
+[2/2] Starting services...
+
+[1] testcase-service  : http://localhost:3001
+ОШИБКА: перенаправление ввода не поддерживается, осуществляется немедленный выход из процесса.
+[2] step-library-service : http://localhost:3002
+ОШИБКА: перенаправление ввода не поддерживается, осуществляется немедленный выход из процесса.
+[3] execution-service : http://localhost:3003
+ОШИБКА: перенаправление ввода не поддерживается, осуществляется немедленный выход из процесса.
+[4] recorder-service  : http://localhost:3004
+ОШИБКА: перенаправление ввода не поддерживается, осуществляется немедленный выход из процесса.
+[5] browser-agent     : http://localhost:3005
+ОШИБКА: перенаправление ввода не поддерживается, осуществляется немедленный выход из процесса.
+[6] api-gateway       : http://localhost:3000
+ОШИБКА: перенаправление ввода не поддерживается, осуществляется немедленный выход из процесса.
+[7] web-ui (dev)      : http://localhost:8080
+
+=== All services started ===
+
+Web UI:     http://localhost:8080
+API Gw:     http://localhost:3000
+
+Close this window or press any key to stop all services.
+
+Stopping services...
+Done.
+ОШИБКА: перенаправление ввода не поддерживается, осуществляется немедленный выход из процесса.

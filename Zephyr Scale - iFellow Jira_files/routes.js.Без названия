@@ -1,0 +1,391 @@
+var jsRoutes = {}; (function(_root){
+var _nS = function(c,f,b){var e=c.split(f||"."),g=b||_root,d,a;for(d=0,a=e.length;d<a;d++){g=g[e[d]]=g[e[d]]||{}}return g}
+var _qS = function(items){var qs = ''; for(var i=0;i<items.length;i++) {if(items[i]) qs += (qs ? '&' : '') + items[i]}; return qs ? ('?' + qs) : ''}
+var _s = function(p,s){return p+((s===true||(s&&s.secure))?'s':'')+'://'}
+var _wA = function(r){return {ajax:function(c){c=c||{};c.url=r.url;c.type=r.method;return jQuery.ajax(c)}, method:r.method,type:r.method,url:r.url,absoluteURL: function(s){return _s('http',s)+'ac.customercase.com'+r.url},webSocketURL: function(s){return _s('ws',s)+'ac.customercase.com'+r.url}}}
+_nS('controllers.UserProfileController'); _root['controllers']['UserProfileController']['userProfile'] = 
+        function(userId0) {
+          return _wA({method:"GET", url:"/" + "users/" + encodeURIComponent((function(k,v) {return v})("userId", userId0))})
+        }
+      ;
+_nS('controllers.UserProfileController'); _root['controllers']['UserProfileController']['userProfileInfo'] = 
+        function(userId0) {
+          return _wA({method:"GET", url:"/" + "users/profile-info/" + encodeURIComponent((function(k,v) {return v})("userId", userId0))})
+        }
+      ;
+_nS('controllers.UserProfileController'); _root['controllers']['UserProfileController']['userIdeas'] = 
+        function(userId0,startIndex1,filter2) {
+          return _wA({method:"GET", url:"/" + "users/" + encodeURIComponent((function(k,v) {return v})("userId", userId0)) + "/ideas" + _qS([(startIndex1 == null ? null : (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("startIndex", startIndex1)), (filter2 == null ? null : (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("filter", filter2))])})
+        }
+      ;
+_nS('controllers.UserProfileController'); _root['controllers']['UserProfileController']['userCard'] = 
+        function(userId0) {
+          return _wA({method:"GET", url:"/" + "users/" + encodeURIComponent((function(k,v) {return v})("userId", userId0)) + "/card"})
+        }
+      ;
+_nS('controllers.AuthController'); _root['controllers']['AuthController']['signIn'] = 
+        function(back_to0) {
+          return _wA({method:"GET", url:"/" + "signin" + _qS([(back_to0 == null ? null : (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("back_to", back_to0))])})
+        }
+      ;
+_nS('controllers.AuthController'); _root['controllers']['AuthController']['signOut'] = 
+        function(back_to0) {
+          return _wA({method:"GET", url:"/" + "signout" + _qS([(back_to0 == null ? null : (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("back_to", back_to0))])})
+        }
+      ;
+_nS('controllers.InternalAuthController'); _root['controllers']['InternalAuthController']['signIn'] = 
+        function(redirect0,state1,jiraAuthPageUrl2,referer_host3,back_to_token4) {
+          return _wA({method:"POST", url:"/" + "signin" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("redirect", redirect0), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("state", state1), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("jiraAuthPageUrl", jiraAuthPageUrl2), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("referer_host", referer_host3), (back_to_token4 == null ? null : (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("back_to_token", back_to_token4))])})
+        }
+      ;
+_nS('controllers.InternalAuthController'); _root['controllers']['InternalAuthController']['resetPassword'] = 
+        function(back_to0) {
+          return _wA({method:"POST", url:"/" + "reset-password" + _qS([(back_to0 == null ? null : (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("back_to", back_to0))])})
+        }
+      ;
+_nS('controllers.InternalAuthController'); _root['controllers']['InternalAuthController']['signUp'] = 
+        function(back_to0) {
+          return _wA({method:"POST", url:"/" + "signup" + _qS([(back_to0 == null ? null : (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("back_to", back_to0))])})
+        }
+      ;
+_nS('controllers.InternalAuthController'); _root['controllers']['InternalAuthController']['emailValidationPage'] = 
+        function(token0) {
+          return _wA({method:"GET", url:"/" + "email-validation" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("token", token0)])})
+        }
+      ;
+_nS('controllers.CannedResponseController'); _root['controllers']['CannedResponseController']['userCannedResponses'] = 
+        function() {
+          return _wA({method:"GET", url:"/" + "canned-responses"})
+        }
+      ;
+_nS('controllers.CannedResponseController'); _root['controllers']['CannedResponseController']['storeCannedResponse'] = 
+        function() {
+          return _wA({method:"POST", url:"/" + "canned-responses"})
+        }
+      ;
+_nS('controllers.CannedResponseController'); _root['controllers']['CannedResponseController']['userCannedResponsesJira'] = 
+        function() {
+          return _wA({method:"GET", url:"/" + "canned-responses-jira"})
+        }
+      ;
+_nS('controllers.CannedResponseController'); _root['controllers']['CannedResponseController']['storeCannedResponseJira'] = 
+        function() {
+          return _wA({method:"POST", url:"/" + "canned-responses-jira"})
+        }
+      ;
+_nS('controllers.JiraIssueTabController'); _root['controllers']['JiraIssueTabController']['getCommentsPage'] = 
+        function(issueId0,page1) {
+          return _wA({method:"GET", url:"/" + "jira/issue-tab/comments" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("issueId", issueId0), (page1 == null ? null : (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("page", page1))])})
+        }
+      ;
+_nS('controllers.JiraIssueTabController'); _root['controllers']['JiraIssueTabController']['storeCommentMeta'] = 
+        function(issueId0) {
+          return _wA({method:"POST", url:"/" + "jira/issue-tab/comments" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("issueId", issueId0)])})
+        }
+      ;
+_nS('controllers.ForumBrowserController'); _root['controllers']['ForumBrowserController']['feedbackForums'] = 
+        function() {
+          return _wA({method:"GET", url:"/" + "admin/forums"})
+        }
+      ;
+_nS('controllers.ForumBrowserController'); _root['controllers']['ForumBrowserController']['createForum'] = 
+        function() {
+          return _wA({method:"POST", url:"/" + "admin/forums"})
+        }
+      ;
+_nS('controllers.ForumBrowserController'); _root['controllers']['ForumBrowserController']['availableProjects'] = 
+        function() {
+          return _wA({method:"GET", url:"/" + "admin/forums/create.dialog/projects"})
+        }
+      ;
+_nS('controllers.ForumBrowserController'); _root['controllers']['ForumBrowserController']['deleteForum'] = 
+        function(forumId0) {
+          return _wA({method:"DELETE", url:"/" + "admin/forums/" + encodeURIComponent((function(k,v) {return v})("forumId", forumId0))})
+        }
+      ;
+_nS('controllers.ForumBrowserController'); _root['controllers']['ForumBrowserController']['getForum'] = 
+        function(forumId0) {
+          return _wA({method:"GET", url:"/" + "admin/forums/" + encodeURIComponent((function(k,v) {return v})("forumId", forumId0))})
+        }
+      ;
+_nS('controllers.ForumBrowserController'); _root['controllers']['ForumBrowserController']['checkForumJql'] = 
+        function() {
+          return _wA({method:"POST", url:"/" + "admin/forums/check-jql"})
+        }
+      ;
+_nS('controllers.JiraResourceProxyStreamController'); _root['controllers']['JiraResourceProxyStreamController']['loadForumAvatar'] = 
+        function(forumId0) {
+          return _wA({method:"GET", url:"/" + "forums/" + (function(k,v) {return v})("forumId", forumId0) + "/avatar"})
+        }
+      ;
+_nS('controllers.ForumController'); _root['controllers']['ForumController']['viewForumBySlug'] = 
+        function(forumSlug0,page1,sort2,status3,category4,q5,assignee6,answered7) {
+          return _wA({method:"GET", url:"/" + "forums/" + (function(k,v) {return v})("forumSlug", forumSlug0) + _qS([(page1 == null ? null : (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("page", page1)), (function(k,v){return v!=null?(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})(k,v):''})("sort", sort2), (function(k,v){return v!=null?(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})(k,v):''})("status", status3), (function(k,v){return v!=null?(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})(k,v):''})("category", category4), (function(k,v){return v!=null?(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})(k,v):''})("q", q5), (function(k,v){return v!=null?(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})(k,v):''})("assignee", assignee6), (function(k,v){return v!=null?(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})(k,v):''})("answered", answered7)])})
+        }
+      ;
+_nS('controllers.ForumController'); _root['controllers']['ForumController']['forumGroups'] = 
+        function(refererHost0) {
+          return _wA({method:"GET", url:"/" + "api/forum-groups" + _qS([(function(k,v){return v!=null?(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})(k,v):''})("refererHost", refererHost0)])})
+        }
+      ;
+_nS('controllers.ForumBrowserController'); _root['controllers']['ForumBrowserController']['getForums'] = 
+        function() {
+          return _wA({method:"GET", url:"/" + "api/forums"})
+        }
+      ;
+_nS('controllers.IdeaController'); _root['controllers']['IdeaController']['getIdeas'] = 
+        function(forumId0,page1,sort2,status3,category4,assignee5,answered6,q7) {
+          return _wA({method:"GET", url:"/" + "forums/" + encodeURIComponent((function(k,v) {return v})("forumId", forumId0)) + "/ideas" + _qS([(page1 == null ? null : (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("page", page1)), (function(k,v){return v!=null?(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})(k,v):''})("sort", sort2), (function(k,v){return v!=null?(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})(k,v):''})("status", status3), (function(k,v){return v!=null?(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})(k,v):''})("category", category4), (function(k,v){return v!=null?(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})(k,v):''})("assignee", assignee5), (function(k,v){return v!=null?(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})(k,v):''})("answered", answered6), (function(k,v){return v!=null?(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})(k,v):''})("q", q7)])})
+        }
+      ;
+_nS('controllers.IdeaController'); _root['controllers']['IdeaController']['getIdeasJira'] = 
+        function(forumId0,page1,sort2,status3,category4,assignee5,answered6,q7) {
+          return _wA({method:"GET", url:"/" + "jira/project-tab/ideas" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("forumId", forumId0), (page1 == null ? null : (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("page", page1)), (function(k,v){return v!=null?(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})(k,v):''})("sort", sort2), (function(k,v){return v!=null?(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})(k,v):''})("status", status3), (function(k,v){return v!=null?(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})(k,v):''})("category", category4), (function(k,v){return v!=null?(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})(k,v):''})("assignee", assignee5), (function(k,v){return v!=null?(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})(k,v):''})("answered", answered6), (function(k,v){return v!=null?(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})(k,v):''})("q", q7)])})
+        }
+      ;
+_nS('controllers.IdeaStatusController'); _root['controllers']['IdeaStatusController']['changeIdeaStatus'] = 
+        function(forumId0,ideaMetadataId1,transitionId2) {
+          return _wA({method:"POST", url:"/" + "forums/" + encodeURIComponent((function(k,v) {return v})("forumId", forumId0)) + "/ideas/" + encodeURIComponent((function(k,v) {return v})("ideaMetadataId", ideaMetadataId1)) + "/transitions" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("transitionId", transitionId2)])})
+        }
+      ;
+_nS('controllers.IdeaController'); _root['controllers']['IdeaController']['relatedIdeas'] = 
+        function(forumId0,summary1) {
+          return _wA({method:"GET", url:"/" + "api/forums/" + encodeURIComponent((function(k,v) {return v})("forumId", forumId0)) + "/related-ideas" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("summary", summary1)])})
+        }
+      ;
+_nS('controllers.IdeaVoteController'); _root['controllers']['IdeaVoteController']['voteJira'] = 
+        function(forumId0,ideaMetadataId1) {
+          return _wA({method:"POST", url:"/" + "jira/votes" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("forumId", forumId0), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("ideaMetadataId", ideaMetadataId1)])})
+        }
+      ;
+_nS('controllers.IdeaVoteController'); _root['controllers']['IdeaVoteController']['removeVoteJira'] = 
+        function(forumId0,ideaMetadataId1) {
+          return _wA({method:"DELETE", url:"/" + "jira/votes" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("forumId", forumId0), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("ideaMetadataId", ideaMetadataId1)])})
+        }
+      ;
+_nS('controllers.IdeaVoteController'); _root['controllers']['IdeaVoteController']['removeVote'] = 
+        function(forumId0,ideaMetadataId1) {
+          return _wA({method:"DELETE", url:"/" + "forums/" + encodeURIComponent((function(k,v) {return v})("forumId", forumId0)) + "/ideas/" + encodeURIComponent((function(k,v) {return v})("ideaMetadataId", ideaMetadataId1)) + "/votes"})
+        }
+      ;
+_nS('controllers.IdeaVoteController'); _root['controllers']['IdeaVoteController']['vote'] = 
+        function(forumId0,ideaMetadataId1) {
+          return _wA({method:"POST", url:"/" + "forums/" + encodeURIComponent((function(k,v) {return v})("forumId", forumId0)) + "/ideas/" + encodeURIComponent((function(k,v) {return v})("ideaMetadataId", ideaMetadataId1)) + "/votes"})
+        }
+      ;
+_nS('controllers.IdeaController'); _root['controllers']['IdeaController']['createIdeaPage'] = 
+        function(forumSlug0) {
+          return _wA({method:"GET", url:"/" + "forums/" + (function(k,v) {return v})("forumSlug", forumSlug0) + "/ideas/create"})
+        }
+      ;
+_nS('controllers.IdeaDescriptionEditorController'); _root['controllers']['IdeaDescriptionEditorController']['updateIdeaDescription'] = 
+        function(forumId0,ideaMetadataId1) {
+          return _wA({method:"PUT", url:"/" + "api/idea/description" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("forumId", forumId0), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("ideaMetadataId", ideaMetadataId1)])})
+        }
+      ;
+_nS('controllers.IdeaWatcherController'); _root['controllers']['IdeaWatcherController']['addWatchers'] = 
+        function(forumId0,ideaMetadataId1) {
+          return _wA({method:"POST", url:"/" + "forums/" + encodeURIComponent((function(k,v) {return v})("forumId", forumId0)) + "/ideas/" + encodeURIComponent((function(k,v) {return v})("ideaMetadataId", ideaMetadataId1)) + "/watchers"})
+        }
+      ;
+_nS('controllers.IdeaWatcherController'); _root['controllers']['IdeaWatcherController']['addWatchersJira'] = 
+        function(forumId0,ideaMetadataId1) {
+          return _wA({method:"POST", url:"/" + "jira/watchers" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("forumId", forumId0), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("ideaMetadataId", ideaMetadataId1)])})
+        }
+      ;
+_nS('controllers.IdeaWatcherController'); _root['controllers']['IdeaWatcherController']['getWatchers'] = 
+        function(forumId0,ideaMetadataId1,page2) {
+          return _wA({method:"GET", url:"/" + "forums/" + encodeURIComponent((function(k,v) {return v})("forumId", forumId0)) + "/ideas/" + encodeURIComponent((function(k,v) {return v})("ideaMetadataId", ideaMetadataId1)) + "/watchers" + _qS([(page2 == null ? null : (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("page", page2))])})
+        }
+      ;
+_nS('controllers.IdeaWatcherController'); _root['controllers']['IdeaWatcherController']['getWatchersJira'] = 
+        function(forumId0,ideaMetadataId1,page2) {
+          return _wA({method:"GET", url:"/" + "jira/watchers" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("forumId", forumId0), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("ideaMetadataId", ideaMetadataId1), (page2 == null ? null : (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("page", page2))])})
+        }
+      ;
+_nS('controllers.IdeaWatcherController'); _root['controllers']['IdeaWatcherController']['removeWatcher'] = 
+        function(forumId0,ideaMetadataId1,watcherId2) {
+          return _wA({method:"DELETE", url:"/" + "forums/" + encodeURIComponent((function(k,v) {return v})("forumId", forumId0)) + "/ideas/" + encodeURIComponent((function(k,v) {return v})("ideaMetadataId", ideaMetadataId1)) + "/watchers" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("watcherId", watcherId2)])})
+        }
+      ;
+_nS('controllers.IdeaWatcherController'); _root['controllers']['IdeaWatcherController']['removeWatcherJira'] = 
+        function(forumId0,ideaMetadataId1,watcherId2) {
+          return _wA({method:"DELETE", url:"/" + "jira/watchers" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("forumId", forumId0), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("ideaMetadataId", ideaMetadataId1), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("watcherId", watcherId2)])})
+        }
+      ;
+_nS('controllers.IdeaWatcherController'); _root['controllers']['IdeaWatcherController']['unwatch'] = 
+        function(forumId0,ideaMetadataId1) {
+          return _wA({method:"DELETE", url:"/" + "forums/" + encodeURIComponent((function(k,v) {return v})("forumId", forumId0)) + "/ideas/" + encodeURIComponent((function(k,v) {return v})("ideaMetadataId", ideaMetadataId1)) + "/watches"})
+        }
+      ;
+_nS('controllers.IdeaWatcherController'); _root['controllers']['IdeaWatcherController']['watch'] = 
+        function(forumId0,ideaMetadataId1) {
+          return _wA({method:"POST", url:"/" + "forums/" + encodeURIComponent((function(k,v) {return v})("forumId", forumId0)) + "/ideas/" + encodeURIComponent((function(k,v) {return v})("ideaMetadataId", ideaMetadataId1)) + "/watches"})
+        }
+      ;
+_nS('controllers.IdeaController'); _root['controllers']['IdeaController']['assignRequest'] = 
+        function(forumId0,ideaMetadataId1) {
+          return _wA({method:"POST", url:"/" + "forums/" + encodeURIComponent((function(k,v) {return v})("forumId", forumId0)) + "/ideas/" + encodeURIComponent((function(k,v) {return v})("ideaMetadataId", ideaMetadataId1)) + "/assign"})
+        }
+      ;
+_nS('controllers.IdeaController'); _root['controllers']['IdeaController']['forumCim'] = 
+        function(forumId0) {
+          return _wA({method:"GET", url:"/" + "api/forums/" + (function(k,v) {return v})("forumId", forumId0) + "/cim"})
+        }
+      ;
+_nS('controllers.IdeaController'); _root['controllers']['IdeaController']['ideaData'] = 
+        function(forumId0,ideaMetadataId1) {
+          return _wA({method:"GET", url:"/" + "api/idea" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("forumId", forumId0), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("ideaMetadataId", ideaMetadataId1)])})
+        }
+      ;
+_nS('controllers.JiraResourceProxyStreamController'); _root['controllers']['JiraResourceProxyStreamController']['downloadAttachment'] = 
+        function(forumId0,ideaMetadataId1,attachmentId2) {
+          return _wA({method:"GET", url:"/" + "forums/" + encodeURIComponent((function(k,v) {return v})("forumId", forumId0)) + "/ideas/" + encodeURIComponent((function(k,v) {return v})("ideaMetadataId", ideaMetadataId1)) + "/attachments/" + encodeURIComponent((function(k,v) {return v})("attachmentId", attachmentId2))})
+        }
+      ;
+_nS('controllers.ForumBrowserRestrictionsController'); _root['controllers']['ForumBrowserRestrictionsController']['getForumRestrictionsConf'] = 
+        function(forumId0) {
+          return _wA({method:"GET", url:"/" + "admin/forums/" + encodeURIComponent((function(k,v) {return v})("forumId", forumId0)) + "/forum-restrictions-conf"})
+        }
+      ;
+_nS('controllers.ForumBrowserRestrictionsController'); _root['controllers']['ForumBrowserRestrictionsController']['defaultForumRestrictionsConf'] = 
+        function() {
+          return _wA({method:"GET", url:"/" + "admin/default-forum-restrictions-conf"})
+        }
+      ;
+_nS('controllers.ForumBrowserRestrictionsController'); _root['controllers']['ForumBrowserRestrictionsController']['updateForumRestrictionsConf'] = 
+        function(forumId0) {
+          return _wA({method:"POST", url:"/" + "admin/forums/" + encodeURIComponent((function(k,v) {return v})("forumId", forumId0)) + "/forum-restrictions-conf"})
+        }
+      ;
+_nS('controllers.ForumBrowserRestrictionsController'); _root['controllers']['ForumBrowserRestrictionsController']['resendEmailRestrictionNotification'] = 
+        function(forumId0,restrictionId1) {
+          return _wA({method:"POST", url:"/" + "admin/forums/" + encodeURIComponent((function(k,v) {return v})("forumId", forumId0)) + "/restrictions/" + encodeURIComponent((function(k,v) {return v})("restrictionId", restrictionId1)) + "/notify"})
+        }
+      ;
+_nS('controllers.IdeaCommentEditorController'); _root['controllers']['IdeaCommentEditorController']['getCommentHtml'] = 
+        function(forumId0,ideaMetadataId1,jiraCommentId2) {
+          return _wA({method:"GET", url:"/" + "api/comment/editor-html" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("forumId", forumId0), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("ideaMetadataId", ideaMetadataId1), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("jiraCommentId", jiraCommentId2)])})
+        }
+      ;
+_nS('controllers.IdeaCommentEditorController'); _root['controllers']['IdeaCommentEditorController']['getCommentHtmlJira'] = 
+        function(forumId0,ideaMetadataId1,jiraCommentId2) {
+          return _wA({method:"GET", url:"/" + "api/comment/editor-html-jira" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("forumId", forumId0), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("ideaMetadataId", ideaMetadataId1), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("jiraCommentId", jiraCommentId2)])})
+        }
+      ;
+_nS('controllers.IdeaCommentEditorController'); _root['controllers']['IdeaCommentEditorController']['updateIdeaComment'] = 
+        function(forumId0,ideaMetadataId1,jiraCommentId2) {
+          return _wA({method:"PUT", url:"/" + "api/comment" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("forumId", forumId0), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("ideaMetadataId", ideaMetadataId1), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("jiraCommentId", jiraCommentId2)])})
+        }
+      ;
+_nS('controllers.IdeaCommentEditorController'); _root['controllers']['IdeaCommentEditorController']['updateIdeaCommentJira'] = 
+        function(forumId0,ideaMetadataId1,jiraCommentId2) {
+          return _wA({method:"PUT", url:"/" + "api/comment-jira" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("forumId", forumId0), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("ideaMetadataId", ideaMetadataId1), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("jiraCommentId", jiraCommentId2)])})
+        }
+      ;
+_nS('controllers.MailboxController'); _root['controllers']['MailboxController']['mailboxes'] = 
+        function() {
+          return _wA({method:"GET", url:"/" + "admin/mailboxes"})
+        }
+      ;
+_nS('controllers.MailboxController'); _root['controllers']['MailboxController']['createMailbox'] = 
+        function() {
+          return _wA({method:"POST", url:"/" + "admin/mailboxes"})
+        }
+      ;
+_nS('controllers.MailboxController'); _root['controllers']['MailboxController']['updateMailbox'] = 
+        function(mailboxId0) {
+          return _wA({method:"PUT", url:"/" + "admin/mailboxes" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("mailboxId", mailboxId0)])})
+        }
+      ;
+_nS('controllers.MailboxController'); _root['controllers']['MailboxController']['deleteMailbox'] = 
+        function(mailboxId0) {
+          return _wA({method:"DELETE", url:"/" + "admin/mailboxes/" + encodeURIComponent((function(k,v) {return v})("mailboxId", mailboxId0))})
+        }
+      ;
+_nS('controllers.SenderSignatureController'); _root['controllers']['SenderSignatureController']['getSignatureData'] = 
+        function(mailboxId0) {
+          return _wA({method:"GET", url:"/" + "admin/mailboxes/" + encodeURIComponent((function(k,v) {return v})("mailboxId", mailboxId0)) + "/signatures"})
+        }
+      ;
+_nS('controllers.SenderSignatureController'); _root['controllers']['SenderSignatureController']['createSenderSignature'] = 
+        function(mailboxId0) {
+          return _wA({method:"POST", url:"/" + "admin/mailboxes/" + encodeURIComponent((function(k,v) {return v})("mailboxId", mailboxId0)) + "/signatures"})
+        }
+      ;
+_nS('controllers.SenderSignatureController'); _root['controllers']['SenderSignatureController']['resendConfirmationMessage'] = 
+        function(mailboxId0) {
+          return _wA({method:"POST", url:"/" + "admin/mailboxes/" + encodeURIComponent((function(k,v) {return v})("mailboxId", mailboxId0)) + "/resend"})
+        }
+      ;
+_nS('controllers.SenderSignatureController'); _root['controllers']['SenderSignatureController']['verifySpf'] = 
+        function(mailboxId0) {
+          return _wA({method:"POST", url:"/" + "admin/mailboxes/" + encodeURIComponent((function(k,v) {return v})("mailboxId", mailboxId0)) + "/verifyspf"})
+        }
+      ;
+_nS('controllers.IdeaCommentController'); _root['controllers']['IdeaCommentController']['pinComment'] = 
+        function(forumId0,ideaMetadataId1,ideaCommentMetaId2) {
+          return _wA({method:"POST", url:"/" + "forums/" + encodeURIComponent((function(k,v) {return v})("forumId", forumId0)) + "/ideas/" + encodeURIComponent((function(k,v) {return v})("ideaMetadataId", ideaMetadataId1)) + "/comments/pin" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("ideaCommentMetaId", ideaCommentMetaId2)])})
+        }
+      ;
+_nS('controllers.IdeaCommentController'); _root['controllers']['IdeaCommentController']['unpinComment'] = 
+        function(forumId0,ideaMetadataId1) {
+          return _wA({method:"DELETE", url:"/" + "forums/" + encodeURIComponent((function(k,v) {return v})("forumId", forumId0)) + "/ideas/" + encodeURIComponent((function(k,v) {return v})("ideaMetadataId", ideaMetadataId1)) + "/comments/pin"})
+        }
+      ;
+_nS('controllers.IdeaCommentController'); _root['controllers']['IdeaCommentController']['pinCommentJira'] = 
+        function(forumId0,ideaMetadataId1,ideaCommentMetaId2) {
+          return _wA({method:"POST", url:"/" + "jira/pin-comment" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("forumId", forumId0), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("ideaMetadataId", ideaMetadataId1), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("ideaCommentMetaId", ideaCommentMetaId2)])})
+        }
+      ;
+_nS('controllers.IdeaCommentController'); _root['controllers']['IdeaCommentController']['unpinCommentJira'] = 
+        function(forumId0,ideaMetadataId1) {
+          return _wA({method:"DELETE", url:"/" + "jira/pin-comment" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("forumId", forumId0), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("ideaMetadataId", ideaMetadataId1)])})
+        }
+      ;
+_nS('controllers.IdeaCommentController'); _root['controllers']['IdeaCommentController']['getCommentsPage'] = 
+        function(forumId0,ideaMetadataId1,page2) {
+          return _wA({method:"GET", url:"/" + "api/comments" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("forumId", forumId0), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("ideaMetadataId", ideaMetadataId1), (page2 == null ? null : (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("page", page2))])})
+        }
+      ;
+_nS('controllers.WidgetFrontController'); _root['controllers']['WidgetFrontController']['widgetSettings'] = 
+        function(widgetUuid0) {
+          return _wA({method:"GET", url:"/" + "api/widget/" + encodeURIComponent((function(k,v) {return v})("widgetUuid", widgetUuid0)) + "/settings"})
+        }
+      ;
+_nS('controllers.WidgetFrontController'); _root['controllers']['WidgetFrontController']['ideasForVoting'] = 
+        function(widgetUuid0) {
+          return _wA({method:"GET", url:"/" + "api/widget/" + encodeURIComponent((function(k,v) {return v})("widgetUuid", widgetUuid0)) + "/ideas"})
+        }
+      ;
+_nS('controllers.WidgetFrontController'); _root['controllers']['WidgetFrontController']['createRequest'] = 
+        function(widgetUuid0) {
+          return _wA({method:"POST", url:"/" + "api/widget/" + encodeURIComponent((function(k,v) {return v})("widgetUuid", widgetUuid0)) + "/request"})
+        }
+      ;
+_nS('controllers.WidgetFrontController'); _root['controllers']['WidgetFrontController']['addVote'] = 
+        function(widgetUuid0,forumId1,ideaMetaId2) {
+          return _wA({method:"POST", url:"/" + "api/widget/" + encodeURIComponent((function(k,v) {return v})("widgetUuid", widgetUuid0)) + "/vote" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("forumId", forumId1), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("ideaMetaId", ideaMetaId2)])})
+        }
+      ;
+_nS('controllers.WidgetFrontController'); _root['controllers']['WidgetFrontController']['removeVote'] = 
+        function(widgetUuid0,forumId1,ideaMetaId2) {
+          return _wA({method:"DELETE", url:"/" + "api/widget/" + encodeURIComponent((function(k,v) {return v})("widgetUuid", widgetUuid0)) + "/vote" + _qS([(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("forumId", forumId1), (function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})("ideaMetaId", ideaMetaId2)])})
+        }
+      ;
+_nS('controllers.WidgetSettingsController'); _root['controllers']['WidgetSettingsController']['getWidgets'] = 
+        function(forumId0) {
+          return _wA({method:"GET", url:"/" + "admin/api/forums/" + encodeURIComponent((function(k,v) {return v})("forumId", forumId0)) + "/widget"})
+        }
+      ;
+_nS('controllers.WidgetSettingsController'); _root['controllers']['WidgetSettingsController']['storeWidgetSettings'] = 
+        function() {
+          return _wA({method:"POST", url:"/" + "admin/api/widget"})
+        }
+      ;
+_nS('controllers.JiraResourceProxyStreamController'); _root['controllers']['JiraResourceProxyStreamController']['portalLogoUrl'] = 
+        function(refererHost0) {
+          return _wA({method:"GET", url:"/" + "jira-logo" + _qS([(function(k,v){return v!=null?(function(k,v) {return encodeURIComponent(k)+'='+encodeURIComponent(v)})(k,v):''})("refererHost", refererHost0)])})
+        }
+      ;
+})(jsRoutes)

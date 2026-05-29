@@ -1,0 +1,11 @@
+node_modules/
+dist/
+*.db
+*.db-journal
+.turbo/
+coverage/
+.env
+.env.local
+*.xlsx
+*.docx
+*.html

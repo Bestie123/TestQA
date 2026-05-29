@@ -1,0 +1,14 @@
+{
+  "name": "@qtest/chrome-extension",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc && node scripts/build.js",
+    "dev": "tsc && node scripts/build.js",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.300",
+    "typescript": "^5.7.0"
+  }
+}

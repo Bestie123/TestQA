@@ -1,0 +1,11 @@
+node_modules/
+dist/
+build/
+*.7z
+*.docx
+*.files/
+~$*
+desktop.ini
+chrome-data/
+*.xlsx
+*.html

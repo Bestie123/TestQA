@@ -1,0 +1,30 @@
+{
+  "name": "qtest-runner",
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean"
+  },
+  "workspaces": [
+    "packages/shared-types",
+    "packages/testcase-service",
+    "packages/step-library-service",
+    "packages/api-gateway",
+    "packages/web-ui",
+    "packages/execution-service",
+    "packages/browser-agent",
+    "packages/chrome-extension",
+    "packages/recorder-service"
+  ],
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "turbo": "^2.5.0",
+    "typescript": "^5.7.0"
+  },
+  "packageManager": "npm@10.0.0",
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

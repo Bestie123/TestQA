@@ -1,0 +1,3 @@
+[0528/175228.380:INFO:CONSOLE:3] "__QTEST_INITSCRIPT__runs", source:  (3)
+[0528/175230.529:INFO:CONSOLE:2] "__QTEST_TAG__re_injected", source:  (2)
+[0528/175231.562:INFO:CONSOLE:2] "__QTEST_ACTION__{"actionType":"manual_test","selector":"h1"}", source:  (2)

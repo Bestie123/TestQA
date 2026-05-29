@@ -1,0 +1,18 @@
+/* QTest Runner — Step Indicator Styles */
+
+#qtest-indicator {
+  animation: qtest-slideDown 0.2s ease-out;
+}
+
+#qtest-indicator.step-passed {
+  background: #4caf50;
+}
+
+#qtest-indicator.step-failed {
+  background: #f44336;
+}
+
+@keyframes qtest-slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
