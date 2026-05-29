@@ -689,3 +689,40 @@ document.addEventListener("volumechange", function(e) {
   __record({actionType:"media_volume", selector:__getSelector(el), selectorText:__getSelectorText(el), value:"volume=" + Math.round(el.volume * 100) + "% muted=" + el.muted, url:location.href});
 }, true);
 `;
+
+export const IME_COMPOSITION_HELPER = `
+// ── IME Composition (CJK input) ──
+var __imeInProgress = false;
+var __imeComposingValue = '';
+var __imeTargetElement = null;
+
+document.addEventListener("compositionstart", function(e) {
+  var el = __deepEventTarget(e);
+  if (!el) return;
+  __imeInProgress = true;
+  __imeComposingValue = '';
+  __imeTargetElement = el;
+  __record({actionType:"ime_composition", selector:__getSelector(el), selectorText:__getSelectorText(el), value:"compositionstart", inputType:"ime"});
+  __addLogToOverlay("ime", "IME composition start: " + __getSelector(el), "#fa0");
+}, true);
+
+document.addEventListener("compositionupdate", function(e) {
+  if (!__imeInProgress) return;
+  __imeComposingValue = e.data || '';
+  // Do NOT record intermediate input events — skip in input handler
+}, true);
+
+document.addEventListener("compositionend", function(e) {
+  if (!__imeInProgress) return;
+  var el = __imeTargetElement;
+  var finalValue = e.data || '';
+  var currentValue = '';
+  try {
+    if (el) currentValue = el.value || el.textContent || '';
+  } catch(ex) {}
+  __imeInProgress = false;
+  __imeComposingValue = '';
+  __imeTargetElement = null;
+  __record({actionType:"ime_composition", selector:el ? __getSelector(el) : '', selectorText:el ? __getSelectorText(el) : '', value:"compositionend: " + finalValue + " (field value: " + currentValue.slice(0,60) + ")", inputType:"ime", displayValue:finalValue});
+  __addLogToOverlay("ime", "IME end: " + finalValue.slice(0,40), "#fa0");
+}, true);`;

@@ -8,6 +8,7 @@ import {
   TOUCH_WHEEL_HELPER, ANIMATION_HELPER, LIFECYCLE_HELPER,
   CAPTCHA_DETECTOR_HELPER,
   FILE_UPLOAD_HELPER, USER_SWITCH_HELPER, POPOVER_HELPER, MEDIA_EVENTS_HELPER,
+  IME_COMPOSITION_HELPER,
 } from './inject-helpers';
 
 interface Recording {
@@ -73,6 +74,7 @@ ${SHADOW_DOM_HELPER}
   ${USER_SWITCH_HELPER}
   ${POPOVER_HELPER}
   ${MEDIA_EVENTS_HELPER}
+  ${IME_COMPOSITION_HELPER}
 
   // ── Record action ──
   function __record(data) {
@@ -209,6 +211,7 @@ ${SHADOW_DOM_HELPER}
 
   // ===== Input (debounced) — captures typing =====
   document.addEventListener("input", function(e) {
+    if (e.isComposing) return; // Skip intermediate IME composition input
     var el = __deepEventTarget(e); if (!el) return;
     var tag = el.tagName.toLowerCase();
     if (tag !== "input" && tag !== "textarea" && !el.isContentEditable) return;
@@ -688,6 +691,7 @@ function formatActionDetail(action: any): string {
     case 'media_volume': return `${(action.value||'')} [${action.selector}]`;
     case 'dialog_element': return `state=${action.value}`;
     case 'details_toggle': return `state=${action.value}`;
+    case 'ime_composition': return `${(action.value||'').slice(0,60)} [${action.selector}] inputType=${action.inputType||''} displayValue=${(action.displayValue||'').slice(0,30)}`;
     default: return '';
   }
 }

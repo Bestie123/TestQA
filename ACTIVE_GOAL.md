@@ -18,15 +18,18 @@
 - **Iteration 10:** User Switch (Ctrl+Shift+U), Drag & Drop (dragstart/dragend/drop listeners), programmatic API
 - **Iteration 11:** Media Events (play/pause/seeked/volumechange), Popover API (beforetoggle/toggle)
 - **Iteration 12:** Composite Steps — CRUD, expand endpoint ({{param}} substitution), execution-service integration
+- **Iteration 13:** IME Composition — compositionstart/compositionend/input skip для CJK ввода
 - **Documentation:** AGENTS.md обновлён — карта проекта + Composite Steps
 
 ### 🔄 В процессе
 - Определение следующих задач
 
 ### ⬜ Следующие шаги
-1. IME Composition — compositionstart/compositionend для CJK ввода
-2. Multilingual CAPTCHA — поддержка русского языка в сообщениях
-3. Drag & Drop executor-level запись через browser-api dispatchEvent
+1. ResizeObserver / IntersectionObserver для отслеживания видимости/размеров
+2. Canvas click recording с координатами
+3. Video recording (playwright-screen-recorder)
+4. Selection tracking
+5. Multilingual CAPTCHA — поддержка русского языка в сообщениях
 
 ## Принятые решения
 - **Shadow DOM:** использовать `composedPath()` + `deepActiveElement()` вместо `e.target`

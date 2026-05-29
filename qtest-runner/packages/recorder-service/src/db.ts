@@ -682,6 +682,13 @@ export function convertToSteps(sessionId: string): ConvertedStep[] {
           `Элемент ${a.value === 'open' ? 'развёрнут' : 'свёрнут'}`
         ));
         break;
+      case 'ime_composition':
+        steps.push(makeStep(a,
+          `Ввод текста через IME: "${(a.displayValue || a.value || '').slice(0, 60)}"`,
+          a.displayValue || a.value || '',
+          'Текст введён через IME'
+        ));
+        break;
       case 'dragstart':
         steps.push(makeStep(a,
           `Начать перетаскивание "${a.selectorText || a.selector || ''}"`,

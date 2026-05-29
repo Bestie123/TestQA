@@ -9,3 +9,18 @@ desktop.ini
 chrome-data/
 *.xlsx
 *.html
+
+# qtest-runner runtime
+*.db-wal
+*.db-shm
+*.db.bak
+qtest-runner/cache/
+
+# browser-agent profiles (browser cache)
+.inject-test-profile/
+.inject-test-profile2/
+
+# SQLite temp files
+*-shm
+*-wal
+*.bak

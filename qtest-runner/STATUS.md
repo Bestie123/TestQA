@@ -249,13 +249,26 @@ recorder ──► flushActions() ──► POST /api/recordings/:id/actions
 | `packages/execution-service/src/index.ts` | ✅ | `POST /api/executions`: pre-fetch composite steps через `expand` endpoint; разворачивает в плоские step_results; auto-next скипает неразвёрнутые composite шаги |
 | `packages/shared-types/src/types.ts` | ✅ | `ICompositeStep`, `ICompositeStepItem` (были, не менялись) |
 
+### Iteration 13 — IME Composition (29.05.2026)
+
+| Компонент | Статус | Описание |
+|-----------|--------|----------|
+| `packages/browser-agent/src/inject-helpers.ts` — IME_COMPOSITION_HELPER | ✅ | `compositionstart`/`compositionupdate`/`compositionend` слушатели; запись `ime_composition` action с displayValue (финальный текст) |
+| `packages/browser-agent/src/recorder.ts` | ✅ | `if (e.isComposing) return;` — input handler скипает промежуточные события IME; formatActionDetail: ime_composition case; импорт + инжект IME_COMPOSITION_HELPER |
+| `packages/shared-types/src/types.ts` | ✅ | `'ime_composition'` добавлен в RecordedActionType |
+| `packages/recorder-service/src/db.ts` | ✅ | convertToSteps: ime_composition case с русским описанием |
+
 ### P2 — Желательные
 - [x] User Switch (hotkey для смены пользователя)
 - [x] Media Events (play, pause, seeked)
 - [x] Popover API (beforetoggle, toggle)
 - [x] Drag & Drop executor-level запись (dragstart/dragend/drop listeners)
 - [x] Composite Steps (вложенные шаги из библиотеки + expand + execution)
-- [ ] IME Composition (CJK ввод — compositionstart/compositionend)
+- [x] IME Composition (CJK ввод — compositionstart/compositionend)
+- [ ] ResizeObserver / IntersectionObserver
+- [ ] Canvas click recording
+- [ ] Video recording (playwright-screen-recorder)
+- [ ] Selection tracking
 - [ ] Мультиязычные сообщения CAPTCHA (поддержка русского языка)
 
 ## Ключевые файлы для изменений

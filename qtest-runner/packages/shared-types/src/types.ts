@@ -157,7 +157,7 @@ export type RecordedActionType =
   // DOM
   'element_appear' | 'element_remove' | 'attr_change' | 'text_change' |
   // System
-  'dialog' | 'console' | 'screenshot' | 'switch_user';
+  'dialog' | 'console' | 'screenshot' | 'switch_user' | 'ime_composition';
 
 export interface IRecordingSession {
   id: string;
