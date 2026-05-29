@@ -258,14 +258,18 @@ recorder ──► flushActions() ──► POST /api/recordings/:id/actions
 | `packages/shared-types/src/types.ts` | ✅ | `'ime_composition'` добавлен в RecordedActionType |
 | `packages/recorder-service/src/db.ts` | ✅ | convertToSteps: ime_composition case с русским описанием |
 
+### Iteration 14 — ResizeObserver / IntersectionObserver (29.05.2026)
+
+| Компонент | Статус | Описание |
+|-----------|--------|----------|
+| `packages/browser-agent/src/inject-helpers.ts` — RESIZE_OBSERVER_HELPER | ✅ | Monkey-patch `window.ResizeObserver`: запись `element_resize` при изменении размеров (w:h, debounced). Monkey-patch `window.IntersectionObserver`: запись `element_intersect` при изменении видимости (visible/hidden + ratio%) |
+| `packages/shared-types/src/types.ts` | ✅ | `'element_resize'`, `'element_intersect'` добавлены в RecordedActionType |
+| `packages/browser-agent/src/recorder.ts` | ✅ | Импорт + инжект RESIZE_OBSERVER_HELPER; formatActionDetail cases |
+| `packages/recorder-service/src/db.ts` | ✅ | convertToSteps: русские описания (изменил размер / стал видим/скрыт) |
+
 ### P2 — Желательные
-- [x] User Switch (hotkey для смены пользователя)
-- [x] Media Events (play, pause, seeked)
-- [x] Popover API (beforetoggle, toggle)
-- [x] Drag & Drop executor-level запись (dragstart/dragend/drop listeners)
-- [x] Composite Steps (вложенные шаги из библиотеки + expand + execution)
-- [x] IME Composition (CJK ввод — compositionstart/compositionend)
-- [ ] ResizeObserver / IntersectionObserver
+- [x] User Switch, Media Events, Popover API, Drag & Drop, Composite Steps, IME Composition
+- [x] ResizeObserver / IntersectionObserver
 - [ ] Canvas click recording
 - [ ] Video recording (playwright-screen-recorder)
 - [ ] Selection tracking

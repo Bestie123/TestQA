@@ -690,6 +690,70 @@ document.addEventListener("volumechange", function(e) {
 }, true);
 `;
 
+export const RESIZE_OBSERVER_HELPER = `
+// ── ResizeObserver / IntersectionObserver monkey-patch ──
+(function() {
+  var __origResizeObserver = window.ResizeObserver;
+  if (__origResizeObserver) {
+    window.ResizeObserver = function(callback) {
+      var __lastSizes = new WeakMap();
+      var __pendingRecords = {};
+      var __debounceTimer = null;
+      var wrappedCallback = function(entries, observer) {
+        var filtered = [];
+        for (var ri = 0; ri < entries.length; ri++) {
+          var entry = entries[ri];
+          var el = entry.target;
+          if (!el || !el.tagName) continue;
+          var newSize = {w: Math.round(entry.contentRect.width), h: Math.round(entry.contentRect.height)};
+          var oldSize = __lastSizes.get(el);
+          if (!oldSize || oldSize.w !== newSize.w || oldSize.h !== newSize.h) {
+            __lastSizes.set(el, newSize);
+            filtered.push(entry);
+            var sel = '';
+            try { sel = __getSelector(el); } catch(e) {}
+            __record({actionType:"element_resize", selector:sel || '', selectorText:(el.tagName||'').toLowerCase(), value:"w:" + newSize.w + " h:" + newSize.h});
+            __addLogToOverlay("resize", "Resize: " + newSize.w + "x" + newSize.h, "#a6a");
+          }
+        }
+        if (filtered.length > 0) callback.call(this, filtered, observer);
+      };
+      return new __origResizeObserver(wrappedCallback);
+    };
+    window.ResizeObserver.prototype = __origResizeObserver.prototype;
+  }
+
+  var __origIntersectionObserver = window.IntersectionObserver;
+  if (__origIntersectionObserver) {
+    window.IntersectionObserver = function(callback, options) {
+      var __prevStates = new WeakMap();
+      var wrappedCallback = function(entries, observer) {
+        var filtered = [];
+        for (var ii = 0; ii < entries.length; ii++) {
+          var entry = entries[ii];
+          var el = entry.target;
+          if (!el || !el.tagName) continue;
+          var prev = __prevStates.get(el);
+          var nowVisible = entry.intersectionRatio > 0;
+          var changed = prev === undefined || prev.visible !== nowVisible;
+          if (changed) {
+            __prevStates.set(el, {visible: nowVisible, ratio: entry.intersectionRatio});
+            filtered.push(entry);
+            var sel = '';
+            try { sel = __getSelector(el); } catch(e) {}
+            __record({actionType:"element_intersect", selector:sel || '', selectorText:(el.tagName||'').toLowerCase(), value:(nowVisible ? "visible" : "hidden") + " ratio:" + Math.round(entry.intersectionRatio * 100) + "%"});
+            __addLogToOverlay("intersect", (nowVisible ? "Visible" : "Hidden") + ": " + sel, "#6a6");
+          }
+        }
+        if (filtered.length > 0) callback.call(this, filtered, observer);
+      };
+      return new __origIntersectionObserver(wrappedCallback, options);
+    };
+    window.IntersectionObserver.prototype = __origIntersectionObserver.prototype;
+  }
+})();
+`;
+
 export const IME_COMPOSITION_HELPER = `
 // ── IME Composition (CJK input) ──
 var __imeInProgress = false;

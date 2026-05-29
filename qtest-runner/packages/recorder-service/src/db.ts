@@ -500,6 +500,20 @@ export function convertToSteps(sessionId: string): ConvertedStep[] {
       case 'attr_change':
       case 'text_change':
         break;
+      case 'element_resize':
+        steps.push(makeStep(a,
+          `Элемент "${a.selectorText || ''}" изменил размер: ${a.value || ''}`,
+          a.value || '',
+          'Размер элемента изменился'
+        ));
+        break;
+      case 'element_intersect':
+        steps.push(makeStep(a,
+          `Элемент "${a.selectorText || ''}" стал ${(a.value || '').startsWith('visible') ? 'видим' : 'скрыт'}`,
+          a.value || '',
+          'Видимость элемента изменилась'
+        ));
+        break;
       case 'scroll':
         steps.push(makeStep(a,
           `Прокрутить страницу до ${a.value || 'позиции'}`,

@@ -19,17 +19,17 @@
 - **Iteration 11:** Media Events (play/pause/seeked/volumechange), Popover API (beforetoggle/toggle)
 - **Iteration 12:** Composite Steps — CRUD, expand endpoint ({{param}} substitution), execution-service integration
 - **Iteration 13:** IME Composition — compositionstart/compositionend/input skip для CJK ввода
+- **Iteration 14:** ResizeObserver / IntersectionObserver — monkey-patch для отслеживания размеров и видимости элементов
 - **Documentation:** AGENTS.md обновлён — карта проекта + Composite Steps
 
 ### 🔄 В процессе
 - Определение следующих задач
 
 ### ⬜ Следующие шаги
-1. ResizeObserver / IntersectionObserver для отслеживания видимости/размеров
-2. Canvas click recording с координатами
-3. Video recording (playwright-screen-recorder)
-4. Selection tracking
-5. Multilingual CAPTCHA — поддержка русского языка в сообщениях
+1. Canvas click recording с координатами
+2. Video recording (playwright-screen-recorder)
+3. Selection tracking
+4. Multilingual CAPTCHA — поддержка русского языка в сообщениях
 
 ## Принятые решения
 - **Shadow DOM:** использовать `composedPath()` + `deepActiveElement()` вместо `e.target`

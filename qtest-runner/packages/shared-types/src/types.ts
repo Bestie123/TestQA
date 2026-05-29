@@ -155,7 +155,7 @@ export type RecordedActionType =
   // HTTP
   'request' | 'response' | 'request_failed' |
   // DOM
-  'element_appear' | 'element_remove' | 'attr_change' | 'text_change' |
+  'element_appear' | 'element_remove' | 'element_resize' | 'element_intersect' | 'attr_change' | 'text_change' |
   // System
   'dialog' | 'console' | 'screenshot' | 'switch_user' | 'ime_composition';
 
