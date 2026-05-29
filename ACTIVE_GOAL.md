@@ -21,16 +21,14 @@
 - **Iteration 13:** IME Composition
 - **Iteration 14:** ResizeObserver / IntersectionObserver monkey-patch
 - **Iteration 15:** SQLite double-quote fix + exhaustive recording verification (175 actions, 17/17 modules) + press→keypress fix
-- **Iteration 16:** Canvas click recording (x,y coordinates, full pipeline) + Video recording (Playwright recordVideo, save as <sid>.webm, download API) + Selection tracking (selectionchange, debounce 400ms, DB `selection_length/selection_text`)
-- **Documentation:** AGENTS.md, ARCHITECTURE.md, STATUS.md, USAGE.md — обновлены (canvas + video + selection)
+- **Iteration 16:** Canvas click recording (x,y coordinates, full pipeline) + Video recording (Playwright recordVideo, save as <sid>.webm, download API) + Selection tracking (selectionchange, debounce 400ms, DB `selection_length/selection_text`) + Multilingual CAPTCHA (русские сообщения) + DblClick/RightClick executor
+- **Documentation:** AGENTS.md, ARCHITECTURE.md, STATUS.md, USAGE.md — обновлены
 
 ### 🔄 В процессе
 - Ожидание новых задач от пользователя
 
 ### ⬜ Следующие шаги
-1. Multilingual CAPTCHA — поддержка русского языка в сообщениях
-2. (P2) Add `dblclick` action to executor
-3. (P2) Add `rightClick` action to executor
+1. (Предложите задачу)
 
 ## Принятые решения
 - **Shadow DOM:** использовать `composedPath()` + `deepActiveElement()` вместо `e.target`

@@ -123,6 +123,21 @@ export async function executeStep(profileId: string, command: StepCommand): Prom
         recordData = { selector: command.selector, x: command.x, y: command.y, ...frameMeta };
         break;
       }
+      case 'dblclick': {
+        if (!command.selector) return { status: 'failed', error: 'Selector required' };
+        await ctx.dblclick(command.selector, { timeout: 10000 });
+        recordAction = 'dblclick';
+        recordData = { selector: command.selector, ...frameMeta };
+        break;
+      }
+      case 'contextmenu':
+      case 'rightClick': {
+        if (!command.selector) return { status: 'failed', error: 'Selector required' };
+        await ctx.click(command.selector, { button: 'right', timeout: 10000 });
+        recordAction = 'contextmenu';
+        recordData = { selector: command.selector, ...frameMeta };
+        break;
+      }
       case 'fill': {
         if (!command.selector || command.value === undefined) {
           return { status: 'failed', error: 'Selector and value required' };

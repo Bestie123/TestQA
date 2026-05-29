@@ -124,6 +124,10 @@ const httpServer = createServer(async (req, res) => {
         if (commands.length === 0 && body.action) {
           if (body.action === 'click' || body.action === 'hover' || body.action === 'canvas_click') {
             commands.push({ action: 'click', selector: body.selector, x: body.x, y: body.y });
+          } else if (body.action === 'dblclick') {
+            commands.push({ action: 'dblclick', selector: body.selector });
+          } else if (body.action === 'rightClick' || body.action === 'contextmenu') {
+            commands.push({ action: 'rightClick', selector: body.selector });
           } else if (body.action === 'fill') {
             commands.push({ action: 'fill', selector: body.selector, value: body.value || '' });
           } else if (body.action === 'select') {

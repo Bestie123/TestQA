@@ -292,6 +292,9 @@ recorder ──► flushActions() ──► POST /api/recordings/:id/actions
 | Selection tracking INJECT | ✅ | `selectionchange` listener (debounce 400ms) в INJECT_SCRIPT — запись `actionType:"selection"` с текстом, длиной, селектором |
 | Selection tracking DB | ✅ | `selection_length`, `selection_text` колонки в recorded_actions. convertToSteps: "Выделить текст ..." |
 | Selection tracking parser | ✅ | action-parser: русский паттерн "выделить текст ..." → verify |
+| Multilingual CAPTCHA | ✅ | Все сообщения CAPTCHA_DETECTOR_HELPER переведены на русский: "Обнаружена ReCaptcha v2", "Обнаружен Turnstile", "Обнаружен hCaptcha", "Обнаружена неизвестная CAPTCHA" |
+| DblClick executor | ✅ | `dblclick` case в executor.ts (ctx.dblclick), action-parser.ts (русский/английский), ws-server.ts forwarding |
+| RightClick executor | ✅ | `rightClick`/`contextmenu` case в executor.ts (button: 'right'), action-parser.ts, ws-server.ts forwarding |
 
 ### P2 — Желательные
 - [x] User Switch, Media Events, Popover API, Drag & Drop, Composite Steps, IME Composition

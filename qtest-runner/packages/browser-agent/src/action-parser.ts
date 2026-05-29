@@ -1,5 +1,5 @@
 export interface ParsedCommand {
-  action: 'navigate' | 'click' | 'fill' | 'verify' | 'screenshot' | 'select' | 'wait' | 'keypress' | 'scroll' | 'drag' | 'drop' | 'hover' | 'wheel' | 'touch' | 'assertText' | 'assertVisible' | 'assertValue' | 'assertChecked' | 'assertUrl' | 'dragTo' | 'fileUpload' | 'waitForSelector' | 'switchTab' | 'listTabs';
+  action: 'navigate' | 'click' | 'dblclick' | 'rightClick' | 'fill' | 'verify' | 'screenshot' | 'select' | 'wait' | 'keypress' | 'scroll' | 'drag' | 'drop' | 'hover' | 'wheel' | 'touch' | 'assertText' | 'assertVisible' | 'assertValue' | 'assertChecked' | 'assertUrl' | 'dragTo' | 'fileUpload' | 'waitForSelector' | 'switchTab' | 'listTabs';
   selector?: string;
   value?: string;
   url?: string;
@@ -45,6 +45,14 @@ export function parseStep(action: string, testData: string, expectedResult: stri
   }
   if (a === 'check') {
     commands.push({ action: 'click' });
+    return commands;
+  }
+  if (a === 'dblclick') {
+    commands.push({ action: 'dblclick' });
+    return commands;
+  }
+  if (a === 'rightclick' || a === 'contextmenu') {
+    commands.push({ action: 'rightClick' });
     return commands;
   }
   if (a === 'keypress' || a === 'press') {
@@ -133,6 +141,20 @@ export function parseStep(action: string, testData: string, expectedResult: stri
   // Navigate from testData if it's a URL
   if (td.startsWith('http://') || td.startsWith('https://')) {
     commands.push({ action: 'navigate', url: td });
+    return commands;
+  }
+
+  // DblClick: "Дважды нажать ..." or "Двойной клик ..."
+  const dblClickMatch = a.match(/(?:дважды\s+нажать|двойной\s+клик|двойное\s+нажатие|double\s+click)\s*(?:на\s+)?[«"']?([^»"']+)[»"']?/i);
+  if (dblClickMatch) {
+    commands.push({ action: 'dblclick', selector: `text=${dblClickMatch[1].trim()}` });
+    return commands;
+  }
+
+  // RightClick: "Правый клик ..." or "Нажать правой кнопкой ..."
+  const rightClickMatch = a.match(/(?:правый\s+клик|правая\s+кнопка|нажать\s+правой\s+кнопкой|контекстное\s+меню)\s*(?:на\s+)?[«"']?([^»"']+)[»"']?/i);
+  if (rightClickMatch) {
+    commands.push({ action: 'rightClick', selector: `text=${rightClickMatch[1].trim()}` });
     return commands;
   }
 

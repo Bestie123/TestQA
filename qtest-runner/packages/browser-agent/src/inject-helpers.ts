@@ -550,24 +550,24 @@ function __checkCaptcha() {
   // 1. ReCaptcha v2 widget
   var recaptcha = document.querySelectorAll('.g-recaptcha, div[class*="recaptcha"], iframe[src*="google.com/recaptcha"], iframe[src*="recaptcha.google"]');
   for (var rci = 0; rci < recaptcha.length; rci++) {
-    __record({actionType:"captcha_detected", selector:__getSmartSelector(recaptcha[rci]), selectorText:"recaptcha_v2", value:"ReCaptcha v2 detected"});
-    __addLogToOverlay("captcha", "ReCaptcha v2 detected", "#f44");
+    __record({actionType:"captcha_detected", selector:__getSmartSelector(recaptcha[rci]), selectorText:"recaptcha_v2", value:"Обнаружена ReCaptcha v2"});
+    __addLogToOverlay("captcha", "Обнаружена ReCaptcha v2", "#f44");
     __captchaDetected = true;
   }
 
   // 2. Turnstile (Cloudflare)
   var turnstile = document.querySelectorAll('.cf-turnstile, div[class*="turnstile"], iframe[src*="challenges.cloudflare.com"], iframe[src*="turnstile"]');
   for (var tsi = 0; tsi < turnstile.length; tsi++) {
-    __record({actionType:"captcha_detected", selector:__getSmartSelector(turnstile[tsi]), selectorText:"turnstile", value:"Turnstile (Cloudflare) detected"});
-    __addLogToOverlay("captcha", "Turnstile detected", "#f44");
+    __record({actionType:"captcha_detected", selector:__getSmartSelector(turnstile[tsi]), selectorText:"turnstile", value:"Обнаружен Turnstile (Cloudflare)"});
+    __addLogToOverlay("captcha", "Обнаружен Turnstile", "#f44");
     __captchaDetected = true;
   }
 
   // 3. hCaptcha
   var hcaptcha = document.querySelectorAll('.h-captcha, iframe[src*="hcaptcha.com"], div[data-hcaptcha]');
   for (var hci = 0; hci < hcaptcha.length; hci++) {
-    __record({actionType:"captcha_detected", selector:__getSmartSelector(hcaptcha[hci]), selectorText:"hcaptcha", value:"hCaptcha detected"});
-    __addLogToOverlay("captcha", "hCaptcha detected", "#f44");
+    __record({actionType:"captcha_detected", selector:__getSmartSelector(hcaptcha[hci]), selectorText:"hcaptcha", value:"Обнаружен hCaptcha"});
+    __addLogToOverlay("captcha", "Обнаружен hCaptcha", "#f44");
     __captchaDetected = true;
   }
 
@@ -575,8 +575,8 @@ function __checkCaptcha() {
   if (!__captchaDetected) {
     var generic = document.querySelectorAll('[class*="captcha" i], [id*="captcha" i], [class*="captch" i], iframe[src*="captcha"], img[src*="captcha"]');
     for (var gi = 0; gi < generic.length; gi++) {
-      __record({actionType:"captcha_detected", selector:__getSmartSelector(generic[gi]), selectorText:"generic_captcha", value:"Generic CAPTCHA detected"});
-      __addLogToOverlay("captcha", "Generic CAPTCHA detected", "#f44");
+      __record({actionType:"captcha_detected", selector:__getSmartSelector(generic[gi]), selectorText:"generic_captcha", value:"Обнаружена неизвестная CAPTCHA"});
+      __addLogToOverlay("captcha", "Обнаружена неизвестная CAPTCHA", "#f44");
       __captchaDetected = true;
       break;
     }
