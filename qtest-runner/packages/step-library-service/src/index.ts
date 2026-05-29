@@ -73,8 +73,8 @@ app.get('/api/steps/:id', async (req: any, reply: any) => {
 });
 
 app.get('/api/categories', async () => {
-  const rows = db.prepare('SELECT DISTINCT category FROM library_steps WHERE category != "" ORDER BY category').all() as any[];
-  return rows.map(r => r.category);
+  const rows = db.prepare("SELECT DISTINCT category FROM library_steps WHERE category != '' ORDER BY category").all() as any[];
+  return { categories: rows.map((r: any) => r.category) };
 });
 
 // ── Composite Steps CRUD ──
@@ -220,8 +220,8 @@ app.post('/api/composite-steps/:id/expand', async (req: any, reply: any) => {
 });
 
 app.get('/api/composite-categories', async () => {
-  const rows = db.prepare('SELECT DISTINCT category FROM composite_steps WHERE category != "" ORDER BY category').all() as any[];
-  return rows.map(r => r.category);
+  const rows = db.prepare("SELECT DISTINCT category FROM composite_steps WHERE category != '' ORDER BY category").all() as any[];
+  return { categories: rows.map((r: any) => r.category) };
 });
 
 // ── Seed ──
