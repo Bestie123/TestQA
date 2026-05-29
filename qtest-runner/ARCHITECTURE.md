@@ -168,7 +168,7 @@
 
 | Поле | Описание | Пример |
 |------|----------|--------|
-| `actionType` | Тип действия | click, fill, select, keypress, check, submit, contextmenu, drag, hover, focus, scroll, resize, clipboard |
+| `actionType` | Тип действия | click, fill, select, keypress, check, submit, contextmenu, drag, hover, focus, scroll, resize, clipboard, canvas_click, selection |
 | `selector` | CSS/Playwright селектор | `button >> text=Войти`, `#email`, `[data-testid='submit']` |
 | `selectorText` | Текст/label элемента | `Войти`, `Email`, `На согласование` |
 | `value` | Значение (введённое, выбранное) | `user@test.com`, `manager`, `Enter` |
@@ -177,7 +177,9 @@
 | `inputType` | Тип input поля | `text`, `email`, `password`, `checkbox`, `radio`, `date` |
 | `checked` | Состояние чекбокса | `true` / `false` |
 | `optionIndex` | Индекс выбранной опции | `2` |
-| `x`, `y` | Координаты (contextmenu) | `150`, `300` |
+| `x`, `y` | Координаты (contextmenu, canvas_click) | `150`, `300` |
+| `length` | Длина выделенного текста (selection) | `42` |
+| `selectionText` | Выделенный текст (selection) | `Выделенный текст` |
 | `scrollY`, `scrollMax` | Позиция прокрутки | `500`, `2000` |
 | `shadowDom` | Из Shadow DOM | `true` / `false` |
 | `displayValue` | Отображаемое значение select | `Менеджер` (при value=`manager`) |
@@ -277,6 +279,7 @@ interface ConvertedStep {
 |----------|--------------|----------|----------------|
 | Navigate | `Перейти по URL <url>` | URL | `Страница загружена: "<title>"` |
 | Click | `Нажать "<text>" [selector=<primary>]` | — | `Элемент активирован` |
+| Canvas Click | `Нажать на canvas "<text>" по координатам (x, y)` | `{"x":<x>,"y":<y>}` | `Клик выполнен по указанным координатам` |
 | Fill | `Заполнить "<label>" [selector=<s>] = "<value>"` | значение | `Поле заполнено` |
 | Select | `Выбрать "<display>" в "<label>"` | value | `Значение выбрано` |
 | Keypress Enter | `Нажать Enter на "<label>"` | — | `Действие выполнено` |
@@ -300,7 +303,7 @@ curl: curl -X POST "https://example.com/api/login" -H 'Content-Type: application
 
 ## Inject-модули (browser-agent)
 
-### inject-helpers.ts (11 модулей, v2 — 28.05.2026)
+### inject-helpers.ts (11 модулей, v2 — 28.05.2026) + 6 inline (recorder.ts)
 
 | Модуль | Функция | Типы действий |
 |--------|---------|---------------|
@@ -348,6 +351,8 @@ INJECT_SCRIPT (template literal)
 │  context.on('framenavigated'), page.on('load'),             │
 │  context.on('page'), page.on('request'/'response'),         │
 │  page.on('console'), page.on('dialog'), page.on('pageerror')│
+│  recordVideo: { dir: 'videos', size: 1440x900 }             │
+│    └── видео сохраняется при stopRecording как <sid>.webm   │
 └──────────────────────────┬──────────────────────────────────┘
                            │
 ┌──────────────────────────┴──────────────────────────────────┐

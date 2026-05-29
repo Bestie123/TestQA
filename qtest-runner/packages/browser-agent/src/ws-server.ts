@@ -1,6 +1,6 @@
 import { WebSocketServer, WebSocket } from 'ws';
 import { createServer, IncomingMessage, ServerResponse } from 'http';
-import { launchSession, closeSession, getSession } from './browser-manager';
+import { launchSession, closeSession, getSession, listVideos, getVideoPath, videoDir } from './browser-manager';
 import { createProfile, listProfiles, getProfile } from './profile-manager';
 import { executeStep, StepCommand } from './executor';
 import { parseStep } from './action-parser';
@@ -122,8 +122,8 @@ const httpServer = createServer(async (req, res) => {
         }
         // If no commands created but we have a selector, create the appropriate command
         if (commands.length === 0 && body.action) {
-          if (body.action === 'click' || body.action === 'hover') {
-            commands.push({ action: body.action, selector: body.selector });
+          if (body.action === 'click' || body.action === 'hover' || body.action === 'canvas_click') {
+            commands.push({ action: 'click', selector: body.selector, x: body.x, y: body.y });
           } else if (body.action === 'fill') {
             commands.push({ action: 'fill', selector: body.selector, value: body.value || '' });
           } else if (body.action === 'select') {
@@ -155,7 +155,7 @@ const httpServer = createServer(async (req, res) => {
             cmd.value = body.key;
           }
         }
-        if (commands.length === 0 && body.action === 'keypress') {
+        if (commands.length === 0 && (body.action === 'keypress' || body.action === 'press')) {
           commands.push({ action: 'keypress', value: body.key });
         }
       }
@@ -220,8 +220,8 @@ const httpServer = createServer(async (req, res) => {
       const body = JSON.parse(await readBody(req));
       const { sessionId } = body;
       if (!sessionId) { json(res, 400, { error: 'sessionId required' }); return; }
-      await recStop(sessionId);
-      json(res, 200, { ok: true, sessionId });
+      const videoPath = await recStop(sessionId);
+      json(res, 200, { ok: true, sessionId, videoPath: videoPath || null });
     } catch (err: any) {
       json(res, 500, { error: err.message });
     }
@@ -246,6 +246,48 @@ const httpServer = createServer(async (req, res) => {
         pushAction(sessionId, { actionType: 'user_switch', value: toUser || 'next', selectorText: 'programmatic', url: '', timestamp: new Date().toISOString() });
         json(res, 200, { ok: true, sessionId, toUser: toUser || 'next' });
       }
+    } catch (err: any) {
+      json(res, 500, { error: err.message });
+    }
+    return;
+  }
+
+  // ── Video recording endpoints ──
+  if (url === '/api/videos' && req.method === 'GET') {
+    json(res, 200, { videos: listVideos() });
+    return;
+  }
+
+  if (url === '/api/video/download' && req.method === 'GET') {
+    try {
+      const parsedUrl = new URL(url, `http://${req.headers.host || 'localhost'}`);
+      const fileName = parsedUrl.searchParams.get('file') || '';
+      if (!fileName) { json(res, 400, { error: 'file parameter required' }); return; }
+      const fs = require('fs');
+      const path = require('path');
+      const safePath = path.resolve(videoDir, path.basename(fileName));
+      if (!safePath.startsWith(path.resolve(videoDir))) { json(res, 403, { error: 'Forbidden' }); return; }
+      if (!fs.existsSync(safePath)) { json(res, 404, { error: 'File not found' }); return; }
+      const stat = fs.statSync(safePath);
+      res.writeHead(200, {
+        'Content-Type': 'video/webm',
+        'Content-Length': stat.size,
+        'Content-Disposition': `attachment; filename="${fileName}"`,
+      });
+      fs.createReadStream(safePath).pipe(res);
+    } catch (err: any) {
+      json(res, 500, { error: err.message });
+    }
+    return;
+  }
+
+  if (url === '/api/video/path' && req.method === 'GET') {
+    try {
+      if (!defaultProfileId) { json(res, 400, { error: 'No active session' }); return; }
+      const session = getSession(defaultProfileId);
+      if (!session) { json(res, 400, { error: 'Session not found' }); return; }
+      const path = await getVideoPath(session.page);
+      json(res, 200, { path: path || null });
     } catch (err: any) {
       json(res, 500, { error: err.message });
     }

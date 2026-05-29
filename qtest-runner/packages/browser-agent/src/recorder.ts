@@ -1,6 +1,6 @@
 import http from 'http';
 import { Page, Frame } from 'playwright';
-import { getSession } from './browser-manager';
+import { getSession, saveVideo } from './browser-manager';
 import {
   SHADOW_DOM_HELPER, IFRAME_HELPER, SPA_NAV_HELPER, ERROR_TRACKER_HELPER,
   ASSERTION_HELPER, JIRA_DETECTOR_HELPER,
@@ -389,6 +389,26 @@ ${SHADOW_DOM_HELPER}
     __record({actionType:"clipboard", selector:__getSelector(el), selectorText:__getSelectorText(el), value:"paste"});
   }, true);
 
+  // ===== Selection tracking (debounced) =====
+  var __selectionTimer = null;
+  var __lastSelection = "";
+  document.addEventListener("selectionchange", function() {
+    if (__selectionTimer) return;
+    __selectionTimer = setTimeout(function() {
+      __selectionTimer = null;
+      var sel = window.getSelection();
+      if (!sel) return;
+      var text = sel.toString().trim();
+      if (!text || text === __lastSelection || text.length > 500) return;
+      __lastSelection = text;
+      var range = sel.rangeCount > 0 ? sel.getRangeAt(0) : null;
+      var el = range ? range.startContainer : null;
+      if (el && el.nodeType === 3) el = el.parentElement;
+      __record({actionType:"selection", selector:el ? __getSelector(el) : "", selectorText:text.slice(0, 120), value:text.slice(0, 500), length:text.length, selectionText:text.slice(0, 500)});
+      __addLogToOverlay("select", "Selected: " + text.slice(0, 60) + (text.length > 60 ? "..." : ""), "#0fa");
+    }, 400);
+  }, true);
+
   // ===== Console.log interception =====
   var __origLog = console.log;
   var __origError = console.error;
@@ -653,6 +673,7 @@ export function pushAction(sessionId: string, action: any) {
 function formatActionDetail(action: any): string {
   switch (action.actionType) {
     case 'click': return `selector="${action.selector}" text="${(action.selectorText||'').slice(0,50)}" elem=${action.value||''}`;
+    case 'canvas_click': return `selector="${action.selector}" x=${action.x} y=${action.y}`;
     case 'dblclick': return `selector="${action.selector}" text="${(action.selectorText||'').slice(0,50)}"`;
     case 'fill': return `selector="${action.selector}" value="${(action.value||'').slice(0,50)}" type=${action.inputType||''}`;
     case 'select': return `selector="${action.selector}" value="${action.value}" display="${action.displayValue||''}" idx=${action.optionIndex||''}`;
@@ -670,6 +691,7 @@ function formatActionDetail(action: any): string {
     case 'contextmenu': return `selector="${action.selector}" x=${action.x} y=${action.y}`;
     case 'dialog': return `type=${action.selectorText} value="${(action.value||'').slice(0,60)}" result=${action.result||''}`;
     case 'clipboard': return `selector="${action.selector}" action=${action.value}`;
+    case 'selection': return `text="${(action.value||'').slice(0,60)}" length=${action.length} [${action.selector}]`;
     case 'resize': return `size=${action.value}`;
     case 'response': return `url="${(action.url||'').slice(0,80)}" status=${action.status} method=${action.method||''}`;
     case 'request': return `url="${(action.url||'').slice(0,80)}" method=${action.method} type=${action.resourceType||''}`;
@@ -1094,11 +1116,24 @@ export async function startRecording(profileId: string, sessionId: string, recor
   console.log(`[recorder] recording started — session=${sessionId.slice(0,8)} profile=${profileId.slice(0,8)}`);
 }
 
-export async function stopRecording(sessionId: string): Promise<void> {
+export async function stopRecording(sessionId: string): Promise<string | null> {
   const rec = recordings.get(sessionId);
-  if (!rec) { console.log(`[recorder] stopRecording — no recording for ${sessionId.slice(0,8)}`); return; }
+  if (!rec) { console.log(`[recorder] stopRecording — no recording for ${sessionId.slice(0,8)}`); return null; }
 
   console.log(`[recorder] stopRecording session=${sessionId.slice(0,8)} pending=${rec.pendingActions.length}`);
+
+  // Save video before cleanup
+  let videoPath: string | null = null;
+  try {
+    const session = getSession(rec.profileId);
+    if (session) {
+      videoPath = await saveVideo(session.page, sessionId);
+      console.log(`[recorder] video saved: ${videoPath}`);
+    }
+  } catch (e: any) {
+    console.log(`[recorder] video save failed: ${e.message}`);
+  }
+
   if (rec.flushTimer) clearInterval(rec.flushTimer);
 
   for (const remove of rec.listeners) {
@@ -1115,6 +1150,7 @@ export async function stopRecording(sessionId: string): Promise<void> {
   }
   recordings.delete(sessionId);
   console.log(`[recorder] recording stopped — session=${sessionId.slice(0,8)}`);
+  return videoPath;
 }
 
 async function flushActions(sessionId: string): Promise<void> {

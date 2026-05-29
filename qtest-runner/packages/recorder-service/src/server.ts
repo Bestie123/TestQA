@@ -201,6 +201,8 @@ wss.on('connection', (ws) => {
           frameUrl: msg.frameUrl || '',
           frameSelector: msg.frameSelector || '',
           iframeAction: msg.iframeAction || false,
+          length: msg.length || 0,
+          selectionText: msg.selectionText || '',
         });
         ws.send(JSON.stringify({ type: 'recorded', actionId: action.id }));
         break;

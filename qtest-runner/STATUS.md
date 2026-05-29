@@ -267,12 +267,38 @@ recorder ──► flushActions() ──► POST /api/recordings/:id/actions
 | `packages/browser-agent/src/recorder.ts` | ✅ | Импорт + инжект RESIZE_OBSERVER_HELPER; formatActionDetail cases |
 | `packages/recorder-service/src/db.ts` | ✅ | convertToSteps: русские описания (изменил размер / стал видим/скрыт) |
 
+### Iteration 15 — ✅ Exhaustive Verification + SQLite double-quote fix + press→keypress (29.05.2026)
+
+| Компонент | Статус | Описание |
+|-----------|--------|----------|
+| SQLite double-quote fix | ✅ | `WHERE category != ""` → `WHERE category != ''` в step-library-service (SQLite: `""` = column identifier). Fastify v5 object response wrap |
+| Exhaustive recording verification | ✅ | 17/17 INJECT_SCRIPT модулей подтверждены. 175 actions, 0 JS errors, 139 steps. Тестовая страница со всеми типами элементов (form, shadow DOM, iframe, drag, popover, details, dialog, video, file input) |
+| press→keypress fix | ✅ | action-parser.ts: `if (a === 'keypress')` → `if (a === 'keypress' \|\| a === 'press')`. ws-server.ts: fallback для `body.action === 'press'` |
+
+### Iteration 16 — ✅ Canvas Click Recording + Video Recording + Selection Tracking (30.05.2026)
+
+| Компонент | Статус | Описание |
+|-----------|--------|----------|
+| Canvas click INJECT_SCRIPT | ✅ | Уже был: `tag === 'canvas'` → `actionType:"canvas_click"` с `x:e.offsetX, y:e.offsetY` |
+| Canvas click formatActionDetail | ✅ | `recorder.ts` — `canvas_click` case с координатами |
+| Canvas click executor | ✅ | `executor.ts` — `click` handler использует `position: { x, y }` через `clickElementAt()` |
+| Canvas click action-parser | ✅ | `canvas_click` action + русский паттерн "нажать на canvas ... по координатам (x, y)" |
+| Canvas click ws-server | ✅ | `canvas_click` forwarding в fallback (selector + x, y) |
+| Canvas click convertToSteps | ✅ | `db.ts` — шаг: "Нажать на canvas ... по координатам (x, y)" |
+| Video recording launch | ✅ | `recordVideo: { dir: 'videos', size: 1440x900 }` в `launchPersistentContext` |
+| Video recording save | ✅ | `stopRecording()` → `saveVideo(page, sessionId)` → `<sessionId>.webm` |
+| Video recording API | ✅ | `GET /api/videos` (список), `GET /api/video/path` (текущий), `GET /api/video/download?file=...` |
+| Video management | ✅ | `saveVideo()`, `getVideoPath()`, `listVideos()`, `deleteVideo()` в browser-manager |
+| Selection tracking INJECT | ✅ | `selectionchange` listener (debounce 400ms) в INJECT_SCRIPT — запись `actionType:"selection"` с текстом, длиной, селектором |
+| Selection tracking DB | ✅ | `selection_length`, `selection_text` колонки в recorded_actions. convertToSteps: "Выделить текст ..." |
+| Selection tracking parser | ✅ | action-parser: русский паттерн "выделить текст ..." → verify |
+
 ### P2 — Желательные
 - [x] User Switch, Media Events, Popover API, Drag & Drop, Composite Steps, IME Composition
 - [x] ResizeObserver / IntersectionObserver
-- [ ] Canvas click recording
-- [ ] Video recording (playwright-screen-recorder)
-- [ ] Selection tracking
+- [x] Canvas click recording
+- [x] Video recording (playwright-screen-recorder)
+- [x] Selection tracking
 - [ ] Мультиязычные сообщения CAPTCHA (поддержка русского языка)
 
 ---

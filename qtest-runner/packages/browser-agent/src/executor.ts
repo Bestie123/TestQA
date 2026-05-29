@@ -1,6 +1,6 @@
 import { Page } from 'playwright';
 import { getSession, switchToPage, getPages } from './browser-manager';
-import { navigate, clickElement, fillField, takeScreenshot, verifyText } from './browser-manager';
+import { navigate, clickElement, clickElementAt, fillField, takeScreenshot, verifyText } from './browser-manager';
 import { getSessionIdForProfile, getPendingActions } from './recorder';
 
 function recordStep(actionsRef: any[] | undefined, actionType: string, data: Record<string, any>) {
@@ -107,12 +107,20 @@ export async function executeStep(profileId: string, command: StepCommand): Prom
       case 'click': {
         if (!command.selector) return { status: 'failed', error: 'Selector required' };
         if (frame) {
-          await frame.click(command.selector);
+          if (command.x !== undefined && command.y !== undefined) {
+            await frame.click(command.selector, { position: { x: command.x, y: command.y } });
+          } else {
+            await frame.click(command.selector);
+          }
         } else {
-          await clickElement(page, command.selector);
+          if (command.x !== undefined && command.y !== undefined) {
+            await clickElementAt(page, command.selector, command.x, command.y);
+          } else {
+            await clickElement(page, command.selector);
+          }
         }
         recordAction = 'click';
-        recordData = { selector: command.selector, ...frameMeta };
+        recordData = { selector: command.selector, x: command.x, y: command.y, ...frameMeta };
         break;
       }
       case 'fill': {

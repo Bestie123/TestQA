@@ -406,13 +406,16 @@ graph TD
 | `page.on('console')` | Сообщения консоли (включая `__QTEST_ACTION__`) |
 | `page.on('dialog')` | alert/confirm/prompt |
 | `page.on('pageerror')` | JS ошибки |
+| `context.recordVideo` | Видеозапись всей сессии (dir=videos, size=1440x900) |
 
 ### Уровень 2: Browser inject DOM-события
 
 | Событие | Что ловит | debounce |
 |---------|-----------|----------|
 | `click` (через composedPath) | Клик — корректно проникает через shadow boundary | нет |
+| `canvas` в click handler | Canvas click с координатами (offsetX, offsetY) | нет |
 | `dblclick` | Двойной клик | нет |
+| `selectionchange` | Выделение текста (отслеживание selection) | 400ms |
 | `input` | Ввод текста | 500ms |
 | `change` | select, checkbox, radio, file | нет |
 | `keydown` | Enter, Tab, Escape, стрелки, комбинации | нет |
@@ -437,7 +440,7 @@ graph TD
 ### Уровень 3: Executor recording
 
 После каждого `execute-step` executor явно вызывает `pushAction()`:
-- navigate, click, fill, select, check, keypress, drag, scroll, wait, verify
+- navigate, click (с опциональными position x,y для canvas), fill, select, check, keypress, drag, scroll, wait, verify
 - **hover, dragTo, wheel, touch, fileUpload, waitForSelector**
 - **assertText, assertVisible, assertValue, assertChecked, assertUrl**
 

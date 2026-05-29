@@ -8,6 +8,8 @@ export interface ParsedCommand {
   file?: string;
   deltaY?: number;
   deltaX?: number;
+  x?: number;
+  y?: number;
   frameName?: string;
   frameUrl?: string;
   frameSelector?: string;
@@ -21,6 +23,10 @@ export function parseStep(action: string, testData: string, expectedResult: stri
 
   // Direct action types from recorder (English): click, fill, select, navigate, etc.
   if (a === 'click') {
+    commands.push({ action: 'click' });
+    return commands;
+  }
+  if (a === 'canvas_click') {
     commands.push({ action: 'click' });
     return commands;
   }
@@ -41,9 +47,8 @@ export function parseStep(action: string, testData: string, expectedResult: stri
     commands.push({ action: 'click' });
     return commands;
   }
-  if (a === 'keypress') {
+  if (a === 'keypress' || a === 'press') {
     commands.push({ action: 'keypress', value: td || 'Enter' });
-    return commands;
   }
   if (a === 'wait') {
     commands.push({ action: 'wait', value: td || '2' });
@@ -198,6 +203,13 @@ export function parseStep(action: string, testData: string, expectedResult: stri
     return commands;
   }
 
+  // Selection: "Выделить ..." / "Выделить текст ..."
+  const selectTextMatch = a.match(/(?:выделить|выбрать|селект)\s+(?:текст\s+)?[«"']?([^»"']+)[»"']?/i);
+  if (selectTextMatch && !a.match(/(?:из\s+списка|вкладку|таб|tab|поле\s+ввода|color)/i)) {
+    commands.push({ action: 'verify', text: selectTextMatch[1].trim() });
+    return commands;
+  }
+
   // Hover: "Навести ..." / "Ховер ..."
   const hoverMatch = a.match(/(?:навести|ховер|hover|навести\s+мышь)\s*(?:на\s+)?[«"']?([^»"']+)[»"']?/i);
   if (hoverMatch) {
@@ -248,6 +260,13 @@ export function parseStep(action: string, testData: string, expectedResult: stri
   if (dragMatch) {
     const source = dragMatch[1].trim();
     commands.push({ action: 'drag', selector: `text=${source}`, value: td ? `text=${td}` : '' });
+    return commands;
+  }
+
+  // Canvas click with coordinates: "Нажать на canvas ... по координатам (x, y)"
+  const canvasMatch = a.match(/(?:нажать|кликнуть)\s+на\s+canvas\s+[«"']?([^»"']+)[»"']?\s+(?:по\s+)?координатам\s*\(\s*(\d+)\s*,\s*(\d+)\s*\)/i);
+  if (canvasMatch) {
+    commands.push({ action: 'click', selector: `text=${canvasMatch[1].trim()}`, x: parseInt(canvasMatch[2]), y: parseInt(canvasMatch[3]) });
     return commands;
   }
 

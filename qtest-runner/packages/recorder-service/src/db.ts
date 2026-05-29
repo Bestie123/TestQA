@@ -43,6 +43,8 @@ export interface RecordedAction {
   frameUrl: string;
   frameSelector: string;
   iframeAction: boolean;
+  length: number;
+  selectionText: string;
 }
 
 export interface RecordingSession {
@@ -110,6 +112,8 @@ function initSchema(): void {
       frame_url TEXT DEFAULT '',
       frame_selector TEXT DEFAULT '',
       iframe_action INTEGER DEFAULT 0,
+      selection_length INTEGER DEFAULT 0,
+      selection_text TEXT DEFAULT '',
       FOREIGN KEY (session_id) REFERENCES recording_sessions(id) ON DELETE CASCADE
     );
     CREATE INDEX IF NOT EXISTS idx_actions_session ON recorded_actions(session_id);
@@ -145,6 +149,8 @@ function initSchema(): void {
     'ALTER TABLE recorded_actions ADD COLUMN frame_url TEXT DEFAULT \'\'',
     'ALTER TABLE recorded_actions ADD COLUMN frame_selector TEXT DEFAULT \'\'',
     'ALTER TABLE recorded_actions ADD COLUMN iframe_action INTEGER DEFAULT 0',
+    'ALTER TABLE recorded_actions ADD COLUMN selection_length INTEGER DEFAULT 0',
+    'ALTER TABLE recorded_actions ADD COLUMN selection_text TEXT DEFAULT \'\'',
   ];
   for (const m of migrations) {
     try { db.exec(m); } catch {}
@@ -205,6 +211,8 @@ function mapAction(row: any): RecordedAction {
     frameUrl: row.frame_url || '',
     frameSelector: row.frame_selector || '',
     iframeAction: !!row.iframe_action,
+    length: row.selection_length || 0,
+    selectionText: row.selection_text || '',
   };
 }
 
@@ -276,8 +284,10 @@ export function addAction(sessionId: string, action: Omit<RecordedAction, 'id' |
     action.frameUrl ?? '',
     action.frameSelector ?? '',
     action.iframeAction ? 1 : 0,
+    action.length ?? 0,
+    action.selectionText ?? '',
   ];
-    const sql = `INSERT INTO recorded_actions (id, session_id, action_type, selector, selector_text, value, url, page_title, tab_id, screenshot, timestamp, idx, method, resource_type, post_data, headers_json, status_code, response_body, error, level, combo, modifiers, input_type, checked, option_index, x, y, scroll_y, scroll_max, shadow_dom, display_value, frame_name, frame_url, frame_selector, iframe_action) VALUES (${vals.map(() => '?').join(', ')})`;
+    const sql = `INSERT INTO recorded_actions (id, session_id, action_type, selector, selector_text, value, url, page_title, tab_id, screenshot, timestamp, idx, method, resource_type, post_data, headers_json, status_code, response_body, error, level, combo, modifiers, input_type, checked, option_index, x, y, scroll_y, scroll_max, shadow_dom, display_value, frame_name, frame_url, frame_selector, iframe_action, selection_length, selection_text) VALUES (${vals.map(() => '?').join(', ')})`;
     d.prepare(sql).run(...vals);
     return { id, sessionId, index: maxIdx.next, ...action };
 }
@@ -384,6 +394,13 @@ export function convertToSteps(sessionId: string): ConvertedStep[] {
           `Нажать "${a.selectorText || ''}" [selector=${a.selector}]`,
           '',
           'Элемент активирован'
+        ));
+        break;
+      case 'canvas_click':
+        steps.push(makeStep(a,
+          `Нажать на canvas "${a.selectorText || ''}" по координатам (${Math.round(a.x)}, ${Math.round(a.y)}) [selector=${a.selector}]`,
+          JSON.stringify({ x: Math.round(a.x), y: Math.round(a.y) }),
+          'Клик выполнен по указанным координатам'
         ));
         break;
       case 'dblclick':
@@ -530,6 +547,13 @@ export function convertToSteps(sessionId: string): ConvertedStep[] {
         break;
       case 'resize':
       case 'clipboard':
+        break;
+      case 'selection':
+        steps.push(makeStep(a,
+          `Выделить текст "${(a.value || '').slice(0, 60)}${(a.value || '').length > 60 ? '...' : ''}" [длина=${a.length}]`,
+          a.value || '',
+          'Текст выделен'
+        ));
         break;
       case 'request': {
         const step = makeStep(a,
