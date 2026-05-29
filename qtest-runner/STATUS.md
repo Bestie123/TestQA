@@ -275,6 +275,52 @@ recorder ──► flushActions() ──► POST /api/recordings/:id/actions
 - [ ] Selection tracking
 - [ ] Мультиязычные сообщения CAPTCHA (поддержка русского языка)
 
+---
+
+## Чеклист верификации (29.05.2026)
+
+### Build & Compilation
+- [x] `npm run build` — 0 ошибок (все 9 пакетов)
+- [x] step-library-service — 0 tsc errors
+- [x] browser-agent — 0 tsc errors (IME + ResizeObserver modules)
+- [x] recorder-service — 0 tsc errors (convertToSteps cases)
+- [x] shared-types — 0 tsc errors (new action types)
+- [x] api-gateway — 0 tsc errors (route fix)
+
+### Services Health
+- [x] step-library-service (3002): `GET /health` → `ok`
+- [x] recorder-service (3004): `GET /health` → `ok`
+- [x] browser-agent (3005): `GET /health` → `ok`
+- [x] api-gateway (3000): `GET /health` → `ok`
+
+### Composite Steps — API
+- [x] `GET /api/composite-steps` — 3 seed steps (comp-jira-login/comp-create-task/comp-screenshot-verify)
+- [x] `POST /api/composite-steps` — создание нового (comp-test-create)
+- [x] `DELETE /api/composite-steps/:id` — удаление (вернулось к 3)
+- [x] `POST /api/composite-steps/:id/expand` — подстановка параметров:
+  - `{{url}}` → `https://jira.example.com/login`
+  - `{{username}}` → `testuser`
+  - `{{password}}` → `pass123`
+  - library_step_id resolve: `lib-fill-field` → `fill_field`, `lib-click-btn` → `click_button`
+
+### Recording Pipeline (browser-agent → recorder-service)
+- [x] Launch browser: profileId получен
+- [x] Create session: sessionId получен, status=recording
+- [x] Record start: ok=true
+- [x] Navigate to `http://example.com`: status=passed, 22 actions recorded
+- [x] Navigate to `http://localhost:9090/advanced-test.html`: passed, 22 actions total
+- [x] Zero JS errors: `js_error` = 0, `unhandled_rejection` = 0
+- [x] Module types present: navigate, request, response, request_failed, page_load, page_hide, page_show, visibility_change
+- [x] convertToSteps: 26 steps generated from 22 actions
+
+### MCP Tools (mcp-qtest-debug)
+- [ ] qtest_health — проверен ранее в Iteration 9
+- [ ] qtest_launch_browser — проверен ранее
+- [ ] qtest_record_start/stop — проверены ранее
+- [ ] qtest_get_actions — проверен ранее
+- [ ] qtest_execute_step — проверен ранее
+- [ ] qtest_convert_steps — проверен ранее
+
 ## Ключевые файлы для изменений
 
 | Файл | Что менять |

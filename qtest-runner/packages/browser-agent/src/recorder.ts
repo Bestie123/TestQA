@@ -195,6 +195,12 @@ ${SHADOW_DOM_HELPER}
     if (tag === "html" || tag === "body") return;
     var sel = __getSelector(el);
     var txt = __getSelectorText(el);
+    // Canvas click: record with coordinates
+    if (tag === 'canvas') {
+      __record({actionType:"canvas_click", selector:sel, selectorText:txt, value:"x:" + Math.round(e.offsetX) + " y:" + Math.round(e.offsetY), x:e.offsetX, y:e.offsetY});
+      __addLogToOverlay("click", "Canvas: " + Math.round(e.offsetX) + "," + Math.round(e.offsetY), "#0f0");
+      return;
+    }
     __record({actionType:"click", selector:sel, selectorText:txt, value:el.tagName, modifiers: (e.ctrlKey?"ctrl+":"") + (e.shiftKey?"shift+":"") + (e.altKey?"alt+":"")});
     __addLogToOverlay("click", sel + " " + txt, "#0f0");
   }, true);
