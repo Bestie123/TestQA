@@ -6,12 +6,13 @@ import { ExecutionPage } from './pages/ExecutionPage';
 import { RecorderPage } from './pages/RecorderPage';
 import { SyncPage } from './pages/SyncPage';
 import { ReportsPage } from './pages/ReportsPage';
+import SettingsPage from './pages/SettingsPage';
 import { createExecution } from './api';
 
 const API = '/api';
 
 export function App() {
-  const [page, setPage] = useState<'list' | 'detail' | 'import' | 'execution' | 'recorder' | 'sync' | 'reports'>('list');
+  const [page, setPage] = useState<'list' | 'detail' | 'import' | 'execution' | 'recorder' | 'sync' | 'reports' | 'settings' | 'docs'>('list');
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
   const [executionId, setExecutionId] = useState<string | null>(null);
 
@@ -63,6 +64,20 @@ export function App() {
         >
           Отчёты
         </a>
+        <a
+          href="#"
+          className={page === 'settings' ? 'active' : ''}
+          onClick={(e) => { e.preventDefault(); setPage('settings'); }}
+        >
+          Настройки
+        </a>
+        <a
+          href="#"
+          className={page === 'docs' ? 'active' : ''}
+          onClick={(e) => { e.preventDefault(); setPage('docs'); }}
+        >
+          Docs
+        </a>
         {selectedKey && <span className="nav-breadcrumb">/ {selectedKey}</span>}
       </nav>
 
@@ -84,6 +99,14 @@ export function App() {
       {page === 'recorder' && <RecorderPage api={API} onNavigate={(p, param) => { if (p === 'execution' && param) handleRunExecution(param); }} />}
       {page === 'sync' && <SyncPage api={API} />}
       {page === 'reports' && <ReportsPage api={API} />}
+      {page === 'settings' && <SettingsPage api={API} />}
+      {page === 'docs' && (
+        <iframe
+          src="http://localhost:5173"
+          style={{ width: '100%', height: 'calc(100vh - 50px)', border: 'none' }}
+          title="Documentation"
+        />
+      )}
       {page === 'execution' && executionId && (
         <ExecutionPage
           api={API}

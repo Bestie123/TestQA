@@ -264,3 +264,17 @@ export async function createTestCase(api: string, data: { key: string; name: str
 export async function autoNextStep(api: string, executionId: string): Promise<any> {
   return sj(fetch(`${api}/executions/${executionId}/auto-next`, { method: 'POST' }), null);
 }
+
+// ── Settings ──
+
+export async function getSettings(api: string): Promise<Record<string, string>> {
+  return sj(fetch(`${api}/settings`), {});
+}
+
+export async function setSettingsBulk(api: string, settings: Record<string, string>): Promise<Record<string, string>> {
+  return sj(fetch(`${api}/settings`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ settings }),
+  }), {});
+}

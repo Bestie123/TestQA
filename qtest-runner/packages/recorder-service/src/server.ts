@@ -5,6 +5,7 @@ import {
   addAction, addActionsBulk, convertToSteps,
   saveCompositeStep, listCompositeSteps,
   getUserSwitchConfig, updateUserSwitchConfig,
+  getSettings, getSetting, setSetting, setSettingsBulk,
 } from './db';
 
 const PORT = parseInt(process.env.RECORDER_PORT || '3004', 10);
@@ -126,6 +127,36 @@ const httpServer = createServer((req, res) => {
         const cfg = updateUserSwitchConfig(data);
         res.writeHead(200);
         res.end(JSON.stringify(cfg));
+        return;
+      }
+
+      // App settings
+      if (path === '/api/settings' && req.method === 'GET') {
+        res.writeHead(200);
+        res.end(JSON.stringify(getSettings()));
+        return;
+      }
+
+      if (path.startsWith('/api/settings/') && req.method === 'GET') {
+        const key = decodeURIComponent(path.slice('/api/settings/'.length));
+        const val = getSetting(key);
+        res.writeHead(200);
+        res.end(JSON.stringify({ key, value: val }));
+        return;
+      }
+
+      if (path === '/api/settings' && req.method === 'PUT') {
+        setSettingsBulk(data.settings || {});
+        res.writeHead(200);
+        res.end(JSON.stringify(getSettings()));
+        return;
+      }
+
+      if (path.startsWith('/api/settings/') && req.method === 'PUT') {
+        const key = decodeURIComponent(path.slice('/api/settings/'.length));
+        setSetting(key, data.value || '');
+        res.writeHead(200);
+        res.end(JSON.stringify({ key, value: data.value }));
         return;
       }
 

@@ -148,16 +148,33 @@ export interface IRecordedAction {
 export type RecordedActionType =
   // User actions
   'click' | 'dblclick' | 'fill' | 'select' | 'keypress' | 'check' |
-  'contextmenu' | 'dragstart' | 'dragend' | 'drop' | 'submit' |
-  'hover' | 'focus' | 'scroll' | 'resize' | 'clipboard' |
+  'contextmenu' | 'canvas_click' | 'dragstart' | 'dragend' | 'drop' | 'submit' |
+  'hover' | 'focus' | 'scroll' | 'resize' | 'clipboard' | 'selection' |
   // Navigation
-  'navigate' | 'page_load' |
+  'navigate' | 'page_load' | 'switchTab' | 'listTabs' |
   // HTTP
   'request' | 'response' | 'request_failed' |
   // DOM
   'element_appear' | 'element_remove' | 'element_resize' | 'element_intersect' | 'attr_change' | 'text_change' |
   // System
-  'dialog' | 'console' | 'screenshot' | 'switch_user' | 'ime_composition';
+  'dialog' | 'console' | 'screenshot' | 'user_switch' | 'ime_composition' |
+  // Touch / Wheel
+  'touchstart' | 'touchend' | 'touchmove' | 'wheel' |
+  // Media
+  'media_play' | 'media_pause' | 'media_seeked' | 'media_volume' |
+  // Animation
+  'transition_start' | 'transition_end' | 'animation_start' | 'animation_end' |
+  // Lifecycle
+  'visibility_change' | 'page_hide' | 'page_show' |
+  // UI Elements
+  'dialog_element' | 'details_toggle' | 'popover_toggle' | 'file_upload' |
+  // Environment
+  'cookie_consent' | 'jira_env' | 'captcha_detected' | 'user_switch' |
+  // Errors
+  'js_error' | 'unhandled_rejection' |
+  // Executor / Replay only (not recorded, but in steps)
+  'assertText' | 'assertVisible' | 'assertValue' | 'assertChecked' | 'assertUrl' |
+  'waitForSelector' | 'wait' | 'drag' | 'verify';
 
 export interface IRecordingSession {
   id: string;

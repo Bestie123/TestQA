@@ -133,6 +133,10 @@ function initSchema(): void {
       enabled INTEGER DEFAULT 1,
       profiles_json TEXT DEFAULT '[]'
     );
+    CREATE TABLE IF NOT EXISTS app_settings (
+      key TEXT PRIMARY KEY,
+      value TEXT NOT NULL DEFAULT ''
+    );
   `);
   // Migration: add columns that may not exist in old databases
   const migrations = [
@@ -388,6 +392,62 @@ export function convertToSteps(sessionId: string): ConvertedStep[] {
             `Страница загружена${a.pageTitle ? ': "' + a.pageTitle + '"' : ''}`
           ));
         }
+        break;
+      case 'switchTab':
+        steps.push(makeStep(a,
+          `Переключить вкладку на "${a.selectorText || a.url || ''}"`,
+          a.url || '',
+          'Вкладка переключена'
+        ));
+        break;
+      case 'listTabs':
+        steps.push(makeStep(a,
+          `Показать список вкладок`,
+          '',
+          a.value || 'Список вкладок'
+        ));
+        break;
+      case 'screenshot':
+        steps.push(makeStep(a,
+          `Сделать скриншот`,
+          '',
+          'Скриншот сохранён'
+        ));
+        break;
+      case 'wait':
+        steps.push(makeStep(a,
+          `Подождать ${a.value || '2'} сек.`,
+          '',
+          `Ожидание ${a.value || '2'} сек.`
+        ));
+        break;
+      case 'animation_start':
+        steps.push(makeStep(a,
+          `CSS анимация "${a.selectorText || ''}" началась`,
+          '',
+          'Анимация запущена'
+        ));
+        break;
+      case 'transition_start':
+        steps.push(makeStep(a,
+          `CSS transition "${a.selectorText || ''}" началась`,
+          '',
+          'Transition запущен'
+        ));
+        break;
+      case 'page_hide':
+        steps.push(makeStep(a,
+          `Страница скрыта (bfcache)`,
+          '',
+          'Страница ушла в кэш'
+        ));
+        break;
+      case 'page_show':
+        steps.push(makeStep(a,
+          `Страница восстановлена из кэша`,
+          '',
+          'Страница вернулась из bfcache'
+        ));
         break;
       case 'click':
         steps.push(makeStep(a,
@@ -853,4 +913,34 @@ export function updateUserSwitchConfig(config: { hotkey?: string; enabled?: bool
   const profiles = JSON.stringify(config.profiles ?? JSON.parse(existing?.profiles_json || '[]'));
   d.prepare(`UPDATE user_switch_config SET hotkey = ?, enabled = ?, profiles_json = ? WHERE id = 1`).run(hotkey, enabled, profiles);
   return getUserSwitchConfig();
+}
+
+// ── App Settings ──
+
+export function getSettings(): Record<string, string> {
+  const d = getDb();
+  const rows = d.prepare('SELECT key, value FROM app_settings').all() as { key: string; value: string }[];
+  const settings: Record<string, string> = {};
+  for (const r of rows) settings[r.key] = r.value;
+  return settings;
+}
+
+export function getSetting(key: string): string | null {
+  const d = getDb();
+  const row = d.prepare('SELECT value FROM app_settings WHERE key = ?').get(key) as { value: string } | undefined;
+  return row?.value ?? null;
+}
+
+export function setSetting(key: string, value: string): void {
+  const d = getDb();
+  d.prepare('INSERT OR REPLACE INTO app_settings (key, value) VALUES (?, ?)').run(key, value);
+}
+
+export function setSettingsBulk(settings: Record<string, string>): void {
+  const d = getDb();
+  const stmt = d.prepare('INSERT OR REPLACE INTO app_settings (key, value) VALUES (?, ?)');
+  const tx = d.transaction(() => {
+    for (const [k, v] of Object.entries(settings)) stmt.run(k, v);
+  });
+  tx();
 }

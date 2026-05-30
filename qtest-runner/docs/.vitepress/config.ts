@@ -34,6 +34,7 @@ export default defineConfig({
         text: 'Reference',
         items: [
           { text: 'Execution Flow', link: '/flow' },
+          { text: 'Action Types', link: '/action-types' },
           { text: 'Assertions', link: '/assertions' },
           { text: 'Known Problems', link: '/problems' },
           { text: 'Loop Rules', link: '/loop-rules' },

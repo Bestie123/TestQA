@@ -16,6 +16,7 @@ const routes: { prefix: string; host: string; port: number; stripPrefix?: boolea
   { prefix: '/api/recordings', host: 'localhost', port: 3004 },
   { prefix: '/api/composite-steps', host: 'localhost', port: 3002 },
   { prefix: '/api/user-switch', host: 'localhost', port: 3004 },
+  { prefix: '/api/settings', host: 'localhost', port: 3004 },
   { prefix: '/api/record', host: 'localhost', port: 3005 },
   { prefix: '/api/launch', host: 'localhost', port: 3005 },
   { prefix: '/api/profiles', host: 'localhost', port: 3005 },
