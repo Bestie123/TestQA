@@ -129,11 +129,11 @@ export function parseStep(action: string, testData: string, expectedResult: stri
     return commands;
   }
 
-  // Russian natural language patterns
-  // Navigate: "Перейти по URL https://..." or "Открыть URL ..."
-  const urlMatch = a.match(/(?:перейти|открыть|перейти\s+по)\s+(?:по\s+)?(?:url|ссылке|адресу)?\s*(?:https?:\/\/[^\s]+)/i);
+  // Russian & English natural language patterns
+  // Navigate: "Перейти по URL https://..." / "Открыть URL ..." / "navigate to URL" / "открыть страницу URL"
+  const urlMatch = a.match(/(?:перейти|открыть|перейти\s+по|navigate\s+to|go\s+to)\s+(?:по\s+)?(?:url|ссылке|адресу|страницу|страница)?\s*(?:https?:\/\/[^\s]+)/i);
   if (urlMatch) {
-    const url = urlMatch[0].replace(/^(?:перейти|открыть|перейти\s+по)\s+(?:по\s+)?(?:url|ссылке|адресу)?\s*/i, '').trim();
+    const url = urlMatch[0].replace(/^(?:перейти|открыть|перейти\s+по|navigate\s+to|go\s+to)\s+(?:по\s+)?(?:url|ссылке|адресу|страницу|страница)?\s*/i, '').trim();
     commands.push({ action: 'navigate', url });
     return commands;
   }
@@ -151,8 +151,8 @@ export function parseStep(action: string, testData: string, expectedResult: stri
     return commands;
   }
 
-  // RightClick: "Правый клик ..." or "Нажать правой кнопкой ..."
-  const rightClickMatch = a.match(/(?:правый\s+клик|правая\s+кнопка|нажать\s+правой\s+кнопкой|контекстное\s+меню)\s*(?:на\s+)?[«"']?([^»"']+)[»"']?/i);
+  // RightClick: "Правый клик ..." / "Нажать правой кнопкой ..." / "right click ..."
+  const rightClickMatch = a.match(/(?:правый\s+клик|правая\s+кнопка|нажать\s+правой\s+кнопкой|контекстное\s+меню|right\s+click)\s*(?:на\s+)?[«"']?([^»"']+)[»"']?/i);
   if (rightClickMatch) {
     commands.push({ action: 'rightClick', selector: `text=${rightClickMatch[1].trim()}` });
     return commands;
@@ -187,7 +187,8 @@ export function parseStep(action: string, testData: string, expectedResult: stri
   }
 
   // Assert: "Проверить текст ..." / "Убедиться ..." / "Проверить что ..."
-  const assertTextMatch = a.match(/(?:проверить|убедиться|проверить\s+что)\s+(?:текст|наличие|видимость)?\s*[«"']?([^»"']+)[»"']?/i);
+  // NOTE: проверить\s+что must be first so it captures the full prefix
+  const assertTextMatch = a.match(/(?:проверить\s+что|проверить|убедиться)\s+(?:текст|наличие|видимость)?\s*[«"']?([^»"']+)[»"']?/i);
   if (assertTextMatch) {
     const txt = assertTextMatch[1].trim();
     if (a.match(/видимость|visible|отображается|появил/i)) {
@@ -207,8 +208,8 @@ export function parseStep(action: string, testData: string, expectedResult: stri
     return commands;
   }
 
-  // SwitchTab: "Переключить вкладку ..." / "Перейти на вкладку ..."
-  const switchTabMatch = a.match(/(?:переключить|перейти\s+на|выбрать)\s+(?:вкладку|таб|tab)\s*(?:номер\s*)?[#]?(\d+|0x[\da-f]+)/i);
+  // SwitchTab: "Переключить вкладку ..." / "Перейти на вкладку ..." / "switch tab N" / "select tab N"
+  const switchTabMatch = a.match(/(?:переключить|перейти\s+на|выбрать|switch|select|change)\s+(?:to\s+)?(?:вкладку|таб|tab)\s*(?:номер\s*)?[#]?(\d+|0x[\da-f]+)/i);
   if (switchTabMatch) {
     commands.push({ action: 'switchTab', value: switchTabMatch[1].trim() });
     return commands;

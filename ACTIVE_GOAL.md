@@ -1,33 +1,43 @@
 # Активная цель (сохранено 30.05.2026, Сессия #~47)
 
 ## Главная цель
-Завершить все запланированные итерации по доработке qtest-runner: критичные фиксы, Chrome Extension, инфраструктура, тесты, E2E Course.
-Подробный план: `.opencode/plans/EXPANDED_PLAN.md`
+Все 7 итераций по доработке qtest-runner выполнены. Проект реорганизован — вынесены независимые проекты, очищен корень, структурирована документация.
 
 ## Текущая подзадача
-**Iteration 0 (✅ завершена):** Реструктуризация AGENTS.md — правила оформления перенесены в `Test-cases&Bug-reports/`, бэклог создан.
-**→ Iteration 1:** Исправить ImportPage, SyncPage, seed data, CAPTCHA path.
+Ожидание новых задач от пользователя.
 
 ## Статус
 
-### ✅ Завершённые шаги (до Iteration 0)
-- **Iteration 1-16:** Все предыдущие итерации по разработке qtest-runner (CAPTCHA, INJECT_SCRIPT, Shadow DOM, SPA, Composite Steps, Canvas, Video, Selection, DblClick/RightClick и т.д.)
+### ✅ Завершённые итерации (30.05.2026)
+1. **Iteration 0** — Реструктуризация AGENTS.md (правила → Test-cases&Bug-reports/)
+2. **Iteration 1** — ImportPage, SyncPage (Excel через SheetJS), seed data `projectUrl`, CAPTCHA test-pages
+3. **Iteration 2** — Chrome Extension (Shadow DOM: composedPath, shadow-aware getSelector; иконки)
+4. **Iteration 3** — Graceful shutdown (6 сервисов: SIGINT/SIGTERM/SIGBREAK + 5s timeout)
+5. **Iteration 4** — Cross-origin iframe test server (порт 9091)
+6. **Iteration 5** — Unit-тесты (vitest, 57 тестов для action-parser)
+7. **Iteration 6** — E2E Interactive Course MCP (qtest_test_course + qtest_test_course_verify)
 
-### ✅ Iteration 0 — Реструктуризация
-- `Test-cases&Bug-reports/RULES.md` — все правила оформления тест-кейсов и баг-репортов
-- `Test-cases&Bug-reports/BACKLOG.md` — отложенные фичи с причинами
-- AGENTS.md — очищен (оставлены только auto-continue, микросервисная архитектура, карта проекта, best practices, composite steps)
-- `.opencode/plans/EXPANDED_PLAN.md` — детальный план всех итераций
+### ✅ Реорганизация файловой структуры
+- `Test-cases&Bug-reports/` → `Desktop/Test-cases&Bug-reports/`
+- `zephyr-sort-extension/` → `Desktop/zephyr-sort-extension/`
+- `AGENTS.md` → `docs/rules/AGENTS.md`
+- `.md` из корня qtest-runner → `qtest-runner/docs/`
+- .xlsx, .html → `docs/testcases/`
+- .docx → `docs/reports/`
+- Планы (REFACTOR_PLAN, GAP_ANALYSIS, PLAYWRIGHT_VS_QTESTRUNNER, EXPANDED_PLAN) → `docs/archive/`
+- precondition.files, ~$*, битые файлы → `Desktop/Test-cases&Bug-reports/`
+- Zephyr ресурсные папки → `docs/testcases/`
+- zephyr-sort-extension.7z → `docs/archive/`
 
 ### 🔄 В процессе
-- Iteration 1: ImportPage, SyncPage, seed data, CAPTCHA test-pages
+(ожидание)
 
-### ⬜ Следующие шаги
-- Iteration 2: Chrome Extension (Shadow DOM + icons)
-- Iteration 3: Graceful shutdown (6 сервисов)
-- Iteration 4: Cross-origin iframe test server
-- Iteration 5: Unit-тесты (vitest)
-- Iteration 6: E2E Interactive Course (MCP)
+### ⬜ Возможные следующие шаги
+- Unit-тесты convertToSteps (recorder-service)
+- Unit-тесты executor.ts (browser-agent)
+- Unit-тесты ws-server.ts (selector forwarding)
+- Фикс 4 багов action-parser (English паттерны, assertText regex)
+- Zephyr Sync API (по необходимости)
 
 ## Принятые решения
 - **Shadow DOM:** использовать `composedPath()` + `deepActiveElement()` вместо `e.target`

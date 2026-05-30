@@ -227,8 +227,8 @@ describe('parseStep - Russian patterns', () => {
 
   it('parses открыть страницу', () => {
     const r = parseStep('открыть страницу https://test.com', '', '');
-    // BUG: parser doesn't handle "открыть страницу URL" pattern, falls to click
-    expect(r[0].action).toBe('click');
+    expect(r[0].action).toBe('navigate');
+    expect(r[0].url).toBe('https://test.com');
   });
 
   it('parses нажать Enter', () => {
@@ -244,9 +244,9 @@ describe('parseStep - Russian patterns', () => {
 
   it('parses проверить что текст отображается as assertVisible', () => {
     const r = parseStep('проверить что текст "Успех" отображается', '', '');
-    // BUG: regex captures "что текст " instead of "Успех"; needs non-greedy
     expect(r[0].action).toBe('assertVisible');
-    expect(r[0].text).toContain('что текст');
+    expect(r[0].text).toContain('успех');
+    expect(r[0].text).not.toContain('что текст');
   });
 
   it('parses перетащить элемент в другой', () => {
@@ -288,21 +288,32 @@ describe('parseStep - English patterns', () => {
 
   it('parses "right click"', () => {
     const r = parseStep('right click element', '', '');
-    // BUG: no English "right click" pattern; falls to default text click
-    expect(r[0].action).toBe('click');
+    expect(r[0].action).toBe('rightClick');
     expect(r[0].selector).toContain('element');
   });
 
   it('parses "switch tab 2"', () => {
     const r = parseStep('switch tab 2', '', '');
-    // BUG: "tabs?" in listTabs regex matches "tab" before switchTab pattern
-    expect(r[0].action).toBe('listTabs');
+    expect(r[0].action).toBe('switchTab');
+    expect(r[0].value).toBe('2');
   });
 
   it('parses "navigate to"', () => {
     const r = parseStep('navigate to https://site.com', '', '');
-    // BUG: no English "navigate to" pattern; falls to default text click
-    expect(r[0].action).toBe('click');
+    expect(r[0].action).toBe('navigate');
+    expect(r[0].url).toBe('https://site.com');
+  });
+
+  it('parses "go to url"', () => {
+    const r = parseStep('go to https://example.com', '', '');
+    expect(r[0].action).toBe('navigate');
+    expect(r[0].url).toBe('https://example.com');
+  });
+
+  it('parses "switch to tab 1"', () => {
+    const r = parseStep('switch to tab 1', '', '');
+    expect(r[0].action).toBe('switchTab');
+    expect(r[0].value).toBe('1');
   });
 });
 
