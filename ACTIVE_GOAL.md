@@ -1,7 +1,7 @@
-# Активная цель (сохранено 30.05.2026, Сессия #~47)
+# Активная цель (сохранено 30.05.2026, Сессия #~48)
 
 ## Главная цель
-Все 7 итераций по доработке qtest-runner выполнены. Проект реорганизован — вынесены независимые проекты, очищен корень, структурирована документация.
+Все 7 итераций по доработке qtest-runner выполнены. Проект реорганизован — вынесены независимые проекты, очищен корень, структурирована документация. Покрытие unit-тестами: 205 тестов (59 action-parser + 19 ws-server + 51 executor + 76 convertToSteps).
 
 ## Текущая подзадача
 Ожидание новых задач от пользователя.
@@ -14,8 +14,13 @@
 3. **Iteration 2** — Chrome Extension (Shadow DOM: composedPath, shadow-aware getSelector; иконки)
 4. **Iteration 3** — Graceful shutdown (6 сервисов: SIGINT/SIGTERM/SIGBREAK + 5s timeout)
 5. **Iteration 4** — Cross-origin iframe test server (порт 9091)
-6. **Iteration 5** — Unit-тесты (vitest, 57 тестов для action-parser)
+6. **Iteration 5** — Unit-тесты (vitest, 129 тестов: 59 action-parser + 19 ws-server + 51 executor)
 7. **Iteration 6** — E2E Interactive Course MCP (qtest_test_course + qtest_test_course_verify)
+
+### ✅ Дополнительные unit-тесты
+- **convertToSteps (recorder-service/db.ts):** 76 тестов — покрыты все ~30 action types, edge cases (дубли URL, dragstart+drop, keypress варианты, assert*), HTTP-запросы с curl, prepend navigate step, skipped actions, fallback default
+- **Итого:** 205 тестов (59 + 19 + 51 + 76), все проходят за &lt;5с
+- **tsconfig:** `packages/recorder-service/tsconfig.json` — добавлен `"exclude": ["src/__tests__"]`
 
 ### ✅ Реорганизация файловой структуры
 - `Test-cases&Bug-reports/` → `Desktop/Test-cases&Bug-reports/`
@@ -33,10 +38,6 @@
 (ожидание)
 
 ### ⬜ Возможные следующие шаги
-- Unit-тесты convertToSteps (recorder-service)
-- Unit-тесты executor.ts (browser-agent)
-- Unit-тесты ws-server.ts (selector forwarding)
-- Фикс 4 багов action-parser (English паттерны, assertText regex)
 - Zephyr Sync API (по необходимости)
 
 ## Принятые решения
@@ -52,8 +53,10 @@
 - **SQLite double-quote rule:** `""` = column identifier, `''` = string literal. Всегда использовать `''` для строк.
 - **Fastify v5 object response:** массивы всегда оборачивать в объект (`{ categories: [...] }`), иначе 500.
 - **press→keypress mapping:** parseStep() + ws-server fallback должны оба обрабатывать `action === 'press'`
+- **Mock better-sqlite3 через in-memory DB:** `vi.hoisted()` → `require('better-sqlite3')` → `new Database(':memory:')`, затем `vi.mock` возвращает `function() { return memDb }`. Schema инициализируется через реальную `getDb()` в `beforeAll`.
+- **Тестовые файлы исключены из tsc:** `"exclude": ["src/__tests__"]` в tsconfig каждого пакета.
 
 ## Заметки / вопросы
 - 17 INJECT_SCRIPT модулей работают стабильно
-- EXPANDED_PLAN.md в `.opencode/plans/` — общий план на все итерации
+- EXPANDED_PLAN.md в `docs/archive/` — общий план на все итерации
 - Архитектурные решения по проектированию сохраняются здесь для перекрёстных сессий

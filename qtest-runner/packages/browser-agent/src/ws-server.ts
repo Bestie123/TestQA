@@ -432,3 +432,6 @@ export function startWSServer(): void {
   });
 }
 
+// Exported for testing
+export { httpServer, handleMessage, clients };
+
