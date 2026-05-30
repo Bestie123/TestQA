@@ -7,7 +7,10 @@
     "lint": "turbo run lint",
     "clean": "turbo run clean",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "workspaces": [
     "packages/shared-types",
@@ -24,6 +27,7 @@
     "http-server": "^14.1.1",
     "turbo": "^2.5.0",
     "typescript": "^5.7.0",
+    "vitepress": "^1.6.4",
     "vitest": "^4.1.7"
   },
   "packageManager": "npm@10.0.0",

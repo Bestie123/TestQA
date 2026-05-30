@@ -1,7 +1,7 @@
-# Активная цель (сохранено 30.05.2026, Сессия #~48)
+# Активная цель (сохранено 30.05.2026, Сессия #~49)
 
 ## Главная цель
-Все 7 итераций по доработке qtest-runner выполнены. Проект реорганизован — вынесены независимые проекты, очищен корень, структурирована документация. Покрытие unit-тестами: 205 тестов (59 action-parser + 19 ws-server + 51 executor + 76 convertToSteps).
+Все 7 итераций по доработке qtest-runner выполнены. Документация консолидирована: VitePress-сайт с тёмной темой, 16 страниц, 205 тестов.
 
 ## Текущая подзадача
 Ожидание новых задач от пользователя.
@@ -14,13 +14,20 @@
 3. **Iteration 2** — Chrome Extension (Shadow DOM: composedPath, shadow-aware getSelector; иконки)
 4. **Iteration 3** — Graceful shutdown (6 сервисов: SIGINT/SIGTERM/SIGBREAK + 5s timeout)
 5. **Iteration 4** — Cross-origin iframe test server (порт 9091)
-6. **Iteration 5** — Unit-тесты (vitest, 129 тестов: 59 action-parser + 19 ws-server + 51 executor)
+6. **Iteration 5** — Unit-тесты (vitest, 205 тестов: 59+19+51+76)
 7. **Iteration 6** — E2E Interactive Course MCP (qtest_test_course + qtest_test_course_verify)
 
-### ✅ Дополнительные unit-тесты
-- **convertToSteps (recorder-service/db.ts):** 76 тестов — покрыты все ~30 action types, edge cases (дубли URL, dragstart+drop, keypress варианты, assert*), HTTP-запросы с curl, prepend navigate step, skipped actions, fallback default
-- **Итого:** 205 тестов (59 + 19 + 51 + 76), все проходят за &lt;5с
-- **tsconfig:** `packages/recorder-service/tsconfig.json` — добавлен `"exclude": ["src/__tests__"]`
+### ✅ Консолидация документации (30.05.2026)
+- **VitePress-сайт:** установлен vitepress v1.6.4, тёмная тема, сайдбар, поиск
+- **16 страниц:** index, architecture, usage, flow, problems, loop-rules, status, assertions, testing, changelog + 5 archive pages
+- **Каждая страница** содержит `> **Source:** filename.md` — привязка к исходному .md
+- **Скрипты:** `npm run docs:dev`, `docs:build`, `docs:preview`
+- **Удалён мусор:** `PROMPT.md`, дубль `ACTIVE_GOAL.md`
+- **Архив перенесён:** `docs/archive/*` → `qtest-runner/docs/archive/`
+- **Файлы переименованы:** в lowercase для чистых URL
+- **Созданы новые:** `ASSERTIONS.md`, `TESTING.md`, `CHANGELOG.md`
+- **Обновлён REFACTOR_PLAN.md:** P0-P2 ✅, 25/146 → ~140/146
+- **Обновлён CONTEXT_RULES.md:** секция `## Documentation Reference`
 
 ### ✅ Реорганизация файловой структуры
 - `Test-cases&Bug-reports/` → `Desktop/Test-cases&Bug-reports/`
@@ -29,10 +36,8 @@
 - `.md` из корня qtest-runner → `qtest-runner/docs/`
 - .xlsx, .html → `docs/testcases/`
 - .docx → `docs/reports/`
-- Планы (REFACTOR_PLAN, GAP_ANALYSIS, PLAYWRIGHT_VS_QTESTRUNNER, EXPANDED_PLAN) → `docs/archive/`
+- Планы → `qtest-runner/docs/archive/`
 - precondition.files, ~$*, битые файлы → `Desktop/Test-cases&Bug-reports/`
-- Zephyr ресурсные папки → `docs/testcases/`
-- zephyr-sort-extension.7z → `docs/archive/`
 
 ### 🔄 В процессе
 (ожидание)
@@ -41,22 +46,20 @@
 - Zephyr Sync API (по необходимости)
 
 ## Принятые решения
+- **VitePress:** выбран для документации — тёмная тема, поиск, сайдбар, .md как source of truth
+- **Multi-page с атрибуцией:** каждая страница сайта указывает исходный .md (`> **Source:** filename.md`)
+- **CONTEXT_RULES.md:** добавлена секция с инструкцией загружать docs-сайт через webfetch при старте сессии
 - **Shadow DOM:** использовать `composedPath()` + `deepActiveElement()` вместо `e.target`
 - **SPA навигация:** monkey-patch history API вместо setInterval polling
 - **Object fields → JSON.stringify():** перед передачей в better-sqlite3 v11 .run()
 - **postJson reject on non-2xx:** действия re-queue с retry вместо молчаливой потери
 - **stopRecording retry:** 3 попытки с 1s задержкой
 - **Executor race condition:** `sessionId` + `pendingRef` захватываются ДО `page.goto()`
-- **Динамический SQL:** `vals.map(() => '?')` — гарантирует совпадение числа placeholder'ов
-- **Архитектура MCP:** browser-agent (MCP) → recorder-service (REST) — разделение ответственности
-- **INJECT_SCRIPT пассивные слушатели:** media/popover/drag только слушают, не симулируют
-- **SQLite double-quote rule:** `""` = column identifier, `''` = string literal. Всегда использовать `''` для строк.
-- **Fastify v5 object response:** массивы всегда оборачивать в объект (`{ categories: [...] }`), иначе 500.
-- **press→keypress mapping:** parseStep() + ws-server fallback должны оба обрабатывать `action === 'press'`
-- **Mock better-sqlite3 через in-memory DB:** `vi.hoisted()` → `require('better-sqlite3')` → `new Database(':memory:')`, затем `vi.mock` возвращает `function() { return memDb }`. Schema инициализируется через реальную `getDb()` в `beforeAll`.
-- **Тестовые файлы исключены из tsc:** `"exclude": ["src/__tests__"]` в tsconfig каждого пакета.
+- **SQLite double-quote rule:** `""` = column identifier, `''` = string literal
+- **Mock better-sqlite3:** in-memory DB через vi.hoisted + vi.mock
+- **Тестовые файлы:** исключены из tsc через `"exclude": ["src/__tests__"]`
 
 ## Заметки / вопросы
 - 17 INJECT_SCRIPT модулей работают стабильно
-- EXPANDED_PLAN.md в `docs/archive/` — общий план на все итерации
-- Архитектурные решения по проектированию сохраняются здесь для перекрёстных сессий
+- REFACTOR_PLAN.md: Video recording (P2) — единственный нереализованный пункт
+- Для просмотра docs: `npm run docs:dev` в qtest-runner → порт 5173

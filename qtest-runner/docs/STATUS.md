@@ -1,4 +1,10 @@
+---
+title: Project Status
+---
+
 # Статус проекта qtest-runner — Май 2026
+
+> **Source:** `status.md`
 
 ## Файлы для чтения перед началом
 

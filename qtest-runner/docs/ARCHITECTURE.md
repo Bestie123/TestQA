@@ -1,4 +1,10 @@
+---
+title: Architecture
+---
+
 # QTest Runner — Архитектура проекта
+
+> **Source:** `architecture.md`
 
 ## Общая архитектура (Microservices per Sam Newman)
 

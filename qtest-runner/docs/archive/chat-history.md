@@ -1,4 +1,10 @@
+---
+title: Chat History
+---
+
 # Полная копия истории чата — qtest-runner
+
+> **Source:** `archive/CHAT_HISTORY.md`
 
 ## Дата: 27-28 мая 2026
 
