@@ -1,0 +1,5 @@
+2026/05/28-11:51:31.991 4c9c Creating DB Q:\User_Data\Desktop\TestQA\qtest-runner\packages\browser-agent\chrome-data\2ed0bd02-2cc6-45ff-b0b5-320a09ed50ef\Default\Local Storage\leveldb since it was missing.
+2026/05/28-11:51:32.440 4c9c Reusing MANIFEST Q:\User_Data\Desktop\TestQA\qtest-runner\packages\browser-agent\chrome-data\2ed0bd02-2cc6-45ff-b0b5-320a09ed50ef\Default\Local Storage\leveldb/MANIFEST-000001
+2026/05/28-11:52:41.554 4c9c Level-0 table #5: started
+2026/05/28-11:52:41.597 4c9c Level-0 table #5: 63234 bytes OK
+2026/05/28-11:52:41.607 4c9c Delete type=0 #3

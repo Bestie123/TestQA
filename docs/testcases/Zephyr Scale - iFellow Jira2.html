@@ -1,0 +1,1831 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)https://jira.ifellow.ru/secure/Tests.jspa#/testCase/1453 -->
+<html lang="ru" class="js-focus-visible webkit chrome" data-js-focus-visible="" style="--aui-datepicker-panel-bg-color: #93a4bf; --aui-datepicker-option-focus-bg-color: #89aee8;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>Zephyr Scale - iFellow Jira</title>
+<meta name="application-name" content="JIRA" data-name="jira" data-version="8.20.13"><meta name="ajs-server-scheme" content="https">
+<meta name="ajs-server-port" content="443">
+<meta name="ajs-server-name" content="jira.ifellow.ru">
+<meta name="ajs-behind-proxy" content="null">
+<meta name="ajs-base-url" content="https://jira.ifellow.ru">
+<meta name="ajs-dev-mode" content="false">
+<meta name="ajs-context-path" content="">
+<meta name="ajs-version-number" content="8.20.13">
+<meta name="ajs-build-number" content="820013">
+<meta name="ajs-is-beta" content="false">
+<meta name="ajs-is-rc" content="false">
+<meta name="ajs-is-snapshot" content="false">
+<meta name="ajs-is-milestone" content="false">
+<meta name="ajs-remote-user" content="mihail.nikulenkov@ifellow.ru">
+<meta name="ajs-remote-user-fullname" content="Никуленков Михаил Михайлович">
+<meta name="ajs-user-locale" content="ru_RU">
+<meta name="ajs-user-locale-group-separator" content=" ">
+<meta name="ajs-app-title" content="iFellow Jira">
+<meta name="ajs-keyboard-shortcuts-enabled" content="true">
+<meta name="ajs-keyboard-accesskey-modifier" content="Alt">
+<meta name="ajs-enabled-dark-features" content="[&quot;com.atlassian.jira.agile.darkfeature.editable.detailsview&quot;,&quot;nps.survey.inline.dialog&quot;,&quot;com.atlassian.jira.agile.darkfeature.edit.closed.sprint.enabled&quot;,&quot;jira.plugin.devstatus.phasetwo&quot;,&quot;jira.frother.reporter.field&quot;,&quot;atlassian.rest.xsrf.legacy.enabled&quot;,&quot;jira.issue.status.lozenge&quot;,&quot;com.atlassian.jira.config.BIG_PIPE&quot;,&quot;com.atlassian.jira.projects.issuenavigator&quot;,&quot;com.atlassian.jira.config.PDL&quot;,&quot;jira.plugin.devstatus.phasetwo.enabled&quot;,&quot;atlassian.aui.raphael.disabled&quot;,&quot;app-switcher.new&quot;,&quot;frother.assignee.field&quot;,&quot;com.atlassian.jira.projects.ProjectCentricNavigation.Switch&quot;,&quot;sd.internal.base.off.thread.on.completion.events.enabled&quot;,&quot;jira.onboarding.cyoa&quot;,&quot;com.atlassian.jira.agile.darkfeature.kanplan.enabled&quot;,&quot;sd.slavalue.record.updated.date.enabled&quot;,&quot;scriptrunner.idea.external.editor.enabled&quot;,&quot;com.atlassian.jira.config.ProjectConfig.MENU&quot;,&quot;com.atlassian.jira.projects.sidebar.DEFER_RESOURCES&quot;,&quot;com.atlassian.jira.agile.darkfeature.kanplan.epics.and.versions.enabled&quot;,&quot;com.atlassian.jira.agile.darkfeature.sprint.goal.enabled&quot;,&quot;jira.zdu.admin-updates-ui&quot;,&quot;jira.zdu.jmx-monitoring&quot;,&quot;sd.sla.improved.rendering.enabled&quot;,&quot;sd.canned.responses.enabled&quot;,&quot;mail.batching.enabled&quot;,&quot;sd.new.settings.sidebar.location.disabled&quot;,&quot;jira.zdu.cluster-upgrade-state&quot;,&quot;com.atlassian.jira.email.templates.readFromJiraHome&quot;,&quot;com.atlassian.jira.agile.darkfeature.splitissue&quot;,&quot;com.atlassian.jira.jsd.mobile&quot;,&quot;com.atlassian.jira.config.CoreFeatures.LICENSE_ROLES_ENABLED&quot;,&quot;jira.export.csv.enabled&quot;]">
+<meta name="ajs-in-admin-mode" content="false">
+<meta name="ajs-is-sysadmin" content="false">
+<meta name="ajs-is-admin" content="false">
+<meta name="ajs-outgoing-mail-enabled" content="true">
+<meta name="ajs-archiving-enabled" content="true">
+<meta name="ajs-date-relativize" content="false">
+<meta name="ajs-date-time" content="HH:mm">
+<meta name="ajs-date-day" content="EEEE HH:mm">
+<meta name="ajs-date-dmy" content="dd/MM/yyyy">
+<meta name="ajs-date-complete" content="dd/MM/yyyy HH:mm">
+<script type="text/javascript">var AJS=AJS||{};AJS.debug=true;</script>
+
+
+    
+<meta id="atlassian-token" name="atlassian-token" content="BXFG-8UIP-R0RV-M9TO_45b65140521b4c475ad5c28ab9554bde39eae005_lin">
+
+
+
+<link rel="shortcut icon" href="https://jira.ifellow.ru/s/9t84k9/820013/gm31g6/_/jira-favicon-hires.png">
+<link rel="search" type="application/opensearchdescription+xml" href="https://jira.ifellow.ru/osd.jsp" title="Zephyr Scale - iFellow Jira">
+
+    
+
+
+
+<!--[if IE]><![endif]-->
+<script type="text/javascript">
+    (function() {
+        var contextPath = '';
+
+        function printDeprecatedMsg() {
+            if (console && console.warn) {
+                console.warn('DEPRECATED JS - contextPath global variable has been deprecated since 7.4.0. Use `wrm/context-path` module instead.');
+            }
+        }
+
+        Object.defineProperty(window, 'contextPath', {
+            get: function() {
+                printDeprecatedMsg();
+                return contextPath;
+            },
+            set: function(value) {
+                printDeprecatedMsg();
+                contextPath = value;
+            }
+        });
+    })();
+
+</script>
+<script>
+window.WRM=window.WRM||{};window.WRM._unparsedData=window.WRM._unparsedData||{};window.WRM._unparsedErrors=window.WRM._unparsedErrors||{};
+WRM._unparsedData["com.atlassian.plugins.atlassian-plugins-webresource-plugin:context-path.context-path"]="\"\"";
+WRM._unparsedData["jira.core:feature-flags-data.feature-flag-data"]="{\"enabled-feature-keys\":[\"com.atlassian.jira.agile.darkfeature.editable.detailsview\",\"nps.survey.inline.dialog\",\"com.atlassian.jira.agile.darkfeature.edit.closed.sprint.enabled\",\"jira.plugin.devstatus.phasetwo\",\"jira.frother.reporter.field\",\"atlassian.rest.xsrf.legacy.enabled\",\"jira.issue.status.lozenge\",\"com.atlassian.jira.config.BIG_PIPE\",\"com.atlassian.jira.projects.issuenavigator\",\"com.atlassian.jira.config.PDL\",\"jira.plugin.devstatus.phasetwo.enabled\",\"atlassian.aui.raphael.disabled\",\"app-switcher.new\",\"frother.assignee.field\",\"com.atlassian.jira.projects.ProjectCentricNavigation.Switch\",\"sd.internal.base.off.thread.on.completion.events.enabled\",\"jira.onboarding.cyoa\",\"com.atlassian.jira.agile.darkfeature.kanplan.enabled\",\"sd.slavalue.record.updated.date.enabled\",\"scriptrunner.idea.external.editor.enabled\",\"com.atlassian.jira.config.ProjectConfig.MENU\",\"com.atlassian.jira.projects.sidebar.DEFER_RESOURCES\",\"com.atlassian.jira.agile.darkfeature.kanplan.epics.and.versions.enabled\",\"com.atlassian.jira.agile.darkfeature.sprint.goal.enabled\",\"jira.zdu.admin-updates-ui\",\"jira.zdu.jmx-monitoring\",\"sd.sla.improved.rendering.enabled\",\"sd.canned.responses.enabled\",\"mail.batching.enabled\",\"sd.new.settings.sidebar.location.disabled\",\"jira.zdu.cluster-upgrade-state\",\"com.atlassian.jira.email.templates.readFromJiraHome\",\"com.atlassian.jira.agile.darkfeature.splitissue\",\"com.atlassian.jira.jsd.mobile\",\"com.atlassian.jira.config.CoreFeatures.LICENSE_ROLES_ENABLED\",\"jira.export.csv.enabled\"],\"feature-flag-states\":{\"com.atlassian.jira.agile.darkfeature.handle.ug.usernames\":true,\"com.atlassian.jira.security.endpoint.non.admin.access.screens\":false,\"sd.automation.then.action.edit.issue.custom.fields\":true,\"sd.custom.email.stripping.rules\":false,\"com.atlassian.jira.webhookEventsAsyncProcessing\":false,\"com.atlassian.jira.serAllowShareWithNonMember\":true,\"com.atlassian.troubleshooting.healthcheck.jira.license.limit\":false,\"sd.confluence.redirect.with.jwt.token.agent\":true,\"com.atlassian.jira.issuetable.move.links.hidden\":true,\"sd.internal.base.heartbeat.automatic.renewal.events\":false,\"jira.renderer.consider.variable.format\":true,\"insight.index.object.type.children\":true,\"com.atlassian.jira.plugin.issuenavigator.jql.autocomplete.eagerlyLoaded\":false,\"com.atlassian.portfolio.dcBundling\":true,\"com.atlassian.jira.sharedEntityEditRights\":true,\"sd.automation.then.webhook.custom.payload\":true,\"sd.use.search.by.permissions\":true,\"com.atlassian.jira.security.endpoint.anonymous.access.resolution\":false,\"com.atlassian.jira.agile.darkfeature.sprint.goal\":false,\"sd.automation.ruleset.cache\":true,\"sd.confluence.cloud.integration\":true,\"jira.cluster.monitoring.show.offline.nodes\":true,\"sd.kb.cloud.always.primary\":false,\"com.atlassian.jira.commentReactions\":true,\"sd.approval.requested.when.handler\":true,\"com.atlassian.jira.custom.csv.escaper\":true,\"com.atlassian.jira.fixedCommentDeletionNotifications\":true,\"com.atlassian.jira.allThumbnailsDeferred\":false,\"com.atlassian.jira.plugin.issuenavigator.filtersUxImprovment\":true,\"jira.customfields.cleanup.identification\":true,\"com.atlassian.jira.defaultValuesForSystemFields\":true,\"sd.queue.react.table\":true,\"sd.automation.then.action.archive.issue\":true,\"sd.customerportal.sla.customer.visibility\":true,\"jira.customfields.bulk.delete\":true,\"sd.email.analytics.open\":false,\"com.atlassian.jira.returnDefaultAvatarsForBrokenAvatars\":true,\"sd.kb.cloud.allow.http\":false,\"jira.jql.suggestrecentfields\":false,\"com.atlassian.jira.gdpr.rtbf\":true,\"com.atlassian.jira.security.xsrf.session.token\":true,\"sd.dismiss.all.misconfiguration.warnings.setting\":true,\"com.atlassian.jira.security.project.admin.revoke.with.application.access\":true,\"com.atlassian.jiranomenclature\":true,\"com.atlassian.jira.security.endpoint.non.admin.access.avatar.system\":false,\"sd.canned.responses.variable.substitution\":true,\"com.atlassian.jira.agile.darkfeature.future.sprint.dates\":true,\"jira.customfields.paginated.ui\":true,\"insight.db.import.h2.enable\":false,\"sd.incident.management.feature.polling\":true,\"com.atlassian.jira.advanced.audit.log\":true,\"sd.automation.then.webhook\":true,\"sd.priorities.per.project\":true,\"external.links.new.window\":true,\"sd.customer.portal.browse.permission.only\":true,\"sd.inline.noformat.renderer\":true,\"sd.customer.profile.multi.languages\":true,\"data.pipeline.feature.jira.issue.history.export\":true,\"sd.new.settings.sidebar.location\":true,\"atlassian.cdn.static.assets\":true,\"com.atlassian.jira.security.endpoint.non.browse.projects.access.fields\":false,\"sd.customer.search.post.agent.filtering\":true,\"sd.sla.improved.rendering\":false,\"mail.batching\":false,\"sd.kb.cloud.allow.empty.display.name\":false,\"com.atlassian.jira.security.endpoint.anonymous.access.priority\":false,\"jira.priorities.per.project.edit.default\":false,\"com.atlassian.jira.agile.darkfeature.issues.in.epic.details.view\":true,\"jira.priorities.per.project.jsd\":true,\"sd.email.attachment.stripping\":false,\"com.atlassian.jira.agile.darkfeature.rapid.boards.bands\":true,\"com.atlassian.jira.agile.darkfeature.flexible.boards\":true,\"com.atlassian.jira.agile.darkfeature.epic.validate.visibility\":true,\"com.atlassian.jira.send.email.notifications.to.user.without.application.access\":false,\"com.atlassian.mail.server.managers.hostname.verification\":true,\"sd.automation.then.action.auto.answer.approval\":true,\"sd.approvals.notification.email.action\":true,\"com.atlassian.jira.upgrade.startup.fix.index\":false,\"sd.email.attachments.store.duplicates\":false,\"sd.customer.notifications.suppress.welcome.email\":true,\"sd.sla.fix.timeline\":false,\"sd.customer.share.default.private\":true,\"com.atlassian.jira.security.endpoint.anonymous.access.projectCategory\":false,\"jira.redirect.anonymous.404.errors\":true,\"sd.customerportal.card.view\":true,\"com.atlassian.jira.issuetable.draggable\":true,\"sd.email.microsoft.pop.two.line.auth\":true,\"com.atlassian.jira.attachments.generate.unique.suffix\":true,\"sd.customerportal.customization.preview\":true,\"sd.customer.portal.wysiwyg.editor\":true,\"jira.version.based.node.reindex.service\":true,\"sd.attachment.is.viewable.short.circuit\":true,\"com.atlassian.jira.security.endpoint.anonymous.access.issueLinkType\":false,\"sd.email.channel.custom.oauth.config.supported\":false,\"sd.internal.base.off.thread.on.completion.events\":false,\"com.atlassian.jira.agile.darkfeature.burnupchart\":true,\"jira.instrumentation.laas\":false,\"sd.no.schedule.async.upgrade.tasks\":true,\"sd.customer.portal.editor.mentions\":true,\"sd.approvals.with.insight\":true,\"mail.batching.user.notification\":true,\"com.atlassian.portfolio.permission.check.for.permissions\":true,\"sd.portal.search.bar.settings\":true,\"sd.sla.auto.fix.metric\":true,\"sd.sla.audit.log.smart.cleanup\":true,\"com.atlassian.jira.issues.archiving\":true,\"sd.automation.if.condition.comment.primary.action\":true,\"jira.priorities.per.project\":true,\"com.atlassian.jira.use.same.site.none.for.xsrf.token.cookie\":true,\"com.atlassian.jira.mailHandlerImapMessageQueryLegacy\":false,\"com.atlassian.jira.diagnostics.perflog\":true,\"sd.event.processing.stop.unnecessary.processing.of.jira.issue.events\":true,\"sd.prioritise.agent.role\":true,\"com.atlassian.jira.dbr\":true,\"com.atlassian.jira.agile.darkfeature.legacy.epic.picker\":false,\"com.atlassian.jira.agile.darkfeature.unlink.sprints.on.issue.move\":true,\"sd.incident.management.feature\":true,\"com.atlassian.jira.user.dbIdBasedKeyGenerationStrategy\":true,\"sd.signup.email.verification\":true,\"sd.language.support.administration\":true,\"com.atlassian.jira.thumbnailsDeferredGeneration\":true,\"sd.automation.psmq.async.executor\":true,\"data.pipeline.feature.jira.issue.links.export\":true,\"com.atlassian.jira.agile.darkfeature.kanplan.epics.and.versions\":false,\"com.atlassian.jira.jsd.mobile\":true,\"data.pipeline.feature.jira.all.exportable.custom.fields\":true,\"jira.dc.cleanup.cluser.tasks\":true,\"sd.sla.performance.optimization\":true,\"sd.cluster.safe.mail.channel.shutdown\":true,\"com.atlassian.jira.issues.archiving.filters\":false,\"mail.batching.override.core\":true,\"jira.users.and.roles.page.in.react\":true,\"jira.security.csp.sandbox\":true,\"com.atlassian.jira.agile.darkfeature.velocity.chart.ui\":true,\"insight.index.object.type.reindex.on.failure\":true,\"sd.automation.audit.log\":true,\"com.atlassian.jira.agile.darkfeature.sprint.auto.management\":false,\"sd.workinghours.react.component\":false,\"com.atlassian.jira.agile.darkfeature.optimistic.transitions\":true,\"sd.queue.bulk.actions\":true,\"sd.internal.base.db.backed.completion.events\":false,\"sd.incident.management.allow.http\":false,\"com.atlassian.jira.agile.darkfeature.kanplan\":false,\"com.atlassian.jira.filtersAndDashboardsShareableWithAllGroupsAndRoles\":true,\"com.atlassian.jira.agile.darkfeature.edit.closed.sprint\":false,\"jira.create.linked.issue\":true,\"sd.customerportal.react.requests\":false,\"jira.sal.host.connect.accessor.existing.transaction.will.create.transactions\":true,\"sd.automation.project.runasuser.cache\":true,\"sd.customerportal.customization\":false,\"jira.quick.search\":true,\"jira.jql.smartautoselectfirst\":false,\"sd.slavalue.force.repair.on.corruption\":true,\"jira.jql.membersof.ignoreGlobalPermissionsForAnonymous\":false,\"jira.richeditor.bidi.warning\":true,\"com.atlassian.jira.privateEntitiesEditable\":true,\"sd.multi.incoming.email.support\":false,\"sd.custom.email.notifications.utf8.csat.star\":true,\"sd.kb.use.new.page.analytics.rest.endpoints\":true,\"com.atlassian.jira.plugin.issuenavigator.anonymousPreventCfData\":false,\"sd.sla.audit.log\":true,\"sd.canned.responses\":false,\"com.atlassian.jira.agile.darkfeature.sprint.picker.allsprints.suggestion\":true,\"sd.slavalue.record.updated.date\":false,\"sd.report.custom.date.range\":false,\"jira.dc.lock.leasing\":true,\"sd.portal.help.center.customer.signup.secondary.email.fallback\":true,\"com.atlassian.jira.accessibility.personal.settings\":true,\"mail.batching.create.section.cf\":true,\"com.atlassian.jira.security.endpoint.non.browse.projects.access.autocompletedata\":false,\"sd.internal.bounded.off.thread.on.completion.events\":true,\"com.atlassian.advancedroadmaps.rebrand\":true,\"sd.attachment.generate.unique.suffix.when.attachment.filename.clash.occurs\":true,\"sd.workinghours.new.page\":true,\"sd.sla.parallel.recalculation\":true,\"sd.kb.article.insights.report\":true,\"com.atlassian.jira.agile.darkfeature.kanban.hide.old.done.issues\":true,\"sd.sla.conditions.due.date\":true,\"com.atlassian.jira.agile.darkfeature.backlog.showmore\":true,\"sd.automation.clean.deleted.projects.on.launch\":true,\"sd.sort.requests.in.portal.by.invisible.comments\":true,\"com.atlassian.jira.agile.darkfeature.sprint.plan\":false,\"sd.custom.email.notifications.custom.rules.simple.ui\":false,\"sd.confluence.redirect.with.jwt.token\":true,\"com.atlassian.jira.security.LegacyJiraTypeResolver.WARN_ONLY\":false,\"sd.sla.parallel.recalculation.run.in.new.searcher.context\":true,\"sd.customer.portal.prioties.per.project.fix\":true,\"data.pipeline.feature.jira.schema.version.2\":true,\"com.atlassian.jira.agile.darkfeature.velocity.sprint.picker\":false,\"com.atlassian.jira.issues.archiving.browse\":true,\"sd.status.icon.with.linked.incidents\":true,\"com.atlassian.jira.security.ChartUtils.browse.projects.permission.check\":false,\"com.atlassian.jira.agile.darkfeature.dataonpageload\":true,\"sd.instance.metrics\":true,\"sd.sla.webpanel.react\":true,\"data.pipeline.feature.jira.archived.issue.export\":false,\"com.atlassian.jira.projects.per.project.permission.query\":true,\"index.use.snappy\":true}}";
+WRM._unparsedData["jira.core:default-comment-security-level-data.DefaultCommentSecurityLevelHelpLink"]="{\"extraClasses\":\"default-comment-level-help\",\"title\":\"Commenting on an Issue\",\"url\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Editing+and+collaborating+on+issues#Editingandcollaboratingonissues-restrictacomment\",\"isLocal\":false}";
+WRM._unparsedData["com.atlassian.jira.jira-quick-edit-plugin:create-issue-data.data"]="{\"configurableSystemFieldIds\":[\"description\"]}";
+WRM._unparsedData["com.atlassian.analytics.analytics-client:policy-update-init.policy-update-data-provider"]="false";
+WRM._unparsedData["com.atlassian.analytics.analytics-client:programmatic-analytics-init.programmatic-analytics-data-provider"]="false";
+WRM._unparsedData["com.onresolve.jira.groovy.groovyrunner:web-item-response-renderer.web-item-actions-data-provider"]="[{\"action\":\"RUN_CODE_SHOW_DIALOG\",\"id\":\"create-forecast-order\"},{\"action\":\"RUN_CODE_SHOW_DIALOG\",\"id\":\"111\"},{\"action\":\"RUN_CODE_SHOW_DIALOG\",\"id\":\"prob_b\"},{\"action\":\"RUN_CODE_SHOW_DIALOG\",\"id\":\"sendReportButton\"},{\"action\":\"RUN_CODE_SHOW_DIALOG\",\"id\":\"edit_button_date\"},{\"action\":\"RUN_CODE_SHOW_DIALOG\",\"id\":\"create_user_AD\"},{\"action\":\"RUN_CODE_SHOW_DIALOG\",\"id\":\"edit_summary\"},{\"action\":\"RUN_CODE_SHOW_DIALOG\",\"id\":\"ButtonWD\"},{\"action\":\"RUN_CODE_SHOW_DIALOG\",\"id\":\"edit_button_briefing_date\"}]";
+WRM._unparsedData["jira.core:dateFormatProvider.allFormats"]="{\"dateFormats\":{\"meridiem\":[\"AM\",\"PM\"],\"eras\":[\"\u0434\u043e \u043d.\u044d.\",\"\u043d.\u044d.\"],\"months\":[\"\u044f\u043d\u0432\u0430\u0440\u044f\",\"\u0444\u0435\u0432\u0440\u0430\u043b\u044f\",\"\u043c\u0430\u0440\u0442\u0430\",\"\u0430\u043f\u0440\u0435\u043b\u044f\",\"\u043c\u0430\u044f\",\"\u0438\u044e\u043d\u044f\",\"\u0438\u044e\u043b\u044f\",\"\u0430\u0432\u0433\u0443\u0441\u0442\u0430\",\"\u0441\u0435\u043d\u0442\u044f\u0431\u0440\u044f\",\"\u043e\u043a\u0442\u044f\u0431\u0440\u044f\",\"\u043d\u043e\u044f\u0431\u0440\u044f\",\"\u0434\u0435\u043a\u0430\u0431\u0440\u044f\"],\"monthsShort\":[\"\u044f\u043d\u0432\",\"\u0444\u0435\u0432\",\"\u043c\u0430\u0440\",\"\u0430\u043f\u0440\",\"\u043c\u0430\u044f\",\"\u0438\u044e\u043d\",\"\u0438\u044e\u043b\",\"\u0430\u0432\u0433\",\"\u0441\u0435\u043d\",\"\u043e\u043a\u0442\",\"\u043d\u043e\u044f\",\"\u0434\u0435\u043a\"],\"weekdaysShort\":[\"\u0412\u0441\",\"\u041f\u043d\",\"\u0412\u0442\",\"\u0421\u0440\",\"\u0427\u0442\",\"\u041f\u0442\",\"\u0421\u0431\"],\"weekdays\":[\"\u0432\u043e\u0441\u043a\u0440\u0435\u0441\u0435\u043d\u044c\u0435\",\"\u043f\u043e\u043d\u0435\u0434\u0435\u043b\u044c\u043d\u0438\u043a\",\"\u0432\u0442\u043e\u0440\u043d\u0438\u043a\",\"\u0441\u0440\u0435\u0434\u0430\",\"\u0447\u0435\u0442\u0432\u0435\u0440\u0433\",\"\u043f\u044f\u0442\u043d\u0438\u0446\u0430\",\"\u0441\u0443\u0431\u0431\u043e\u0442\u0430\"]},\"lookAndFeelFormats\":{\"relativize\":\"false\",\"time\":\"HH:mm\",\"day\":\"EEEE HH:mm\",\"dmy\":\"dd/MM/yyyy\",\"complete\":\"dd/MM/yyyy HH:mm\"}}";
+WRM._unparsedData["com.atlassian.servicedesk.servicedesk-canned-responses-plugin:canned-responses-data-provider.data"]="{\"userId\":61700,\"substitutionVariables\":{\"issue.summary\":\"\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0437\u0430\u043f\u0440\u043e\u0441\u0430\",\"issue.description\":\"\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0437\u0430\u043f\u0440\u043e\u0441\u0430\",\"issue.key\":\"\u041a\u043e\u0434 \u0437\u0430\u043f\u0440\u043e\u0441\u0430\",\"issue.reporter.name\":\"\u0410\u0432\u0442\u043e\u0440 \u0437\u0430\u043f\u0440\u043e\u0441\u0430\",\"issue.resolution\":\"\u0420\u0435\u0448\u0435\u043d\u0438\u0435 \u0437\u0430\u043f\u0440\u043e\u0441\u0430\",\"request.url\":\"\u0421\u0441\u044b\u043b\u043a\u0430 \u043d\u0430 \u0437\u0430\u043f\u0440\u043e\u0441\",\"request.status\":\"\u0421\u0442\u0430\u0442\u0443\u0441 \u0437\u0430\u043f\u0440\u043e\u0441\u0430\",\"request.details\":\"\u0414\u0430\u043d\u043d\u044b\u0435 \u0437\u0430\u043f\u0440\u043e\u0441\u0430\"}}";
+WRM._unparsedData["jira.core:avatar-picker-data.data"]="{}";
+WRM._unparsedData["jira.core:terminology-data.terminology"]="{\"terminologyEntries\":[{\"originalName\":\"sprint\",\"originalNamePlural\":\"sprints\",\"newName\":\"sprint\",\"newNamePlural\":\"sprints\",\"isDefault\":true},{\"originalName\":\"epic\",\"originalNamePlural\":\"epics\",\"newName\":\"epic\",\"newNamePlural\":\"epics\",\"isDefault\":true}],\"isTerminologyActive\":false}";
+WRM._unparsedData["com.atlassian.jira.jira-header-plugin:dismissedFlags.flags"]="{\"dismissed\":[]}";
+WRM._unparsedData["com.atlassian.jira.jira-header-plugin:newsletter-signup-tip-init.newsletterSignup"]="{\"signupDescription\":\"\u041f\u043e\u043b\u0443\u0447\u0430\u0439\u0442\u0435 \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f, \u0432\u0434\u043e\u0445\u043d\u043e\u0432\u0435\u043d\u0438\u0435 \u0438 \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0430\u0446\u0438\u0438 \u043e\u0442 \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a\u043e\u0432 Jira.\",\"formUrl\":\"https://www.atlassian.com/apis/exact-target/{0}/subscribe?mailingListId=1401671\",\"userEmail\":\"mihail.nikulenkov@ifellow.ru\",\"signupTitle\":\"\u0417\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u0442\u044c\u0441\u044f!\",\"signupId\":\"newsletter-signup-tip\",\"showNewsletterTip\":true}";
+WRM._unparsedData["com.atlassian.jira.project-templates-plugin:project-templates-plugin-resources.ptAnalyticsData"]="{\"instanceCreatedDate\":\"2019-09-23\"}";
+WRM._unparsedData["com.atlassian.servicedesk.core-ui:util-help-links.help-links"]="{\"help\":{\"confluence.cloud.knowledge.base.setup\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Set+up+a+knowledge+base+with+Confluence+Cloud\",\"email.settings\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Receiving+requests+by+email\",\"email.setup\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Receiving+requests+by+email\",\"managing.queues\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Setting+up+queues+for+your+team\",\"opsgenie.integration\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Setting+up+incident+management\",\"documentation.home\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Jira+Service+Management+documentation\",\"api.tokens\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Api+tokens\",\"default\":\"https://docs.atlassian.com/jira/jsd-docs-0420/\",\"customerview.mentions.learn\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Adding+request+participants\",\"confluence.cloud.integration.kb\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Set+up+a+knowledge+base+for+self+service\",\"setting.up.reports\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Setting+up+service+project+reports\",\"issue.email.channel\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Troubleshooting+issues+with+the+email+channel\",\"getting.started.agent\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Getting+started+for+service+project+agents\",\"multilingual.customer.portal\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Providing+help+in+multiple+languages\",\"sla.calendar.settings\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Create+and+edit+SLA+calendars\",\"request.settings.help.bubble\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Managing+access+to+your+service+project\",\"opsgenie.api.information\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Getting+Opsgenie+API+information\",\"email.settings.suitablerequest\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Receiving+requests+by+email#Receivingrequestsbyemail-suitablerequest\",\"sla.import.help\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Importing+SLAs\",\"create.space.help\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Knowledge+base+settings+and+permissions\",\"admin.notifications.config\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Managing+service+project+notifications\",\"email.settings.troubleshooting\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Troubleshooting+issues+with+the+email+channel\",\"advanced.approval.notifications\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Approving+a+service+project+request\",\"troubleshoot.requesttype\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Troubleshooting+issues+with+request+types\",\"approvals.configuration\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Configuring+Jira+Service+Management+approvals\",\"public.signup\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Configuring+public+signup\",\"resolve.permission.scheme.errors\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Resolving+permission+scheme+errors\",\"knowledge.base\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Set+up+a+knowledge+base+for+self-service\",\"getting.started\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Getting+started+with+Jira+Service+Management\",\"invite.customers\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Managing+access+to+your+service+project\",\"sla.setup.help\":\"https://docs.atlassian.com/jira/jsd-docs-0420/Setting+up+SLAs\"},\"kb\":{\"default\":\"https://confluence.atlassian.com/display/SDKB/\",\"troubleshooting.user.management.issues\":\"https://confluence.atlassian.com/display/SDKB/Troubleshooting+issues+with+service+project+user+management\",\"legacytransition\":\"https://confluence.atlassian.com/display/SDKB/Replacing+legacy+automatic+transitions+with+automation+rules\",\"umtroubleshoot\":\"https://confluence.atlassian.com/display/SDKB/Troubleshooting+issues+with+service+project+user+management\"}}";
+WRM._unparsedData["com.atlassian.servicedesk.core-ui:util-base-url.base-url"]="\"https://jira.ifellow.ru\"";
+WRM._unparsedData["com.atlassian.jira.plugins.jira-dnd-attachment-plugin:dnd-issue-drop-zone.thumbnail-mime-types"]="\"image/png,image/vnd.wap.wbmp,image/x-png,image/jpeg,image/bmp,image/gif\"";
+WRM._unparsedData["com.atlassian.jira.plugins.jira-dnd-attachment-plugin:dnd-issue-drop-zone.upload-limit"]="\"31457280\"";
+WRM._unparsedData["com.onresolve.jira.groovy.groovyrunner:behaviours-translations.behaviours-translations-data-provider"]="{\"field.title.missing.value\":\"You must enter a value for this field\"}";
+WRM._unparsedData["jira.core:user-message-flags-data.adminLockout"]="{}";
+WRM._unparsedData["com.atlassian.plugins.helptips.jira-help-tips:help-tip-manager.JiraHelpTipData"]="{\"dismissed\":[\"newsletter-signup-tip\",\"qs-onboarding-tip\"],\"anonymous\":false}";
+WRM._unparsedData["jira.request.correlation-id"]="\"8fc7f082951ec3\"";
+WRM._unparsedData["tzdetect.pref.auto.detect"]="true";
+WRM._unparsedData["tzdetect.pref.tzid"]="\"Europe/Moscow\"";
+WRM._unparsedData["tzdetect.pref.tzname"]="\"(GMT+03:00) \u041c\u043e\u0441\u043a\u0432\u0430\"";
+WRM._unparsedData["tzdetect.pref.janOffset"]="10800000";
+WRM._unparsedData["tzdetect.pref.julyOffset"]="10800000";
+if(window.WRM._dataArrived)window.WRM._dataArrived();</script>
+<link type="text/css" rel="stylesheet" href="./Zephyr Scale - iFellow Jira2_files/batch.css" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
+<link type="text/css" rel="stylesheet" href="./Zephyr Scale - iFellow Jira2_files/batch(1).css" data-wrm-key="ktm-atlassian-common-context,atl.general,jira.general,jira.global,-_super" data-wrm-batch-type="context" media="all">
+<link type="text/css" rel="stylesheet" href="./Zephyr Scale - iFellow Jira2_files/com.atlassian.jira.jira-tzdetect-plugin_tzdetect-banner-component.css" data-wrm-key="com.atlassian.jira.jira-tzdetect-plugin:tzdetect-banner-component" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="./Zephyr Scale - iFellow Jira2_files/com.idalko.jira.plugins.igrid_cssgrid.css" data-wrm-key="com.idalko.jira.plugins.igrid:cssgrid" data-wrm-batch-type="resource" media="all">
+<script type="text/javascript" src="./Zephyr Scale - iFellow Jira2_files/batch.js.Без названия" data-wrm-key="_super" data-wrm-batch-type="context" data-initially-rendered=""></script>
+<script type="text/javascript" src="./Zephyr Scale - iFellow Jira2_files/batch(1).js.Без названия" data-wrm-key="ktm-atlassian-common-context,atl.general,jira.general,jira.global,-_super" data-wrm-batch-type="context" data-initially-rendered=""></script><style jsd-extender=""></style><style>.jsd-bundled-fields-static-table {
+    display: none;
+}
+</style><style jsd-extender=""></style><script type="text/javascript" charset="utf-8" src="./Zephyr Scale - iFellow Jira2_files/batch(2).js.Без названия"></script>
+<script type="text/javascript" src="./Zephyr Scale - iFellow Jira2_files/batch(3).js.Без названия" data-wrm-key="atl.global,-_super" data-wrm-batch-type="context" data-initially-rendered=""></script>
+<script type="text/javascript" src="./Zephyr Scale - iFellow Jira2_files/com.atlassian.jira.jira-tzdetect-plugin_tzdetect-banner-component.js.Без названия" data-wrm-key="com.atlassian.jira.jira-tzdetect-plugin:tzdetect-banner-component" data-wrm-batch-type="resource" data-initially-rendered=""></script>
+<script type="text/javascript" src="./Zephyr Scale - iFellow Jira2_files/com.atlassian.jira.jira-tzdetect-plugin_tzdetect-lib.js.Без названия" data-wrm-key="com.atlassian.jira.jira-tzdetect-plugin:tzdetect-lib" data-wrm-batch-type="resource" data-initially-rendered=""></script>
+<script type="text/javascript" src="./Zephyr Scale - iFellow Jira2_files/com.idalko.jira.plugins.igrid_jsgrid.js.Без названия" data-wrm-key="com.idalko.jira.plugins.igrid:jsgrid" data-wrm-batch-type="resource" data-initially-rendered=""></script>
+<script type="text/javascript" src="./Zephyr Scale - iFellow Jira2_files/com.kanoah.test-manager_ktm-resources-pre.js.Без названия" data-wrm-key="com.kanoah.test-manager:ktm-resources-pre" data-wrm-batch-type="resource" data-initially-rendered=""></script>
+<script type="text/javascript" src="./Zephyr Scale - iFellow Jira2_files/com.kanoah.test-manager_common-runtime.js.Без названия" data-wrm-key="com.kanoah.test-manager:common-runtime" data-wrm-batch-type="resource" data-initially-rendered=""></script>
+<script type="text/javascript" src="./Zephyr Scale - iFellow Jira2_files/com.kanoah.test-manager_split_gadgets.bundle-admin-groups.bundle-admin-projects.bundle-project-admins.bundle-project-configuration.js.Без названия" data-wrm-key="com.kanoah.test-manager:split_gadgets.bundle-admin-groups.bundle-admin-projects.bundle-project-admins.bundle-project-configuration" data-wrm-batch-type="resource" data-initially-rendered=""></script>
+<script type="text/javascript" src="./Zephyr Scale - iFellow Jira2_files/com.kanoah.test-manager_split_admin-threshold-config.bundle-admin-analytics.bundle-main-app.bundle.js.Без названия" data-wrm-key="com.kanoah.test-manager:split_admin-threshold-config.bundle-admin-analytics.bundle-main-app.bundle" data-wrm-batch-type="resource" data-initially-rendered=""></script>
+<script type="text/javascript" src="./Zephyr Scale - iFellow Jira2_files/com.kanoah.test-manager_split_main-app.bundle.js.Без названия" data-wrm-key="com.kanoah.test-manager:split_main-app.bundle" data-wrm-batch-type="resource" data-initially-rendered=""></script>
+<script type="text/javascript" src="./Zephyr Scale - iFellow Jira2_files/com.kanoah.test-manager_ktm-resources-post.js.Без названия" data-wrm-key="com.kanoah.test-manager:ktm-resources-post" data-wrm-batch-type="resource" data-initially-rendered=""></script>
+<script type="text/javascript" src="./Zephyr Scale - iFellow Jira2_files/jira.webresources_calendar-ru.js.Без названия" data-wrm-key="jira.webresources:calendar-ru" data-wrm-batch-type="resource" data-initially-rendered=""></script>
+<script type="text/javascript" src="./Zephyr Scale - iFellow Jira2_files/jira.webresources_calendar-localisation-moment.js.Без названия" data-wrm-key="jira.webresources:calendar-localisation-moment" data-wrm-batch-type="resource" data-initially-rendered=""></script>
+<link type="text/css" rel="stylesheet" href="./Zephyr Scale - iFellow Jira2_files/batch(2).css" data-wrm-key="jira.global.look-and-feel,-_super" data-wrm-batch-type="context" media="all">
+
+<script type="text/javascript" src="./Zephyr Scale - iFellow Jira2_files/shortcuts.js.Без названия"></script>
+
+
+    
+    
+    <meta name="atm-current-project-id" content="18400">
+    <meta name="atm-current-project-key" content="IBPA2">
+
+<script type="text/javascript" charset="utf-8" src="./Zephyr Scale - iFellow Jira2_files/batch(4).js.Без названия"></script><style>#ktm-sort-trigger { cursor: pointer; -webkit-user-select: none; user-select: none; }#ktm-sort-control { display: inline-block; margin-left: 8px; vertical-align: middle; position: relative; }#ktm-sort-dropdown { display: none; position: absolute; z-index: 5000; left: 0; min-width: 220px; background: #fff; border: 1px solid #ccc; border-radius: 3px; box-shadow: 0 4px 8px rgba(0,0,0,0.15); }#ktm-sort-dropdown ul { list-style: none; margin: 0; padding: 0; }#ktm-sort-dropdown a { display: block; padding: 6px 12px; color: #333; text-decoration: none; }#ktm-sort-dropdown a:hover { background: #f0f0f0; }</style><link rel="stylesheet" type="text/css" href="./Zephyr Scale - iFellow Jira2_files/batch(3).css"><link rel="stylesheet" type="text/css" href="./Zephyr Scale - iFellow Jira2_files/batch(4).css"><link rel="stylesheet" type="text/css" href="./Zephyr Scale - iFellow Jira2_files/batch(5).css"><link rel="stylesheet" type="text/css" href="./Zephyr Scale - iFellow Jira2_files/com.atlassian.jira.jira-header-plugin_newsletter-signup-tip.css"><script type="text/javascript" charset="utf-8" src="./Zephyr Scale - iFellow Jira2_files/batch(5).js.Без названия"></script><script type="text/javascript" charset="utf-8" src="./Zephyr Scale - iFellow Jira2_files/batch(6).js.Без названия"></script><script type="text/javascript" charset="utf-8" src="./Zephyr Scale - iFellow Jira2_files/batch(7).js.Без названия"></script><script type="text/javascript" charset="utf-8" src="./Zephyr Scale - iFellow Jira2_files/com.atlassian.plugin.jslibs_underscore-1.8.3.js.Без названия"></script><script type="text/javascript" charset="utf-8" src="./Zephyr Scale - iFellow Jira2_files/com.atlassian.jira.jira-header-plugin_newsletter-signup-tip.js.Без названия"></script><style data-styled="" data-styled-version="4.0.0"></style><script type="text/javascript" charset="utf-8" src="./Zephyr Scale - iFellow Jira2_files/batch(8).js.Без названия"></script></head>
+<body id="jira" class="aui-layout aui-theme-default" data-version="8.20.13" data-aui-version="9.2.3-4dc984d9f">
+<div id="page">
+    <header id="header" role="banner">
+        
+
+
+
+
+
+
+<script>
+require(["jquery", "jira/license-banner"], function ($, licenseBanner) {
+    $(function () { // eslint-disable-line @atlassian/onready-checks/no-jquery-onready
+        licenseBanner.showLicenseBanner("");
+        licenseBanner.showLicenseFlag("");
+    });
+});
+</script>
+
+
+
+        
+
+
+
+
+        
+
+
+
+
+<a class="aui-skip-link" href="https://jira.ifellow.ru/secure/Tests.jspa#main">Перейти к главному содержимому</a><a class="aui-skip-link" href="https://jira.ifellow.ru/secure/Tests.jspa#sidebar">Перейти к боковой панели</a><nav class="aui-header aui-dropdown2-trigger-group" aria-label="Сайт" data-aui-responsive="true"><div class="aui-header-inner"><div class="aui-header-before"><button class=" aui-dropdown2-trigger app-switcher-trigger aui-dropdown2-trigger-arrowless" aria-controls="app-switcher" aria-haspopup="true" role="button" data-aui-trigger="" href="#app-switcher" resolved="" aria-expanded="false"><span class="aui-icon aui-icon-small aui-iconfont-appswitcher">Связанные приложения</span></button><div id="app-switcher" class="aui-dropdown2 aui-style-default aui-layer" role="menu" hidden="" data-is-switcher="true" data-environment="{&quot;isUserAdmin&quot;:false,&quot;isAppSuggestionAvailable&quot;:false,&quot;isSiteAdminUser&quot;:false}" resolved="" tabindex="-1"><div class="aui-dropdown2-section"><ul class="nav-links"><li class="nav-link"><a href="https://jira.ifellow.ru/plugins/servlet/desk/portal/19" class="aui-dropdown2-radio" title="https://jira.ifellow.ru/plugins/servlet/desk/portal/19" resolved="" aria-checked="false" tabindex="0"><span class="nav-link-label">ServiceDesk Portal</span></a></li><li class="nav-link"><a href="https://wiki.ifellow.ru/" class="aui-dropdown2-radio" title="https://wiki.ifellow.ru/" resolved="" aria-checked="false" tabindex="0"><span class="nav-link-label">iFellow портал</span></a></li><li class="nav-link"><a href="https://ifellow.ispring.ru/app/content" class="aui-dropdown2-radio" title="https://ifellow.ispring.ru/app/content" resolved="" aria-checked="false" tabindex="0"><span class="nav-link-label">iSpring</span></a></li><li class="nav-link nav-link-local"><a href="https://jira.ifellow.ru/secure/MyJiraHome.jspa" class="aui-dropdown2-radio aui-dropdown2-checked checked" title="https://jira.ifellow.ru/secure/MyJiraHome.jspa" resolved="" aria-checked="true" tabindex="0"><span class="nav-link-label">iFellow Jira</span></a></li><li class="nav-link"><a href="https://ifellow.sharepoint.com/sites/iFellow" class="aui-dropdown2-radio" title="https://ifellow.sharepoint.com/sites/iFellow" resolved="" aria-checked="false" tabindex="0"><span class="nav-link-label">Sharepoint</span></a></li><li class="nav-link"><a href="http://bi.ifellow.ru/reportsbi/" class="aui-dropdown2-radio" title="http://bi.ifellow.ru/reportsbi/" resolved="" aria-checked="false" tabindex="0"><span class="nav-link-label">Отчеты</span></a></li><li class="nav-link"><a href="https://grafana.ifellow.ru/" class="aui-dropdown2-radio" title="https://grafana.ifellow.ru/" resolved="" aria-checked="false" tabindex="0"><span class="nav-link-label">Мониторинг</span></a></li><li class="nav-link"><a href="https://bitbucket.ifellow.ru/" class="aui-dropdown2-radio" title="https://bitbucket.ifellow.ru/" resolved="" aria-checked="false" tabindex="0"><span class="nav-link-label">Bitbucket</span></a></li><li class="nav-link"><a href="https://ifellow.hr-link.ru/" class="aui-dropdown2-radio" title="https://ifellow.hr-link.ru" resolved="" aria-checked="false" tabindex="0"><span class="nav-link-label">HR link</span></a></li></ul></div></div></div><div class="aui-header-primary"><span id="logo" class="aui-header-logo aui-header-logo-custom"><a href="https://jira.ifellow.ru/secure/MyJiraHome.jspa" aria-label="Перейти на главную страницу"><img src="./Zephyr Scale - iFellow Jira2_files/jira-logo-scaled.png" alt="iFellow Jira" data-aui-responsive-header-index="0"></a></span><ul class="aui-nav" style="width: auto;"><li><a href="https://jira.ifellow.ru/secure/Dashboard.jspa" class=" aui-nav-link aui-dropdown2-trigger aui-dropdown2-ajax" id="home_link" aria-haspopup="true" aria-controls="home_link-content" title="Просмотр и управление Вашими рабочими столами" accesskey="D" elementtiming="app-header" resolved="" aria-expanded="false">Рабочий стол</a><div class="aui-dropdown2 aui-style-default aui-layer" id="home_link-content" data-aui-dropdown2-ajax-key="home_link" resolved="" tabindex="-1"></div></li><li><a href="https://jira.ifellow.ru/browse/IBPA2" class=" aui-nav-link aui-dropdown2-trigger aui-dropdown2-ajax" id="browse_link" aria-haspopup="true" aria-controls="browse_link-content" title="Просмотр недавних проектов или списка всех проектов" accesskey="P" resolved="" aria-expanded="false">Проекты</a><div class="aui-dropdown2 aui-style-default aui-layer" id="browse_link-content" data-aui-dropdown2-ajax-key="browse_link" resolved="" tabindex="-1"></div></li><li><a href="https://jira.ifellow.ru/issues/" class=" aui-nav-link aui-dropdown2-trigger aui-dropdown2-ajax" id="find_link" aria-haspopup="true" aria-controls="find_link-content" title="Поиск и просмотр недавних задач" accesskey="I" resolved="" aria-expanded="false">Задачи</a><div class="aui-dropdown2 aui-style-default aui-layer" id="find_link-content" data-aui-dropdown2-ajax-key="find_link" resolved="" tabindex="-1"></div></li>
+<li><a href="https://jira.ifellow.ru/secure/DoItBetterCalendar.jspa" class=" aui-nav-link" id="doitbetter-calendar-section" title="Календарь">Календарь</a></li><li><a href="https://jira.ifellow.ru/secure/Tests.jspa" class=" aui-nav-link aui-dropdown2-trigger com-deniz-jira-worklogpro" id="com-deniz-jira-worklogpro" aria-haspopup="true" aria-controls="com-deniz-jira-worklogpro-content" title="WorklogPRO" resolved="" aria-expanded="false">WorklogPRO</a><div class="aui-dropdown2 aui-style-default aui-layer" id="com-deniz-jira-worklogpro-content" resolved="" tabindex="-1"><div id="com-deniz-jira-worklogpro-top" class="aui-dropdown2-section"><ul class="aui-list-truncate"><li id="wp-worklog-calendar-link"><a href="https://jira.ifellow.ru/secure/WorklogPROWorklogCalendar!default.jspa" id="wp-worklog-calendar-link_lnk" class="">Рабочий календарь</a></li><li id="wp-show-custom-timesheet"><a href="https://jira.ifellow.ru/secure/WPShowTimesheetAction!customTimesheet.jspa?calendarType=CUSTOM&amp;groupingType=ISSUE" id="wp-show-custom-timesheet_lnk" class="">Рабочие часы</a></li></ul></div><div id="com-deniz-jira-worklogpro-user" class="aui-dropdown2-section"><strong>табель рабочего времени пользователя</strong><ul class="aui-list-truncate"><li id="wp-show-monthly-user-timesheet"><a href="https://jira.ifellow.ru/secure/WPShowTimesheetAction!customTimesheet.jspa?periodMode=MONTH&amp;targetType=USER&amp;calendarType=CUSTOM&amp;groupingType=ISSUE" id="wp-show-monthly-user-timesheet_lnk" class="">За месяц</a></li><li id="wp-show-weekly-user-timesheet"><a href="https://jira.ifellow.ru/secure/WPShowTimesheetAction!customTimesheet.jspa?periodMode=WEEK&amp;targetType=USER&amp;calendarType=CUSTOM&amp;groupingType=ISSUE" id="wp-show-weekly-user-timesheet_lnk" class="">За неделю</a></li></ul></div><div id="com-deniz-jira-worklogpro-project-issues" class="aui-dropdown2-section"><strong>Проект Табель (Запрос)</strong><ul class="aui-list-truncate"><li id="wp-show-monthly-project-timesheet"><a href="https://jira.ifellow.ru/secure/WPShowTimesheetAction!customTimesheet.jspa?periodMode=MONTH&amp;targetType=PROJECT&amp;calendarType=CUSTOM&amp;groupingType=ISSUE" id="wp-show-monthly-project-timesheet_lnk" class="">За месяц</a></li><li id="wp-show-weekly-project-timesheet"><a href="https://jira.ifellow.ru/secure/WPShowTimesheetAction!customTimesheet.jspa?periodMode=WEEK&amp;targetType=PROJECT&amp;calendarType=CUSTOM&amp;groupingType=ISSUE" id="wp-show-weekly-project-timesheet_lnk" class="">За неделю</a></li></ul></div><div id="com-deniz-jira-worklogpro-project-users" class="aui-dropdown2-section"><strong>Проект Табель(Пользователь)</strong><ul class="aui-list-truncate"><li id="wp-show-monthly-project-user-timesheet"><a href="https://jira.ifellow.ru/secure/WPShowTimesheetAction!customTimesheet.jspa?periodMode=MONTH&amp;targetType=PROJECT&amp;calendarType=CUSTOM&amp;groupingType=USER" id="wp-show-monthly-project-user-timesheet_lnk" class="">За месяц</a></li><li id="wp-show-weekly-project-user-timesheet"><a href="https://jira.ifellow.ru/secure/WPShowTimesheetAction!customTimesheet.jspa?periodMode=WEEK&amp;targetType=PROJECT&amp;calendarType=CUSTOM&amp;groupingType=USER" id="wp-show-weekly-project-user-timesheet_lnk" class="">За неделю</a></li></ul></div><div id="com-deniz-jira-worklogpro-team-issues" class="aui-dropdown2-section" style="display: none;"><strong>Командная рассылка (Запрос)</strong><ul class="aui-list-truncate"><li id="wp-show-monthly-team-timesheet" style="display: none;"><a href="https://jira.ifellow.ru/secure/WPShowTimesheetAction!customTimesheet.jspa?periodMode=MONTH&amp;targetType=TEAM&amp;calendarType=CUSTOM&amp;groupingType=ISSUE" id="wp-show-monthly-team-timesheet_lnk" class="">За месяц</a></li><li id="wp-show-weekly-team-timesheet" style="display: none;"><a href="https://jira.ifellow.ru/secure/WPShowTimesheetAction!customTimesheet.jspa?periodMode=WEEK&amp;targetType=TEAM&amp;calendarType=CUSTOM&amp;groupingType=ISSUE" id="wp-show-weekly-team-timesheet_lnk" class="">За неделю</a></li></ul></div><div id="com-deniz-jira-worklogpro-team-users" class="aui-dropdown2-section" style="display: none;"><strong>Командная рассылка (Пользователь)</strong><ul class="aui-list-truncate"><li id="wp-show-monthly-team-user-timesheet" style="display: none;"><a href="https://jira.ifellow.ru/secure/WPShowTimesheetAction!customTimesheet.jspa?periodMode=MONTH&amp;targetType=TEAM&amp;calendarType=CUSTOM&amp;groupingType=USER" id="wp-show-monthly-team-user-timesheet_lnk" class="">За месяц</a></li><li id="wp-show-weekly-team-user-timesheet" style="display: none;"><a href="https://jira.ifellow.ru/secure/WPShowTimesheetAction!customTimesheet.jspa?periodMode=WEEK&amp;targetType=TEAM&amp;calendarType=CUSTOM&amp;groupingType=USER" id="wp-show-weekly-team-user-timesheet_lnk" class="">За неделю</a></li></ul></div><div id="com-deniz-jira-worklogpro-favorite-timesheets" class="aui-dropdown2-section" style="display: none;"><strong>избранное</strong><ul class="aui-list-truncate"></ul></div><div id="com-deniz-jira-worklogpro-custom-timesheet" class="aui-dropdown2-section"><strong>Другое</strong><ul class="aui-list-truncate"><li id="com-deniz-jira-worklog-configure-main-menu"><a href="https://jira.ifellow.ru/secure/WorklogPROConfigurationAction!displayMainMenuConfiguration.jspa" id="com-deniz-jira-worklog-configure-main-menu_lnk" class="">Настройка главного меню</a></li><li id="com-deniz-jira-worklog-approve-timesheets"><a href="https://jira.ifellow.ru/secure/WorklogPROConfigurationAction!displayTimesheetApproval.jspa" id="com-deniz-jira-worklog-approve-timesheets_lnk" class="">Утверждение расписаний</a></li><li id="wp-settings-teams-link"><a href="https://jira.ifellow.ru/secure/WorklogPROConfigurationAction!displayTeams.jspa" id="wp-settings-teams-link_lnk" class="">Команды</a></li><li id="show-hide-timer-link"><a href="https://jira.ifellow.ru/secure/Tests.jspa" id="show-hide-timer-link_lnk" class="">Показать/скрыть счётчик времени</a></li></ul></div></div></li><li><a href="https://jira.ifellow.ru/secure/ManageObjectSchema.jspa" class=" aui-nav-link aui-dropdown2-trigger aui-dropdown2-ajax" id="rlabs_insight_topmenu_link" aria-haspopup="true" aria-controls="rlabs_insight_topmenu_link-content" title="Управляйте активами с помощью Insight for Jira" resolved="" aria-expanded="false">Insight</a><div class="aui-dropdown2 aui-style-default aui-layer" id="rlabs_insight_topmenu_link-content" data-aui-dropdown2-ajax-key="rlabs_insight_topmenu_link" resolved="" tabindex="-1"></div></li><li style="display: none;"><a class="aui-dropdown2-trigger" href="https://jira.ifellow.ru/secure/Tests.jspa#" id="aui-responsive-header-dropdown-0-trigger" aria-controls="aui-responsive-header-dropdown-0" resolved="" aria-haspopup="true" aria-expanded="false">Дальше</a><aui-dropdown-menu id="aui-responsive-header-dropdown-0" resolved="" role="menu" class="aui-dropdown2 aui-layer" tabindex="-1"><aui-section id="aui-responsive-header-dropdown-list-0" resolved="" class="aui-dropdown2-section">
+        <span aria-hidden="true" class="aui-dropdown2-heading"></span>
+        <div class="aui-dropdown2-item-group" role="group">
+            <!-- content {"defaultContent":"","selector":null} --><!-- /content -->
+        </div>
+    </aui-section></aui-dropdown-menu></li><li id="create-menu"><a id="create_link" class="aui-button aui-button-primary aui-style create-issue " title="Создать новую задачу ( Нажмите &#39;c&#39; )" href="https://jira.ifellow.ru/secure/CreateIssue!default.jspa" accesskey="C" resolved="">Создать</a></li></ul></div><div class="aui-header-secondary"><ul class="aui-nav">
+<li id="quicksearch-menu">
+    <form action="https://jira.ifellow.ru/secure/QuickSearch.jspa" method="get" id="quicksearch" class="aui-quicksearch dont-default-focus ajs-dirty-warning-exempt">
+        <input id="quickSearchInput" autocomplete="off" class="search" type="text" title="Поиск ( Нажмите &#39;/&#39; )" placeholder="Поиск" name="searchString" accesskey="Q"><div class="quick-search-spinner"></div>
+        <input type="submit" class="hidden" value="Search">
+    </form>
+</li>
+<li><a class="jira-feedback-plugin" role="button" aria-haspopup="true" id="jira-header-feedback-link" href="https://jira.ifellow.ru/secure/Tests.jspa#"><span class="aui-icon aui-icon-small aui-iconfont-feedback">Отправить отзыв в Atlassian</span></a></li>
+
+
+
+
+    <li id="system-help-menu">
+        <a class="aui-nav-link aui-dropdown2-trigger aui-dropdown2-trigger-arrowless" id="help_menu" aria-haspopup="true" href="https://docs.atlassian.com/jira/jsd-docs-0420/" target="_blank" rel="noopener noreferrer" title="Справка" resolved="" aria-controls="system-help-menu-content" aria-expanded="false"><span class="aui-icon aui-icon-small aui-iconfont-question-filled">Справка</span></a>
+        <div id="system-help-menu-content" class="aui-dropdown2 aui-style-default aui-layer" resolved="" tabindex="-1">
+                            <div class="aui-dropdown2-section">
+                                                                <ul id="jira-help" class="aui-list-truncate">
+                                                            <li>
+                                    <a id="service-desk-view-help" class="aui-nav-link " title="Открыть раздел онлайн-справки: Jira Service Management" href="https://docs.atlassian.com/jira/jsd-docs-0420/" target="_blank">Поддержка Jira Service Management</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_core_help" class="aui-nav-link " title="Перейти к онлайн документации на ПО Jira Core" href="https://docs.atlassian.com/jira/jcore-docs-0820/" target="_blank">Справка Jira Core</a>
+                                </li>
+                                                            <li>
+                                    <a id="wp-help-item-link" class="aui-nav-link " href="https://denizoguz.atlassian.net/wiki/spaces/WLP/overview" target="_blank">Справка WorklogPRO</a>
+                                </li>
+                                                            <li>
+                                    <a id="keyshortscuthelp" class="aui-nav-link " title="Получить больше информации о Горящих клавишах Jira ( Нажмите &#39;?&#39; )" href="https://jira.ifellow.ru/secure/ViewKeyboardShortcuts!default.jspa" target="_blank">Горячие клавиши</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_about" class="aui-nav-link " title="Получить больше информации о Jira" href="https://jira.ifellow.ru/secure/AboutPage.jspa">О Jira</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_credits" class="aui-nav-link " title="Показать, кто это сделал" href="https://jira.ifellow.ru/secure/credits/AroundTheWorld!default.jspa" target="_blank">Список участников Jira</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+                    </div>
+    </li>
+
+
+
+
+
+
+
+
+
+<li id="user-options">
+            <a id="header-details-user-fullname" class="aui-dropdown2-trigger aui-dropdown2-trigger-arrowless" aria-haspopup="true" data-username="mihail.nikulenkov@ifellow.ru" data-displayname="Никуленков Михаил Михайлович" href="https://jira.ifellow.ru/secure/ViewProfile.jspa" title="Пользовательский профиль для Никуленков Михаил Михайлович" resolved="" aria-controls="user-options-content" aria-expanded="false">
+            <span class="aui-avatar aui-avatar-small">
+                <span class="aui-avatar-inner">
+                    <img src="./Zephyr Scale - iFellow Jira2_files/useravatar" alt="Пользовательский профиль для Никуленков Михаил Михайлович">
+                </span>
+            </span>
+        </a>
+                <div id="user-options-content" class="aui-dropdown2 aui-style-default aui-layer" resolved="" tabindex="-1">
+                            <div class="aui-dropdown2-section">
+                                                        </div>
+                            <div class="aui-dropdown2-section">
+                                                                <ul id="personal" class="aui-list-truncate">
+                                                                                                                            <li>
+                                        <a id="view_profile" class="" title="Просмтреть и изменить детали вашего профиля" href="https://jira.ifellow.ru/secure/ViewProfile.jspa">Профиль</a>
+                                    </li>
+                                                                                                                                <li>
+                                        <a id="a11y-personal-settings-link" class="" title="Измените настройки специальных возможностей" href="https://jira.ifellow.ru/secure/AccessibilityPersonalSettings!default.jspa">Специальные возможности</a>
+                                    </li>
+                                                                                                                                <li>
+                                        <a id="upm-requests-link" class="" href="https://jira.ifellow.ru/plugins/servlet/upm/requests?source=header_user">Магазин Atlassian</a>
+                                    </li>
+                                                                                                                                <li>
+                                        <a id="jnd-config-web-item-link" class="" href="https://jira.ifellow.ru/plugins/servlet/digestConfig">Digest Email</a>
+                                    </li>
+                                                                                    </ul>
+                                    </div>
+                            <div class="aui-dropdown2-section">
+                                            <strong>Домашняя страница Jira</strong>
+                                                                <ul id="set_my_jira_home" class="aui-list-truncate">
+                                                                                                                                                                                                                                                                    <li>
+                                        <a id="set_my_jira_home_default" class="aui-dropdown2-radio aui-dropdown2-checked checked" title="Установить Рабочий стол домашней страницей Jira." href="https://jira.ifellow.ru/secure/UpdateMyJiraHome.jspa?target=com.atlassian.jira.jira-my-home-plugin%3Aset_my_jira_home_dashboard&amp;atl_token=BXFG-8UIP-R0RV-M9TO_45b65140521b4c475ad5c28ab9554bde39eae005_lin" resolved="" aria-checked="true" tabindex="0">Рабочий стол</a>
+                                    </li>
+                                                                                                                                <li>
+                                        <a id="set_my_jira_home_default" class="aui-dropdown2-radio" title="Установить Jira Service Management в качестве домашней страницы Jira" href="https://jira.ifellow.ru/secure/UpdateMyJiraHome.jspa?target=com.atlassian.servicedesk%3Aset_my_jira_home_dashboard&amp;atl_token=BXFG-8UIP-R0RV-M9TO_45b65140521b4c475ad5c28ab9554bde39eae005_lin" resolved="" aria-checked="false" tabindex="0">Проект службы поддержки</a>
+                                    </li>
+                                                                                                                                <li>
+                                        <a id="set_my_jira_home_issuenav" class="aui-dropdown2-radio" title="Установить Навигатор задач домашней страницей Jira." href="https://jira.ifellow.ru/secure/UpdateMyJiraHome.jspa?target=com.atlassian.jira.jira-my-home-plugin%3Aset_my_jira_home_issue&amp;atl_token=BXFG-8UIP-R0RV-M9TO_45b65140521b4c475ad5c28ab9554bde39eae005_lin" resolved="" aria-checked="false" tabindex="0">Навигатор задач</a>
+                                    </li>
+                                                                                                                                <li>
+                                        <a id="set-doitbetter-calendar-jira-home-link" class="aui-dropdown2-radio" title="Установить DoItBetter Календарь домашней страницей JIRA." href="https://jira.ifellow.ru/secure/UpdateMyJiraHome.jspa?target=doitbetter.calendar%3Aset-calendar-jira-home&amp;atl_token=BXFG-8UIP-R0RV-M9TO_45b65140521b4c475ad5c28ab9554bde39eae005_lin" resolved="" aria-checked="false" tabindex="0">Календарь</a>
+                                    </li>
+                                                                                                                                <li>
+                                        <a id="set_insight_my_jira_home_link" class="aui-dropdown2-radio" title="Установить Insight в качестве домашней страницы Jira" href="https://jira.ifellow.ru/secure/UpdateMyJiraHome.jspa?target=com.riadalabs.jira.plugins.insight%3Arlabs-insight-jira-home-link&amp;atl_token=BXFG-8UIP-R0RV-M9TO_45b65140521b4c475ad5c28ab9554bde39eae005_lin" resolved="" aria-checked="false" tabindex="0">Insight</a>
+                                    </li>
+                                                                                    </ul>
+                                    </div>
+                            <div class="aui-dropdown2-section">
+                                                        </div>
+                            <div class="aui-dropdown2-section">
+                                                                <ul id="system" class="aui-list-truncate">
+                                                                                                                            <li>
+                                        <a id="log_out" class="" title="Выйти и отменить автоматический вход." href="https://jira.ifellow.ru/logout?atl_token=BXFG-8UIP-R0RV-M9TO_45b65140521b4c475ad5c28ab9554bde39eae005_lin">Выйти</a>
+                                    </li>
+                                                                                    </ul>
+                                    </div>
+                    </div>
+    </li>
+</ul></div></div><!-- .aui-header-inner--><aui-header-end resolved=""></aui-header-end></nav><!-- .aui-header -->
+    </header>
+    
+
+
+<div id="announcement-banner" class="alertHeader">
+    <style type="text/css">
+.aui-inline-dialog.jira-help-tip.aui-help.js-kanplan-enable-inline-dialog { 
+  display: none !important;
+}
+</style> 
+
+<script>
+jQuery(document).ready(function() {
+document.documentElement.style.setProperty('--aui-datepicker-panel-bg-color', '#93a4bf');
+document.documentElement.style.setProperty('--aui-datepicker-option-focus-bg-color', '#89aee8');
+    var vv=jQuery("#app-switcher  .aui-dropdown2-section:first u .nav-link:first");
+    vv.attr("target", "_blank");
+    document.querySelector("#app-switcher")
+
+});
+(function colorifyColumnsInCustomfieldById(columnsToValuesToColoursMap, customfieldId) {
+    function _getiDalko$() {
+        if(!JIRA || !JIRA.iDalko) {
+            return null;
+        }
+        //noinspection JSUnresolvedVariable
+        return JIRA.iDalko.$ || JIRA.iDalko.jQuery;
+    }
+    var $ = _getiDalko$() || jQuery || $;
+    if (!$) {
+        console.error("could not find jQuery!");
+        return;
+    }
+    if (!$.jgridi) {
+        console.error("could not find the iDalko jqgrid jQuery!");
+        return;
+    }
+    var GRID_POSTFIX = '_grid',
+            gridId = customfieldId + GRID_POSTFIX;
+    $(function() {
+        function _colorify() {
+            $.each(columnsToValuesToColoursMap, function(columnName, columnValueToColourMap) {
+                var ariaDescribedbySelectorPostfix = gridId + '_' + 'icolor';
+                var $grids = $('div.idalko-grid-view'),
+                        $cellTds = $grids.find('td[aria-describedby$="'+ 'icolor' +'"]');
+                $cellTds
+                        .map(function(idx, el) {
+                            if (!el) {
+                                return
+                            }
+                            var v = $(el).text();
+                            return {el:el, val:v}
+                        })
+                        .map(function(idx, args) {
+                            if (!args || !args.el || !args.val) {
+                                return
+                            }
+                            var v = args.val;
+                            var vT = v.trim()
+                            if (v == '1,0')
+                            {var v1 = '1'}
+                            else if (v == '2,0')
+                            {var v1 = '2'}
+                            else if ((v == '3,0'))
+                            {var v1 = '0'}
+                            colour = columnValueToColourMap[v1];
+                            return {el:args.el, colour:colour}
+                        })
+                        .each(function(idx, args) {
+                            if (!args || !args.el || !args.colour) {
+                                return
+                            }
+
+                var col = args.colour
+
+                var ariaDescribedbySelectorPostfix1 = gridId + '_' + 'itabelV';
+                /*var $grids1 = $('div.idalko-grid-view'),*/
+                $cellTds1 = $grids.find('td[aria-describedby$="'+ 'itabelV' +'"]');
+                $cellTds1
+                        .map(function(idx1, el1) {
+                            if (!el1) {
+                                return
+                            }
+                            var v2 = $(el1).text();
+                            return {el1:el1, val1:v2}
+                        })
+                        .map(function(idx1, args1) {
+                            if (!args1 || !args1.el1 || !args1.val1) {
+                                return
+                            }
+
+                            colour1 = col;
+                            return {el1:args1.el1, colour1:colour1}
+                        })
+                        .each(function(idx1, args1) {
+                            if (!args1 || !args1.el1 || !args1.colour1) {
+                                return
+                            }
+                            if (idx == idx1){
+                            $(args1.el1).css({
+                                'background-color'  : colour1
+
+                        });
+                        };
+                    });
+                })
+            })
+        }
+        setInterval(function() {
+            _colorify()
+        },100);
+    })
+})
+
+(
+{
+     'icolor':
+{
+     '1' : '#00CC00',
+     '2' : '#FFFF00',
+     '0' : '#FF3300',
+
+}}, 
+
+     'customField_12802'
+);
+</script>
+</div>
+
+
+    <div id="content">
+        
+<div class="ktm-application" data-is-angularjs="true">
+    <script type="text/javascript">
+    var actionLoggedInApplicationUserKey = 'JIRAUSER61700';
+    var actionLoggedInUserKey = 'JIRAUSER61700';
+    var loggedInUserKey = 'JIRAUSER61700';
+
+    window.Kanoah = window.Kanoah || {};
+    window.Kanoah.currentContext = window.Kanoah.currentContext || {};
+    window.Kanoah.currentContext.loggedInUserKey = actionLoggedInApplicationUserKey.length ? actionLoggedInApplicationUserKey : actionLoggedInUserKey.length ? actionLoggedInUserKey : loggedInUserKey;
+</script>    <script type="text/javascript">
+    var analyticsActionSettings = '{"app":"com.kanoah.test-manager","jiraVersion":"8.20.13","version":"9.23.0","environment":"production","tenant":"BXFG-8UIP-R0RV-M9TO","supportEntitlementNumber":"SEN-29500798","licenseType":"COMMERCIAL","jiraNumberOfUsers":"1000","DC":"true","enabled":false}';
+    var analyticsSettingsApp = '';
+    var analyticsSettingsJiraVersion = '';
+    var analyticsSettingsVersion = '';
+    var analyticsSettingsEnvironment = '';
+    var analyticsSettingsTenant = '';
+    var analyticsSettingsSupportEntitlementNumber = '';
+    var analyticsSettingsUser = '';
+    var analyticsSettingsEnabled = '';
+    var analyticsSettingsJiraNumberOfUsers = '';
+    var analyticsSettingsLicenseType = '';
+    var analyticsSettingsDataCenter = '';
+
+    window.Kanoah = window.Kanoah || {};
+
+    if (analyticsActionSettings) {
+        window.Kanoah.analytics = JSON.parse(analyticsActionSettings);
+    } else {
+        window.Kanoah.analytics = {
+            app: analyticsSettingsApp,
+            jiraVersion: analyticsSettingsJiraVersion,
+            version: analyticsSettingsVersion,
+            environment: analyticsSettingsEnvironment,
+            tenant: analyticsSettingsTenant,
+            supportEntitlementNumber: analyticsSettingsSupportEntitlementNumber,
+            user: analyticsSettingsUser,
+            jiraNumberOfUsers: analyticsSettingsJiraNumberOfUsers,
+            licenseType: analyticsSettingsLicenseType,
+            DC: analyticsSettingsDataCenter,
+            enabled: analyticsSettingsEnabled
+        };
+    }
+</script>    <global-loading-indicator></global-loading-indicator>
+    <message-box></message-box>
+    <div class="ktm-test-manager" ng-view=""><div id="zephyrScale-v1-testLibrary" class="ng-scope"><!-- ngView: --><div ng-view="" class="ng-scope"><!-- ngInclude: --><ng-include src="&#39;/singleViews/common/singleViewError.html&#39;" class="ng-scope"><!-- ngIf: error -->
+<global-loading-indicator class="ng-scope ng-isolate-scope"><!-- ngIf: isLoading -->
+</global-loading-indicator>
+<message-box class="ng-scope"><div id="ktm-aui-message-bar" class="ktm-message-box">
+<!-- ngRepeat: message in messages -->
+</div>
+</message-box>
+<help-and-support class="ng-scope ng-isolate-scope"></help-and-support>
+</ng-include>
+<!-- ngIf: !error --><div class="ktm-test-case-view ng-scope" cg-busy="globalLoadingHandler.loadingPromises" ng-if="!error" style="position: relative;">
+<floating-header project="project" entity="testCase" forms="[forms.testCaseForm, forms.testScriptForm]" form-action="submitForm()" show-invalid-message="showInvalidMessage()" submit-permission="true" module="testCases" create-placeholder="TESTCASE_EDITOR.CREATE.TITLE" edit-placeholder="TESTCASE_EDITOR.EDIT.TITLE" is-archived-test-case="testCase.archived" is-attachment-uploading="attachmentsUploadingCount &gt; 0" disable-save-button="saveButtonDisabled" class="ng-isolate-scope"><div angular-stalker="" angular-stalker-style="ktm-detached-header" class="ktm-floating-header">
+<header class="aui-page-header" ng-class="{&#39;ktm-full-screen-page-header&#39;: fullScreenMode}">
+<div class="aui-page-header-inner">
+<!-- ngIf: !fullScreenMode --><div class="aui-page-header-image ng-scope" ng-if="!fullScreenMode">
+<span class="aui-avatar aui-avatar-project aui-avatar-large">
+<span class="aui-avatar-inner">
+<img ng-src="https://jira.ifellow.ru/secure/projectavatar?size=large&amp;pid=10904&amp;avatarId=10324" src="./Zephyr Scale - iFellow Jira2_files/projectavatar">
+</span>
+</span>
+</div><!-- end ngIf: !fullScreenMode -->
+<div class="aui-page-header-main">
+<!-- ngIf: !fullScreenMode --><div class="ktm-breadcrumb-container ng-scope" ng-if="!fullScreenMode">
+<ol class="aui-nav aui-nav-breadcrumbs">
+<li><a href="https://jira.ifellow.ru/browse/IBPA" class="ng-binding">Автоматизация iFellow</a></li>
+<li><a href="https://jira.ifellow.ru/secure/Tests.jspa#/v2/testCases?projectId=10904" class="ng-binding">Тест кейсы</a></li>
+<!-- ngIf: entity.id --><li ng-if="entity.id" class="ng-scope"><a href="https://jira.ifellow.ru/secure/Tests.jspa#/testCase/IBPA-T1453" class="ng-binding">IBPA-T1453 (1.0)</a></li><!-- end ngIf: entity.id -->
+<!-- ngIf: shouldShowTestPlayerLink && entity.id -->
+</ol>
+<!-- ngIf: entity.archived -->
+</div><!-- end ngIf: !fullScreenMode -->
+<!-- ngIf: entity.id --><h1 class="ktm-header-title ng-binding ng-scope" ng-if="entity.id">Проверка поля "Тип расходов" table grid "Дополнительные расходы</h1><!-- end ngIf: entity.id -->
+<!-- ngIf: !entity.id -->
+<ng-transclude ng-transclude-slot="extraInfo"></ng-transclude>
+</div>
+<div class="aui-page-header-actions">
+<!-- ngIf: canGoBack -->
+<span class="ktm-tooltip-wrapper" aui-tooltip-function="attachmentUploadingHint()" aui-tooltip="" original-title="">
+<!-- ngIf: !entity.archived && !!forms --><button class="aui-button aui-button-primary ktm-save-button ng-scope" ng-click="submitForm()" title="" ng-disabled="noActionPermission || isAttachmentUploading || disableSaveButton.value" ng-if="!entity.archived &amp;&amp; !!forms" translate="" resolved="">Сохранить</button><!-- end ngIf: !entity.archived && !!forms -->
+</span>
+<!-- ngIf: enableFullScreenMode -->
+<ng-transclude ng-transclude-slot="moreActions"><action-buttons class="ng-scope">
+<versioning test-case="testCase" is-dirty="dirtyFlag" can-create-new-version="hasCreateNewVersionPermission" class="ng-isolate-scope"><span ng-class="{ &#39;aui-buttons&#39;: allowNewVersion }" class="ktm-versioning-selector aui-buttons">
+<!-- ngIf: appManifest.isTestCaseVersioningEnabled() && !isDirty && allowNewVersion -->
+<!-- ngIf: appManifest.isTestCaseVersioningEnabled() && isDirty && allowNewVersion --><a ng-disabled="true" ng-if="appManifest.isTestCaseVersioningEnabled() &amp;&amp; isDirty &amp;&amp; allowNewVersion" aui-tooltip="e" aui-tooltip-function="hint()" class="aui-button aui-button-split-main ng-scope" disabled="disabled" resolved="" original-title="">
+<span translate="" class="ng-scope">Новая версия</span>
+</a><!-- end ngIf: appManifest.isTestCaseVersioningEnabled() && isDirty && allowNewVersion -->
+<!-- ngIf: appManifest.isTestCaseVersioningEnabled() && testCase.id --><button ng-if="appManifest.isTestCaseVersioningEnabled() &amp;&amp; testCase.id" type="button" class="aui-button ktm-list-versions ng-scope ng-binding aui-dropdown2-trigger aui-button-split-more ktm-version-picker-new-ui" ng-class="{ &#39;aui-button-split-more&#39;: allowNewVersion, &#39;ktm-version-picker-new-ui&#39;: true }" aui-dropdown2-trigger-button="&#39;ktm-design-more-dropdown&#39;" translate="" resolved="" aria-controls="ktm-design-more-dropdown" aria-haspopup="true" aria-expanded="false">1.0</button><!-- end ngIf: appManifest.isTestCaseVersioningEnabled() && testCase.id -->
+<!-- ngIf: appManifest.isTestCaseVersioningEnabled() --><aui-dropdown2 ng-if="appManifest.isTestCaseVersioningEnabled()" dropdown-id="&#39;ktm-design-more-dropdown&#39;" class="ng-scope ng-isolate-scope"><div id="ktm-design-more-dropdown" class="aui-dropdown2 aui-style-default aui-layer" ng-click="$event.stopPropagation()" role="button" resolved="" tabindex="-1">
+</div>
+</aui-dropdown2><!-- end ngIf: appManifest.isTestCaseVersioningEnabled() -->
+</span></versioning>
+</action-buttons></ng-transclude>
+</div>
+</div>
+</header>
+<ng-transclude ng-transclude-slot="body"><header-content class="ng-scope">
+<aui-navigation horizontal="true" class="ng-isolate-scope"><nav class="aui-navgroup aui-navgroup-horizontal" ng-class="{&#39;aui-navgroup-horizontal&#39;: horizontal === &#39;true&#39;}">
+<div class="aui-navgroup-inner">
+<div class="aui-navgroup-primary">
+<ul class="aui-nav" ng-transclude="">
+<li ng-class="{&#39;aui-nav-selected&#39;: isActive}" style="text-align: center" on-select="currentPanel.name = &#39;DETAILS&#39;" init-selected="true" class="ng-scope ng-isolate-scope aui-nav-selected"><a href="https://jira.ifellow.ru/secure/Tests.jspa" ng-click="selectTab()" ng-transclude=""><span class="ng-binding ng-scope">Подробнее</span></a></li>
+<li ng-class="{&#39;aui-nav-selected&#39;: isActive}" style="text-align: center" on-select="currentPanel.name = &#39;SCRIPT&#39;" class="ng-scope ng-isolate-scope"><a href="https://jira.ifellow.ru/secure/Tests.jspa" ng-click="selectTab()" ng-transclude=""><span class="ng-binding ng-scope">Шаги</span></a></li>
+<li ng-class="{&#39;aui-nav-selected&#39;: isActive}" style="text-align: center" on-select="currentPanel.name = &#39;TEST_RESULTS&#39;" init-selected="" class="ng-scope ng-isolate-scope"><a href="https://jira.ifellow.ru/secure/Tests.jspa" ng-click="selectTab()" ng-transclude=""><span class="ng-binding ng-scope">Выполнение</span></a></li>
+<li ng-class="{&#39;aui-nav-selected&#39;: isActive}" style="text-align: center" on-select="currentPanel.name = &#39;TRACEABILITY&#39;" class="ng-scope ng-isolate-scope"><a href="https://jira.ifellow.ru/secure/Tests.jspa" ng-click="selectTab()" ng-transclude=""><span class="ng-binding ng-scope">Отслеживание</span></a></li>
+<li ng-class="{&#39;aui-nav-selected&#39;: isActive}" style="text-align: center" on-select="currentPanel.name = &#39;ATTACHMENTS&#39;" class="ng-scope ng-isolate-scope"><a href="https://jira.ifellow.ru/secure/Tests.jspa" ng-click="selectTab()" ng-transclude=""><span class="ng-binding ng-scope">Вложения</span></a></li>
+<li ng-class="{&#39;aui-nav-selected&#39;: isActive}" style="text-align: center" on-select="currentPanel.name = &#39;COMMENTS&#39;" class="ng-scope ng-isolate-scope"><a href="https://jira.ifellow.ru/secure/Tests.jspa" ng-click="selectTab()" ng-transclude=""><span class="ng-binding ng-scope">Комментарии</span></a></li>
+<li ng-class="{&#39;aui-nav-selected&#39;: isActive}" style="text-align: center" on-select="currentPanel.name = &#39;CHANGE_HISTORY&#39;" class="ng-scope ng-isolate-scope"><a href="https://jira.ifellow.ru/secure/Tests.jspa" ng-click="selectTab()" ng-transclude=""><span class="ng-binding ng-scope">History</span></a></li>
+</ul>
+</div>
+</div>
+</nav></aui-navigation>
+</header-content></ng-transclude>
+<!-- ngIf: ::!shouldIgnoreExtraSpace --><div class="ktm-extra-white-space ng-scope" ng-if="::!shouldIgnoreExtraSpace"></div><!-- end ngIf: ::!shouldIgnoreExtraSpace -->
+</div>
+</floating-header>
+<div class="aui-page-panel">
+<div class="aui-page-panel-inner">
+<form name="forms.testCaseForm" fix-rich-text-form-pristine="" novalidate="" class="aui ng-valid ng-valid-required ng-valid-time ng-valid-max-tags ng-valid-min-tags ng-valid-leftover-text ng-dirty">
+<!-- ngInclude: --><ng-include ng-show="currentPanel.name === &#39;DETAILS&#39; || !currentPanel.name" src="&#39;/singleViews/testCaseView/testCaseDetails/testCaseDetails.html&#39;" class="ng-scope" aria-hidden="false"><div class="ktm-test-case-details ng-scope" ng-controller="TestCaseDetailsController">
+<div class="ktm-collapsable-section ng-isolate-scope" init-expanded="true" name="Наименование" required-mark="true">
+<div class="ktm-collapsable-section-header">
+<span ng-click="toggle()" class="aui-icon aui-icon-small ktm-collapsable-section-icon ktm-expanded-icon" ng-class="expanded ? &#39;ktm-expanded-icon&#39; : &#39;ktm-collapsed-icon&#39;" role="button"></span>
+<div class="ktm-collapsable-section-title">
+<form class="aui ng-pristine ng-valid">
+<h3 class="ng-binding">
+Наименование
+<!-- ngIf: required --><span ng-if="required" class="aui-icon icon-required ng-scope">Required</span><!-- end ngIf: required -->
+<!-- ngIf: info -->
+</h3>
+<ul>
+<!-- ngRepeat: action in actions -->
+</ul>
+</form>
+</div>
+</div>
+<!-- ngIf: expanded --><div class="ktm-collapsable-section-content ng-scope" ng-if="expanded" ng-transclude="">
+<div class="ktm-input-field ng-scope">
+<input type="text" class="ktm-transparent-field ng-pristine ng-valid ng-not-empty ng-valid-required ng-touched" ng-model="testCase.name" placeholder="Нажмите сюда для ввода наименования" name="name" restrict-text-length="255" required="" aria-invalid="false">
+</div>
+</div><!-- end ngIf: expanded -->
+</div>
+<div class="ktm-collapsable-section ng-isolate-scope" init-expanded="true" name="Задача тест кейса">
+<div class="ktm-collapsable-section-header">
+<span ng-click="toggle()" class="aui-icon aui-icon-small ktm-collapsable-section-icon ktm-expanded-icon" ng-class="expanded ? &#39;ktm-expanded-icon&#39; : &#39;ktm-collapsed-icon&#39;" role="button"></span>
+<div class="ktm-collapsable-section-title">
+<form class="aui ng-pristine ng-valid">
+<h3 class="ng-binding">
+Задача тест кейса
+<!-- ngIf: required -->
+<!-- ngIf: info -->
+</h3>
+<ul>
+<!-- ngRepeat: action in actions -->
+</ul>
+</form>
+</div>
+</div>
+<!-- ngIf: expanded --><div class="ktm-collapsable-section-content ng-scope" ng-if="expanded" ng-transclude="">
+<div class="ktm-input-field ng-scope" feature-flag="v2.testCaseView.froalaEnabled" feature-flag-hide="">
+<rich-text projectid="testCase.projectId" name="objective" ng-model="testCase.objective" id="rte-objective" placeholder="Нажмите сюда для ввода задачи тест кейса" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml"></span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding" aria-hidden="false">
+Нажмите сюда для ввода задачи тест кейса
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text>
+</div>
+<!-- featureFlag: v2.testCaseView.froalaEnabled is off -->
+</div><!-- end ngIf: expanded -->
+</div>
+<div class="ktm-collapsable-section ng-isolate-scope" init-expanded="true" name="Предварительные действия до начала работы с тест кейсом">
+<div class="ktm-collapsable-section-header">
+<span ng-click="toggle()" class="aui-icon aui-icon-small ktm-collapsable-section-icon ktm-expanded-icon" ng-class="expanded ? &#39;ktm-expanded-icon&#39; : &#39;ktm-collapsed-icon&#39;" role="button"></span>
+<div class="ktm-collapsable-section-title">
+<form class="aui ng-pristine ng-valid">
+<h3 class="ng-binding">
+Предварительные действия до начала работы с тест кейсом
+<!-- ngIf: required -->
+<!-- ngIf: info -->
+</h3>
+<ul>
+<!-- ngRepeat: action in actions -->
+</ul>
+</form>
+</div>
+</div>
+<!-- ngIf: expanded --><div class="ktm-collapsable-section-content ng-scope" ng-if="expanded" ng-transclude="">
+<div class="ktm-input-field ng-scope" feature-flag="v2.testCaseView.froalaEnabled" feature-flag-hide="">
+<rich-text projectid="testCase.projectId" name="precondition" ng-model="testCase.precondition" id="rte-precondition" placeholder="Нажмите сюда для ввода предварительных действий" class="ng-untouched ng-valid ng-isolate-scope ng-not-empty ng-dirty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml"><br>Зайти в тестовую jira по ссылке https://devjira.ifellow.ru/<br>Роль КАМ (Зубарев Сергей Михайлович)<br><ul><li>Создать карточку пресейл проекта (IBPA-T1418)</li><li>Согласовать пресейл проект в "IT (IT)" (IBPA-T1426)</li><li>Создать команду инвестиционного проекта(IBPA-T1439)</li><li>Создать прогноз (IBPA-T2159)</li></ul></span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding ng-hide" aria-hidden="true">
+Нажмите сюда для ввода предварительных действий
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text>
+</div>
+<!-- featureFlag: v2.testCaseView.froalaEnabled is off -->
+</div><!-- end ngIf: expanded -->
+</div>
+<div class="ktm-collapsable-section ng-isolate-scope" init-expanded="true" name="Подробнее">
+<div class="ktm-collapsable-section-header">
+<span ng-click="toggle()" class="aui-icon aui-icon-small ktm-collapsable-section-icon ktm-expanded-icon" ng-class="expanded ? &#39;ktm-expanded-icon&#39; : &#39;ktm-collapsed-icon&#39;" role="button"></span>
+<div class="ktm-collapsable-section-title">
+<form class="aui ng-pristine ng-valid">
+<h3 class="ng-binding">
+Подробнее
+<!-- ngIf: required -->
+<!-- ngIf: info -->
+</h3>
+<ul>
+<!-- ngRepeat: action in actions -->
+</ul>
+</form>
+</div>
+</div>
+<!-- ngIf: expanded --><div class="ktm-collapsable-section-content ng-scope" ng-if="expanded" ng-transclude="">
+<div class="ktm-input-field aui-group ng-scope">
+<div class="aui-item">
+<label translate="" class="ng-scope">Статус</label>
+<select-box name="status" class="ktm-select-box-field ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty" ng-model="testCase.status" items="testCaseStatuses" translate-property="i18nKey" renderable-property="name" track-by="id" subtle="true" aria-invalid="false"><button type="button" id="select-box-1-button" ng-disabled="disabled" class="aui-button ktm-select-box-button ng-binding aui-dropdown2-trigger aui-button-subtle" ng-class="{&#39;aui-button-subtle&#39;: (subtle === &#39;true&#39;)}" aui-dropdown2-trigger-button="uniqueId" title="Утверждено" resolved="" aria-controls="select-box-1" aria-haspopup="true" aria-expanded="false">
+<!-- ngIf: !defaultItemIcon && selectedDisplayItem.item.iconClass -->
+<!-- ngIf: defaultItemIcon -->
+Утверждено
+</button>
+<aui-dropdown2 dropdown-id="uniqueId" dropdown-class="ktm-dropdown-menu" left-align="true" class="ng-isolate-scope"><div id="select-box-1" class="aui-dropdown2 aui-style-default ktm-dropdown-menu aui-layer" ng-click="$event.stopPropagation()" role="button" resolved="" tabindex="-1">
+</div>
+</aui-dropdown2>
+</select-box>
+</div>
+<div class="aui-item">
+<label translate="" class="ng-scope">Приоритет</label>
+<select-box name="priority" class="ktm-select-box-field ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty" ng-model="testCase.priority" items="testCasePriorities" translate-property="i18nKey" renderable-property="name" track-by="id" subtle="true" default-item-icon="aui-iconfont-flag" aria-invalid="false"><button type="button" id="select-box-2-button" ng-disabled="disabled" class="aui-button ktm-select-box-button ng-binding aui-dropdown2-trigger aui-button-subtle" ng-class="{&#39;aui-button-subtle&#39;: (subtle === &#39;true&#39;)}" aui-dropdown2-trigger-button="uniqueId" title="Нормальный" resolved="" aria-controls="select-box-2" aria-haspopup="true" aria-expanded="false">
+<!-- ngIf: !defaultItemIcon && selectedDisplayItem.item.iconClass -->
+<!-- ngIf: defaultItemIcon --><span ng-if="defaultItemIcon" class="aui-icon aui-icon-small ktm-select-box-item-icon aui-iconfont-flag" ng-style="{ color : selectedDisplayItem.item.color }" style="color: rgb(255, 169, 0);">
+</span><!-- end ngIf: defaultItemIcon -->
+Нормальный
+</button>
+<aui-dropdown2 dropdown-id="uniqueId" dropdown-class="ktm-dropdown-menu" left-align="true" class="ng-isolate-scope"><div id="select-box-2" class="aui-dropdown2 aui-style-default ktm-dropdown-menu aui-layer" ng-click="$event.stopPropagation()" role="button" resolved="" tabindex="-1">
+</div>
+</aui-dropdown2>
+</select-box>
+</div>
+<div class="aui-item">
+<label translate="" class="ng-scope">Компонент</label>
+<select-box name="component" class="ktm-select-box-field ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty" ng-model="testCase.component" items="projectComponents" renderable-property="name" track-by="id" empty-label="Нет" subtle="true" aria-invalid="false"><button type="button" id="select-box-3-button" ng-disabled="disabled" class="aui-button ktm-select-box-button ng-binding aui-dropdown2-trigger aui-button-subtle" ng-class="{&#39;aui-button-subtle&#39;: (subtle === &#39;true&#39;)}" aui-dropdown2-trigger-button="uniqueId" title="Нет" resolved="" aria-controls="select-box-3" aria-haspopup="true" aria-expanded="false">
+<!-- ngIf: !defaultItemIcon && selectedDisplayItem.item.iconClass -->
+<!-- ngIf: defaultItemIcon -->
+Нет
+</button>
+<aui-dropdown2 dropdown-id="uniqueId" dropdown-class="ktm-dropdown-menu" left-align="true" class="ng-isolate-scope"><div id="select-box-3" class="aui-dropdown2 aui-style-default ktm-dropdown-menu aui-layer" ng-click="$event.stopPropagation()" role="button" resolved="" tabindex="-1">
+</div>
+</aui-dropdown2>
+</select-box>
+</div>
+<div class="aui-item ktm-owner">
+<label translate="" class="ng-scope">Владелец</label>
+<user-picker only-assignable="true" name="owner" ng-model="testCase.owner" subtle="true" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty" aria-invalid="false"><!-- ngIf: !disabled && permissionToAssign --><div ng-if="!disabled &amp;&amp; permissionToAssign" class="ng-scope">
+<button type="button" class="aui-button ktm-filterbutton-button aui-dropdown2-trigger aui-button-subtle" id="ktm-uid-0-button" ng-class="{&#39;ktm-filterbutton-filled&#39;: selectedUsers.length, &#39;aui-button-subtle&#39;: subtle}" aui-dropdown2-trigger-button="uniqueId" resolved="" aria-controls="ktm-uid-0" aria-haspopup="true" aria-expanded="false">
+<span class="ng-binding">Шустова Елена Федоровна</span>
+</button>
+<aui-dropdown2 dropdown-id="uniqueId" dropdown-class="ktm-dropdown-menu" class="ng-isolate-scope"><div id="ktm-uid-0" class="aui-dropdown2 aui-style-default ktm-dropdown-menu aui-layer" ng-click="$event.stopPropagation()" role="button" resolved="" tabindex="-1">
+</div>
+</aui-dropdown2>
+</div><!-- end ngIf: !disabled && permissionToAssign -->
+<!-- ngIf: disabled || !permissionToAssign --></user-picker>
+</div>
+<div class="aui-item ktm-estimated-time-field">
+<label translate="" class="ng-scope">Расчётное время</label>
+<span class="aui-icon aui-icon-small aui-iconfont-info ktm-info-icon" aui-tooltip="" aui-tooltip-function="getEstimatedTimeTooltip()" original-title="">Info</span>
+<input name="estimatedTime" type="text" class="ktm-transparent-field ng-pristine ng-untouched ng-valid ng-valid-time ng-empty" time-formatter="" ng-model="testCase.estimatedTime" placeholder="hh:mm" aria-invalid="false">
+</div>
+</div>
+<div class="aui-item ng-scope">
+<label class="ng-binding">Папка</label>
+<select-box name="folder" class="ktm-select-box-field ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty" ng-model="testCase.folder" items="testCaseFolderOptions" renderable-property="label" track-by="id" empty-label="Нет" subtle="true" aria-invalid="false"><button type="button" id="select-box-4-button" ng-disabled="disabled" class="aui-button ktm-select-box-button ng-binding aui-dropdown2-trigger aui-button-subtle" ng-class="{&#39;aui-button-subtle&#39;: (subtle === &#39;true&#39;)}" aui-dropdown2-trigger-button="uniqueId" title="/Регресс/Проект &quot;Прогнозы и счета (FIN)&quot;/Проект ПРЕСЕЙЛ/Создание прогноза" resolved="" aria-controls="select-box-4" aria-haspopup="true" aria-expanded="false">
+<!-- ngIf: !defaultItemIcon && selectedDisplayItem.item.iconClass -->
+<!-- ngIf: defaultItemIcon -->
+/Регресс/Проект "Прогнозы и счета (FIN)"/Проект ПРЕСЕЙЛ/Создание прогноза
+</button>
+<aui-dropdown2 dropdown-id="uniqueId" dropdown-class="ktm-dropdown-menu" left-align="true" class="ng-isolate-scope"><div id="select-box-4" class="aui-dropdown2 aui-style-default ktm-dropdown-menu aui-layer" ng-click="$event.stopPropagation()" role="button" resolved="" tabindex="-1">
+</div>
+</aui-dropdown2>
+</select-box>
+</div>
+<div class="ktm-input-field ng-scope">
+<label translate="" class="ng-scope">Теги</label>
+<tags-input name="labels" class="ktm-transparent-field ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty ng-valid-max-tags ng-valid-min-tags ng-valid-leftover-text" ng-model="testCase.labels" add-on-space="true" placeholder="Нажмите сюда для добавления тегов" min-length="1" aria-invalid="false"><div class="host" tabindex="-1" ng-click="eventHandlers.host.click()" ti-transclude-append="" role="button"><div class="tags" ng-class="{focused: hasFocus}"><ul class="tag-list"><!-- ngRepeat: tag in tagList.items track by track(tag) --></ul><input class="input ng-pristine ng-untouched ng-valid ng-empty" autocomplete="off" ng-model="newTag.text" ng-model-options="{getterSetter: true}" ng-keydown="eventHandlers.input.keydown($event)" ng-focus="eventHandlers.input.focus($event)" ng-blur="eventHandlers.input.blur($event)" ng-paste="eventHandlers.input.paste($event)" ng-trim="false" ng-class="{&#39;invalid-tag&#39;: newTag.invalid}" ng-disabled="disabled" ti-bind-attrs="{type: options.type, placeholder: options.placeholder, tabindex: options.tabindex, spellcheck: options.spellcheck}" ti-autosize="" type="text" placeholder="Нажмите сюда для добавления тегов" spellcheck="true" aria-invalid="false" style="width: 253px;"><span class="input" style="visibility: hidden; width: auto; white-space: pre; display: none;">Нажмите сюда для добавления тегов</span></div>
+<auto-complete source="getCurrentProjectLabels($query)" min-length="1" class="ng-scope ng-isolate-scope"><!-- ngIf: suggestionList.visible --></auto-complete>
+</div></tags-input>
+</div>
+</div><!-- end ngIf: expanded -->
+</div>
+<!-- ngIf: customFields.length -->
+</div>
+</ng-include>
+</form>
+<form name="forms.testScriptForm" fix-rich-text-form-pristine="" novalidate="" class="aui ng-pristine ng-valid ng-valid-invalid">
+<!-- ngInclude: --><ng-include ng-show="currentPanel.name === &#39;SCRIPT&#39;" src="&#39;/singleViews/testCaseView/testCaseScript/testCaseScript.html&#39;" class="ng-scope ng-hide" aria-hidden="true"><div ng-controller="TestCaseScriptController" class="ktm-test-case-script ng-scope">
+<div class="ktm-test-script-toolbar">
+<select-box id="ktm-test-script-options-selector" ng-model="testCaseData.testScriptOptionsManager.selectedOption" items="testScriptOptionsManagerDropdownOptions" renderable-property="label" track-by="label" label="Тип" hide-search-field="true" subtle="false" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty" aria-invalid="false"><button type="button" id="select-box-0-button" ng-disabled="disabled" class="aui-button ktm-select-box-button ng-binding aui-dropdown2-trigger" ng-class="{&#39;aui-button-subtle&#39;: (subtle === &#39;true&#39;)}" aui-dropdown2-trigger-button="uniqueId" title="Тип: Шаги" resolved="" aria-controls="select-box-0" aria-haspopup="true" aria-expanded="false">
+<!-- ngIf: !defaultItemIcon && selectedDisplayItem.item.iconClass -->
+<!-- ngIf: defaultItemIcon -->
+Тип: Шаги
+</button>
+<aui-dropdown2 dropdown-id="uniqueId" dropdown-class="ktm-dropdown-menu" left-align="true" class="ng-isolate-scope"><div id="select-box-0" class="aui-dropdown2 aui-style-default ktm-dropdown-menu aui-layer" ng-click="$event.stopPropagation()" role="button" resolved="" tabindex="-1">
+</div>
+</aui-dropdown2>
+</select-box>
+<!-- ngIf: appManifest.isReflectEnabled() --><!-- featureFlag: reflect-run is off --><!-- end ngIf: appManifest.isReflectEnabled() -->
+<div class="ktm-toolbar-right">
+<!-- ngIf: appManifest.isTestScriptParametersEnabled() --><button id="ktm-test-parameters-dropdown" class="aui-button ng-scope aui-dropdown2-trigger" ng-if="appManifest.isTestScriptParametersEnabled()" type="button" ng-show="isStepByStep()" aui-dropdown2-trigger-button="&#39;ktm-parameters-dropdown&#39;" aria-hidden="false" resolved="" aria-controls="ktm-parameters-dropdown" aria-haspopup="true" aria-expanded="false">
+<span class="aui-icon aui-icon-small aui-iconfont-configure" ng-class="{&#39;aui-iconfont-configure&#39;: showNone(), &#39;ktm-icon-parameters&#39;: showParameters(), &#39;ktm-icon-test-data&#39;: showTestData()}">
+</span>
+</button><!-- end ngIf: appManifest.isTestScriptParametersEnabled() -->
+<aui-dropdown2 dropdown-id="&#39;ktm-parameters-dropdown&#39;" class="ng-isolate-scope"><div id="ktm-parameters-dropdown" class="aui-dropdown2 aui-style-default aui-layer" ng-click="$event.stopPropagation()" role="button" resolved="" tabindex="-1">
+</div>
+</aui-dropdown2>
+</div>
+</div>
+<!-- ngIf: showTestData() || showParameters() -->
+<div class="ktm-test-case-script-steps">
+<span class="ktm-title ng-binding">
+Шаги
+</span>
+<div class="ktm-toolbar-right" ng-show="isStepByStep()" aria-hidden="false">
+<button class="aui-button aui-button-compact aui-button-subtle aui-dropdown2-trigger-arrowless aui-dropdown2-trigger" type="button" aui-dropdown2-trigger-button="&#39;ktm-test-script-view-dropdown&#39;" resolved="" aria-controls="ktm-test-script-view-dropdown" aria-haspopup="true" aria-expanded="false">
+<span class="aui-icon aui-icon-small aui-iconfont-more">
+</span>
+</button>
+<aui-dropdown2 dropdown-id="&#39;ktm-test-script-view-dropdown&#39;" class="ng-isolate-scope"><div id="ktm-test-script-view-dropdown" class="aui-dropdown2 aui-style-default aui-layer" ng-click="$event.stopPropagation()" role="button" resolved="" tabindex="-1">
+</div>
+</aui-dropdown2>
+</div>
+</div>
+<!-- ngIf: isPlainText() -->
+<!-- ngIf: isBDD() -->
+<input type="hidden" name="bddScript" ng-model="testCaseData.testScriptOptionsManager.options[2].value.bddScript.text" autocomplete="off" class="ng-pristine ng-untouched ng-valid ng-valid-invalid ng-empty" aria-invalid="false">
+<!-- ngIf: isStepByStep() --><div class="ktm-input-field ktm-testscript-steps ng-scope ktm-grid-view" ng-class="{&#39;ktm-grid-view&#39;: viewOption.gridView}" ng-if="isStepByStep()">
+<div sortable="currentSteps()" ng-update="updateTestStepsIndexes()" handle=".ktm-testscript-step-handle" axis="y" class="ui-sortable">
+<button class="aui-button aui-button-primary ng-scope ng-hide" ng-hide="currentSteps().length &gt; 0" ng-click="onAddStep(0)" translate="" aria-hidden="true" resolved="">Добавить шаг</button>
+<!-- ngRepeat: step in currentSteps() | orderBy:'index' --><div class="ktm-testscript-step ng-scope ng-isolate-scope" ng-class="{&#39;ktm-testscript-step-readonly&#39;: isReadOnly}" ngf-drag-over-class="&#39;ktm-dragging-file&#39;" ngf-drop="handleUploadedFiles($files)" ngf-multiple="true" ngf-allow-dir="false" ngf-model-options="{updateOn: &#39;change click drop dropUrl&#39;}" step="step" test-case="testCase" custom-fields="stepCustomFields" first-step="isFirstStep(step)" last-step="isLastStep(step)" step-count="stepCount()" on-add-step="onAddStep(index)" on-delete-step="onDeleteStep(index)" on-add-call-to-test="onAddCallToTest(index, testCase)" show-message-on-add-call-to-test="showMessageOnAddCallToTests(validTestCases, invalidTestCases)" on-clone-step="onCloneStep(index, step)" on-move-step="onMoveStep(step, isDown)" can-delete="canDelete()" ng-repeat="step in currentSteps() | orderBy:&#39;index&#39;">
+<div class="ktm-testscript-step-handle">
+<div class="ktm-testscript-step-handle ktm-drag-handle-icon ktm-testscript-step-handle-image">
+</div>
+</div>
+<div class="ktm-testscript-step-index">
+<!-- ngIf: !firstStep -->
+<span class="ktm-index-number ng-binding" ng-class="{&#39;ktm-hundred-steps&#39;: step.index &gt;= 99}">
+1
+</span>
+<!-- ngIf: !lastStep --><span ng-if="!lastStep" ng-click="moveStep(step, true)" class="ktm-action-button ktm-move ktm-down ng-scope" aui-tooltip="" role="button" original-title="Переместить вниз">
+<span class="aui-icon ktm-icon-medium ktm-icon-angle-double-down">
+Down
+</span>
+</span><!-- end ngIf: !lastStep -->
+</div>
+<div class="ktm-testscript-step-data-and-custom-fields">
+<div class="ktm-testscript-step-action-buttons">
+<button type="button" ng-show="canDelete" class="aui-button aui-button-link ng-scope" ng-click="deleteStep()" tabindex="-1" translate="" aria-hidden="false" resolved="">Удалить</button>
+<button ng-hide="isCallToTest || isReadOnly" feature-flag="steps.attachments" type="button" class="aui-button aui-button-link ng-scope" ngf-select="handleUploadedFiles($files)" ngf-multiple="true" translate="" aria-hidden="false" resolved="">Вложить файлы</button>
+<button ng-hide="isCallToTest || isReadOnly" type="button" class="aui-button aui-button-link ng-scope" ng-click="cloneStep()" focus-next-step="step.index" tabindex="-1" translate="" aria-hidden="false" resolved="">Клонировать</button>
+<!-- ngIf: appManifest.isTestScriptCallToTestEnabled() --><button ng-if="appManifest.isTestScriptCallToTestEnabled()" type="button" ng-hide="isReadOnly" class="aui-button aui-button-link ng-scope" ng-click="addCallToTest()" tabindex="-1" translate="" aria-hidden="false" resolved="">Добавить общий шаг</button><!-- end ngIf: appManifest.isTestScriptCallToTestEnabled() -->
+<button type="button" class="aui-button aui-button-link ng-scope" ng-click="addStep()" focus-next-step="step.index" tabindex="-1" translate="" resolved="">Добавить шаг</button>
+</div>
+<!-- ngIf: ::isReadOnly -->
+<div class="ktm-testscript-step-data">
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Шаг</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.description" name="stepDescription-1" id="rte-step-description-1" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести описание" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml">Открыть проект PRK<br>В issue Links карточки проекта клик на созданный прогноз FIN</span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding ng-hide" aria-hidden="true">
+Нажмите, чтобы ввести описание
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Тестовые данные</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.testData" name="stepTestData-1" id="rte-step-test-data-1" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести данные теста" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml"></span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding" aria-hidden="false">
+Нажмите, чтобы ввести данные теста
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Ожидаемый результат</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.expectedResult" keydown-callback="createNewStepAndStopPropagation(step, $event)" name="stepExpectedResult-1" id="rte-step-expected-result-1" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести ожидаемый результат" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml">Открылся прогноз<strong> FIN</strong></span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding ng-hide" aria-hidden="true">
+Нажмите, чтобы ввести ожидаемый результат
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::isCallToTest -->
+</div>
+<!-- ngIf: ::!isCallToTest --><ul ng-if="::!isCallToTest" class="ktm-testscript-step-custom-fields ng-scope">
+<!-- ngRepeat: customField in customFields -->
+</ul><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" feature-flag="steps.attachments" class="ktm-step-attachments ng-scope">
+<!-- ngIf: step.attachments && step.attachments.length -->
+<step-attachments step="step" uploaded-files="uploadedFiles" project-id="testCase.projectId" class="ng-isolate-scope"><attachment-manager attachments="$ctrl.step.attachments" project-id="$ctrl.projectId" url="$ctrl.createAttachmentUrl" entity-id="$ctrl.step.id" entity-type="step" files="$ctrl.uploadedFiles" read-only="" class="ng-isolate-scope"><div class="ktm-attachment-manager">
+<table class="aui ktm-file-list">
+<tbody>
+<!-- ngRepeat: attachment in attachments -->
+</tbody>
+</table>
+</div>
+</attachment-manager>
+</step-attachments>
+</div><!-- end ngIf: ::!isCallToTest -->
+</div>
+<!-- ngIf: isReactModalOpen -->
+</div><!-- end ngRepeat: step in currentSteps() | orderBy:'index' --><div class="ktm-testscript-step ng-scope ng-isolate-scope" ng-class="{&#39;ktm-testscript-step-readonly&#39;: isReadOnly}" ngf-drag-over-class="&#39;ktm-dragging-file&#39;" ngf-drop="handleUploadedFiles($files)" ngf-multiple="true" ngf-allow-dir="false" ngf-model-options="{updateOn: &#39;change click drop dropUrl&#39;}" step="step" test-case="testCase" custom-fields="stepCustomFields" first-step="isFirstStep(step)" last-step="isLastStep(step)" step-count="stepCount()" on-add-step="onAddStep(index)" on-delete-step="onDeleteStep(index)" on-add-call-to-test="onAddCallToTest(index, testCase)" show-message-on-add-call-to-test="showMessageOnAddCallToTests(validTestCases, invalidTestCases)" on-clone-step="onCloneStep(index, step)" on-move-step="onMoveStep(step, isDown)" can-delete="canDelete()" ng-repeat="step in currentSteps() | orderBy:&#39;index&#39;">
+<div class="ktm-testscript-step-handle">
+<div class="ktm-testscript-step-handle ktm-drag-handle-icon ktm-testscript-step-handle-image">
+</div>
+</div>
+<div class="ktm-testscript-step-index">
+<!-- ngIf: !firstStep --><span ng-if="!firstStep" ng-click="moveStep(step, false)" class="ktm-action-button ktm-move ktm-up ng-scope" aui-tooltip="" role="button" original-title="Переместить вверх">
+<span class="aui-icon ktm-icon-medium ktm-icon-angle-double-up">
+Up
+</span>
+</span><!-- end ngIf: !firstStep -->
+<span class="ktm-index-number ng-binding" ng-class="{&#39;ktm-hundred-steps&#39;: step.index &gt;= 99}">
+2
+</span>
+<!-- ngIf: !lastStep --><span ng-if="!lastStep" ng-click="moveStep(step, true)" class="ktm-action-button ktm-move ktm-down ng-scope" aui-tooltip="" role="button" original-title="Переместить вниз">
+<span class="aui-icon ktm-icon-medium ktm-icon-angle-double-down">
+Down
+</span>
+</span><!-- end ngIf: !lastStep -->
+</div>
+<div class="ktm-testscript-step-data-and-custom-fields">
+<div class="ktm-testscript-step-action-buttons">
+<button type="button" ng-show="canDelete" class="aui-button aui-button-link ng-scope" ng-click="deleteStep()" tabindex="-1" translate="" aria-hidden="false" resolved="">Удалить</button>
+<button ng-hide="isCallToTest || isReadOnly" feature-flag="steps.attachments" type="button" class="aui-button aui-button-link ng-scope" ngf-select="handleUploadedFiles($files)" ngf-multiple="true" translate="" aria-hidden="false" resolved="">Вложить файлы</button>
+<button ng-hide="isCallToTest || isReadOnly" type="button" class="aui-button aui-button-link ng-scope" ng-click="cloneStep()" focus-next-step="step.index" tabindex="-1" translate="" aria-hidden="false" resolved="">Клонировать</button>
+<!-- ngIf: appManifest.isTestScriptCallToTestEnabled() --><button ng-if="appManifest.isTestScriptCallToTestEnabled()" type="button" ng-hide="isReadOnly" class="aui-button aui-button-link ng-scope" ng-click="addCallToTest()" tabindex="-1" translate="" aria-hidden="false" resolved="">Добавить общий шаг</button><!-- end ngIf: appManifest.isTestScriptCallToTestEnabled() -->
+<button type="button" class="aui-button aui-button-link ng-scope" ng-click="addStep()" focus-next-step="step.index" tabindex="-1" translate="" resolved="">Добавить шаг</button>
+</div>
+<!-- ngIf: ::isReadOnly -->
+<div class="ktm-testscript-step-data">
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Шаг</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.description" name="stepDescription-2" id="rte-step-description-2" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести описание" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml">Нажать&nbsp;<strong>"Дополнительные расходы"&nbsp;</strong><em>(если нет, то сначала "На согласование")</em></span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding ng-hide" aria-hidden="true">
+Нажмите, чтобы ввести описание
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Тестовые данные</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.testData" name="stepTestData-2" id="rte-step-test-data-2" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести данные теста" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml"></span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding" aria-hidden="false">
+Нажмите, чтобы ввести данные теста
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Ожидаемый результат</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.expectedResult" keydown-callback="createNewStepAndStopPropagation(step, $event)" name="stepExpectedResult-2" id="rte-step-expected-result-2" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести ожидаемый результат" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml">Открылось окно <strong>"Дополнительные расходы"</strong></span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding ng-hide" aria-hidden="true">
+Нажмите, чтобы ввести ожидаемый результат
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::isCallToTest -->
+</div>
+<!-- ngIf: ::!isCallToTest --><ul ng-if="::!isCallToTest" class="ktm-testscript-step-custom-fields ng-scope">
+<!-- ngRepeat: customField in customFields -->
+</ul><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" feature-flag="steps.attachments" class="ktm-step-attachments ng-scope">
+<!-- ngIf: step.attachments && step.attachments.length -->
+<step-attachments step="step" uploaded-files="uploadedFiles" project-id="testCase.projectId" class="ng-isolate-scope"><attachment-manager attachments="$ctrl.step.attachments" project-id="$ctrl.projectId" url="$ctrl.createAttachmentUrl" entity-id="$ctrl.step.id" entity-type="step" files="$ctrl.uploadedFiles" read-only="" class="ng-isolate-scope"><div class="ktm-attachment-manager">
+<table class="aui ktm-file-list">
+<tbody>
+<!-- ngRepeat: attachment in attachments -->
+</tbody>
+</table>
+</div>
+</attachment-manager>
+</step-attachments>
+</div><!-- end ngIf: ::!isCallToTest -->
+</div>
+<!-- ngIf: isReactModalOpen -->
+</div><!-- end ngRepeat: step in currentSteps() | orderBy:'index' --><div class="ktm-testscript-step ng-scope ng-isolate-scope" ng-class="{&#39;ktm-testscript-step-readonly&#39;: isReadOnly}" ngf-drag-over-class="&#39;ktm-dragging-file&#39;" ngf-drop="handleUploadedFiles($files)" ngf-multiple="true" ngf-allow-dir="false" ngf-model-options="{updateOn: &#39;change click drop dropUrl&#39;}" step="step" test-case="testCase" custom-fields="stepCustomFields" first-step="isFirstStep(step)" last-step="isLastStep(step)" step-count="stepCount()" on-add-step="onAddStep(index)" on-delete-step="onDeleteStep(index)" on-add-call-to-test="onAddCallToTest(index, testCase)" show-message-on-add-call-to-test="showMessageOnAddCallToTests(validTestCases, invalidTestCases)" on-clone-step="onCloneStep(index, step)" on-move-step="onMoveStep(step, isDown)" can-delete="canDelete()" ng-repeat="step in currentSteps() | orderBy:&#39;index&#39;">
+<div class="ktm-testscript-step-handle">
+<div class="ktm-testscript-step-handle ktm-drag-handle-icon ktm-testscript-step-handle-image">
+</div>
+</div>
+<div class="ktm-testscript-step-index">
+<!-- ngIf: !firstStep --><span ng-if="!firstStep" ng-click="moveStep(step, false)" class="ktm-action-button ktm-move ktm-up ng-scope" aui-tooltip="" role="button" original-title="Переместить вверх">
+<span class="aui-icon ktm-icon-medium ktm-icon-angle-double-up">
+Up
+</span>
+</span><!-- end ngIf: !firstStep -->
+<span class="ktm-index-number ng-binding" ng-class="{&#39;ktm-hundred-steps&#39;: step.index &gt;= 99}">
+3
+</span>
+<!-- ngIf: !lastStep --><span ng-if="!lastStep" ng-click="moveStep(step, true)" class="ktm-action-button ktm-move ktm-down ng-scope" aui-tooltip="" role="button" original-title="Переместить вниз">
+<span class="aui-icon ktm-icon-medium ktm-icon-angle-double-down">
+Down
+</span>
+</span><!-- end ngIf: !lastStep -->
+</div>
+<div class="ktm-testscript-step-data-and-custom-fields">
+<div class="ktm-testscript-step-action-buttons">
+<button type="button" ng-show="canDelete" class="aui-button aui-button-link ng-scope" ng-click="deleteStep()" tabindex="-1" translate="" aria-hidden="false" resolved="">Удалить</button>
+<button ng-hide="isCallToTest || isReadOnly" feature-flag="steps.attachments" type="button" class="aui-button aui-button-link ng-scope" ngf-select="handleUploadedFiles($files)" ngf-multiple="true" translate="" aria-hidden="false" resolved="">Вложить файлы</button>
+<button ng-hide="isCallToTest || isReadOnly" type="button" class="aui-button aui-button-link ng-scope" ng-click="cloneStep()" focus-next-step="step.index" tabindex="-1" translate="" aria-hidden="false" resolved="">Клонировать</button>
+<!-- ngIf: appManifest.isTestScriptCallToTestEnabled() --><button ng-if="appManifest.isTestScriptCallToTestEnabled()" type="button" ng-hide="isReadOnly" class="aui-button aui-button-link ng-scope" ng-click="addCallToTest()" tabindex="-1" translate="" aria-hidden="false" resolved="">Добавить общий шаг</button><!-- end ngIf: appManifest.isTestScriptCallToTestEnabled() -->
+<button type="button" class="aui-button aui-button-link ng-scope" ng-click="addStep()" focus-next-step="step.index" tabindex="-1" translate="" resolved="">Добавить шаг</button>
+</div>
+<!-- ngIf: ::isReadOnly -->
+<div class="ktm-testscript-step-data">
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Шаг</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.description" name="stepDescription-3" id="rte-step-description-3" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести описание" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml">Нажать на "+" в table grid <strong>"Дополнительные расходы" в нижнем левом углу</strong></span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding ng-hide" aria-hidden="true">
+Нажмите, чтобы ввести описание
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Тестовые данные</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.testData" name="stepTestData-3" id="rte-step-test-data-3" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести данные теста" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml"></span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding" aria-hidden="false">
+Нажмите, чтобы ввести данные теста
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Ожидаемый результат</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.expectedResult" keydown-callback="createNewStepAndStopPropagation(step, $event)" name="stepExpectedResult-3" id="rte-step-expected-result-3" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести ожидаемый результат" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml">открылось <strong>окно "Add record"</strong></span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding ng-hide" aria-hidden="true">
+Нажмите, чтобы ввести ожидаемый результат
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::isCallToTest -->
+</div>
+<!-- ngIf: ::!isCallToTest --><ul ng-if="::!isCallToTest" class="ktm-testscript-step-custom-fields ng-scope">
+<!-- ngRepeat: customField in customFields -->
+</ul><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" feature-flag="steps.attachments" class="ktm-step-attachments ng-scope">
+<!-- ngIf: step.attachments && step.attachments.length -->
+<step-attachments step="step" uploaded-files="uploadedFiles" project-id="testCase.projectId" class="ng-isolate-scope"><attachment-manager attachments="$ctrl.step.attachments" project-id="$ctrl.projectId" url="$ctrl.createAttachmentUrl" entity-id="$ctrl.step.id" entity-type="step" files="$ctrl.uploadedFiles" read-only="" class="ng-isolate-scope"><div class="ktm-attachment-manager">
+<table class="aui ktm-file-list">
+<tbody>
+<!-- ngRepeat: attachment in attachments -->
+</tbody>
+</table>
+</div>
+</attachment-manager>
+</step-attachments>
+</div><!-- end ngIf: ::!isCallToTest -->
+</div>
+<!-- ngIf: isReactModalOpen -->
+</div><!-- end ngRepeat: step in currentSteps() | orderBy:'index' --><div class="ktm-testscript-step ng-scope ng-isolate-scope" ng-class="{&#39;ktm-testscript-step-readonly&#39;: isReadOnly}" ngf-drag-over-class="&#39;ktm-dragging-file&#39;" ngf-drop="handleUploadedFiles($files)" ngf-multiple="true" ngf-allow-dir="false" ngf-model-options="{updateOn: &#39;change click drop dropUrl&#39;}" step="step" test-case="testCase" custom-fields="stepCustomFields" first-step="isFirstStep(step)" last-step="isLastStep(step)" step-count="stepCount()" on-add-step="onAddStep(index)" on-delete-step="onDeleteStep(index)" on-add-call-to-test="onAddCallToTest(index, testCase)" show-message-on-add-call-to-test="showMessageOnAddCallToTests(validTestCases, invalidTestCases)" on-clone-step="onCloneStep(index, step)" on-move-step="onMoveStep(step, isDown)" can-delete="canDelete()" ng-repeat="step in currentSteps() | orderBy:&#39;index&#39;">
+<div class="ktm-testscript-step-handle">
+<div class="ktm-testscript-step-handle ktm-drag-handle-icon ktm-testscript-step-handle-image">
+</div>
+</div>
+<div class="ktm-testscript-step-index">
+<!-- ngIf: !firstStep --><span ng-if="!firstStep" ng-click="moveStep(step, false)" class="ktm-action-button ktm-move ktm-up ng-scope" aui-tooltip="" role="button" original-title="Переместить вверх">
+<span class="aui-icon ktm-icon-medium ktm-icon-angle-double-up">
+Up
+</span>
+</span><!-- end ngIf: !firstStep -->
+<span class="ktm-index-number ng-binding" ng-class="{&#39;ktm-hundred-steps&#39;: step.index &gt;= 99}">
+4
+</span>
+<!-- ngIf: !lastStep --><span ng-if="!lastStep" ng-click="moveStep(step, true)" class="ktm-action-button ktm-move ktm-down ng-scope" aui-tooltip="" role="button" original-title="Переместить вниз">
+<span class="aui-icon ktm-icon-medium ktm-icon-angle-double-down">
+Down
+</span>
+</span><!-- end ngIf: !lastStep -->
+</div>
+<div class="ktm-testscript-step-data-and-custom-fields">
+<div class="ktm-testscript-step-action-buttons">
+<button type="button" ng-show="canDelete" class="aui-button aui-button-link ng-scope" ng-click="deleteStep()" tabindex="-1" translate="" aria-hidden="false" resolved="">Удалить</button>
+<button ng-hide="isCallToTest || isReadOnly" feature-flag="steps.attachments" type="button" class="aui-button aui-button-link ng-scope" ngf-select="handleUploadedFiles($files)" ngf-multiple="true" translate="" aria-hidden="false" resolved="">Вложить файлы</button>
+<button ng-hide="isCallToTest || isReadOnly" type="button" class="aui-button aui-button-link ng-scope" ng-click="cloneStep()" focus-next-step="step.index" tabindex="-1" translate="" aria-hidden="false" resolved="">Клонировать</button>
+<!-- ngIf: appManifest.isTestScriptCallToTestEnabled() --><button ng-if="appManifest.isTestScriptCallToTestEnabled()" type="button" ng-hide="isReadOnly" class="aui-button aui-button-link ng-scope" ng-click="addCallToTest()" tabindex="-1" translate="" aria-hidden="false" resolved="">Добавить общий шаг</button><!-- end ngIf: appManifest.isTestScriptCallToTestEnabled() -->
+<button type="button" class="aui-button aui-button-link ng-scope" ng-click="addStep()" focus-next-step="step.index" tabindex="-1" translate="" resolved="">Добавить шаг</button>
+</div>
+<!-- ngIf: ::isReadOnly -->
+<div class="ktm-testscript-step-data">
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Шаг</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.description" name="stepDescription-4" id="rte-step-description-4" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести описание" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml">Заполнить поля, кроме <strong>"Тип расходов"</strong></span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding ng-hide" aria-hidden="true">
+Нажмите, чтобы ввести описание
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Тестовые данные</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.testData" name="stepTestData-4" id="rte-step-test-data-4" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести данные теста" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml">ФИО: выбрать сотрудника из команды проекта<br>Тип расходов:<br>Сумма: 7500<br>Дата расхода: дата принадлежит периоду Прогноза<br>Способ оплаты: Оплачено заказчиком<br>Комментарий: рmр6еп/ч</span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding ng-hide" aria-hidden="true">
+Нажмите, чтобы ввести данные теста
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Ожидаемый результат</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.expectedResult" keydown-callback="createNewStepAndStopPropagation(step, $event)" name="stepExpectedResult-4" id="rte-step-expected-result-4" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести ожидаемый результат" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml">Поле заполнено</span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding ng-hide" aria-hidden="true">
+Нажмите, чтобы ввести ожидаемый результат
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::isCallToTest -->
+</div>
+<!-- ngIf: ::!isCallToTest --><ul ng-if="::!isCallToTest" class="ktm-testscript-step-custom-fields ng-scope">
+<!-- ngRepeat: customField in customFields -->
+</ul><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" feature-flag="steps.attachments" class="ktm-step-attachments ng-scope">
+<!-- ngIf: step.attachments && step.attachments.length -->
+<step-attachments step="step" uploaded-files="uploadedFiles" project-id="testCase.projectId" class="ng-isolate-scope"><attachment-manager attachments="$ctrl.step.attachments" project-id="$ctrl.projectId" url="$ctrl.createAttachmentUrl" entity-id="$ctrl.step.id" entity-type="step" files="$ctrl.uploadedFiles" read-only="" class="ng-isolate-scope"><div class="ktm-attachment-manager">
+<table class="aui ktm-file-list">
+<tbody>
+<!-- ngRepeat: attachment in attachments -->
+</tbody>
+</table>
+</div>
+</attachment-manager>
+</step-attachments>
+</div><!-- end ngIf: ::!isCallToTest -->
+</div>
+<!-- ngIf: isReactModalOpen -->
+</div><!-- end ngRepeat: step in currentSteps() | orderBy:'index' --><div class="ktm-testscript-step ng-scope ng-isolate-scope" ng-class="{&#39;ktm-testscript-step-readonly&#39;: isReadOnly}" ngf-drag-over-class="&#39;ktm-dragging-file&#39;" ngf-drop="handleUploadedFiles($files)" ngf-multiple="true" ngf-allow-dir="false" ngf-model-options="{updateOn: &#39;change click drop dropUrl&#39;}" step="step" test-case="testCase" custom-fields="stepCustomFields" first-step="isFirstStep(step)" last-step="isLastStep(step)" step-count="stepCount()" on-add-step="onAddStep(index)" on-delete-step="onDeleteStep(index)" on-add-call-to-test="onAddCallToTest(index, testCase)" show-message-on-add-call-to-test="showMessageOnAddCallToTests(validTestCases, invalidTestCases)" on-clone-step="onCloneStep(index, step)" on-move-step="onMoveStep(step, isDown)" can-delete="canDelete()" ng-repeat="step in currentSteps() | orderBy:&#39;index&#39;">
+<div class="ktm-testscript-step-handle">
+<div class="ktm-testscript-step-handle ktm-drag-handle-icon ktm-testscript-step-handle-image">
+</div>
+</div>
+<div class="ktm-testscript-step-index">
+<!-- ngIf: !firstStep --><span ng-if="!firstStep" ng-click="moveStep(step, false)" class="ktm-action-button ktm-move ktm-up ng-scope" aui-tooltip="" role="button" original-title="Переместить вверх">
+<span class="aui-icon ktm-icon-medium ktm-icon-angle-double-up">
+Up
+</span>
+</span><!-- end ngIf: !firstStep -->
+<span class="ktm-index-number ng-binding" ng-class="{&#39;ktm-hundred-steps&#39;: step.index &gt;= 99}">
+5
+</span>
+<!-- ngIf: !lastStep --><span ng-if="!lastStep" ng-click="moveStep(step, true)" class="ktm-action-button ktm-move ktm-down ng-scope" aui-tooltip="" role="button" original-title="Переместить вниз">
+<span class="aui-icon ktm-icon-medium ktm-icon-angle-double-down">
+Down
+</span>
+</span><!-- end ngIf: !lastStep -->
+</div>
+<div class="ktm-testscript-step-data-and-custom-fields">
+<div class="ktm-testscript-step-action-buttons">
+<button type="button" ng-show="canDelete" class="aui-button aui-button-link ng-scope" ng-click="deleteStep()" tabindex="-1" translate="" aria-hidden="false" resolved="">Удалить</button>
+<button ng-hide="isCallToTest || isReadOnly" feature-flag="steps.attachments" type="button" class="aui-button aui-button-link ng-scope" ngf-select="handleUploadedFiles($files)" ngf-multiple="true" translate="" aria-hidden="false" resolved="">Вложить файлы</button>
+<button ng-hide="isCallToTest || isReadOnly" type="button" class="aui-button aui-button-link ng-scope" ng-click="cloneStep()" focus-next-step="step.index" tabindex="-1" translate="" aria-hidden="false" resolved="">Клонировать</button>
+<!-- ngIf: appManifest.isTestScriptCallToTestEnabled() --><button ng-if="appManifest.isTestScriptCallToTestEnabled()" type="button" ng-hide="isReadOnly" class="aui-button aui-button-link ng-scope" ng-click="addCallToTest()" tabindex="-1" translate="" aria-hidden="false" resolved="">Добавить общий шаг</button><!-- end ngIf: appManifest.isTestScriptCallToTestEnabled() -->
+<button type="button" class="aui-button aui-button-link ng-scope" ng-click="addStep()" focus-next-step="step.index" tabindex="-1" translate="" resolved="">Добавить шаг</button>
+</div>
+<!-- ngIf: ::isReadOnly -->
+<div class="ktm-testscript-step-data">
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Шаг</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.description" name="stepDescription-5" id="rte-step-description-5" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести описание" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml">Нажать<strong> "Add row"</strong></span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding ng-hide" aria-hidden="true">
+Нажмите, чтобы ввести описание
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Тестовые данные</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.testData" name="stepTestData-5" id="rte-step-test-data-5" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести данные теста" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml"></span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding" aria-hidden="false">
+Нажмите, чтобы ввести данные теста
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Ожидаемый результат</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.expectedResult" keydown-callback="createNewStepAndStopPropagation(step, $event)" name="stepExpectedResult-5" id="rte-step-expected-result-5" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести ожидаемый результат" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml">Строка не добавлена в table grid <strong>"Дополнительные расходы"</strong><br>Сообщение: "Тип расходов: Field is required"</span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding ng-hide" aria-hidden="true">
+Нажмите, чтобы ввести ожидаемый результат
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::isCallToTest -->
+</div>
+<!-- ngIf: ::!isCallToTest --><ul ng-if="::!isCallToTest" class="ktm-testscript-step-custom-fields ng-scope">
+<!-- ngRepeat: customField in customFields -->
+</ul><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" feature-flag="steps.attachments" class="ktm-step-attachments ng-scope">
+<!-- ngIf: step.attachments && step.attachments.length -->
+<step-attachments step="step" uploaded-files="uploadedFiles" project-id="testCase.projectId" class="ng-isolate-scope"><attachment-manager attachments="$ctrl.step.attachments" project-id="$ctrl.projectId" url="$ctrl.createAttachmentUrl" entity-id="$ctrl.step.id" entity-type="step" files="$ctrl.uploadedFiles" read-only="" class="ng-isolate-scope"><div class="ktm-attachment-manager">
+<table class="aui ktm-file-list">
+<tbody>
+<!-- ngRepeat: attachment in attachments -->
+</tbody>
+</table>
+</div>
+</attachment-manager>
+</step-attachments>
+</div><!-- end ngIf: ::!isCallToTest -->
+</div>
+<!-- ngIf: isReactModalOpen -->
+</div><!-- end ngRepeat: step in currentSteps() | orderBy:'index' --><div class="ktm-testscript-step ng-scope ng-isolate-scope" ng-class="{&#39;ktm-testscript-step-readonly&#39;: isReadOnly}" ngf-drag-over-class="&#39;ktm-dragging-file&#39;" ngf-drop="handleUploadedFiles($files)" ngf-multiple="true" ngf-allow-dir="false" ngf-model-options="{updateOn: &#39;change click drop dropUrl&#39;}" step="step" test-case="testCase" custom-fields="stepCustomFields" first-step="isFirstStep(step)" last-step="isLastStep(step)" step-count="stepCount()" on-add-step="onAddStep(index)" on-delete-step="onDeleteStep(index)" on-add-call-to-test="onAddCallToTest(index, testCase)" show-message-on-add-call-to-test="showMessageOnAddCallToTests(validTestCases, invalidTestCases)" on-clone-step="onCloneStep(index, step)" on-move-step="onMoveStep(step, isDown)" can-delete="canDelete()" ng-repeat="step in currentSteps() | orderBy:&#39;index&#39;">
+<div class="ktm-testscript-step-handle">
+<div class="ktm-testscript-step-handle ktm-drag-handle-icon ktm-testscript-step-handle-image">
+</div>
+</div>
+<div class="ktm-testscript-step-index">
+<!-- ngIf: !firstStep --><span ng-if="!firstStep" ng-click="moveStep(step, false)" class="ktm-action-button ktm-move ktm-up ng-scope" aui-tooltip="" role="button" original-title="Переместить вверх">
+<span class="aui-icon ktm-icon-medium ktm-icon-angle-double-up">
+Up
+</span>
+</span><!-- end ngIf: !firstStep -->
+<span class="ktm-index-number ng-binding" ng-class="{&#39;ktm-hundred-steps&#39;: step.index &gt;= 99}">
+6
+</span>
+<!-- ngIf: !lastStep --><span ng-if="!lastStep" ng-click="moveStep(step, true)" class="ktm-action-button ktm-move ktm-down ng-scope" aui-tooltip="" role="button" original-title="Переместить вниз">
+<span class="aui-icon ktm-icon-medium ktm-icon-angle-double-down">
+Down
+</span>
+</span><!-- end ngIf: !lastStep -->
+</div>
+<div class="ktm-testscript-step-data-and-custom-fields">
+<div class="ktm-testscript-step-action-buttons">
+<button type="button" ng-show="canDelete" class="aui-button aui-button-link ng-scope" ng-click="deleteStep()" tabindex="-1" translate="" aria-hidden="false" resolved="">Удалить</button>
+<button ng-hide="isCallToTest || isReadOnly" feature-flag="steps.attachments" type="button" class="aui-button aui-button-link ng-scope" ngf-select="handleUploadedFiles($files)" ngf-multiple="true" translate="" aria-hidden="false" resolved="">Вложить файлы</button>
+<button ng-hide="isCallToTest || isReadOnly" type="button" class="aui-button aui-button-link ng-scope" ng-click="cloneStep()" focus-next-step="step.index" tabindex="-1" translate="" aria-hidden="false" resolved="">Клонировать</button>
+<!-- ngIf: appManifest.isTestScriptCallToTestEnabled() --><button ng-if="appManifest.isTestScriptCallToTestEnabled()" type="button" ng-hide="isReadOnly" class="aui-button aui-button-link ng-scope" ng-click="addCallToTest()" tabindex="-1" translate="" aria-hidden="false" resolved="">Добавить общий шаг</button><!-- end ngIf: appManifest.isTestScriptCallToTestEnabled() -->
+<button type="button" class="aui-button aui-button-link ng-scope" ng-click="addStep()" focus-next-step="step.index" tabindex="-1" translate="" resolved="">Добавить шаг</button>
+</div>
+<!-- ngIf: ::isReadOnly -->
+<div class="ktm-testscript-step-data">
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Шаг</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.description" name="stepDescription-6" id="rte-step-description-6" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести описание" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml">В поле <strong>"Тип расходов"</strong> ввести любые буквы, числа, символы</span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding ng-hide" aria-hidden="true">
+Нажмите, чтобы ввести описание
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Тестовые данные</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.testData" name="stepTestData-6" id="rte-step-test-data-6" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести данные теста" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml"></span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding" aria-hidden="false">
+Нажмите, чтобы ввести данные теста
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Ожидаемый результат</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.expectedResult" keydown-callback="createNewStepAndStopPropagation(step, $event)" name="stepExpectedResult-6" id="rte-step-expected-result-6" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести ожидаемый результат" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml">Поле не заполняется. возможен выбор только из списка</span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding ng-hide" aria-hidden="true">
+Нажмите, чтобы ввести ожидаемый результат
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::isCallToTest -->
+</div>
+<!-- ngIf: ::!isCallToTest --><ul ng-if="::!isCallToTest" class="ktm-testscript-step-custom-fields ng-scope">
+<!-- ngRepeat: customField in customFields -->
+</ul><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" feature-flag="steps.attachments" class="ktm-step-attachments ng-scope">
+<!-- ngIf: step.attachments && step.attachments.length -->
+<step-attachments step="step" uploaded-files="uploadedFiles" project-id="testCase.projectId" class="ng-isolate-scope"><attachment-manager attachments="$ctrl.step.attachments" project-id="$ctrl.projectId" url="$ctrl.createAttachmentUrl" entity-id="$ctrl.step.id" entity-type="step" files="$ctrl.uploadedFiles" read-only="" class="ng-isolate-scope"><div class="ktm-attachment-manager">
+<table class="aui ktm-file-list">
+<tbody>
+<!-- ngRepeat: attachment in attachments -->
+</tbody>
+</table>
+</div>
+</attachment-manager>
+</step-attachments>
+</div><!-- end ngIf: ::!isCallToTest -->
+</div>
+<!-- ngIf: isReactModalOpen -->
+</div><!-- end ngRepeat: step in currentSteps() | orderBy:'index' --><div class="ktm-testscript-step ng-scope ng-isolate-scope" ng-class="{&#39;ktm-testscript-step-readonly&#39;: isReadOnly}" ngf-drag-over-class="&#39;ktm-dragging-file&#39;" ngf-drop="handleUploadedFiles($files)" ngf-multiple="true" ngf-allow-dir="false" ngf-model-options="{updateOn: &#39;change click drop dropUrl&#39;}" step="step" test-case="testCase" custom-fields="stepCustomFields" first-step="isFirstStep(step)" last-step="isLastStep(step)" step-count="stepCount()" on-add-step="onAddStep(index)" on-delete-step="onDeleteStep(index)" on-add-call-to-test="onAddCallToTest(index, testCase)" show-message-on-add-call-to-test="showMessageOnAddCallToTests(validTestCases, invalidTestCases)" on-clone-step="onCloneStep(index, step)" on-move-step="onMoveStep(step, isDown)" can-delete="canDelete()" ng-repeat="step in currentSteps() | orderBy:&#39;index&#39;">
+<div class="ktm-testscript-step-handle">
+<div class="ktm-testscript-step-handle ktm-drag-handle-icon ktm-testscript-step-handle-image">
+</div>
+</div>
+<div class="ktm-testscript-step-index">
+<!-- ngIf: !firstStep --><span ng-if="!firstStep" ng-click="moveStep(step, false)" class="ktm-action-button ktm-move ktm-up ng-scope" aui-tooltip="" role="button" original-title="Переместить вверх">
+<span class="aui-icon ktm-icon-medium ktm-icon-angle-double-up">
+Up
+</span>
+</span><!-- end ngIf: !firstStep -->
+<span class="ktm-index-number ng-binding" ng-class="{&#39;ktm-hundred-steps&#39;: step.index &gt;= 99}">
+7
+</span>
+<!-- ngIf: !lastStep --><span ng-if="!lastStep" ng-click="moveStep(step, true)" class="ktm-action-button ktm-move ktm-down ng-scope" aui-tooltip="" role="button" original-title="Переместить вниз">
+<span class="aui-icon ktm-icon-medium ktm-icon-angle-double-down">
+Down
+</span>
+</span><!-- end ngIf: !lastStep -->
+</div>
+<div class="ktm-testscript-step-data-and-custom-fields">
+<div class="ktm-testscript-step-action-buttons">
+<button type="button" ng-show="canDelete" class="aui-button aui-button-link ng-scope" ng-click="deleteStep()" tabindex="-1" translate="" aria-hidden="false" resolved="">Удалить</button>
+<button ng-hide="isCallToTest || isReadOnly" feature-flag="steps.attachments" type="button" class="aui-button aui-button-link ng-scope" ngf-select="handleUploadedFiles($files)" ngf-multiple="true" translate="" aria-hidden="false" resolved="">Вложить файлы</button>
+<button ng-hide="isCallToTest || isReadOnly" type="button" class="aui-button aui-button-link ng-scope" ng-click="cloneStep()" focus-next-step="step.index" tabindex="-1" translate="" aria-hidden="false" resolved="">Клонировать</button>
+<!-- ngIf: appManifest.isTestScriptCallToTestEnabled() --><button ng-if="appManifest.isTestScriptCallToTestEnabled()" type="button" ng-hide="isReadOnly" class="aui-button aui-button-link ng-scope" ng-click="addCallToTest()" tabindex="-1" translate="" aria-hidden="false" resolved="">Добавить общий шаг</button><!-- end ngIf: appManifest.isTestScriptCallToTestEnabled() -->
+<button type="button" class="aui-button aui-button-link ng-scope" ng-click="addStep()" focus-next-step="step.index" tabindex="-1" translate="" resolved="">Добавить шаг</button>
+</div>
+<!-- ngIf: ::isReadOnly -->
+<div class="ktm-testscript-step-data">
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Шаг</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.description" name="stepDescription-7" id="rte-step-description-7" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести описание" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml">В поле <strong>"Тип расходов"</strong> выбрать любое значение из списка</span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding ng-hide" aria-hidden="true">
+Нажмите, чтобы ввести описание
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Тестовые данные</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.testData" name="stepTestData-7" id="rte-step-test-data-7" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести данные теста" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml"></span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding" aria-hidden="false">
+Нажмите, чтобы ввести данные теста
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Ожидаемый результат</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.expectedResult" keydown-callback="createNewStepAndStopPropagation(step, $event)" name="stepExpectedResult-7" id="rte-step-expected-result-7" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести ожидаемый результат" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml">Поле заполнено</span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding ng-hide" aria-hidden="true">
+Нажмите, чтобы ввести ожидаемый результат
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::isCallToTest -->
+</div>
+<!-- ngIf: ::!isCallToTest --><ul ng-if="::!isCallToTest" class="ktm-testscript-step-custom-fields ng-scope">
+<!-- ngRepeat: customField in customFields -->
+</ul><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" feature-flag="steps.attachments" class="ktm-step-attachments ng-scope">
+<!-- ngIf: step.attachments && step.attachments.length -->
+<step-attachments step="step" uploaded-files="uploadedFiles" project-id="testCase.projectId" class="ng-isolate-scope"><attachment-manager attachments="$ctrl.step.attachments" project-id="$ctrl.projectId" url="$ctrl.createAttachmentUrl" entity-id="$ctrl.step.id" entity-type="step" files="$ctrl.uploadedFiles" read-only="" class="ng-isolate-scope"><div class="ktm-attachment-manager">
+<table class="aui ktm-file-list">
+<tbody>
+<!-- ngRepeat: attachment in attachments -->
+</tbody>
+</table>
+</div>
+</attachment-manager>
+</step-attachments>
+</div><!-- end ngIf: ::!isCallToTest -->
+</div>
+<!-- ngIf: isReactModalOpen -->
+</div><!-- end ngRepeat: step in currentSteps() | orderBy:'index' --><div class="ktm-testscript-step ng-scope ng-isolate-scope" ng-class="{&#39;ktm-testscript-step-readonly&#39;: isReadOnly}" ngf-drag-over-class="&#39;ktm-dragging-file&#39;" ngf-drop="handleUploadedFiles($files)" ngf-multiple="true" ngf-allow-dir="false" ngf-model-options="{updateOn: &#39;change click drop dropUrl&#39;}" step="step" test-case="testCase" custom-fields="stepCustomFields" first-step="isFirstStep(step)" last-step="isLastStep(step)" step-count="stepCount()" on-add-step="onAddStep(index)" on-delete-step="onDeleteStep(index)" on-add-call-to-test="onAddCallToTest(index, testCase)" show-message-on-add-call-to-test="showMessageOnAddCallToTests(validTestCases, invalidTestCases)" on-clone-step="onCloneStep(index, step)" on-move-step="onMoveStep(step, isDown)" can-delete="canDelete()" ng-repeat="step in currentSteps() | orderBy:&#39;index&#39;">
+<div class="ktm-testscript-step-handle">
+<div class="ktm-testscript-step-handle ktm-drag-handle-icon ktm-testscript-step-handle-image">
+</div>
+</div>
+<div class="ktm-testscript-step-index">
+<!-- ngIf: !firstStep --><span ng-if="!firstStep" ng-click="moveStep(step, false)" class="ktm-action-button ktm-move ktm-up ng-scope" aui-tooltip="" role="button" original-title="Переместить вверх">
+<span class="aui-icon ktm-icon-medium ktm-icon-angle-double-up">
+Up
+</span>
+</span><!-- end ngIf: !firstStep -->
+<span class="ktm-index-number ng-binding" ng-class="{&#39;ktm-hundred-steps&#39;: step.index &gt;= 99}">
+8
+</span>
+<!-- ngIf: !lastStep -->
+</div>
+<div class="ktm-testscript-step-data-and-custom-fields">
+<div class="ktm-testscript-step-action-buttons">
+<button type="button" ng-show="canDelete" class="aui-button aui-button-link ng-scope" ng-click="deleteStep()" tabindex="-1" translate="" aria-hidden="false" resolved="">Удалить</button>
+<button ng-hide="isCallToTest || isReadOnly" feature-flag="steps.attachments" type="button" class="aui-button aui-button-link ng-scope" ngf-select="handleUploadedFiles($files)" ngf-multiple="true" translate="" aria-hidden="false" resolved="">Вложить файлы</button>
+<button ng-hide="isCallToTest || isReadOnly" type="button" class="aui-button aui-button-link ng-scope" ng-click="cloneStep()" focus-next-step="step.index" tabindex="-1" translate="" aria-hidden="false" resolved="">Клонировать</button>
+<!-- ngIf: appManifest.isTestScriptCallToTestEnabled() --><button ng-if="appManifest.isTestScriptCallToTestEnabled()" type="button" ng-hide="isReadOnly" class="aui-button aui-button-link ng-scope" ng-click="addCallToTest()" tabindex="-1" translate="" aria-hidden="false" resolved="">Добавить общий шаг</button><!-- end ngIf: appManifest.isTestScriptCallToTestEnabled() -->
+<button type="button" class="aui-button aui-button-link ng-scope" ng-click="addStep()" focus-next-step="step.index" tabindex="-1" translate="" resolved="">Добавить шаг</button>
+</div>
+<!-- ngIf: ::isReadOnly -->
+<div class="ktm-testscript-step-data">
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Шаг</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.description" name="stepDescription-8" id="rte-step-description-8" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести описание" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml">Нажать<strong> "Add row"</strong></span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding ng-hide" aria-hidden="true">
+Нажмите, чтобы ввести описание
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Тестовые данные</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.testData" name="stepTestData-8" id="rte-step-test-data-8" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести данные теста" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml"></span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding" aria-hidden="false">
+Нажмите, чтобы ввести данные теста
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" class="ktm-column-data ng-scope">
+<span class="ktm-testscript-step-label ng-scope" translate="">Ожидаемый результат</span>
+<!-- ngIf: !isReadOnly --><rich-text projectid="testCase.projectId" auto-complete-list="autoCompleteList" auto-complete-trigger="{" auto-complete-insert-tpl="{${name}}" ng-model="step.expectedResult" keydown-callback="createNewStepAndStopPropagation(step, $event)" name="stepExpectedResult-8" id="rte-step-expected-result-8" ng-if="!isReadOnly" placeholder="Нажмите, чтобы ввести ожидаемый результат" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty" aria-invalid="false"><div class="ktm-richtext">
+<!-- ngIf: !!onFocusLost -->
+<!-- ngIf: !active --><div contenteditable="true" data-richtext-focusable="true" ng-focus="setActive(true)" ng-if="!active" class="ktm-editor-html-viewer ktm-richtext-view-borderless ng-scope" ng-class="{&#39;ktm-grayed-text&#39;: loading}">
+<span read-only-rich-text="htmlContent" class="ng-isolate-scope"><span class="ktm-richtext fr-view ng-binding" ng-bind-html="::trustedHtml">В таблицу <strong>"Дополнительные расходы"</strong> добавлена новая запись</span></span>
+<span ng-show="activePlaceholder" class="ktm-richtext-placeholder ng-binding ng-hide" aria-hidden="true">
+Нажмите, чтобы ввести ожидаемый результат
+</span>
+</div><!-- end ngIf: !active -->
+<!-- ngIf: active -->
+</div>
+<!-- ngIf: withButtons -->
+</rich-text><!-- end ngIf: !isReadOnly -->
+<!-- ngIf: ::isReadOnly -->
+</div><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::isCallToTest -->
+</div>
+<!-- ngIf: ::!isCallToTest --><ul ng-if="::!isCallToTest" class="ktm-testscript-step-custom-fields ng-scope">
+<!-- ngRepeat: customField in customFields -->
+</ul><!-- end ngIf: ::!isCallToTest -->
+<!-- ngIf: ::!isCallToTest --><div ng-if="::!isCallToTest" feature-flag="steps.attachments" class="ktm-step-attachments ng-scope">
+<!-- ngIf: step.attachments && step.attachments.length -->
+<step-attachments step="step" uploaded-files="uploadedFiles" project-id="testCase.projectId" class="ng-isolate-scope"><attachment-manager attachments="$ctrl.step.attachments" project-id="$ctrl.projectId" url="$ctrl.createAttachmentUrl" entity-id="$ctrl.step.id" entity-type="step" files="$ctrl.uploadedFiles" read-only="" class="ng-isolate-scope"><div class="ktm-attachment-manager">
+<table class="aui ktm-file-list">
+<tbody>
+<!-- ngRepeat: attachment in attachments -->
+</tbody>
+</table>
+</div>
+</attachment-manager>
+</step-attachments>
+</div><!-- end ngIf: ::!isCallToTest -->
+</div>
+<!-- ngIf: isReactModalOpen -->
+</div><!-- end ngRepeat: step in currentSteps() | orderBy:'index' -->
+</div>
+<!-- ngIf: currentSteps().length !== 0 --><span class="ktm-hint ng-binding ng-scope" ng-if="currentSteps().length !== 0">
+Подсказка: При редактировании последнего шага, нажмите
+<b class="ng-binding">клавишу tab</b>
+для добавления еще одного шага
+</span><!-- end ngIf: currentSteps().length !== 0 -->
+</div><!-- end ngIf: isStepByStep() -->
+</div>
+</ng-include>
+</form>
+<!-- ngIf: currentPanel.name === 'TEST_RESULTS' || testCaseData.testResults -->
+<div ng-show="currentPanel.name === &#39;TRACEABILITY&#39;" aria-hidden="true" class="ng-hide">
+<test-case-traceability-tab test-case="testCase" save-pendings="testCase.id !== undefined" is-active="currentPanel.name === &#39;TRACEABILITY&#39;" initial-issue-keys="initialIssueKeys" class="ng-isolate-scope"><issue-panel permission="EDIT_TEST_CASE" is-active="$ctrl.isActive" test-case="$ctrl.testCase" project-id="$ctrl.testCase.projectId" save-pendings="$ctrl.savePendings" initial-issue-keys="$ctrl.initialIssueKeys" class="ng-isolate-scope"><div class="ktm-traceability-issue-panel ktm-collapsable-section ng-isolate-scope" cg-busy="$ctrl.loadingHandler.loadingPromises" init-expanded="true" info-icon="false" name="Задачи" style="position: relative;">
+<div class="ktm-collapsable-section-header">
+<span ng-click="toggle()" class="aui-icon aui-icon-small ktm-collapsable-section-icon ktm-expanded-icon" ng-class="expanded ? &#39;ktm-expanded-icon&#39; : &#39;ktm-collapsed-icon&#39;" role="button"></span>
+<div class="ktm-collapsable-section-title">
+<form class="aui ng-pristine ng-valid">
+<h3 class="ng-binding">
+Задачи
+<!-- ngIf: required -->
+<!-- ngIf: info -->
+</h3>
+<ul>
+<!-- ngRepeat: action in actions --><li ng-repeat="action in actions" class="ng-scope">
+<!-- ngIf: !action.dropdownId --><span ng-click="action.performAction()" class="aui-icon aui-icon-small aui-iconfont-add ktm-action-button" ignore-permission-if="!action.actionPermission" check-permission="EDIT_TEST_CASE" project-id="" aui-tooltip="" ng-if="!action.dropdownId" role="button" original-title=""></span><!-- end ngIf: !action.dropdownId -->
+<!-- ngIf: action.dropdownId -->
+</li><!-- end ngRepeat: action in actions --><li ng-repeat="action in actions" class="ng-scope">
+<!-- ngIf: !action.dropdownId --><span ng-click="action.performAction()" class="aui-icon aui-icon-small aui-iconfont-search-small ktm-action-button" ignore-permission-if="!action.actionPermission" check-permission="EDIT_TEST_CASE" project-id="" aui-tooltip="" ng-if="!action.dropdownId" role="button" original-title=""></span><!-- end ngIf: !action.dropdownId -->
+<!-- ngIf: action.dropdownId -->
+</li><!-- end ngRepeat: action in actions --><li ng-repeat="action in actions" class="ng-scope">
+<!-- ngIf: !action.dropdownId -->
+<!-- ngIf: action.dropdownId --><span ng-class="action.cssClass" ignore-permission-if="!action.actionPermission" check-permission="" project-id="" aui-dropdown2-trigger-button="action.dropdownId" aui-tooltip="" ng-if="action.dropdownId" class="ng-scope aui-dropdown2-trigger aui-dropdown2-trigger-arrowless aui-icon aui-icon-small ktm-icon-caret-down-two ktm-action-button" resolved="" aria-controls="ktm-new-sub-issue" aria-haspopup="true" aria-expanded="false" original-title=""></span><!-- end ngIf: action.dropdownId -->
+</li><!-- end ngRepeat: action in actions -->
+</ul>
+</form>
+</div>
+</div>
+<!-- ngIf: expanded --><div class="ktm-collapsable-section-content ng-scope" ng-if="expanded" ng-transclude="">
+<collapsable-section-action action-permission="EDIT_TEST_CASE" action-id="jira-new-issue-modal" css-class="aui-icon aui-icon-small aui-iconfont-add ktm-action-button" perform-action="$ctrl.openNewIssueJiraModal()" class="ng-scope ng-isolate-scope">
+</collapsable-section-action>
+<collapsable-section-action action-permission="EDIT_TEST_CASE" action-id="search-issues-modal" css-class="aui-icon aui-icon-small aui-iconfont-search-small ktm-action-button" perform-action="$ctrl.openIssuesSearchModal()" class="ng-scope ng-isolate-scope">
+</collapsable-section-action>
+<collapsable-section-action action-id="more-issue-options" css-class="aui-dropdown2-trigger-arrowless aui-icon aui-icon-small ktm-icon-caret-down-two ktm-action-button" dropdown-id="ktm-new-sub-issue" feature-flag="link.subtask" class="ng-scope ng-isolate-scope">
+</collapsable-section-action>
+<aui-dropdown2 dropdown-id="&#39;ktm-new-sub-issue&#39;" left-align="true" class="ng-scope ng-isolate-scope"><div id="ktm-new-sub-issue" class="aui-dropdown2 aui-style-default aui-layer" ng-click="$event.stopPropagation()" role="button" resolved="" tabindex="-1">
+</div>
+</aui-dropdown2>
+<!-- ngIf: $ctrl.otherProjectIssues.length -->
+<!-- ngIf: $ctrl.noIssuesFound() --><simple-empty-message ng-if="$ctrl.noIssuesFound()" message-key="ISSUE.MESSAGE.NO_ISSUES" class="ng-scope ng-isolate-scope"><span class="ktm-simple-empty-message ng-scope ng-binding" translate="">Задачи отсутствуют</span>
+</simple-empty-message><!-- end ngIf: $ctrl.noIssuesFound() -->
+<!-- ngIf: $ctrl.traceLinks.length > 0 -->
+</div><!-- end ngIf: expanded -->
+<div class="cg-busy cg-busy-backdrop cg-busy-backdrop-animation ng-hide ng-scope" ng-show="$cgBusyIsActive()" aria-hidden="true"></div><div class="cg-busy cg-busy-animation ng-hide ng-scope" ng-show="$cgBusyIsActive()" aria-hidden="true"><div class="ktm-spinner-parent" style="position: absolute; inset: 0px;">
+<span class="ktm-spinner" aui-spinner="">
+<aui-spinner filled="" size="small" resolved=""><div class="aui-spinner spinner"><svg focusable="false" size="20" height="20" width="20" viewBox="0 0 20 20" style="top: -10px;"><circle cx="10" cy="10" r="9"></circle></svg></div></aui-spinner></span>
+</div>
+</div></div>
+</issue-panel>
+<confluence-panel permission="EDIT_TEST_CASE" is-active="$ctrl.isActive" test-case="$ctrl.testCase" save-pendings="$ctrl.savePendings" feature-flag="link.confluencePage" class="ng-scope ng-isolate-scope"><div class="ktm-testcase-important-fields ktm-collapsable-section ng-isolate-scope" cg-busy="$ctrl.loadingHandler.loadingPromises" init-expanded="true" name="Confluence" style="position: relative;">
+<div class="ktm-collapsable-section-header">
+<span ng-click="toggle()" class="aui-icon aui-icon-small ktm-collapsable-section-icon ktm-expanded-icon" ng-class="expanded ? &#39;ktm-expanded-icon&#39; : &#39;ktm-collapsed-icon&#39;" role="button"></span>
+<div class="ktm-collapsable-section-title">
+<form class="aui ng-pristine ng-valid">
+<h3 class="ng-binding">
+Confluence
+<!-- ngIf: required -->
+<!-- ngIf: info -->
+</h3>
+<ul>
+<!-- ngRepeat: action in actions --><li ng-repeat="action in actions" class="ng-scope">
+<!-- ngIf: !action.dropdownId --><span ng-click="action.performAction()" class="aui-icon aui-icon-small aui-iconfont-search-small ktm-action-button" ignore-permission-if="!action.actionPermission" check-permission="EDIT_TEST_CASE" project-id="" aui-tooltip="" ng-if="!action.dropdownId" role="button" original-title=""></span><!-- end ngIf: !action.dropdownId -->
+<!-- ngIf: action.dropdownId -->
+</li><!-- end ngRepeat: action in actions -->
+</ul>
+</form>
+</div>
+</div>
+<!-- ngIf: expanded --><div class="ktm-collapsable-section-content ng-scope" ng-if="expanded" ng-transclude="">
+<collapsable-section-action action-permission="EDIT_TEST_CASE" css-class="aui-icon aui-icon-small aui-iconfont-search-small ktm-action-button" perform-action="$ctrl.openConfluencePagesSearchModal()" class="ng-scope ng-isolate-scope">
+</collapsable-section-action>
+<!-- ngIf: $ctrl.noConfluencePagesFound() --><simple-empty-message ng-if="$ctrl.noConfluencePagesFound()" message-key="QUICK_SEARCH_DIALOG.CONFLUENCE_LINKS.NO_RESULTS.TITLE" class="ng-scope ng-isolate-scope"><span class="ktm-simple-empty-message ng-scope ng-binding" translate="">Страницы Confluence отсутствуют</span>
+</simple-empty-message><!-- end ngIf: $ctrl.noConfluencePagesFound() -->
+<!-- ngIf: $ctrl.traceLinks.length > 0 -->
+</div><!-- end ngIf: expanded -->
+<div class="cg-busy cg-busy-backdrop cg-busy-backdrop-animation ng-hide ng-scope" ng-show="$cgBusyIsActive()" aria-hidden="true"></div><div class="cg-busy cg-busy-animation ng-hide ng-scope" ng-show="$cgBusyIsActive()" aria-hidden="true"><div class="ktm-spinner-parent" style="position: absolute; inset: 0px;">
+<span class="ktm-spinner" aui-spinner="">
+<aui-spinner filled="" size="small" resolved=""><div class="aui-spinner spinner"><svg focusable="false" size="20" height="20" width="20" viewBox="0 0 20 20" style="top: -10px;"><circle cx="10" cy="10" r="9"></circle></svg></div></aui-spinner></span>
+</div>
+</div></div>
+</confluence-panel>
+<web-link-panel permission="EDIT_TEST_CASE" is-active="$ctrl.isActive" test-case="$ctrl.testCase" save-pendings="$ctrl.savePendings" class="ng-isolate-scope"><div class="ktm-testcase-important-fields ktm-collapsable-section ng-isolate-scope" cg-busy="$ctrl.loadingHandler.loadingPromises" init-expanded="true" name="Гиперссылки" style="position: relative;">
+<div class="ktm-collapsable-section-header">
+<span ng-click="toggle()" class="aui-icon aui-icon-small ktm-collapsable-section-icon ktm-expanded-icon" ng-class="expanded ? &#39;ktm-expanded-icon&#39; : &#39;ktm-collapsed-icon&#39;" role="button"></span>
+<div class="ktm-collapsable-section-title">
+<form class="aui ng-pristine ng-valid">
+<h3 class="ng-binding">
+Гиперссылки
+<!-- ngIf: required -->
+<!-- ngIf: info -->
+</h3>
+<ul>
+<!-- ngRepeat: action in actions --><li ng-repeat="action in actions" class="ng-scope">
+<!-- ngIf: !action.dropdownId --><span ng-click="action.performAction()" class="aui-icon aui-icon-small aui-iconfont-search-small ktm-action-button" ignore-permission-if="!action.actionPermission" check-permission="EDIT_TEST_CASE" project-id="" aui-tooltip="" ng-if="!action.dropdownId" role="button" original-title=""></span><!-- end ngIf: !action.dropdownId -->
+<!-- ngIf: action.dropdownId -->
+</li><!-- end ngRepeat: action in actions -->
+</ul>
+</form>
+</div>
+</div>
+<!-- ngIf: expanded --><div class="ktm-collapsable-section-content ng-scope" ng-if="expanded" ng-transclude="">
+<collapsable-section-action action-permission="EDIT_TEST_CASE" css-class="aui-icon aui-icon-small aui-iconfont-search-small ktm-action-button" perform-action="$ctrl.openNewWebLinkModal()" class="ng-scope ng-isolate-scope">
+</collapsable-section-action>
+<!-- ngIf: $ctrl.noWebLinksFound() --><simple-empty-message ng-if="$ctrl.noWebLinksFound()" message-key="TRACE_LINK.WEB_LINK.NOT_FOUND" class="ng-scope ng-isolate-scope"><span class="ktm-simple-empty-message ng-scope ng-binding" translate="">Гиперссылки отсутствуют</span>
+</simple-empty-message><!-- end ngIf: $ctrl.noWebLinksFound() -->
+<!-- ngIf: $ctrl.traceLinks.length > 0 -->
+</div><!-- end ngIf: expanded -->
+<div class="cg-busy cg-busy-backdrop cg-busy-backdrop-animation ng-hide ng-scope" ng-show="$cgBusyIsActive()" aria-hidden="true"></div><div class="cg-busy cg-busy-animation ng-hide ng-scope" ng-show="$cgBusyIsActive()" aria-hidden="true"><div class="ktm-spinner-parent" style="position: absolute; inset: 0px;">
+<span class="ktm-spinner" aui-spinner="">
+<aui-spinner filled="" size="small" resolved=""><div class="aui-spinner spinner"><svg focusable="false" size="20" height="20" width="20" viewBox="0 0 20 20" style="top: -10px;"><circle cx="10" cy="10" r="9"></circle></svg></div></aui-spinner></span>
+</div>
+</div></div>
+</web-link-panel>
+</test-case-traceability-tab>
+</div>
+<!-- ngIf: currentPanel.name === 'ATTACHMENTS' -->
+<!-- ngIf: currentPanel.name === 'COMMENTS' -->
+<!-- ngIf: currentPanel.name === 'CHANGE_HISTORY' -->
+</div>
+</div>
+<div class="cg-busy cg-busy-backdrop cg-busy-backdrop-animation ng-hide ng-scope" ng-show="$cgBusyIsActive()" aria-hidden="true"></div><div class="cg-busy cg-busy-animation ng-hide ng-scope" ng-show="$cgBusyIsActive()" aria-hidden="true"><div class="ktm-spinner-parent" style="position: absolute; inset: 0px;">
+<span class="ktm-spinner" aui-spinner="">
+<aui-spinner filled="" size="small" resolved=""><div class="aui-spinner spinner"><svg focusable="false" size="20" height="20" width="20" viewBox="0 0 20 20" style="top: -10px;"><circle cx="10" cy="10" r="9"></circle></svg></div></aui-spinner></span>
+</div>
+</div></div><!-- end ngIf: !error -->
+</div></div></div>
+    <help-and-support></help-and-support>
+</div>
+
+    </div>
+    <footer id="footer" role="contentinfo" style="">
+        
+        
+
+<section class="footer-body">
+<ul class="atlassian-footer">
+    <li>
+        Atlassian Jira <a class="seo-link" rel="nofollow" href="https://www.atlassian.com/software/jira">Project Management Software</a>
+                                                            <span id="footer-build-information">(v8.20.13#820013-<span title="e83256f8976830734d21b999890eb027cb94ffc2" data-commit-id="e83256f8976830734d21b999890eb027cb94ffc2}">sha1:e83256f</span>:node1)</span>
+            </li>
+    <li>
+        <a id="about-link" rel="nofollow" href="https://jira.ifellow.ru/secure/AboutPage.jspa/secure/AboutPage.jspa">About Jira</a>
+    </li>
+    <li>
+        <a id="footer-report-problem-link" rel="nofollow" href="https://jira.ifellow.ru/secure/CreateIssue!default.jspa">Report a problem</a>
+    </li>
+</ul>
+    <p class="atlassian-footer">
+        <span class="licensemessage">
+            
+        </span>
+    </p>
+<div class="smart-attachments-footer">
+    <script>
+        function onWidgetReady(invertState) {
+            if (window.CCFeedbackWidget) {
+                return;
+            }
+
+            if (document.addEventListener) {
+                document.addEventListener('toggleFeedbackWidget', invertState);
+            } else {
+                document.attachEvent('onToggleFeedbackWidget', function () {
+                    invertState.call(document);
+                });
+            }
+
+            window.CCFeedbackWidget = true;
+        }
+    </script>
+
+    <script data-cc-embedded="" data-key="fb3ba6de-32b4-4f38-8779-c7c7208aab52" data-base-url="https://ac.customercase.com" data-on-ready="onWidgetReady" data-user-email="mihail.nikulenkov@ifellow.ru" src="./Zephyr Scale - iFellow Jira2_files/embed.js.Без названия"></script>
+</div><script type="text/javascript">
+    if (!window.SmartAttachmentsAnalytics) {
+        console.log('SmartAttachmentsAnalytics - global init');
+
+        window.SmartAttachmentsAnalytics = {
+            stack: [],
+
+            event: function (eventName, props) {
+                if (!eventName) {
+                    return;
+                }
+                SmartAttachmentsAnalytics.stack.push({name: eventName, props: props});
+            }
+        }
+    }
+</script><script type="text/javascript">
+    // hide Test-Case-TestIT-Link
+    AJS.$('#Test-Case-TestIT-Link').empty().ready(function(){
+        AJS.$('#Test-Case-TestIT-Link').hide();
+    });
+    // hide testResult from issue view
+    AJS.$("strong[title|='testResultId']").parent().empty().ready(function(){
+        AJS.$("strong[title|='testResultId']").parent().hide();
+    });
+</script>
+    <div id="footer-logo"><a rel="nofollow" href="http://www.atlassian.com/">Atlassian</a></div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<fieldset class="hidden parameters">
+    <input type="hidden" title="loggedInUser" value="mihail.nikulenkov@ifellow.ru">
+    <input type="hidden" title="ajaxTimeout" value="В рамках сеанса не удалось завершить запрос к серверу Jira. Мы не уверены в результате этой операции.">
+    <input type="hidden" title="JiraVersion" value="8.20.13">
+    <input type="hidden" title="ajaxUnauthorised" value="Вы не авторизованы для выполнения этой операции. Пожалуйста, войдите.">
+    <input type="hidden" title="baseURL" value="https://jira.ifellow.ru">
+    <input type="hidden" title="ajaxCommsError" value="Не удалось связаться с сервером Jira. Произошел временный сбой или сервер недоступен. ">
+    <input type="hidden" title="ajaxServerError" value="При обращении к серверу Jira произошла ошибка. Мы не уверены в результате этой операции.">
+    <input type="hidden" title="ajaxErrorCloseDialog" value="Закройте это диалоговое окно и нажмите обновление в браузере">
+    <input type="hidden" title="ajaxErrorDialogHeading" value="Разрыв связи">
+
+    <input type="hidden" title="dirtyMessage" value="Вы ввели новую информацию на этой странице. Если вы покинете страницу, предварительно не сохранив изменения, они будут потеряны.">
+    <input type="hidden" title="dirtyDialogMessage" value="Вы ввели в это окно новые данные. Если вы уйдете из этого окна, не сохранив данные, все изменения будут потеряны. Чтобы вернуться к окну, нажмите «отменить».">
+    <input type="hidden" title="keyType" value="Нажмите">
+    <input type="hidden" title="keyThen" value="затем">
+    <input type="hidden" title="dblClickToExpand" value="Двойное нажатие для раскрытия">
+    <input type="hidden" title="actions" value="Действия">
+    <input type="hidden" title="removeItem" value="Удалить">
+    <input type="hidden" title="workflow" value="Бизнес-процесс">
+    <input type="hidden" title="labelNew" value="Новая метка">
+    <input type="hidden" title="issueActionsHint" value="Начните набирать для поиска доступных операций или нажмите вниз, чтобы увидеть все">
+    <input type="hidden" title="closelink" value="Закрыть">
+    <input type="hidden" title="dotOperations" value="Операции">
+    <input type="hidden" title="dotLoading" value="Загрузка">
+    <input type="hidden" title="frotherSuggestions" value="Предложения">
+    <input type="hidden" title="frotherNomatches" value="Нет совпадений">
+    <input type="hidden" title="multiselectVersionsError" value="{0} не является корректной версией.">
+    <input type="hidden" title="multiselectComponentsError" value="{0} - некорректный компонент.">
+    <input type="hidden" title="multiselectGenericError" value="Некорректное значение {0}.">
+</fieldset>
+
+    </footer>
+</div>
+
+
+<script type="text/javascript" src="./Zephyr Scale - iFellow Jira2_files/jira.webresources_bigpipe-js.js.Без названия" data-wrm-key="jira.webresources:bigpipe-js" data-wrm-batch-type="resource" data-initially-rendered=""></script>
+<script type="text/javascript" src="./Zephyr Scale - iFellow Jira2_files/jira.webresources_bigpipe-init.js.Без названия" data-wrm-key="jira.webresources:bigpipe-init" data-wrm-batch-type="resource" data-initially-rendered=""></script>
+
+<form id="jira_request_timing_info" class="dont-default-focus">
+	<fieldset class="parameters hidden">
+		<input type="hidden" title="jira.request.start.millis" value="1779433050735">
+		<input type="hidden" title="jira.request.server.time" value="81">
+		<input type="hidden" title="jira.request.id" value="597x9652710x7">
+		<input type="hidden" title="jira.session.expiry.time" value="1779449913383">
+		<input type="hidden" title="jira.session.expiry.in.mins" value="281">
+		<input id="jiraConcurrentRequests" type="hidden" name="jira.request.concurrent.requests" value="4">
+		<input type="hidden" title="db.reads.time.in.ms" value="0">
+		<input type="hidden" title="db.conns.time.in.ms" value="20">
+	</fieldset>
+</form>
+<!--
+	                 REQUEST ID : 597x9652710x7
+	          REQUEST TIMESTAMP : [22/мая/2026:09:57:30 +0300]
+	               REQUEST TIME : 0,0810
+	                 ASESSIONID : 19lgsph
+	        CONCURRENT REQUESTS : 4
+	                    NODE ID : node1
+
+	                      db.reads : OpSnapshot{name='db.reads', invocationCount=2, elapsedTotal=958519, elapsedMin=396508, elapsedMax=562011, resultSetSize=0, cpuTotal=0, cpuMin=0, cpuMax=0}
+	                      db.conns : OpSnapshot{name='db.conns', invocationCount=14, elapsedTotal=20473784, elapsedMin=350407, elapsedMax=8560461, resultSetSize=0, cpuTotal=0, cpuMin=0, cpuMax=0}
+-->
+
+
+
+<iframe scrolling="no" name="CC widget" id="cc-widget" style="height: 10px; width: 11px; position: fixed; border: 0px; bottom: 0px; right: 0px; z-index: 2147483647; transition: height;" src="./Zephyr Scale - iFellow Jira2_files/saved_resource.html"></iframe><div id="worklog-issue-dock" class="wp-no-print" style="display: none;"><div id="worklog-issue-dock-content"><a id="worklog-issue-dock-close" href="https://jira.ifellow.ru/secure/Tests.jspa#"></a><a id="worklog-issue-dock-left" href="https://jira.ifellow.ru/secure/Tests.jspa#"></a><table width="100%"><tbody><tr><td><img id="worklog-issue-dock-img" src="https://jira.ifellow.ru/secure/Tests.jspa" style="max-width: 16px; max-height: 16px; margin-left: 2px; margin-right:2px; "></td><td style="text-align:left"><strong> <a id="worklog-issue-dock-link" href="https://jira.ifellow.ru/browse/"></a></strong></td><td style="text-align:left;"><em><span id="worklog-issue-dock-time" style="margin-left: 5px; font-weight:200; font-size:1.2em"></span></em></td><td style="text-align:right;margin-right:5px;"><a href="https://jira.ifellow.ru/secure/Tests.jspa#" style="display:none;background-position: left center; background-position-x: 5px;" id="worklog-issue-dock-stop" alt="Остановить"><i class="fa fa-stop-circle" aria-hidden="true" style="font-size:1.5em"></i></a><a href="https://jira.ifellow.ru/secure/Tests.jspa#" style="display:none;background-position: left center; background-position-x: 5px; margin-left: 5px" id="worklog-issue-dock-pause" alt="Pause"><i class="fa fa-pause-circle" aria-hidden="true" style="font-size:1.5em"></i></a><a href="https://jira.ifellow.ru/secure/WPCreateWorklogOnIssueWithWorkLogAction!default.jspa?" style="display:none;" id="worklog-issue-dock-stop-link"></a><a href="https://jira.ifellow.ru/secure/Tests.jspa#" style="background-position: left center; background-position-x: 5px; margin-left:5px" id="worklog-issue-dock-start" alt="Начало"><i class="fa fa-play-circle" aria-hidden="true" style="font-size:1.5em"></i></a></td></tr></tbody></table></div></div><label tabindex="-1" style="visibility: hidden; position: absolute; overflow: hidden; width: 0px; height: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; margin: 0px; padding: 0px;">upload<input type="file" ng-hide="isCallToTest || isReadOnly" feature-flag="steps.attachments" ngf-select="handleUploadedFiles($files)" ngf-multiple="true" translate="" multiple="multiple"></label><label tabindex="-1" style="visibility: hidden; position: absolute; overflow: hidden; width: 0px; height: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; margin: 0px; padding: 0px;">upload<input type="file" ng-hide="isCallToTest || isReadOnly" feature-flag="steps.attachments" ngf-select="handleUploadedFiles($files)" ngf-multiple="true" translate="" multiple="multiple"></label><label tabindex="-1" style="visibility: hidden; position: absolute; overflow: hidden; width: 0px; height: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; margin: 0px; padding: 0px;">upload<input type="file" ng-hide="isCallToTest || isReadOnly" feature-flag="steps.attachments" ngf-select="handleUploadedFiles($files)" ngf-multiple="true" translate="" multiple="multiple"></label><label tabindex="-1" style="visibility: hidden; position: absolute; overflow: hidden; width: 0px; height: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; margin: 0px; padding: 0px;">upload<input type="file" ng-hide="isCallToTest || isReadOnly" feature-flag="steps.attachments" ngf-select="handleUploadedFiles($files)" ngf-multiple="true" translate="" multiple="multiple"></label><label tabindex="-1" style="visibility: hidden; position: absolute; overflow: hidden; width: 0px; height: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; margin: 0px; padding: 0px;">upload<input type="file" ng-hide="isCallToTest || isReadOnly" feature-flag="steps.attachments" ngf-select="handleUploadedFiles($files)" ngf-multiple="true" translate="" multiple="multiple"></label><label tabindex="-1" style="visibility: hidden; position: absolute; overflow: hidden; width: 0px; height: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; margin: 0px; padding: 0px;">upload<input type="file" ng-hide="isCallToTest || isReadOnly" feature-flag="steps.attachments" ngf-select="handleUploadedFiles($files)" ngf-multiple="true" translate="" multiple="multiple"></label><label tabindex="-1" style="visibility: hidden; position: absolute; overflow: hidden; width: 0px; height: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; margin: 0px; padding: 0px;">upload<input type="file" ng-hide="isCallToTest || isReadOnly" feature-flag="steps.attachments" ngf-select="handleUploadedFiles($files)" ngf-multiple="true" translate="" multiple="multiple"></label><label tabindex="-1" style="visibility: hidden; position: absolute; overflow: hidden; width: 0px; height: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; margin: 0px; padding: 0px;">upload<input type="file" ng-hide="isCallToTest || isReadOnly" feature-flag="steps.attachments" ngf-select="handleUploadedFiles($files)" ngf-multiple="true" translate="" multiple="multiple"></label><div id="help-and-support"><div></div></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div><div class="atwho-container"></div></body></html>
