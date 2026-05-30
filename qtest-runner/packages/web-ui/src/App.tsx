@@ -103,7 +103,15 @@ export function App() {
       {page === 'docs' && (
         <iframe
           src="http://localhost:5173"
-          style={{ width: '100%', height: 'calc(100vh - 50px)', border: 'none' }}
+          style={{
+            position: 'fixed',
+            top: 50,
+            left: 0,
+            width: '100vw',
+            height: 'calc(100vh - 50px)',
+            border: 'none',
+            zIndex: 1000,
+          }}
           title="Documentation"
         />
       )}
