@@ -225,7 +225,7 @@ recorder ──► flushActions() ──► POST /api/recordings/:id/actions
 - [x] Добавить скриншоты на каждом шаге
 - [x] Multi-tab поддержка (переключение вкладок)
 - [x] User Switch (hotkey + API)
-- [ ] Проверить E2E: ручные действия в браузере → запись в БД (INJECT_SCRIPT)
+- [x] Проверить E2E: ручные действия в браузере → запись в БД (INJECT_SCRIPT) — проверено в Iteration 15 (175 actions, 0 JS errors)
 
 ### Iteration 11 — ✅ Media Events + Popover API (29.05.2026)
 
@@ -308,7 +308,7 @@ recorder ──► flushActions() ──► POST /api/recordings/:id/actions
 - [x] Canvas click recording
 - [x] Video recording (playwright-screen-recorder)
 - [x] Selection tracking
-- [ ] Мультиязычные сообщения CAPTCHA (поддержка русского языка)
+- [x] Мультиязычные сообщения CAPTCHA (поддержка русского языка) — реализовано в Iteration 16
 
 ---
 
@@ -349,12 +349,12 @@ recorder ──► flushActions() ──► POST /api/recordings/:id/actions
 - [x] convertToSteps: 26 steps generated from 22 actions
 
 ### MCP Tools (mcp-qtest-debug)
-- [ ] qtest_health — проверен ранее в Iteration 9
-- [ ] qtest_launch_browser — проверен ранее
-- [ ] qtest_record_start/stop — проверены ранее
-- [ ] qtest_get_actions — проверен ранее
-- [ ] qtest_execute_step — проверен ранее
-- [ ] qtest_convert_steps — проверен ранее
+- [x] qtest_health — проверен ранее в Iteration 9
+- [x] qtest_launch_browser — проверен ранее
+- [x] qtest_record_start/stop — проверены ранее
+- [x] qtest_get_actions — проверен ранее
+- [x] qtest_execute_step — проверен ранее
+- [x] qtest_convert_steps — проверен ранее
 
 ## Ключевые файлы для изменений
 

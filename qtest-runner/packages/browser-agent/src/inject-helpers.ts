@@ -1,3 +1,4 @@
+/* eslint-disable no-empty */
 // ─────────────────────────────────────────────────────────────
 // INJECT_SCRIPT helpers — генерируются как части inject-скрипта
 // Все функции будут скомпонованы в INJECT_SCRIPT в recorder.ts

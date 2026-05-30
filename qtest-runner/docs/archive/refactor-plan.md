@@ -12,9 +12,9 @@
 
 | Метрика | Значение |
 |---------|----------|
-| Реализовано (✅) | ~140 / 146 |
+| Реализовано (✅) | ~141 / 146 |
 | Частично (🔶) | 0 / 146 |
-| Не реализовано (❌) | ~6 / 146 |
+| Не реализовано (❌) | ~5 / 146 |
 | Сервисов | 8 |
 | MCP инструментов | 12 (mcp-browser + mcp-qtest-debug) |
 | Inject-скрипт | ~700+ строк, 3 канала инжекции |
@@ -45,7 +45,7 @@
 - [x] IME Composition
 - [x] ResizeObserver / IntersectionObserver
 - [x] Canvas click recording
-- [ ] Video recording (playwright-screen-recorder) — _не реализовано_
+- [x] Video recording (playwright-screen-recorder) — _реализовано в Iteration 16_
 - [x] Selection tracking
 
 ## Чеклист реализации

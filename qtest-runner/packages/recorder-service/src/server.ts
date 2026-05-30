@@ -241,7 +241,7 @@ function gracefulShutdown(signal: string) {
   console.log(`[${signal}] Shutting down recorder-service...`);
   wss?.clients?.forEach((client) => client.close());
   httpServer.close(() => {
-    try { getDb().close(); } catch {}
+    try { getDb().close(); } catch { /* DB may already be closed */ }
     console.log('recorder-service stopped');
     process.exit(0);
   });

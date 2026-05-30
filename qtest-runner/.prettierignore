@@ -1,0 +1,6 @@
+dist/
+node_modules/
+docs/.vitepress/dist/
+*.md
+packages/chrome-extension/dist/
+packages/web-ui/dist/

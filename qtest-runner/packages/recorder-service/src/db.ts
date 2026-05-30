@@ -153,7 +153,7 @@ function initSchema(): void {
     'ALTER TABLE recorded_actions ADD COLUMN selection_text TEXT DEFAULT \'\'',
   ];
   for (const m of migrations) {
-    try { db.exec(m); } catch {}
+    try { db.exec(m); } catch { /* column may already exist */ }
   }
 }
 
@@ -725,27 +725,6 @@ export function convertToSteps(sessionId: string): ConvertedStep[] {
           `Ввод текста через IME: "${(a.displayValue || a.value || '').slice(0, 60)}"`,
           a.displayValue || a.value || '',
           'Текст введён через IME'
-        ));
-        break;
-      case 'dragstart':
-        steps.push(makeStep(a,
-          `Начать перетаскивание "${a.selectorText || a.selector || ''}"`,
-          '',
-          'Элемент захвачен для перетаскивания'
-        ));
-        break;
-      case 'dragend':
-        steps.push(makeStep(a,
-          `Завершить перетаскивание (${a.value || ''})`,
-          '',
-          'Перетаскивание завершено'
-        ));
-        break;
-      case 'drop':
-        steps.push(makeStep(a,
-          `Опустить элемент на "${a.selectorText || a.selector || ''}"`,
-          '',
-          'Элемент отпущен на целевой области'
         ));
         break;
       case 'hover':

@@ -13,7 +13,7 @@ export const videoDir = 'videos';
 
 export async function launchSession(profile: BrowserProfile): Promise<Session> {
   // Ensure video directory exists
-  try { require('fs').mkdirSync(videoDir, { recursive: true }); } catch {}
+  try { require('fs').mkdirSync(videoDir, { recursive: true }); } catch { /* dir exists */ }
   const context = await chromium.launchPersistentContext(profile.userDataDir, {
     headless: false,
     args: [
@@ -24,7 +24,7 @@ export async function launchSession(profile: BrowserProfile): Promise<Session> {
     recordVideo: { dir: videoDir, size: { width: 1440, height: 900 } },
   });
 
-  let pages = context.pages();
+  const pages = context.pages();
   const page = pages.length > 0 ? pages[0] : await context.newPage();
   await page.setViewportSize({ width: 1440, height: 900 });
 
@@ -135,7 +135,7 @@ export function listVideos(): string[] {
 }
 
 export function deleteVideo(path: string): void {
-  try { require('fs').unlinkSync(path); } catch {}
+  try { require('fs').unlinkSync(path); } catch { /* file may not exist */ }
 }
 
 export async function verifyText(ctx: Page | Frame, text: string): Promise<boolean> {

@@ -108,28 +108,38 @@ title: Known Problems
 - Главная → captcha-test.html (вторая навигация): 27 total actions, 6 captcha_detected
 
 ### Требует верификации 🔄
-- Shadow DOM на реальных Web Components (open mode)
-- Cookie consent на реальных EU-сайтах
-- Jira env на живой Jira инстанции
+- Shadow DOM на реальных Web Components (open mode) — функционал реализован, не тестировался на живых сайтах
+- Cookie consent на реальных EU-сайтах — детекция работает, авто-акцепт не реализован
+- Jira env на живой Jira инстанции —requires реальный токен доступа
 - CAPTCHA на реальных сайтах (ReCaptcha v3 не тестировалась)
 
-### Что нужно сделать
-1. **Приоритет 3:** Media events (play, pause, seeked)
-2. **Приоритет 4:** Shadow DOM клики через inject script (на реальном сайте)
+### История (уже реализовано)
 
-### Работает ✅
-- Все из предыдущей версии +
-- **Iframe bridge (executor level)**: `resolveFrame()` — 5 стратегий поиска iframe (имя, URL, селектор, итерация). Работает для same-origin и cross-origin.
-- **Iframe injection (same-origin)**: `injectIntoFrame()` + `injectIntoAllFrames()` — инжект скрипта в iframe через addScriptTag + evaluate. Запуск при framenavigated + при старте.
-- **Iframe postMessage bridge**: перехват `__record` в iframe, установка frameUrl/frameName/iframeAction, postMessage в top frame, обработка message listener с contentWindow matching.
+#### Iteration 7 — Iframe Bridge
+- **Iframe bridge (executor level)**: `resolveFrame()` — 5 стратегий поиска iframe. Работает для same-origin и cross-origin.
+- **Iframe injection (same-origin)**: `injectIntoFrame()` + `injectIntoAllFrames()` — инжект скрипта в iframe через addScriptTag + evaluate.
+- **Iframe postMessage bridge**: перехват `__record` в iframe, установка frameUrl/frameName/iframeAction, postMessage в top frame.
 - **Frame metadata в записи**: `frameName`, `frameUrl`, `frameSelector`, `iframeAction` — все 18 action types в executor.ts.
 - **DB schema**: 13 extended колонок (input_type — iframe_action) через ALTER TABLE миграции.
 - **E2E cross-origin iframe**: click + fill + select на порту 9091 — все 5 операций passed с frameName.
 
-### Требует верификации 🔄
-- Shadow DOM на реальных Web Components (open mode)
-- Cookie consent на реальных EU-сайтах
-- Jira env на живой Jira инстанции
+#### Iteration 8 — CAPTCHA Detection (29.05.2026)
+- ReCaptcha v2, Turnstile, hCaptcha, generic — все 4 типа детектируются
+- Multilingual сообщения (русский + английский)
+- CAPTCHA_DETECTOR_HELPER + MutationObserver для динамических CAPTCHA
+
+#### Iteration 11 — Media Events + Popover API (29.05.2026)
+- play/pause/seeked/volumechange на `<video>`/`<audio>`
+- Popover API: beforetoggle/toggle на `[popover]` элементах
+
+#### Iteration 13 — IME Composition (29.05.2026)
+- compositionstart/compositionupdate/compositionend для CJK ввода
+
+#### Iteration 14 — ResizeObserver / IntersectionObserver (29.05.2026)
+- element_resize при изменении размеров, element_intersect при изменении видимости
+
+#### Iteration 16 — Canvas + Video + Selection (30.05.2026)
+- Canvas click recording, Video recording (webm), Selection tracking
 
 ### Найденные баги (исправлены 29.05.2026, Iteration 7)
 

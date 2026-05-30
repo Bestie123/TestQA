@@ -1,3 +1,4 @@
+/* eslint-disable no-empty */
 import { Page } from 'playwright';
 import { getSession, switchToPage, getPages } from './browser-manager';
 import { navigate, clickElement, clickElementAt, fillField, takeScreenshot, verifyText } from './browser-manager';
@@ -92,8 +93,8 @@ export async function executeStep(profileId: string, command: StepCommand): Prom
   if (command.frameSelector) { frameMeta.frameSelector = command.frameSelector; }
 
   // Collect recording data; recordStep is called after screenshot is taken
-  let recordAction = '';
-  let recordData: Record<string, any> = {};
+  let recordAction = ''; // eslint-disable-line no-useless-assignment
+  let recordData: Record<string, any> = {}; // eslint-disable-line no-useless-assignment
 
   try {
     switch (command.action) {
@@ -279,11 +280,12 @@ export async function executeStep(profileId: string, command: StepCommand): Prom
             await ctx.waitForSelector(command.selector, { state: 'visible', timeout: 10000 });
             result = true;
             break;
-          case 'assertValue':
+          case 'assertValue': {
             if (!command.selector) return { status: 'failed', error: 'Selector required' };
             const val = await ctx.inputValue(command.selector);
             result = val === (command.value || '');
             break;
+          }
           case 'assertChecked':
             if (!command.selector) return { status: 'failed', error: 'Selector required' };
             result = await ctx.isChecked(command.selector);

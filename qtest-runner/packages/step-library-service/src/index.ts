@@ -203,9 +203,9 @@ app.post('/api/composite-steps/:id/expand', async (req: any, reply: any) => {
   const items = db.prepare('SELECT * FROM composite_step_items WHERE composite_id = ? ORDER BY sort_order').all(comp.id) as any[];
   const expanded = items.map((item: any, idx: number) => {
     let action = resolve(item.action);
-    let selector = resolve(item.selector || '');
-    let value = resolve(item.value || '');
-    let url = resolve(item.url || '');
+    const selector = resolve(item.selector || '');
+    const value = resolve(item.value || '');
+    const url = resolve(item.url || '');
     let text = resolve(item.text || '');
     if (item.library_step_id) {
       const libStep = db.prepare('SELECT * FROM library_steps WHERE id = ?').get(item.library_step_id) as any;

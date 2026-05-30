@@ -147,10 +147,10 @@ title: GAP Analysis
 
 | # | Событие | QR | PW | Приоритет | Примечание |
 |---|---------|-----|-----|-----------|------------|
-| 9.1 | play | ❌ | ❌ | P1 | |
-| 9.2 | pause | ❌ | ❌ | P1 | |
-| 9.3 | seeked (перемотка) | ❌ | ❌ | P1 | |
-| 9.4 | volumechange | ❌ | ❌ | P2 | |
+| 9.1 | play | ✅ | ❌ | P1 | QR: MEDIA_EVENTS_HELPER (29.05.2026) |
+| 9.2 | pause | ✅ | ❌ | P1 | QR: MEDIA_EVENTS_HELPER |
+| 9.3 | seeked (перемотка) | ✅ | ❌ | P1 | QR: MEDIA_EVENTS_HELPER |
+| 9.4 | volumechange | ✅ | ❌ | P2 | QR: MEDIA_EVENTS_HELPER |
 | 9.5 | ended | ❌ | ❌ | P1 | |
 | 9.6 | fullscreenchange (видео) | ❌ | ❌ | P1 | |
 | 9.7 | loadedmetadata / loadeddata | ❌ | ❌ | P2 | |
@@ -184,7 +184,7 @@ title: GAP Analysis
 
 | # | Событие | QR | PW | Приоритет | Примечание |
 |---|---------|-----|-----|-----------|------------|
-| 12.1 | selectionchange | ❌ | ❌ | P2 | |
+| 12.1 | selectionchange | ✅ | ❌ | P2 | QR: INJECT_SCRIPT (30.05.2026) |
 | 12.2 | selectstart / selectend | ❌ | ❌ | P2 | |
 
 ---
@@ -212,9 +212,9 @@ title: GAP Analysis
 
 | # | Событие | QR | PW | Приоритет | Примечание |
 |---|---------|-----|-----|-----------|------------|
-| 15.1 | compositionstart | ❌ | ❌ | P2 | PW: IME key events игнорируются |
-| 15.2 | compositionupdate | ❌ | ❌ | P2 | |
-| 15.3 | compositionend | ❌ | ❌ | P2 | |
+| 15.1 | compositionstart | ✅ | ❌ | P2 | QR: IME_COMPOSITION_HELPER (29.05.2026) |
+| 15.2 | compositionupdate | ✅ | ❌ | P2 | QR: IME_COMPOSITION_HELPER |
+| 15.3 | compositionend | ✅ | ❌ | P2 | QR: IME_COMPOSITION_HELPER |
 
 ---
 
@@ -243,8 +243,8 @@ title: GAP Analysis
 
 | # | Событие | QR | PW | Приоритет | Примечание |
 |---|---------|-----|-----|-----------|------------|
-| 18.1 | togglepopover | ❌ | ❌ | P1 | |
-| 18.2 | beforetoggle | ❌ | ❌ | P2 | |
+| 18.1 | togglepopover | ✅ | ❌ | P1 | QR: POPOVER_HELPER (29.05.2026) |
+| 18.2 | beforetoggle | ✅ | ❌ | P2 | QR: POPOVER_HELPER |
 | 18.3 | hidePopover / showPopover | ❌ | ❌ | P2 | |
 
 ---
@@ -278,8 +278,8 @@ title: GAP Analysis
 | 21.1 | childList (элемент появился/исчез) | ✅ | ❌ | P0 | PW: только для отслеживания hoveredElement |
 | 21.2 | attributes (атрибуты) | ✅ | ❌ | P0 | |
 | 21.3 | characterData (текст) | ✅ | ❌ | P0 | |
-| 21.4 | ResizeObserver (изменение размера) | ❌ | ❌ | P1 | |
-| 21.5 | IntersectionObserver (видимость) | ❌ | ❌ | P0 | |
+| 21.4 | ResizeObserver (изменение размера) | ✅ | ❌ | P1 | QR: RESIZE_OBSERVER_HELPER (29.05.2026) |
+| 21.5 | IntersectionObserver (видимость) | ✅ | ❌ | P0 | QR: RESIZE_OBSERVER_HELPER (29.05.2026) |
 
 ---
 
@@ -339,10 +339,10 @@ title: GAP Analysis
 
 | # | Событие | QR | PW | Приоритет | Примечание |
 |---|---------|-----|-----|-----------|------------|
-| 26.1 | ReCaptcha (g-recaptcha) | ❌ | ❌ | P0 | |
-| 26.2 | hCaptcha | ❌ | ❌ | P0 | |
-| 26.3 | Turnstile (Cloudflare) | ❌ | ❌ | P0 | |
-| 26.4 | CAPTCHA iframe по src-паттерну | ❌ | ❌ | P1 | |
+| 26.1 | ReCaptcha (g-recaptcha) | ✅ | ❌ | P0 | QR: CAPTCHA_DETECTOR_HELPER (29.05.2026) |
+| 26.2 | hCaptcha | ✅ | ❌ | P0 | QR: CAPTCHA_DETECTOR_HELPER |
+| 26.3 | Turnstile (Cloudflare) | ✅ | ❌ | P0 | QR: CAPTCHA_DETECTOR_HELPER |
+| 26.4 | CAPTCHA iframe по src-паттерну | ✅ | ❌ | P1 | QR: CAPTCHA_DETECTOR_HELPER (generic) |
 
 ---
 
@@ -384,27 +384,27 @@ title: GAP Analysis
 | 6. SPA Навигация | 5 | 4 | 0 | 1 | 5 | 0 | 0 |
 | 7. Формы (детали) | 10 | 2 | 1 | 7 | 2 | 1 | 7 |
 | 8. Multi-window / Popup | 5 | 1 | 0 | 4 | 4 | 0 | 1 |
-| 9. Media (Video / Audio) | 8 | 0 | 0 | 8 | 0 | 0 | 8 |
+| 9. Media (Video / Audio) | 8 | 4 | 0 | 4 | 0 | 0 | 8 |
 | 10. Карусель / Слайдер | 5 | 2 | 0 | 3 | 0 | 0 | 5 |
 | 11. Clipboard | 3 | 2 | 0 | 1 | 0 | 0 | 3 |
-| 12. Selection | 2 | 0 | 0 | 2 | 0 | 0 | 2 |
+| 12. Selection | 2 | 1 | 0 | 1 | 0 | 0 | 2 |
 | 13. Fullscreen / Viewport | 3 | 0 | 0 | 3 | 0 | 0 | 3 |
 | 14. Details / Summary | 2 | 2 | 0 | 0 | 0 | 0 | 2 |
-| 15. Composition (IME) | 3 | 0 | 0 | 3 | 0 | 0 | 3 |
+| 15. Composition (IME) | 3 | 3 | 0 | 0 | 0 | 0 | 3 |
 | 16. Dialog Element | 3 | 1 | 0 | 2 | 0 | 0 | 3 |
 | 17. Alert / Confirm / Prompt | 4 | 3 | 0 | 1 | 4 | 0 | 0 |
-| 18. Popover API | 3 | 0 | 0 | 3 | 0 | 0 | 3 |
+| 18. Popover API | 3 | 2 | 0 | 1 | 0 | 0 | 3 |
 | 19. EditContext / Rich Text | 2 | 0 | 0 | 2 | 0 | 0 | 2 |
 | 20. Error Tracking | 4 | 4 | 0 | 0 | 0 | 0 | 4 |
-| 21. DOM Mutation | 5 | 3 | 0 | 2 | 0 | 0 | 5 |
+| 21. DOM Mutation | 5 | 5 | 0 | 0 | 0 | 0 | 5 |
 | 22. CSS / Animation | 6 | 4 | 0 | 2 | 0 | 0 | 6 |
 | 23. Page Lifecycle | 3 | 2 | 0 | 1 | 0 | 0 | 3 |
 | 24. Navigation API | 4 | 0 | 0 | 4 | 0 | 0 | 4 |
 | 25. Jira / Zephyr Scale | 9 | 7 | 0 | 2 | 0 | 0 | 9 |
-| 26. CAPTCHA / Bot Detection | 4 | 0 | 0 | 4 | 0 | 0 | 4 |
+| 26. CAPTCHA / Bot Detection | 4 | 4 | 0 | 0 | 0 | 0 | 4 |
 | 27. Cookie Consent / GDPR | 4 | 2 | 0 | 2 | 0 | 0 | 4 |
 | 28. Assertions (PW) | 6 | 5 | 0 | 1 | 5 | 1 | 0 |
-| **ИТОГО** | **146** | **64** | **5** | **77** | **34** | **8** | **104** |
+| **ИТОГО** | **146** | **80** | **5** | **61** | **34** | **8** | **104** |
 
 ---
 
@@ -438,17 +438,14 @@ title: GAP Analysis
 
 | Категория | Что именно |
 |-----------|-----------|
-| **Jira/Zephyr специфика** | AUI, Froala Editor, transition screens, agile board drag |
-| **Error Tracking** | window.onerror, unhandledrejection |
-| **Touch/Wheel** | touchstart/touchend, wheel (колёсико) |
-| **Cookie Consent/GDPR** | OneTrust, CookieYes авто-акцепт |
-| **CAPTCHA** | ReCaptcha/Turnstile детекция |
-| **CSS Animation** | transitionend, animationend |
-| **Carousel** | slide.bs.carousel, swiped-left/right |
-| **Media events** | play, pause, seeked |
-| **ResizeObserver/IntersectionObserver** | видимость и размер элементов |
-| **Page Lifecycle** | visibilitychange, freeze/resume |
-| **IME Composition** | CJK ввод |
+| **Jira/Zephyr специфика** | Agile board drag, workflow transition properties |
+| **Media** | ended, fullscreenchange, loadedmetadata/error |
+| **Navigation API** | современная SPA-навигация (navigate, navigatesuccess/navigateerror) |
+| **Cookie Consent** | авто-акцепт cookie, cookie bar dismiss |
+| **Full-screen / Viewport** | fullscreenchange, fullscreenerror, orientationchange |
+| **Dialog** | cancel (Escape), close events |
+| **EditContext** | textupdate, beforeinput |
+| **Pointer/Gesture** | pointermove, pointercancel, gesture |
 
 ---
 
@@ -456,13 +453,10 @@ title: GAP Analysis
 
 | # | Что | QR | PW | Причина |
 |---|-----|-----|-----|---------|
-| 1 | **Jira/Zephyr специфика** (AUI, Froala, transition, plugin iframe'ы) | ❌ | ❌ | Без этого qtest-runner бесполезен для целевой платформы |
-| 2 | **iframe cross-origin** — postMessage bridge | ❌ | ❌ | Jira плагины — всегда в iframe (Zephyr, Structure, Insight) |
-| 3 | **Cookie Consent / GDPR** | ❌ | ❌ | EU-инстансы Jira блокируют запись |
-| 4 | **Assertions** (генерация ожидаемого результата) | ❌ | ✅ | У PW есть — нужно заимствовать подход |
-| 5 | **Error Tracking** (onerror + unhandledrejection) | ❌ | ❌ | Для баг-репортов критично |
-| 6 | **Froala Editor** (rich text Jira) | ❌ | ❌ | Основной редактор в Jira/Zephyr |
-| 7 | **Shadow DOM composedPath()** | ❌ | ✅ | У PW есть — скопировать подход |
-| 8 | **Animation/Transition end** | ❌ | ❌ | Jira переходы анимированы |
-| 9 | **Touch / Wheel** | ❌ | ❌ | Мобильная версия Jira |
-| 10 | **iframe селектор** (frame >> element) | ❌ | ✅ | У PW есть — скопировать формат |
+| 1 | **Jira/Zephyr специфика** (Agile board drag, workflow properties) | ❌ | ❌ | Требует живой Jira инстанс для тестирования |
+| 2 | **Cookie Consent** (авто-акцепт, dismiss) | 🔶 | ❌ | Детекция есть, нет автоматического клика |
+| 3 | **Media** (ended, fullscreenchange) | 🔶 | ❌ | play/pause/seeked/volume работают, остальные — низкий приоритет |
+| 4 | **Navigation API** (современная SPA-навигация) | ❌ | ❌ | Пока не массово используется |
+| 5 | **Dialog** (cancel, close events) | 🔶 | ❌ | open/close через MutationObserver, события не отслеживаются |
+| 6 | **Fullscreen / Viewport** | ❌ | ❌ | Низкий приоритет для тестирования |
+| 7 | **EditContext** (textupdate, beforeinput) | ❌ | ❌ | Experimental API, пока не стандарт |

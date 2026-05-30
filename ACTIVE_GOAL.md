@@ -1,7 +1,7 @@
-# Активная цель (сохранено 30.05.2026, Сессия #~49)
+# Активная цель (сохранено 30.05.2026, Сессия #~50)
 
 ## Главная цель
-Все 7 итераций по доработке qtest-runner выполнены. Документация консолидирована: VitePress-сайт с тёмной темой, 16 страниц, 205 тестов.
+Все 7 итераций по доработке qtest-runner выполнены. Документация консолидирована (VitePress). Кодовая база: ESLint 0 ошибок, 205 тестов, CI/CD настроен.
 
 ## Текущая подзадача
 Ожидание новых задач от пользователя.
@@ -39,6 +39,12 @@
 - Планы → `qtest-runner/docs/archive/`
 - precondition.files, ~$*, битые файлы → `Desktop/Test-cases&Bug-reports/`
 
+### ✅ Качество кода (30.05.2026)
+- **ESLint:** установлен eslint v10 + typescript-eslint + prettier. Flat config (`eslint.config.mjs`). 0 ошибок, 245 предупреждений (все `no-explicit-any` — допустимо)
+- **Prettier:** `.prettierrc` — singleQuote, trailingComma, printWidth 120
+- **CI/CD:** `.github/workflows/ci.yml` — 4 джоба (lint, test, build, docs) на ubuntu-latest + node 22
+- **Исправлена документация:** problems.md (устаревшие пункты), status.md (незакрытые чекбоксы), gap-analysis.md (80/146 → обновлены статусы), refactor-plan.md (video recording отмечен как done)
+
 ### 🔄 В процессе
 (ожидание)
 
@@ -47,6 +53,8 @@
 
 ## Принятые решения
 - **VitePress:** выбран для документации — тёмная тема, поиск, сайдбар, .md как source of truth
+- **ESLint flat config:** `eslint.config.mjs` с typescript-eslint + prettier. Правила: no-empty (отключено для inject-скриптов), no-explicit-any (warn), prefer-const (error)
+- **CI/CD:** 4 параллельные джоба (lint, test, build, docs) — каждый PR проверяется автоматически
 - **Multi-page с атрибуцией:** каждая страница сайта указывает исходный .md (`> **Source:** filename.md`)
 - **CONTEXT_RULES.md:** добавлена секция с инструкцией загружать docs-сайт через webfetch при старте сессии
 - **Shadow DOM:** использовать `composedPath()` + `deepActiveElement()` вместо `e.target`

@@ -3,7 +3,7 @@ import type { RecordedAction } from '../db';
 
 // ── Hoisted: create in-memory DB before mock factories ──
 const { memDbRef } = vi.hoisted(() => {
-  // @ts-ignore – require is available in Node.js context
+  // @ts-expect-error – require is available in Node.js context
   const Database = require('better-sqlite3');
   const db = new Database(':memory:');
   return { memDbRef: { current: db } };

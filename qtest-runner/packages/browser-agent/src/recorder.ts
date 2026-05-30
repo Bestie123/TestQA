@@ -1,3 +1,4 @@
+/* eslint-disable no-empty */
 import http from 'http';
 import { Page, Frame } from 'playwright';
 import { getSession, saveVideo } from './browser-manager';
