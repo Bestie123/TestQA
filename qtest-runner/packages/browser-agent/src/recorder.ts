@@ -1,4 +1,3 @@
-/* eslint-disable no-empty */
 import http from 'http';
 import { Page, Frame } from 'playwright';
 import { getSession, saveVideo } from './browser-manager';
@@ -390,26 +389,6 @@ ${SHADOW_DOM_HELPER}
     __record({actionType:"clipboard", selector:__getSelector(el), selectorText:__getSelectorText(el), value:"paste"});
   }, true);
 
-  // ===== Selection tracking (debounced) =====
-  var __selectionTimer = null;
-  var __lastSelection = "";
-  document.addEventListener("selectionchange", function() {
-    if (__selectionTimer) return;
-    __selectionTimer = setTimeout(function() {
-      __selectionTimer = null;
-      var sel = window.getSelection();
-      if (!sel) return;
-      var text = sel.toString().trim();
-      if (!text || text === __lastSelection || text.length > 500) return;
-      __lastSelection = text;
-      var range = sel.rangeCount > 0 ? sel.getRangeAt(0) : null;
-      var el = range ? range.startContainer : null;
-      if (el && el.nodeType === 3) el = el.parentElement;
-      __record({actionType:"selection", selector:el ? __getSelector(el) : "", selectorText:text.slice(0, 120), value:text.slice(0, 500), length:text.length, selectionText:text.slice(0, 500)});
-      __addLogToOverlay("select", "Selected: " + text.slice(0, 60) + (text.length > 60 ? "..." : ""), "#0fa");
-    }, 400);
-  }, true);
-
   // ===== Console.log interception =====
   var __origLog = console.log;
   var __origError = console.error;
@@ -692,7 +671,6 @@ function formatActionDetail(action: any): string {
     case 'contextmenu': return `selector="${action.selector}" x=${action.x} y=${action.y}`;
     case 'dialog': return `type=${action.selectorText} value="${(action.value||'').slice(0,60)}" result=${action.result||''}`;
     case 'clipboard': return `selector="${action.selector}" action=${action.value}`;
-    case 'selection': return `text="${(action.value||'').slice(0,60)}" length=${action.length} [${action.selector}]`;
     case 'resize': return `size=${action.value}`;
     case 'response': return `url="${(action.url||'').slice(0,80)}" status=${action.status} method=${action.method||''}`;
     case 'request': return `url="${(action.url||'').slice(0,80)}" method=${action.method} type=${action.resourceType||''}`;

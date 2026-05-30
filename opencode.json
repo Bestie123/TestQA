@@ -2,8 +2,8 @@
   "$schema": "https://opencode.ai/config.json",
   "command": {
     "push": {
-      "description": "Отправить все закоммиченные изменения на GitHub (git push)",
-      "template": "Выполни git push в терминале для текущего репозитория. Если возникнет ошибка аутентификации — используй GitHub CLI: gh auth login"
+      "description": "Закоммитить все изменения и отправить на GitHub",
+      "template": "Выполни git add -A, затем git commit с автоматическим сообщением (на основе списка изменённых файлов), и git push. Если есть незакоммиченные изменения —.commit их. Если возникнет ошибка аутентификации — используй GitHub CLI: gh auth login"
     }
   }
 }

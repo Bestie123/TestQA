@@ -43,8 +43,6 @@ export interface RecordedAction {
   frameUrl: string;
   frameSelector: string;
   iframeAction: boolean;
-  length: number;
-  selectionText: string;
 }
 
 export interface RecordingSession {
@@ -112,8 +110,6 @@ function initSchema(): void {
       frame_url TEXT DEFAULT '',
       frame_selector TEXT DEFAULT '',
       iframe_action INTEGER DEFAULT 0,
-      selection_length INTEGER DEFAULT 0,
-      selection_text TEXT DEFAULT '',
       FOREIGN KEY (session_id) REFERENCES recording_sessions(id) ON DELETE CASCADE
     );
     CREATE INDEX IF NOT EXISTS idx_actions_session ON recorded_actions(session_id);
@@ -133,10 +129,6 @@ function initSchema(): void {
       enabled INTEGER DEFAULT 1,
       profiles_json TEXT DEFAULT '[]'
     );
-    CREATE TABLE IF NOT EXISTS app_settings (
-      key TEXT PRIMARY KEY,
-      value TEXT NOT NULL DEFAULT ''
-    );
   `);
   // Migration: add columns that may not exist in old databases
   const migrations = [
@@ -153,11 +145,9 @@ function initSchema(): void {
     'ALTER TABLE recorded_actions ADD COLUMN frame_url TEXT DEFAULT \'\'',
     'ALTER TABLE recorded_actions ADD COLUMN frame_selector TEXT DEFAULT \'\'',
     'ALTER TABLE recorded_actions ADD COLUMN iframe_action INTEGER DEFAULT 0',
-    'ALTER TABLE recorded_actions ADD COLUMN selection_length INTEGER DEFAULT 0',
-    'ALTER TABLE recorded_actions ADD COLUMN selection_text TEXT DEFAULT \'\'',
   ];
   for (const m of migrations) {
-    try { db.exec(m); } catch { /* column may already exist */ }
+    try { db.exec(m); } catch {}
   }
 }
 
@@ -215,8 +205,6 @@ function mapAction(row: any): RecordedAction {
     frameUrl: row.frame_url || '',
     frameSelector: row.frame_selector || '',
     iframeAction: !!row.iframe_action,
-    length: row.selection_length || 0,
-    selectionText: row.selection_text || '',
   };
 }
 
@@ -288,10 +276,8 @@ export function addAction(sessionId: string, action: Omit<RecordedAction, 'id' |
     action.frameUrl ?? '',
     action.frameSelector ?? '',
     action.iframeAction ? 1 : 0,
-    action.length ?? 0,
-    action.selectionText ?? '',
   ];
-    const sql = `INSERT INTO recorded_actions (id, session_id, action_type, selector, selector_text, value, url, page_title, tab_id, screenshot, timestamp, idx, method, resource_type, post_data, headers_json, status_code, response_body, error, level, combo, modifiers, input_type, checked, option_index, x, y, scroll_y, scroll_max, shadow_dom, display_value, frame_name, frame_url, frame_selector, iframe_action, selection_length, selection_text) VALUES (${vals.map(() => '?').join(', ')})`;
+    const sql = `INSERT INTO recorded_actions (id, session_id, action_type, selector, selector_text, value, url, page_title, tab_id, screenshot, timestamp, idx, method, resource_type, post_data, headers_json, status_code, response_body, error, level, combo, modifiers, input_type, checked, option_index, x, y, scroll_y, scroll_max, shadow_dom, display_value, frame_name, frame_url, frame_selector, iframe_action) VALUES (${vals.map(() => '?').join(', ')})`;
     d.prepare(sql).run(...vals);
     return { id, sessionId, index: maxIdx.next, ...action };
 }
@@ -392,62 +378,6 @@ export function convertToSteps(sessionId: string): ConvertedStep[] {
             `Страница загружена${a.pageTitle ? ': "' + a.pageTitle + '"' : ''}`
           ));
         }
-        break;
-      case 'switchTab':
-        steps.push(makeStep(a,
-          `Переключить вкладку на "${a.selectorText || a.url || ''}"`,
-          a.url || '',
-          'Вкладка переключена'
-        ));
-        break;
-      case 'listTabs':
-        steps.push(makeStep(a,
-          `Показать список вкладок`,
-          '',
-          a.value || 'Список вкладок'
-        ));
-        break;
-      case 'screenshot':
-        steps.push(makeStep(a,
-          `Сделать скриншот`,
-          '',
-          'Скриншот сохранён'
-        ));
-        break;
-      case 'wait':
-        steps.push(makeStep(a,
-          `Подождать ${a.value || '2'} сек.`,
-          '',
-          `Ожидание ${a.value || '2'} сек.`
-        ));
-        break;
-      case 'animation_start':
-        steps.push(makeStep(a,
-          `CSS анимация "${a.selectorText || ''}" началась`,
-          '',
-          'Анимация запущена'
-        ));
-        break;
-      case 'transition_start':
-        steps.push(makeStep(a,
-          `CSS transition "${a.selectorText || ''}" началась`,
-          '',
-          'Transition запущен'
-        ));
-        break;
-      case 'page_hide':
-        steps.push(makeStep(a,
-          `Страница скрыта (bfcache)`,
-          '',
-          'Страница ушла в кэш'
-        ));
-        break;
-      case 'page_show':
-        steps.push(makeStep(a,
-          `Страница восстановлена из кэша`,
-          '',
-          'Страница вернулась из bfcache'
-        ));
         break;
       case 'click':
         steps.push(makeStep(a,
@@ -607,13 +537,6 @@ export function convertToSteps(sessionId: string): ConvertedStep[] {
         break;
       case 'resize':
       case 'clipboard':
-        break;
-      case 'selection':
-        steps.push(makeStep(a,
-          `Выделить текст "${(a.value || '').slice(0, 60)}${(a.value || '').length > 60 ? '...' : ''}" [длина=${a.length}]`,
-          a.value || '',
-          'Текст выделен'
-        ));
         break;
       case 'request': {
         const step = makeStep(a,
@@ -787,6 +710,27 @@ export function convertToSteps(sessionId: string): ConvertedStep[] {
           'Текст введён через IME'
         ));
         break;
+      case 'dragstart':
+        steps.push(makeStep(a,
+          `Начать перетаскивание "${a.selectorText || a.selector || ''}"`,
+          '',
+          'Элемент захвачен для перетаскивания'
+        ));
+        break;
+      case 'dragend':
+        steps.push(makeStep(a,
+          `Завершить перетаскивание (${a.value || ''})`,
+          '',
+          'Перетаскивание завершено'
+        ));
+        break;
+      case 'drop':
+        steps.push(makeStep(a,
+          `Опустить элемент на "${a.selectorText || a.selector || ''}"`,
+          '',
+          'Элемент отпущен на целевой области'
+        ));
+        break;
       case 'hover':
         steps.push(makeStep(a,
           `Навести мышь на "${a.selectorText || a.selector || ''}" [selector=${a.selector}]`,
@@ -913,34 +857,4 @@ export function updateUserSwitchConfig(config: { hotkey?: string; enabled?: bool
   const profiles = JSON.stringify(config.profiles ?? JSON.parse(existing?.profiles_json || '[]'));
   d.prepare(`UPDATE user_switch_config SET hotkey = ?, enabled = ?, profiles_json = ? WHERE id = 1`).run(hotkey, enabled, profiles);
   return getUserSwitchConfig();
-}
-
-// ── App Settings ──
-
-export function getSettings(): Record<string, string> {
-  const d = getDb();
-  const rows = d.prepare('SELECT key, value FROM app_settings').all() as { key: string; value: string }[];
-  const settings: Record<string, string> = {};
-  for (const r of rows) settings[r.key] = r.value;
-  return settings;
-}
-
-export function getSetting(key: string): string | null {
-  const d = getDb();
-  const row = d.prepare('SELECT value FROM app_settings WHERE key = ?').get(key) as { value: string } | undefined;
-  return row?.value ?? null;
-}
-
-export function setSetting(key: string, value: string): void {
-  const d = getDb();
-  d.prepare('INSERT OR REPLACE INTO app_settings (key, value) VALUES (?, ?)').run(key, value);
-}
-
-export function setSettingsBulk(settings: Record<string, string>): void {
-  const d = getDb();
-  const stmt = d.prepare('INSERT OR REPLACE INTO app_settings (key, value) VALUES (?, ?)');
-  const tx = d.transaction(() => {
-    for (const [k, v] of Object.entries(settings)) stmt.run(k, v);
-  });
-  tx();
 }

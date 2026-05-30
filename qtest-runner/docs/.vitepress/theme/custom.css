@@ -1,0 +1,32 @@
+/* Force dark mode always */
+:root {
+  color-scheme: dark !important;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html:not(.dark) {
+  color-scheme: dark;
+}
+
+/* Override any light theme variables */
+html:not(.dark) {
+  --vp-c-bg: #0f0f23;
+  --vp-c-bg-alt: #1a1a2e;
+  --vp-c-bg-elv: #16213e;
+  --vp-c-bg-soft: #1a1a2e;
+  --vp-c-text-1: #e0e0e0;
+  --vp-c-text-2: #b0b0b0;
+  --vp-c-text-3: #888;
+  --vp-c-divider: #333;
+  --vp-c-gutter: #1a1a2e;
+  --vp-sidebar-bg-color: #0f0f23;
+  --vp-nav-bg-color: #0f0f23;
+}
+
+/* Force dark class on html */
+html {
+  color-scheme: dark;
+}
