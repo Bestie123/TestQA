@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+dist/
+
+# Browser profiles
+.inject-test-profile*/
+inject-test-profile*/
+
+# Database WAL/SHM files
+*.db-shm
+*.db-wal
+*.db-journal
+*.db.bak
+
+# Cache
+.cache/
+*.tar.zst
+*-manifest.json
+*-meta.json
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# VitePress cache
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+
+# Build artifacts
+*.tsbuildinfo
