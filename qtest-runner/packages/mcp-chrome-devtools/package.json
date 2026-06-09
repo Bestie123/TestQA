@@ -1,0 +1,10 @@
+{
+  "name": "@qtest/mcp-chrome-devtools",
+  "version": "0.1.0",
+  "type": "module",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "playwright": "^1.52.0",
+    "zod": "^3.23.0"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "browser-devtools-mcp",
+  "version": "1.0.0",
+  "description": "Browser DevTools MCP Server for Chrome DevTools Protocol",
+  "main": "server.js",
+  "dependencies": {
+    "ws": "^8.0.0"
+  }
+}
