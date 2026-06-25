@@ -1,0 +1,16 @@
+WRMCB=function(e){var c=console;if(c&&c.log&&c.error){c.log('Error running batched script.');c.error(e);}}
+;
+try {
+/* module-key = 'com.kanoah.test-manager:ktm-resources-pre', location = 'com/kanoah/testmanager/frontend/kanoahPre.js' */
+window.Kanoah = window.Kanoah || {};
+
+if (window.angular) {
+  window.Kanoah.oldAngular = window.angular;
+  console.log(
+    'It seems Angular is already on global scope. Creating cache and removing from global scope...'
+  );
+  console.log('Old Angular version: ', window.Kanoah.oldAngular.version);
+  window.angular = null;
+}
+
+}catch(e){WRMCB(e)};

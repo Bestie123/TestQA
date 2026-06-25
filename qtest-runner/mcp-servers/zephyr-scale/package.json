@@ -1,0 +1,7 @@
+{
+  "name": "zephyr-scale-mcp",
+  "version": "1.0.0",
+  "description": "Zephyr Scale MCP Server for API interactions",
+  "main": "server.js",
+  "dependencies": {}
+}

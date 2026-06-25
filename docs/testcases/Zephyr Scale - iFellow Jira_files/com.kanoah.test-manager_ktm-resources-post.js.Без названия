@@ -1,0 +1,12 @@
+WRMCB=function(e){var c=console;if(c&&c.log&&c.error){c.log('Error running batched script.');c.error(e);}}
+;
+try {
+/* module-key = 'com.kanoah.test-manager:ktm-resources-post', location = 'com/kanoah/testmanager/frontend/kanoahPost.js' */
+if (window.Kanoah.oldAngular) {
+  console.log('Putting back old Angular on global scope...');
+  console.log('Angular version being used on Zephyr Scale: ', window.angular.version);
+  console.log('Old Angular version: ', window.Kanoah.oldAngular);
+  window.angular = window.Kanoah.oldAngular;
+}
+
+}catch(e){WRMCB(e)};

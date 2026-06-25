@@ -1,0 +1,46 @@
+{
+  "name": "qtest-runner",
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "clean": "turbo run clean",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "workspaces": [
+    "packages/shared-types",
+    "packages/recorder-shared",
+    "packages/testcase-service",
+    "packages/step-library-service",
+    "packages/api-gateway",
+    "packages/web-ui",
+    "packages/execution-service",
+    "packages/browser-agent",
+    "packages/chrome-extension",
+    "packages/recorder-service"
+  ],
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.4.1",
+    "eslint-config-prettier": "^10.1.8",
+    "http-server": "^14.1.1",
+    "prettier": "^3.8.3",
+    "turbo": "^2.5.0",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.60.0",
+    "vitepress": "^1.6.4",
+    "vitest": "^4.1.7"
+  },
+  "packageManager": "npm@10.0.0",
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

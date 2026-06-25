@@ -1,0 +1,138 @@
+flowchart LR
+    %% ===== PIPELINE 1: RECORDING =====
+    subgraph PIPE_RECORD["🎬 Pipeline записи действий"]
+        direction TB
+
+        R_USER["👤 Действия\nпользователя"]
+
+        subgraph R_MODES["2 режима записи"]
+            direction LR
+            R_EXT["Режим 1:\nChrome Extension\nDOM Events"]
+            R_CDP["Режим 2:\nCDP Injection\nPage JS + Network"]
+        end
+
+        R_INJECT["Inject Script (18 helpers):\n• SHADOW_DOM — composedPath, getSmartSelector\n• IFRAME — getFrameSelector, getFramePath\n• SPA_NAV — history.pushState monkey-patch\n• ERROR_TRACKER — window.onerror\n• ASSERTION — auto-expected results\n• JIRA_DETECTOR — Zephyr/Froala/AUI\n• COOKIE_CONSENT — OneTrust/CookieYes\n• TOUCH_WHEEL — touch + drag events\n• ANIMATION — transition/animation end\n• LIFECYCLE — visibilitychange/dialog/details\n• CAPTCHA — ReCaptcha/Turnstile/hCaptcha\n• FILE_UPLOAD — input[type=file]\n• USER_SWITCH — Ctrl+Shift+U\n• POPOVER — HTML Popover API\n• MEDIA — video/audio events\n• IME — CJK composition\n• RESIZE_OBSERVER — patched observers\n• TP_ID — data-tp attributes"]
+
+        R_CHANNELS["Каналы связи:\n1. console.debug(__QTEST_ACTION__)\n2. page.exposeFunction(__recordAction)\n3. postMessage (cross-origin iframe)"]
+
+        R_RECORDER["recorder-service :3004\nWebSocket + HTTP"]
+        R_DB[("recordings.db\nrecorded_actions\n(33 колонки)")]
+        R_CONVERT["Step Converter:\n30+ action types → RU шаги\nnavigate → 'Перейти по URL'\nclick → 'Нажать \"text\"'\nfill → 'Заполнить \"field\" = \"value\"'\nkeypress → 'Нажать Enter на \"...\"'\ndrag → 'Перетащить \"Source\" в \"Target\"'\nHTTP → 'HTTP POST url'\n..."]
+
+        subgraph R_OUTPUT["Результат конвертации"]
+            direction LR
+            R_STEPS["ConvertedStep[]\n• action (RU)\n• testData\n• expectedResult"]
+            R_JSON["JSON export"]
+            R_ZEPHYR["Publish → Zephyr"]
+        end
+
+        R_USER --> R_MODES
+        R_EXT -->|"WS record:action\n(DOM events)"| R_INJECT
+        R_CDP -->|"CDP Network + DOM\n(request/response/error)"| R_INJECT
+        R_INJECT --> R_CHANNELS
+        R_CHANNELS -->|"console.debug\n+ exposeFunction"| R_RECORDER
+        R_CDP -->|"HTTP POST\n/recordings/:id/actions\n(каждые 2 сек)"| R_RECORDER
+        R_RECORDER --> R_DB
+        R_DB --> R_CONVERT
+        R_CONVERT --> R_OUTPUT
+    end
+
+    %% ===== PIPELINE 2: EXECUTION =====
+    subgraph PIPE_EXEC["▶️ Pipeline выполнения тестов"]
+        direction TB
+
+        E_WEB["web-ui\nExecutionPage"]
+        E_CREATE["1. POST /api/executions\nFetch TC + expand composites"]
+
+        subgraph E_SVC["execution-service :3003"]
+            direction TB
+            E_FETCH_TC["GET :3001/api/testcases/:key\n→ {key, name, steps}"]
+            E_EXPAND["POST :3002/composite-steps/:id/expand\n→ expanded steps"]
+            E_INSERT[("executions + step_results\nSQLite")]
+            E_START["POST /api/executions/:id/start\nstatus → running\nfirst step → running"]
+        end
+
+        E_LOOP["2. Auto-next loop\n(вызывается web-ui)\nPOST /api/executions/:id/auto-next"]
+
+        subgraph E_AGENT["browser-agent :3005"]
+            direction TB
+            E_LAUNCH["POST /api/launch\n→ profileId"]
+            E_PARSE["action-parser.ts:\nТекст (RU/EN) → ParsedCommand[]\n26 action types\nPriority:\n1. Exact EN match\n2. RU regex patterns\n3. URL from testData\n4. Canvas coordinates\n5. Default: click"]
+            E_EXEC["executor.ts:\nPlaywright API:\n• frame.click(sel)\n• frame.fill(sel, val)\n• page.keyboard.press(key)\n• locator.dragTo(target)\n• page.mouse.wheel(dx, dy)\n• page.touchscreen.tap(x, y)\n• ctx.setInputFiles(sel, file)\n• ctx.waitForSelector(sel)\n• page.screenshot() → base64"]
+            E_RESULT["StepResult:\n• status: passed|failed\n• screenshot: base64 PNG\n• error?: string"]
+        end
+
+        E_RECORD["3. Запись результата\nUPDATE step_results\nscreenshot + notes"]
+        E_ADVANCE["4. Advance\n→ next step = running\n(только если passed)"]
+        E_RECALC["5. Recalculate\nЛюбой failed → execution = failed\nВсе done → execution = passed"]
+        E_DONE["Завершение\nstatus + completed_at"]
+
+        E_WEB -->|"Create\n(testCaseKey)"| E_CREATE
+        E_CREATE --> E_FETCH_TC
+        E_CREATE --> E_EXPAND
+        E_FETCH_TC -.->|"GET :3001"| E_SVC
+        E_EXPAND -.->|"POST :3002"| E_SVC
+        E_CREATE --> E_INSERT
+        E_WEB -->|"Start"| E_START
+        E_START --> E_LOOP
+        E_LOOP --> E_LAUNCH
+        E_LOOP --> E_PARSE
+        E_PARSE --> E_EXEC
+        E_EXEC --> E_RESULT
+        E_RESULT --> E_RECORD
+        E_RECORD --> E_ADVANCE
+        E_ADVANCE -->|"passed → next"| E_LOOP
+        E_ADVANCE -->|"failed → stop"| E_RECALC
+        E_RECALC --> E_DONE
+    end
+
+    %% ===== PIPELINE 3: ZEPHYR SYNC =====
+    subgraph PIPE_SYNC["🔄 Pipeline синхронизации Zephyr"]
+        direction TB
+
+        S_WEB["web-ui\nSyncPage (5 подвкладок)"]
+        S_CONFIG["PUT /api/zephyr/config\n{baseUrl, projectKey, apiToken}"]
+
+        subgraph S_REMOTE["Remote Mode"]
+            direction LR
+            S_FOLDERS["GET /api/zephyr/folders\n→ folder tree"]
+            S_TC["GET /api/zephyr/testcases\n→ paginated search\n(startAt, maxResults)"]
+            S_RUNS["GET /api/zephyr/testruns\n→ test cycles"]
+            S_PLANS["GET /api/zephyr/testplans\n→ test plans"]
+        end
+
+        subgraph S_LOCAL["Local Mode"]
+            direction LR
+            S_LTC["GET /api/local/testcases\n→ SQLite"]
+            S_LRUNS["GET /api/local/testruns\n→ SQLite"]
+            S_LPLANS["GET /api/local/testplans\n→ SQLite"]
+        end
+
+        subgraph S_SYNC["Синхронизация"]
+            direction LR
+            S_FULL["POST /api/zephyr/sync\nFull sync → local DB\n+ cache clear"]
+            S_PER_RUN["POST /api/zephyr/sync/testrun\nPer-run sync"]
+            S_TO_LOCAL["POST /api/local/sync/testruns\nPOST /api/local/sync/testplans\nZephyr → SQLite upsert"]
+        end
+
+        S_DIFF["POST /api/diff/excel\nExcel vs Local diff"]
+        S_COV["GET /api/coverage\nIssue → TC mapping"]
+
+        S_WEB --> S_CONFIG
+        S_CONFIG --> S_REMOTE
+        S_REMOTE --> S_SYNC
+        S_LOCAL --> S_DIFF
+        S_LOCAL --> S_COV
+        S_SYNC --> S_FULL
+        S_SYNC --> S_PER_RUN
+        S_SYNC --> S_TO_LOCAL
+    end
+
+    %% ===== СТИЛИ =====
+    classDef pipeline fill:#1a1a2e,color:#fff,stroke:#4a9eff
+    classDef step fill:#2d2d44,color:#fff,stroke:#7c7cff
+    classDef db fill:#4caf50,color:#fff,stroke:#1b5e20
+
+    class PIPE_RECORD,PIPE_EXEC,PIPE_SYNC pipeline
+    class R_INJECT,R_CHANNELS,R_CONVERT,E_PARSE,E_EXEC,E_FETCH_TC,E_EXPAND step
+    class R_DB,E_INSERT db

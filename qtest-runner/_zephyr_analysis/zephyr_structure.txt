@@ -1,0 +1,265 @@
+Index: qtest-runner/_zephyr_analysis/zephyr_structure.txt
+===================================================================
+<span cls=css-169u0b5 e1wtfg4r0 testid=zephyr-scale-v2
+  <div cls=css-5l8x0h e1at5b9o0
+    <div cls=css-ok3x4k e1ef19n63
+      <div cls=css-b0p25c e1ef19n62
+        <div cls=css-1kq6w27 e1ef19n60
+          <div cls=css-anwory ev95fwb3
+            <img cls=css-vjh0up ewmflus0
+            <div cls=css-1nrdoa1 e1whr8370
+            <span cls=css-169u0b5 e1wtfg4r0
+              <div cls=css-1uadcpv e1p41pdi1
+                Автоматизация iFellow
+                <span cls=css-snhnyn
+                  <svg role=presentation
+                    <path
+        <div cls=css-1oy5iav
+          <div cls=css-1oy5iav
+            <div role=presentation
+              <div
+                <button cls=css-1luyhz2 testid=zscale-configuration
+                  <span cls=css-17wby6x
+                    Конфигурация
+      <div cls=css-0 e1ef19n61
+        <nav cls=css-1d4kth1 ejsler41 role=tablist
+          <div cls=css-fn6hgw ejsler40 testid=zscale-testcase-library role=tab selected=true
+            Тест кейсы
+          <div cls=css-15a70hp ejsler40 testid=zscale-testcycle-library role=tab
+            Тестовые прогоны
+          <div cls=css-15a70hp ejsler40 testid=zscale-testplan-library role=tab
+            Планы тестирования
+          <div cls=css-15a70hp ejsler40 testid=zscale-reports role=tab
+            Отчёты
+    <span cls=css-1iftbzb e14vqp3m0
+      <div cls=css-76fm9s e1m2vyc11
+        <div cls=css-1gzyv69 edjxiyy0
+          <div cls=css-h0b484 e1whr8370 role=heading
+          <div cls=css-1nn1at6 ea16b0n0 testid=folder-tree-container role=tree
+            <div cls=css-nurhy0 ev95fwb3
+              <div cls=css-1b8dgau ek9ojvq0 testid=folder-tree-top-level
+                <button cls=css-16rk786 testid=ktm-create-new-folder
+                  <span cls=css-1k9lzsu
+                    <span cls=css-snhnyn role=img
+                      <svg role=presentation
+                        <path
+                  <span cls=css-17wby6x
+                    Новая папка
+                <div cls=css-13owi0b eogbrai0
+                  <div testid=ktm-search-trigger
+                    <button cls=css-udno6l
+                      <span cls=css-1k9lzsu
+                        <span cls=css-snhnyn role=img
+                          <svg role=presentation
+                            <path
+                <div cls=css-1qj7k7a e4axuat0
+                  <div
+                    <button cls=folder-tree-options e1kb91rq0 css-vfqy8v
+                      <span cls=css-1k9lzsu
+                        <div testid=ktm-folder-tree-dropdown-button
+                          <span cls=css-snhnyn role=img
+                            <svg role=presentation
+                              <path
+              <span cls=css-14v6hkl e16vi2nm1
+                <div
+                  <div cls=ktm-folder-tree-item isSelected css-qet7a7 e16vi2nm0 testid=folder-item-root role=treeitem selected=true
+                    <span cls=name-wrapper testid=folder-name-with-count-root
+                      <b cls=css-15xv5ui el4yamt0
+                        Все тест кейсы
+                      <span cls=css-175qx7m eh7wwia0
+                        (6012)
+                    <div cls=css-1ok9asf e1uinecl0
+                      <div
+                        <button cls=root-folder-item-dropdown e1kb91rq0 css-vfqy8v
+                          <span cls=css-1k9lzsu
+                            <span cls=css-snhnyn role=img
+                              <svg role=presentation
+                                <path
+                    <div cls=css-1mqja5e
+              <div
+                <span cls=css-14v6hkl e16vi2nm1
+                  <div
+                    <div cls=ktm-folder-tree-item css-b7418 e16vi2nm0 testid=folder-item-776 role=treeitem selected=false
+                      <div cls=css-1pm6q2k testid=folder-item-collapsed-776
+                        <div cls=css-un3w91 exlcfcf0
+                          <span cls=css-1a9gvzp exlcfcf1 testid=rotating-chevron
+                            <svg cls=css-1eamic5 ex0cdmw0
+                              <path
+                      <span cls=name-wrapper testid=folder-name-with-count-776
+                        <span cls=css-15xv5ui el4yamt0
+                          Новый сайт
+                        <span cls=css-175qx7m eh7wwia0
+                          (149)
+                      <div cls=css-1mqja5e
+                        <div cls=css-awvfzy e11pumpi0
+                          <div
+                            <button cls=folder-item-dropdown e1kb91rq0 css-vfqy8v
+                              <span cls=css-1k9lzsu
+                                <span cls=css-snhnyn role=img
+                                  <svg role=presentation
+                                    <path
+                <span cls=css-14v6hkl e16vi2nm1
+                  <div
+                    <div cls=ktm-folder-tree-item css-b7418 e16vi2nm0 testid=folder-item-284 role=treeitem selected=false
+                      <div cls=css-1pm6q2k testid=folder-item-collapsed-284
+                        <div cls=css-un3w91 exlcfcf0
+                          <span cls=css-1a9gvzp exlcfcf1 testid=rotating-chevron
+                            <svg cls=css-1eamic5 ex0cdmw0
+                              <path
+                      <span cls=name-wrapper testid=folder-name-with-count-284
+                        <span cls=css-15xv5ui el4yamt0
+                          Задачи из спринтов
+                        <span cls=css-175qx7m eh7wwia0
+                          (57)
+                      <div cls=css-1mqja5e
+                        <div cls=css-awvfzy e11pumpi0
+                          <div
+                            <button cls=folder-item-dropdown e1kb91rq0 css-vfqy8v
+                              <span cls=css-1k9lzsu
+                                <span cls=css-snhnyn role=img
+                                  <svg role=presentation
+                                    <path
+                <span cls=css-14v6hkl e16vi2nm1
+                  <div
+                    <div cls=ktm-folder-tree-item css-b7418 e16vi2nm0 testid=folder-item-202 role=treeitem selected=false
+                      <div cls=css-1pm6q2k testid=folder-item-collapsed-202
+                        <div cls=css-un3w91 exlcfcf0
+                          <span cls=css-1a9gvzp exlcfcf1 testid=rotating-chevron
+                            <svg cls=css-1eamic5 ex0cdmw0
+                              <path
+                      <span cls=name-wrapper testid=folder-name-with-count-202
+                        <span cls=css-15xv5ui el4yamt0
+                          Регресс
+                        <span cls=css-175qx7m eh7wwia0
+                          (4860)
+                      <div cls=css-1mqja5e
+                        <div cls=css-awvfzy e11pumpi0
+                          <div
+                            <button cls=folder-item-dropdown e1kb91rq0 css-vfqy8v
+                              <span cls=css-1k9lzsu
+                                <span cls=css-snhnyn role=img
+                                  <svg role=presentation
+                                    <path
+                <span cls=css-14v6hkl e16vi2nm1
+                  <div
+                    <div cls=ktm-folder-tree-item css-b7418 e16vi2nm0 testid=folder-item-1188 role=treeitem selected=false
+                      <div cls=css-1pm6q2k testid=folder-item-collapsed-1188
+                        <div cls=css-un3w91 exlcfcf0
+                          <span cls=css-1a9gvzp exlcfcf1 testid=rotating-chevron
+                            <svg cls=css-1eamic5 ex0cdmw0
+                              <path
+                      <span cls=name-wrapper testid=folder-name-with-count-1188
+                        <span cls=css-15xv5ui el4yamt0
+                          DWH
+                        <span cls=css-175qx7m eh7wwia0
+                          (41)
+                      <div cls=css-1mqja5e
+                        <div cls=css-awvfzy e11pumpi0
+                          <div
+                            <button cls=folder-item-dropdown e1kb91rq0 css-vfqy8v
+                              <span cls=css-1k9lzsu
+                                <span cls=css-snhnyn role=img
+                                  <svg role=presentation
+                                    <path
+                <span cls=css-14v6hkl e16vi2nm1
+                  <div
+                    <div cls=ktm-folder-tree-item css-b7418 e16vi2nm0 testid=folder-item-679 role=treeitem selected=false
+                      <div cls=css-1pm6q2k testid=folder-item-collapsed-679
+                        <div cls=css-un3w91 exlcfcf0
+                          <span cls=css-1a9gvzp exlcfcf1 testid=rotating-chevron
+                            <svg cls=css-1eamic5 ex0cdmw0
+                              <path
+                      <span cls=name-wrapper testid=folder-name-with-count-679
+                        <span cls=css-15xv5ui el4yamt0
+                          Орион
+                        <span cls=css-175qx7m eh7wwia0
+                          (822)
+                      <div cls=css-1mqja5e
+                        <div cls=css-awvfzy e11pumpi0
+                          <div
+                            <button cls=folder-item-dropdown e1kb91rq0 css-vfqy8v
+                              <span cls=css-1k9lzsu
+                                <span cls=css-snhnyn role=img
+                                  <svg role=presentation
+                                    <path
+          <div cls=css-1gnpnrf ey5a70t0
+            <button cls=css-1536wkp
+              <span cls=css-17wby6x
+                <div cls=css-1cunasb
+                  <span cls=css-snhnyn role=img
+                    <svg role=presentation
+                      <path
+                  <div cls=css-1ir0n7j e1whr8370
+                  Archived test cases
+      <div cls=css-auw1yh
+        <div cls=css-rd0pmc e1m2vyc10
+          <span cls=css-1wits42
+            <svg role=presentation
+              <g
+                <circle
+                <circle
+                <circle
+      <div cls=css-nkexmw e1kjx7az0
+        <div cls=css-jsae2s ev95fwb3
+          <div cls=css-1e1c96r e1i84q7i4
+            <div cls=css-12dpzdu e1i84q7i3
+              <div cls=css-1n3plia e1i84q7i0
+                <div cls=css-12hb08f e1d5ovga0
+                  <button cls=css-1yeatxf role=button
+                    <span cls=css-1k9lzsu
+                      <span cls=css-snhnyn
+                        <svg role=presentation
+                          <path
+                    <span cls=css-17wby6x
+                      Новый тест кейс
+                <div cls=css-fqvzli ereqekr0
+                <div role=presentation
+                  <div
+                    <button cls=css-11hj4yn
+                      <span cls=css-17wby6x
+                        Архивировать
+                <div role=presentation
+                  <div
+                    <button cls=css-11hj4yn
+                      <span cls=css-17wby6x
+                        Клонировать
+                <div cls=css-fqvzli ereqekr0
+                <div
+                  <button cls=e1kb91rq0 css-1i1bote
+                    <span cls=css-17wby6x
+                      Еще
+                    <span cls=css-1k9lzsu
+                      <span cls=css-1wits42 role=img
+                        <svg role=presentation
+                          <path
+              <div cls=css-zfgh4u e1i84q7i0
+                <div cls=css-12ypsoc role=presentation
+                  <input cls=css-1cab8vv
+                  <span cls=css-snhnyn role=img
+                    <svg role=presentation
+                      <path
+                <div cls=css-1ybmtef e1whr8370
+                <button cls=expand-filters-button css-1luyhz2
+                  <span cls=css-1k9lzsu
+                    <span cls=css-snhnyn role=img
+                      <svg role=presentation
+                        <path
+                  <span cls=css-17wby6x
+                    Фильтры
+        <div cls=css-jcuh28 e8vt1j40
+          <table cls=aui
+            <thead
+              <tr
+                <th cls=css-ipzday e1c1ud7b0
+                  <input
+                <th cls=sortable css-ipzday e1c1ud7b0
+                  <div role=presentation
+                    <span
+                      П
+                <th cls=sortable descending css-ipzday e1c1ud7b0
+                  <span
+                    Ключ
+                <th cls=sortable css-ipzday e1c1ud7b0
+                  <div role=presentation
+                    <span
+                      B

@@ -1,0 +1,28 @@
+Index: qtest-runner/packages/mcp-supervisor/package.json
+===================================================================
+{
+  "name": "@qtest/mcp-supervisor",
+  "version": "1.0.0",
+  "description": "MCP Health Supervisor — auto-restart crashed MCP servers",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "fastify": "^5.0.0",
+    "better-sqlite3": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.0",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

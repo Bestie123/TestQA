@@ -1,0 +1,217 @@
+Index: results/ui-schema-devjira.json
+===================================================================
+ {
+   "ui_schema": {
+     "pages": {
+       "dashboard": {
+         "url_pattern": "/secure/Dashboard.jspa",
+         "stand": "devjira.ifellow.ru",
+         "elements": [
+           {"selector": "#create_link", "type": "button", "description": "Кнопка 'Создать' (Create) на верхней панели"},
+           {"selector": "#find_link", "type": "link", "description": "Меню 'Задачи' → поиск"},
+          {"selector": "#header-details-user-fullname", "type": "dropdown_trigger", "description": "Иконка/имя пользователя — открывает выпадающее меню"},
+          {"selector": "#user-options-content", "type": "dropdown_menu", "description": "Выпадающее меню пользователя (содержимое)"}
+         ]
+       },
+      "user_dropdown_menu": {
+        "url_pattern": "активно на любой странице (нужен клик на #header-details-user-fullname)",
+        "stand": "devjira.ifellow.ru",
+        "description": "Полная карта выпадающего меню пользователя (при наведении/клике на иконку профиля в шапке)",
+        "trigger": "#header-details-user-fullname",
+        "items": [
+          {"selector": "#view_profile", "type": "link", "text": "Профиль", "href": "/secure/ViewProfile.jspa"},
+          {"selector": "#a11y-personal-settings-link", "type": "link", "text": "Специальные возможности", "href": "/secure/AccessibilityPersonalSettings.jspa"},
+          {"selector": "#upm-requests-link", "type": "link", "text": "Магазин Atlassian", "href": "/plugins/servlet/upm/requests"},
+          {"selector": "#jnd-config-web-item-link", "type": "link", "text": "Digest Email", "href": "/plugins/servlet/digestConfig"},
+          {"selector": "#set_my_jira_home_default", "type": "radio_link", "text": "Рабочий стол", "group": "Домашняя страница"},
+          {"selector": "#greenhopper-my-jira-home-set", "type": "radio_link", "text": "Доски", "group": "Домашняя страница"},
+          {"selector": "#structure-my-jira-home-set", "type": "radio_link", "text": "Структура", "group": "Домашняя страница"},
+          {"selector": "#set_my_jira_home_issuenav", "type": "radio_link", "text": "Навигатор задач", "group": "Домашняя страница"},
+          {"selector": "#set-doitbetter-calendar-jira-home-link", "type": "radio_link", "text": "Календарь", "group": "Домашняя страница"},
+          {"selector": "#set_insight_my_jira_home_link", "type": "radio_link", "text": "Insight", "group": "Домашняя страница"},
+          {"selector": "#switch-user-back-link-id", "type": "link", "text": "Switch Back to Admin", "href": "/rest/keplerrominfo/refapp/latest/", "description": "Возврат к администратору (после impersonation)", "important": true},
+          {"selector": "#log_out", "type": "link", "text": "Выйти", "href": "/logout"}
+        ],
+        "workflow_switch_back_to_admin": [
+          "1. Кликнуть на #header-details-user-fullname (открыть меню)",
+          "2. Найти '#switch-user-back-link-id' (Switch Back to Admin)",
+          "3. Кликнуть — вернётся к дефолтному пользователю (Niкуленков Михаил Михаилович)"
+        ],
+        "workflow_switch_user_via_scriptrunner": [
+          "1. Будучи дефолтным пользователем, перейти на /plugins/servlet/scriptrunner/admin/builtin/add/com.onresolve.scriptrunner.canned.jira.admin.SwitchUser",
+          "2. Кликнуть на .sr-rs__placeholder (React Select)",
+          "3. Ввести фамилию в #react-select-2-input",
+          "4. ArrowDown + Enter для выбора",
+          "5. Кликнуть кнопку 'Run'",
+          "6. Дождаться сообщения 'Switched to ...'"
+        ],
+        "workflow_switch_user_via_cprime": [
+          "1. Будучи дефолтным пользователем, перейти на /plugins/servlet/cprime/admin/configuration?route=%2Ftools%2Fswuser",
+          "2. Кликнуть на .sr-rs__placeholder (React Select)",
+          "3. Ввести фамилию в #react-select-2-input",
+          "4. ArrowDown + Enter для выбора",
+          "5. Кликнуть кнопку 'Switch' (button.css-1l4j2co)",
+          "6. Дождаться сообщения 'Switched to ...'"
+        ]
+      },
+      "impersonation_banner": {
+        "url_pattern": "появляется на любой странице после impersonation",
+        "stand": "devjira.ifellow.ru",
+        "description": "Баннер impersonation в верхней части страницы (английский текст)",
+        "text_pattern": "You are temporarily impersonating {FullName}. Return to your session as {AdminName}.",
+        "return_link_text": "Return to your session as",
+        "example": "You are temporarily impersonating Зубарев Сергей Михайлович. Return to your session as Никуленков Михаил Михайлович.",
+        "important": true,
+        "notes": [
+          "Баннер НЕ виден в innerText — это может быть отдельный div/alert",
+          "Если impersonation активен, но баннер не виден — искать в выпадающем меню пользователя (#switch-user-back-link-id)",
+          "ScriptRunner SwitchUser ТРЕБУЕТ права админа — если impersonated пользователь не админ, страница покажет логин",
+          "Cprime SwitchUser ТАКЖЕ требует права админа",
+          "Для возврата к админу — всегда использовать #switch-user-back-link-id в выпадающем меню пользователя"
+        ]
+      },
+       "switch_user_scriptrunner": {
+         "url_pattern": "/plugins/servlet/scriptrunner/admin/builtin/add/com.onresolve.scriptrunner.canned.jira.admin.SwitchUser",
+         "stand": "devjira.ifellow.ru",
+        "description": "Форма переключения пользователя через ScriptRunner ( требует права админа! )",
+        "requires_admin": true,
+         "elements": [
+           {"selector": ".sr-rs__placeholder", "type": "react_select_placeholder", "description": "Placeholder поля выбора пользователя ('Select user(s)')"},
+           {"selector": "#react-select-2-input", "type": "react_select_input", "description": "Поле ввода имени пользователя (React Select)"},
+          {"selector": "button[type='submit']", "type": "button", "text": "Run", "description": "Кнопка 'Run' для выполнения переключения"},
+          {"selector": ".aui-message-success", "type": "message", "description": "Сообщение об успешном переключении ('Switched to ...')"}
+         ],
+         "workflow": [
+          "1. Нажать на placeholder 'Select user(s)' или кликнуть на поле",
+          "2. Ввести фамилию пользователя в #react-select-2-input",
+           "3. Выбрать нужного пользователя из выпадающего списка (ArrowDown + Enter)",
+           "4. Нажать кнопку 'Run'",
+          "5. Дождаться сообщения 'Switched to {Name} ({username})'"
+        ],
+        "known_limitation": "Если текущий пользователь НЕ админ — страница покажет форму логина с ошибкой 'не имеет прав доступа'"
+       },
+      "switch_user_cprime": {
+        "url_pattern": "/plugins/servlet/cprime/admin/configuration?route=%2Ftools%2Fswuser",
+        "stand": "devjira.ifellow.ru",
+        "description": "Форма переключения пользователя через Cprime Power Apps (требует права админа!)",
+        "requires_admin": true,
+        "elements": [
+          {"selector": ".sr-rs__placeholder", "type": "react_select_placeholder", "description": "Placeholder поля выбора пользователя ('Select user(s)')"},
+          {"selector": "#react-select-2-input", "type": "react_select_input", "description": "Поле ввода имени пользователя (React Select)"},
+          {"selector": "button.css-1l4j2co", "type": "button", "text": "Switch", "description": "Кнопка 'Switch' для выполнения переключения"},
+          {"selector": ".aui-message-success", "type": "message", "description": "Сообщение об успешном переключении ('Switched to ...')"}
+        ],
+        "workflow": [
+          "1. Нажать на placeholder 'Select user(s)' или кликнуть на поле",
+          "2. Ввести фамилию пользователя в #react-select-2-input",
+          "3. Выбрать нужного пользователя из выпадающего списка (ArrowDown + Enter)",
+          "4. Нажать кнопку 'Switch'",
+          "5. Дождаться сообщения 'Switched to {Name} ({username})'"
+        ],
+        "known_limitation": "Если текущий пользователь НЕ админ — страница покажет форму логина"
+      },
+       "issue_navigator": {
+         "url_pattern": "/secure/IssueNavigator.jspa",
+         "stand": "devjira.ifellow.ru",
+         "description": "Навигатор запросов (JQL-поиск задач)",
+         "elements": [
+           {"selector": "textarea[name='jql']", "type": "textarea", "description": "Поле ввода JQL-запроса"},
+           {"selector": ".search-options-container .aui-button-primary", "type": "button", "description": "Кнопка 'Поиск' для выполнения запроса"},
+           {"selector": ".issuerow", "type": "row", "description": "Строка результата поиска (задача)"},
+           {"selector": ".issuerow .issuekey a", "type": "link", "description": "Ссылка на ключ задачи (PRK-XXXX)"}
+         ]
+       },
+       "issue_page": {
+         "url_pattern": "/browse/{projectKey}-{issueNumber}",
+         "stand": "devjira.ifellow.ru",
+         "description": "Страница задачи Jira",
+         "example": "FIN-10492 (Прогноз к Поставке 2025)",
+         "elements": [
+           {"selector": "#summary-val", "type": "text", "description": "Название задачи"},
+           {"selector": "#status-val", "type": "badge", "description": "Статус задачи (Решено, В работе и т.д.)"},
+           {"selector": "#type-val", "type": "text", "description": "Тип задачи (Прогноз, Поставка и т.д.)"},
+           {"selector": "#project-val", "type": "link", "description": "Проект (Прогнозы и счета (FIN))"},
+           {"selector": "#description-val", "type": "richtext", "description": "Описание задачи"},
+           {"selector": "#customfield_11600-val", "type": "text", "description": "Дата окончания"},
+           {"selector": "#linkingmodule", "type": "section", "description": "Секция 'Связи запроса related by'"},
+           {"selector": ".ops-menus a[data-id='add_comment']", "type": "button", "description": "Кнопка добавления комментария"},
+           {"selector": "#activitymodule", "type": "section", "description": "Секция 'Активность' (комментарии, вложения)"},
+           {"selector": "#attachmentmodule", "type": "section", "description": "Секция 'Вложения'"}
+         ]
+       },
+       "forecast_issue_page": {
+         "url_pattern": "/browse/FIN-{number}",
+         "stand": "devjira.ifellow.ru",
+        "description": "Страница задачи типа 'Прогноз' в проекте Прогнозы и счета (FIN)",
+         "elements": [
+          {"selector": "#summary-val", "type": "text", "description": "Название задачи (напр. 'Прогноз к Поставке 2025')"},
+          {"selector": "#status-val", "type": "badge", "description": "Статус (Решено, В работе и т.д.)"},
+          {"selector": "#type-val", "type": "text", "description": "Тип задачи: Прогноз"},
+           {"selector": "#customfield_11600-val", "type": "text", "description": "Дата окончания прогноза"},
+           {"selector": ".customfieldmodule", "type": "section", "description": "Дополнительные поля (Источник финансирования, База, Сумма, Ответственный)"},
+           {"selector": "#linkingmodule", "type": "section", "description": "Связи запроса related by (проекты, карточки)"},
+          {"selector": "#linkingmodule a[href*='browse']", "type": "link", "description": "Ссылки на связанные задачи (PRK-XXXX)"},
+          {"selector": ".command-bar a, .ops-menus a", "type": "button", "description": "Панель инструментов (Наблюдать, Редактировать, Создать счет, Удалить, Направить, Ещё)"},
+          {"selector": "a:has-text('Создать счет')", "type": "button", "description": "Кнопка 'Создать счет' на панели инструментов", "important": true}
+         ],
+        "toolbar_buttons": [
+          "Наблюдать",
+          "Редактировать",
+          "Создать счет",
+          "Удалить",
+          "Направить",
+          "Ещё"
+        ],
+         "workflow_0_find_forecast": [
+          "1. Навигатор запросов → Расширенный (или URL с JQL)",
+          "2. JQL: project = FIN AND issuetype = Прогноз AND status = Решено ORDER BY created DESC",
+          "3. Выбрать прогноз из результатов (напр. FIN-10625)",
+          "4. Проверить статус 'Решено' и связь с проектом Поставка"
+        ],
+        "workflow_1_create_bill": [
+          "1. Открыть карточку прогноза (FIN-XXXX)",
+          "2. Нажать 'Создать счет' на панели инструментов",
+          "3. Заполнить обязательные поля: Назначение платежа, Планируемая дата оплаты, Плановая сумма",
+          "4. Нажать 'Создать'",
+          "5. Ожидаемый результат: Статус счета 'Запланирован'"
+         ]
+       },
+       "group_browser": {
+         "url_pattern": "/secure/admin/user/GroupBrowser.jspa",
+         "stand": "devjira.ifellow.ru",
+         "description": "Страница членства пользователя в группах Jira",
+         "elements": [
+           {"selector": ".groups-datasource", "type": "table", "description": "Таблица групп (Группа, Ключ, Тип, Участники, Описание)"},
+           {"selector": "input[name='groupSearch']", "type": "input", "description": "Поле поиска групп (Найти группы для: [user])"},
+           {"selector": "input[type='submit']", "type": "button", "description": "Кнопка поиска групп"}
+         ],
+         "known_groups": [
+           {"name": "jira-users", "key": "1544", "description": "Основная группа пользователей Jira"},
+           {"name": "jira-core-users", "key": "1545", "description": "Пользователи Jira Core"},
+           {"name": "jira-software-users", "key": "2210", "description": "Пользователи Jira Software"},
+           {"name": "jira-serviceusers", "key": "2640", "description": "Service users"},
+           {"name": "administrators", "key": "1550", "description": "Администраторы Jira"}
+         ]
+       },
+       "create_issue_dialog": {
+         "url_pattern": "/secure/CreateIssueDetailsStartWorkflow.jspa",
+         "stand": "devjira.ifellow.ru",
+         "description": "Диалог создания задачи (Jira)",
+         "elements": [
+           {"selector": "#project-field", "type": "input", "description": "Поле 'Проект' (с autocomplete)"},
+           {"selector": "#issuetype-field", "type": "input", "description": "Поле 'Тип задачи' (с autocomplete)"},
+           {"selector": "#summary", "type": "input", "description": "Поле 'Название' (Summary)"},
+           {"selector": ".aui-dialog2-footer .aui-button-primary", "type": "button", "description": "Кнопка 'Создать' в диалоге"},
+           {"selector": ".aui-dialog2 .aui-close-button", "type": "button", "description": "Кнопка закрытия диалога"}
+         ],
+         "project_autocomplete_workflow": [
+           "1. Кликнуть на поле #project-field",
+           "2. Очистить текущее значение",
+           "3. Ввести название проекта",
+           "4. Дождаться выпадающего списка с автодополнением",
+           "5. Выбрать нужный проект из списка (клик или ArrowDown + Enter)"
+         ]
+       }
+     }
+   }
+ }

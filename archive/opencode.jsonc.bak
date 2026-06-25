@@ -1,0 +1,117 @@
+Index: archive/opencode.jsonc.bak
+===================================================================
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "opencode-goal-plugin"
+  ],
+  "instructions": ["C:\\Users\\misch\\.config\\opencode\\CONTEXT_RULES.md"],
+  "compaction": {
+    "auto": true,
+    "tail_turns": 5,
+    "reserved": 4096
+  },
+  "command": {
+    "goal": {
+      "description": "Установить цель сессии и auto-continue до завершения",
+      "template": "$ARGUMENTS",
+      "agent": "build"
+    }
+  },
+  "experimental": {
+    "continue_loop_on_deny": true
+  },
+  "provider": {
+    "opencode": {
+      "models": {
+        "deepseek-v4-flash-free": {
+          "limit": { "context": 1000000, "output": 384000 },
+          "attachment": true
+        },
+        "mimo-v2.5-free": {
+          "limit": { "context": 1000000, "output": 131072 },
+          "attachment": true
+        },
+        "big-pickle": {
+          "limit": { "context": 1000000, "output": 128000 },
+          "attachment": true
+        },
+        "nemotron-3-super-free": {
+          "limit": { "context": 1000000, "output": 128000 },
+          "attachment": true
+        },
+        "minimax-m2.5-free": {
+          "limit": { "context": 1000000, "output": 131072 },
+          "attachment": true
+        }
+      }
+    },
+    "google": {
+      "env": ["GOOGLE_GENERATIVE_AI_API_KEY"],
+      "models": {
+        "gemini-2.5-flash": { "name": "Gemini 2.5 Flash" },
+        "gemini-2.0-flash": { "name": "Gemini 2.0 Flash" },
+        "gemini-1.5-flash": { "name": "Gemini 1.5 Flash" }
+      },
+      "options": {
+        "chunkTimeout": 300000,
+        "timeout": false
+      }
+    },
+    "deepseek": {
+      "options": {
+        "chunkTimeout": 300000,
+        "timeout": false
+      }
+    },
+    "openrouter": {
+      "options": {
+        "chunkTimeout": 300000,
+        "timeout": false
+      }
+    },
+    "anthropic": {
+      "options": {
+        "chunkTimeout": 300000,
+        "timeout": false
+      }
+    }
+  },
+  "mcp": {
+    "browser": {
+      "type": "local",
+      "command": ["node", "Q:\\User_Data\\Desktop\\TestQA\\qtest-runner\\packages\\mcp-browser\\dist\\index.js"],
+      "enabled": true
+    },
+    "qtest-debug": {
+      "type": "local",
+      "command": ["node", "Q:\\User_Data\\Desktop\\TestQA\\qtest-runner\\packages\\mcp-qtest-debug\\dist\\index.js"],
+      "enabled": true
+    },
+    "chrome-devtools": {
+      "type": "local",
+      "command": ["node", "Q:\\User_Data\\Desktop\\TestQA\\qtest-runner\\packages\\mcp-chrome-devtools\\dist\\index.js"],
+      "enabled": true
+    },
+    "mcp-opencode-db": {
+      "type": "local",
+      "command": ["C:\\Users\\misch\\AppData\\Local\\Programs\\Python\\Python313\\python.exe", "Q:\\User_Data\\Desktop\\opencode-manager\\mcp-opencode-db.py"],
+      "enabled": true
+    },
+    "zephyr-scale": {
+      "type": "local",
+      "command": ["node", "Q:\\User_Data\\Desktop\\TestQA\\qtest-runner\\mcp-servers\\zephyr-scale\\server.js"],
+      "enabled": true
+    },
+    "wiki-search": {
+      "type": "local",
+      "command": ["node", "Q:\\User_Data\\Desktop\\TestQA\\qtest-runner\\mcp-servers\\wiki-search\\server.js"],
+      "enabled": true
+    },
+    "browser-devtools": {
+      "type": "local",
+      "command": ["node", "Q:\\User_Data\\Desktop\\TestQA\\qtest-runner\\packages\\mcp-chrome-devtools\\dist\\index.js"],
+      "enabled": true
+    }
+  }
+}

@@ -1,0 +1,144 @@
+flowchart TB
+    %% ===== ВНЕШНИЕ СИСТЕМЫ =====
+    ZEPHYR["☁️ Zephyr Scale API\njira.ifellow.ru\nREST + Bearer JWT\nТаймаут: 30с (запросы) / 120с (поиск)"]
+    CHROME_EXT["🧩 Chrome Extension\nManifest V3\nUI: Execution Panel"]
+    CHROME["🌐 Chrome Browser\nPlaywright Persistent Context\nViewport: 1440x900"]
+    USER["👤 Пользователь"]
+
+    %% ===== FRONTEND =====
+    subgraph WEB_PKG["web-ui :8080 — React 19 SPA (Vite 8)"]
+        direction TB
+        WEB_APP["App.tsx\nРучной роутинг (useState)\nТемы: 7 (light/dark/opencode/green/purple/ocean/sunset)\nHealth Check: каждые 15 сек"]
+
+        subgraph PAGES["Страницы (9)"]
+            direction LR
+            P1["📋 TestCaseList\nПоиск + фильтр папок\nПагинация + Zephyr diff"]
+            P2["📄 TestCaseDetail\n3 вкладки: Details/Steps/History"]
+            P3["📥 ImportPage\nExcel → XLSX client-side"]
+            P4["🎬 RecorderPage\nЗапись → Конвертация → Publish"]
+            P5["🔄 SyncPage\n5 подвкладок:\ncases/cycles/plans/\nreports/config\n(1894 строк — самая большая)"]
+            P6["▶️ ExecutionPage\nРучной + авто-режим\nПошаговое выполнение"]
+            P7["📊 ReportsPage\nСтатистика + история"]
+            P8["⚙️ SettingsPage\n50+ action types\nКredentials + hotkeys"]
+            P9["📚 Docs (iframe)\nVitePress :5174"]
+        end
+    end
+
+    %% ===== API GATEWAY =====
+    subgraph GW_PKG["api-gateway :3000 — Raw HTTP reverse proxy"]
+        direction TB
+        GW_HEALTH["GET /health\n(только gateway alive)"]
+        GW_CORS["CORS: *\nВсе методы\nБез auth"]
+        GW_ROUTES["22 prefix rules\nFirst-match routing\nstripPrefix: только /api/agent"]
+        GW_ERR["Ошибки:\n404 — нет маршрута\n502 — сервис недоступен\npass-through — ошибки бэкенда"]
+    end
+
+    %% ===== BACKEND SERVICES =====
+    subgraph BACKEND["Backend Services (5)"]
+        direction LR
+
+        subgraph TC_PKG["testcase-service :3001 — Fastify 5"]
+            direction TB
+            TC_DB[("📦 testcases.db\nSQLite WAL\n4 таблицы:\ntest_cases (19 колонок)\ntest_steps (5 колонок)\ntest_runs (22 колонка)\ntest_plans (11 колонок)")]
+            TC_ZEP["Zephyr Client\nКэш: in-memory Map\nTTL: 5 минут\nОчистка после sync"]
+            TC_CREDS["Credentials\n~/.qtest/credentials.json\nПрофили + Bearer токены"]
+            TC_29["29 эндпоинтов:\n• CRUD test cases\n• Zephyr sync (full + per-run)\n• Diff/coverage\n• Import Excel\n• Credentials管理"]
+        end
+
+        subgraph SL_PKG["step-library-service :3002 — Fastify 5"]
+            direction TB
+            SL_DB[("📦 steps.db\nSQLite WAL\n4 таблицы:\nlibrary_steps (6 колонок)\nstep_parameters (7 колонок)\ncomposite_steps (6 колонок)\ncomposite_step_items (8 колонок)")]
+            SL_EXPAND["Composite Expand:\n{{param}} → bindings\nResolve function\n26 action types"]
+            SL_11["11 эндпоинтов:\n• CRUD library steps\n• CRUD composite steps\n• Expand с bindings\n• Категории"]
+        end
+
+        subgraph EX_PKG["execution-service :3003 — Fastify 5"]
+            direction TB
+            EX_DB[("📦 executions.db\nSQLite WAL\n2 таблицы:\nexecutions (8 колонок)\nstep_results (10 колонок)")]
+            EX_ORCH["Оркестрация:\n1. GET testcase\n2. Expand composites\n3. Create execution\n4. Auto-next loop\n5. Record results"]
+            EX_12["12 эндпоинтов:\n• Create/start execution\n• Auto-next step\n• Manual step update\n• Screenshots\n• Reports (summary/history/per-TC)"]
+        end
+
+        subgraph REC_PKG["recorder-service :3004 — HTTP + WebSocket"]
+            direction TB
+            REC_DB[("📦 recordings.db\nSQLite WAL\n5 таблиц:\nrecording_sessions (5 колонок)\nrecorded_actions (33 колонки)\ncomposite_steps (6 колонок)\nuser_switch_config (4 колонка)\napp_settings (2 колонки)")]
+            REC_WS["WebSocket Handlers:\n• record:start\n• record:stop\n• record:action\n• record:convert"]
+            REC_14["14 эндпоинтов + WS:\n• Recording sessions\n• Action recording\n• Step conversion (RU)\n• Composite steps\n• User switch\n• App settings"]
+        end
+
+        subgraph AG_PKG["browser-agent :3005 — HTTP + WebSocket"]
+            direction TB
+            AG_PW["Playwright Chromium\nPersistent Context\nheadless: false\nLaunch args: anti-detect"]
+            AG_EXEC["Executor (26 actions):\nnavigate, click, dblclick,\nrightClick, fill, select, check,\nkeypress, drag, scroll, wait,\nverify, hover, wheel, touch,\nfileUpload, waitForSelector,\nassertText/Visible/Value/\nChecked/Url, switchTab,\nlistTabs, screenshot"]
+            AG_CDP["CDPListener:\nNetwork.enable\nrequestWillBeSent\nresponseReceived\nloadingFailed\nwebSocketCreated"]
+            AG_REC["Recorder Pipeline:\nInject Script (18 helpers)\nDOM events → console.debug\nHTTP interception\nSPA navigation detect\nCDP events → actions"]
+            AG_VID["Video Recorder:\nWebM 1440x900\nPlaywright recordVideo\nvideos/{sessionId}.webm"]
+            AG_PROFILES["Profile Manager:\nIn-memory Map\nPersistent userDataDir\nCookies + localStorage"]
+            AG_10["10 эндпоинтов + WS:\n• Launch browser\n• Execute step\n• Record start/stop\n• Profiles\n• Videos\n• Debug\n• User switch"]
+        end
+    end
+
+    %% ===== MCP SERVERS =====
+    subgraph MCP["MCP Servers (AI Integration)"]
+        direction LR
+        M1["mcp-qtest-debug\nДиагностика"]
+        M2["mcp-browser\nУправление браузером"]
+        M3["mcp-chrome-devtools\nChrome DevTools"]
+        M4["zephyr-scale\nZephyr API"]
+        M5["wiki-search\nWiki поиск"]
+        M6["browser-devtools\nBrowser DevTools"]
+    end
+
+    %% ===== DOCS & STUB =====
+    DOCS["📚 docs :5173\nVitePress"]
+    STUB["🧪 stub-site :3006\nТестовая страница"]
+
+    %% ===== СВЯЗИ: User → Web =====
+    USER -->|"HTTP :8080"| WEB_PKG
+
+    %% ===== СВЯЗИ: Web → Gateway =====
+    WEB_APP -->|"REST /api/*\n(все запросы)"| GW_PKG
+
+    %% ===== СВЯЗИ: Gateway → Services =====
+    GW_ROUTES -->|"/api/testcases\n/api/folders\n/api/import\n/api/zephyr\n/api/diff\n/api/coverage\n(6 prefix → :3001)"| TC_PKG
+    GW_ROUTES -->|"/api/steps\n/api/categories\n/api/composite-steps\n/api/composite-categories\n(4 prefix → :3002)"| SL_PKG
+    GW_ROUTES -->|"/api/executions\n/api/reports\n(2 prefix → :3003)"| EX_PKG
+    GW_ROUTES -->|"/api/recordings\n/api/user-switch\n/api/settings\n(3 prefix → :3004)"| REC_PKG
+    GW_ROUTES -->|"/api/record\n/api/launch\n/api/profiles\n/api/agent\n/api/execute-step\n/api/videos\n/api/video\n/api/debug\n(8 prefix → :3005)"| AG_PKG
+
+    %% ===== СВЯЗИ: Service-to-Service (прямые) =====
+    EX_ORCH -->|"GET /api/testcases/:key\n(данные TC + steps)"| TC_PKG
+    EX_ORCH -->|"POST /api/composite-steps/:id/expand\n(раскрытие composites)"| SL_PKG
+    EX_ORCH -->|"POST /api/launch\n(запуск браузера)"| AG_PKG
+    EX_ORCH -->|"POST /api/execute-step\n(выполнение шага)"| AG_PKG
+
+    %% ===== СВЯЗИ: Zephyr =====
+    TC_ZEP <-->|"sync:\nGET /testcase/search\nGET /testrun/search\nGET /testplan/search\nGET /foldertree\nPOST /testcase\nGET /serverInfo\nGET /project"| ZEPHYR
+
+    %% ===== СВЯЗИ: Chrome Extension =====
+    CHROME_EXT <-->|"WS :3004\nrecord:start/stop/action\n(запись действий)"| REC_PKG
+    CHROME_EXT <-->|"WS :3005\nlaunch/execute/navigate\nclick/fill/close\n(управление браузером)"| AG_PKG
+
+    %% ===== СВЯЗИ: Browser Agent → Playwright =====
+    AG_PW -->|"CDP + Playwright API\ngoto/click/fill/screenshot\nkeyboard/mouse/touch"| CHROME
+
+    %% ===== СВЯЗИ: Inject Script → Recorder =====
+    AG_REC -->|"console.debug\n__QTEST_ACTION__\n+ page.exposeFunction\n+ postMessage (iframe)"| REC_PKG
+
+    %% ===== СТИЛИ =====
+    classDef frontend fill:#00bcd4,color:#fff,stroke:#006064
+    classDef gateway fill:#ff9800,color:#000,stroke:#e65100
+    classDef service fill:#2196f3,color:#fff,stroke:#0d47a1
+    classDef db fill:#4caf50,color:#fff,stroke:#1b5e20
+    classDef external fill:#9c27b0,color:#fff,stroke:#4a148c
+    classDef chrome fill:#ff5722,color:#fff,stroke:#bf360c
+    classDef mcp fill:#607d8b,color:#fff,stroke:#263238
+
+    class WEB_PKG,PAGES frontend
+    class GW_PKG,GW_HEALTH,GW_CORS,GW_ROUTES,GW_ERR gateway
+    class TC_PKG,SL_PKG,EX_PKG,REC_PKG,AG_PKG service
+    class TC_DB,SL_DB,EX_DB,REC_DB db
+    class ZEPHYR,CHROME external
+    class CHROME_EXT,CHROME chrome
+    class MCP,M1,M2,M3,M4,M5,M6 mcp
+    class DOCS,STUB frontend

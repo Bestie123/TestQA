@@ -1,0 +1,13 @@
+Index: qtest-runner/_zephyr_analysis/zephyr_app_pretty.txt
+===================================================================
+<span data-testid="zephyr-scale-v2" class="css-169u0b5 e1wtfg4r0">
+  <div class="css-5l8x0h e1at5b9o0">
+    <div class="css-ok3x4k e1ef19n63">
+      <div class="css-b0p25c e1ef19n62">
+        <div class="css-1kq6w27 e1ef19n60">
+          <div class="css-anwory ev95fwb3">
+            <img class="css-vjh0up ewmflus0">
+              <div class="css-1nrdoa1 e1whr8370">
+              </div>
+              <span class="css-169u0b5 e1wtfg4r0">
+                <div tabindex="0" class="css-1uadcpv e1p41pdi1">

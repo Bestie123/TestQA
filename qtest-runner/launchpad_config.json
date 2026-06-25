@@ -1,0 +1,14 @@
+{
+  "dark_mode": true,
+  "auto_start": true,
+  "auto_clean": true,
+  "start_minimized": false,
+  "add_to_startup": true,
+  "font_size": 9,
+  "window": {
+    "x": 100,
+    "y": 100,
+    "width": 1000,
+    "height": 700
+  }
+}

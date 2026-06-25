@@ -1,0 +1,63 @@
+Index: archive/opencode.json.bak
+===================================================================
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "tool-panel-test": {
+      "type": "local",
+      "command": [
+        "bun",
+        "run",
+        "packages/mcp-tool-panel/src/index.ts"
+      ],
+      "cwd": "Q:\\User_Data\\Desktop\\OpencodeDev\\opencode",
+      "enabled": true
+    },
+    "electron-diag": {
+      "type": "local",
+      "command": [
+        "bun",
+        "run",
+        "packages/mcp-electron-diagnostics/src/index.ts"
+      ],
+      "cwd": "Q:\\User_Data\\Desktop\\OpencodeDev\\opencode",
+      "enabled": true
+    },
+    "electron-session": {
+      "type": "local",
+      "command": [
+        "bun",
+        "run",
+        "packages/mcp-electron-session/src/index.ts"
+      ],
+      "cwd": "Q:\\User_Data\\Desktop\\OpencodeDev\\opencode",
+      "enabled": false
+    },
+    "context-debug": {
+      "type": "local",
+      "command": [
+        "bun",
+        "run",
+        "packages/mcp-context-debug/src/index.ts"
+      ],
+      "cwd": "Q:\\User_Data\\Desktop\\OpencodeDev\\opencode",
+      "enabled": false
+    },
+    "browser-devtools": {
+      "type": "local",
+      "command": ["node", "Q:\\User_Data\\Desktop\\TestQA\\qtest-runner\\mcp-servers\\browser-devtools\\server.js"],
+      "enabled": true
+    },
+    "zephyr-scale": {
+      "type": "local",
+      "command": ["node", "Q:\\User_Data\\Desktop\\TestQA\\qtest-runner\\mcp-servers\\zephyr-scale\\server.js"],
+      "enabled": true
+    },
+    "wiki-search": {
+      "type": "local",
+      "command": ["node", "Q:\\User_Data\\Desktop\\TestQA\\qtest-runner\\mcp-servers\\wiki-search\\server.js"],
+      "enabled": true
+    }
+  }
+}
+\ No newline at end of file

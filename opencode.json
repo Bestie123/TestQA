@@ -1,0 +1,40 @@
+﻿{
+  "$schema": "https://opencode.ai/config.json",
+  "command": {
+    "push": {
+      "description": "Р—Р°РєРѕРјРјРёС‚РёС‚СЊ РІСЃРµ РёР·РјРµРЅРµРЅРёСЏ Рё РѕС‚РїСЂР°РІРёС‚СЊ РЅР° GitHub",
+      "template": "Р’С‹РїРѕР»РЅРё git add -A, Р·Р°С‚РµРј git commit СЃ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРёРј СЃРѕРѕР±С‰РµРЅРёРµРј (РЅР° РѕСЃРЅРѕРІРµ СЃРїРёСЃРєР° РёР·РјРµРЅС‘РЅРЅС‹С… С„Р°Р№Р»РѕРІ), Рё git push. Р•СЃР»Рё РµСЃС‚СЊ РЅРµР·Р°РєРѕРјРјРёС‡РµРЅРЅС‹Рµ РёР·РјРµРЅРµРЅРёСЏ вЂ”.commit РёС…. Р•СЃР»Рё РІРѕР·РЅРёРєРЅРµС‚ РѕС€РёР±РєР° Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёРё вЂ” РёСЃРїРѕР»СЊР·СѓР№ GitHub CLI: gh auth login"
+    }
+  },
+  "mcp": {
+    "browser-devtools": {
+      "type": "local",
+      "command": ["node", "Q:\\User_Data\\Desktop\\TestQA\\qtest-runner\\mcp-servers\\browser-devtools\\server.js"],
+      "enabled": true
+    },
+    "zephyr-scale": {
+      "type": "local",
+      "command": ["node", "Q:\\User_Data\\Desktop\\TestQA\\qtest-runner\\mcp-servers\\zephyr-scale\\server.js"],
+      "enabled": true
+    },
+    "postman": {
+      "type": "local",
+      "command": ["npx", "-y", "@postman/postman-mcp-server"],
+      "enabled": true,
+      "environment": {
+        "POSTMAN_API_KEY": "POSTMAN-KEY-REMOVED"
+      }
+    },
+    "wiki-search": {
+      "type": "local",
+      "command": ["node", "Q:\\User_Data\\Desktop\\TestQA\\qtest-runner\\mcp-servers\\wiki-search\\server.js"],
+      "enabled": true
+    },
+    "mcp-browser": {
+      "type": "local",
+      "command": ["node", "Q:\\User_Data\\Desktop\\TestQA\\qtest-runner\\packages\\mcp-browser\\dist\\index.js"],
+      "cwd": "Q:\\User_Data\\Desktop\\TestQA\\qtest-runner\\packages\\mcp-browser",
+      "enabled": true
+    }
+  }
+}

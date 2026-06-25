@@ -1,0 +1,443 @@
+Index: qtest-runner/results/ui-schema-devjira.json
+===================================================================
+{
+  "ui_schema": {
+    "generated_at": "2026-06-08T12:30:00Z",
+    "test_case": "IBPA-T2100 (numericId=2089)",
+    "stand": "devjira.ifellow.ru",
+    "pages": {
+      "zephyr_scale_testcase_detail": {
+        "url_pattern": "#/testCase/{numericId}?projectId={projectId}",
+        "stand": "devjira.ifellow.ru",
+        "description": "Детальная страница тест-кейса Zephyr Scale",
+        "elements": [
+          {
+            "selector": ".ktm-test-case-header h1",
+            "type": "text",
+            "description": "Название тест-кейса"
+          },
+          {
+            "selector": "a[href*='Tests.jspa']",
+            "type": "breadcrumb",
+            "description": "Хлебные крошки: Проект / Тест кейсы / Ключ"
+          },
+          {
+            "selector": "#summary-val",
+            "type": "text",
+            "description": "Наименование тест-кейса"
+          },
+          {
+            "selector": ".issue-status-lozenge",
+            "type": "badge",
+            "description": "Статус тест-кейса",
+            "values": ["Утверждено", "Черновик", "Устаревший"]
+          },
+          {
+            "selector": "a[href*='tab-steps'], .ktm-test-case-script-steps",
+            "type": "tab",
+            "description": "Вкладка Шаги"
+          },
+          {
+            "selector": ".ktm-step-row",
+            "type": "list_item",
+            "description": "Строка шага (номер, описание, тестовые данные, ожидаемый результат)"
+          }
+        ],
+        "workflow_create_invoice": [
+          "Открыть тест-кейс → вкладка Подробнее",
+          "Прочитать предусловия (роль, стенд, JQL)",
+          "Перейти на выполнение на devjira"
+        ]
+      },
+      "jira_dashboard": {
+        "url_pattern": "/secure/Dashboard.jspa",
+        "stand": "devjira.ifellow.ru",
+        "description": "Главная панель Jira (System Dashboard)",
+        "elements": [
+          {
+            "selector": "#header-details-user-fullname",
+            "type": "dropdown_trigger",
+            "description": "Иконка профиля пользователя (выпадающее меню)"
+          },
+          {
+            "selector": "#create_link",
+            "type": "button",
+            "description": "Кнопка Создать"
+          },
+          {
+            "selector": "#quickSearchInput",
+            "type": "input",
+            "description": "Поле быстрого поиска"
+          },
+          {
+            "selector": "#home_link",
+            "type": "link",
+            "description": "Рабочий стол"
+          },
+          {
+            "selector": "#browse_link",
+            "type": "link",
+            "description": "Проекты"
+          },
+          {
+            "selector": "#find_link",
+            "type": "link",
+            "description": "Задачи"
+          }
+        ],
+        "workflow_switch_user": [
+          "Кликнуть на #header-details-user-fullname",
+          "В выпадающем меню выбрать 'Switch User'",
+          "Ввести фамилию в React Select",
+          "Выбрать пользователя из списка",
+          "Нажать 'Switch'"
+        ]
+      },
+      "scriptrunner_switch_user": {
+        "url_pattern": "/plugins/servlet/scriptrunner/admin/builtin/add/com.onresolve.scriptrunner.canned.jira.admin.SwitchUser",
+        "stand": "devjira.ifellow.ru",
+        "description": "Страница переключения пользователей (ScriptRunner)",
+        "elements": [
+          {
+            "selector": ".sr-rs__placeholder",
+            "type": "react_select_placeholder",
+            "description": "Placeholder поля выбора пользователя"
+          },
+          {
+            "selector": "#react-select-2-input",
+            "type": "react_select_input",
+            "description": "Поле ввода React Select для поиска пользователя"
+          },
+          {
+            "selector": ".sr-rs__menu",
+            "type": "react_select_menu",
+            "description": "Выпадающий список результатов поиска"
+          },
+          {
+            "selector": "button:has-text('Run')",
+            "type": "button",
+            "description": "Кнопка запуска переключения"
+          }
+        ],
+        "workflow_switch_user_steps": [
+          "Перейти на страницу ScriptRunner SwitchUser",
+          "Кликнуть на .sr-rs__placeholder",
+          "Ввести фамилию в #react-select-2-input",
+          "Дождаться загрузки списка",
+          "Нажать ArrowDown → Enter для выбора",
+          "Нажать кнопку Run"
+        ]
+      },
+      "jira_issue_browse": {
+        "url_pattern": "/browse/{issueKey}",
+        "stand": "devjira.ifellow.ru",
+        "description": "Страница задачи Jira (browse)",
+        "elements": [
+          {
+            "selector": "#summary-val",
+            "type": "text",
+            "description": "Название задачи"
+          },
+          {
+            "selector": "#status-val",
+            "type": "badge",
+            "description": "Статус задачи"
+          },
+          {
+            "selector": "#type-val",
+            "type": "text",
+            "description": "Тип задачи"
+          },
+          {
+            "selector": ".issue-link",
+            "type": "text",
+            "description": "Ключ задачи (FIN-XXXX)"
+          },
+          {
+            "selector": "#customfield_11700-val",
+            "type": "text",
+            "description": "Планируемая дата оплаты"
+          },
+          {
+            "selector": "#customfield_13234-val",
+            "type": "text",
+            "description": "Плановая сумма"
+          },
+          {
+            "selector": "#create_subtask",
+            "type": "button",
+            "description": "Кнопка создания подзадачи"
+          },
+          {
+            "selector": ".issueaction-workflow-transition",
+            "type": "button",
+            "description": "Кнопки workflow (Создать счет, Отправить в 1С, Изменить дату, Счет оплачен)"
+          },
+          {
+            "selector": "#linkingmodule",
+            "type": "section",
+            "description": "Секция связей задачи (Связи запроса)"
+          }
+        ],
+        "workflow_create_invoice_from_forecast": [
+          "Открыть карточку прогноза (FIN-XXXX)",
+          "Проверить 'Связи запроса' → Поставка",
+          "Нажать 'Создать счет'",
+          "Заполнить: Назначение платежа, Дата оплаты, Сумма",
+          "Нажать 'Создать'"
+        ]
+      },
+      "jira_create_subtask_form": {
+        "url_pattern": "/CreateSubTaskIssue!default.jspa?issuetype={typeId}&pid={projectId}&parentIssueId={parentId}",
+        "stand": "devjira.ifellow.ru",
+        "description": "Форма создания подзадачи (счет)",
+        "elements": [
+          {
+            "selector": "#summary",
+            "type": "input",
+            "description": "Наименование"
+          },
+          {
+            "selector": "#issuetype-field",
+            "type": "text",
+            "description": "Тип задачи (автозаполнение)"
+          },
+          {
+            "selector": "#project-field",
+            "type": "text",
+            "description": "Проект (автозаполнение)"
+          },
+          {
+            "selector": "#priority-field",
+            "type": "text",
+            "description": "Приоритет"
+          },
+          {
+            "selector": "#components-field",
+            "type": "text",
+            "description": "Компонент (автозаполнение)"
+          },
+          {
+            "selector": "#customfield_15000",
+            "type": "textarea",
+            "description": "Назначение платежа*"
+          },
+          {
+            "selector": "#customfield_22404",
+            "type": "select",
+            "description": "Тип счета*",
+            "values": ["Не заполнено", "Авансовый", "Прогнозный"]
+          },
+          {
+            "selector": "#customfield_11001",
+            "type": "text",
+            "description": "Дата счета*"
+          },
+          {
+            "selector": "#react-select-4-input",
+            "type": "react_select",
+            "description": "Договор проекта* (React Select)"
+          },
+          {
+            "selector": "#customfield_13234",
+            "type": "input",
+            "description": "Плановая сумма*"
+          },
+          {
+            "selector": "#customfield_11700",
+            "type": "input",
+            "description": "Планируемая дата оплаты*"
+          },
+          {
+            "selector": "#description",
+            "type": "textarea",
+            "description": "Описание"
+          },
+          {
+            "selector": "#subtask-create-details-submit",
+            "type": "submit",
+            "description": "Кнопка Создать"
+          }
+        ]
+      },
+      "jira_workflow_dialog": {
+        "url_pattern": "modal dialog overlay",
+        "stand": "devjira.ifellow.ru",
+        "description": "Workflow диалог (Изменить дату, Отправить в 1С, Счет оплачен)",
+        "elements": [
+          {
+            "selector": ".jira-dialog-core",
+            "type": "modal",
+            "description": "Модальное окно workflow"
+          },
+          {
+            "selector": ".jira-dialog-heading",
+            "type": "heading",
+            "description": "Заголовок диалога"
+          },
+          {
+            "selector": "#customfield_11700",
+            "type": "input",
+            "description": "Планируемая дата оплаты (в диалоге)"
+          },
+          {
+            "selector": "#customfield_11700-trigger",
+            "type": "button",
+            "description": "Кнопка 'Выберите дату' ( date picker trigger)"
+          },
+          {
+            "selector": "#customfield_15502",
+            "type": "select",
+            "description": "ЭДО (Да/Нет)",
+            "values": ["Не заполнено", "Да", "Нет"]
+          },
+          {
+            "selector": "#customfield_22404",
+            "type": "select",
+            "description": "Тип счета",
+            "values": ["Не заполнено", "Авансовый", "Прогнозный"]
+          },
+          {
+            "selector": "#react-select-4-input",
+            "type": "react_select",
+            "description": "Договор проекта (React Select)"
+          },
+          {
+            "selector": "#react-select-3-input",
+            "type": "react_select",
+            "description": "Акт (React Select)"
+          },
+          {
+            "selector": "#customfield_17201-field",
+            "type": "combobox",
+            "description": "Номенклатура"
+          },
+          {
+            "selector": "#customfield_13236",
+            "type": "input",
+            "description": "Дата оплаты (для 'Счет оплачен')"
+          },
+          {
+            "selector": "#customfield_13235",
+            "type": "input",
+            "description": "Фактическая сумма (для 'Счет оплачен')"
+          },
+          {
+            "selector": "textarea[name='comment']",
+            "type": "textarea",
+            "description": "Комментарий"
+          },
+          {
+            "selector": "input[name='Transition']",
+            "type": "submit",
+            "description": "Кнопка отправки workflow"
+          }
+        ]
+      },
+      "jira_search_jql": {
+        "url_pattern": "/issues/?jql={query}",
+        "stand": "devjira.ifellow.ru",
+        "description": "Навигатор запросов (JQL search)",
+        "elements": [
+          {
+            "selector": "#advanced-search",
+            "type": "link",
+            "description": "Кнопка 'Продвинутый' (JQL)"
+          },
+          {
+            "selector": ".search-options-container",
+            "type": "section",
+            "description": "Панель фильтров (Проект, Тип, Статус, Исполнитель)"
+          },
+          {
+            "selector": ".issuerow",
+            "type": "list_item",
+            "description": "Строка задачи в результатах поиска"
+          },
+          {
+            "selector": ".issuekey",
+            "type": "link",
+            "description": "Ключ задачи (FIN-XXXX)"
+          }
+        ]
+      },
+      "mailhog": {
+        "url_pattern": "http://mailhog.ifellow.ru/",
+        "stand": "mailhog.ifellow.ru",
+        "description": "MailHog — тестовый почтовый сервер",
+        "elements": [
+          {
+            "selector": "#search",
+            "type": "input",
+            "description": "Поиск по письмам"
+          },
+          {
+            "selector": ".message-list-items tr",
+            "type": "list_item",
+            "description": "Строка письма в списке"
+          },
+          {
+            "selector": ".message-header",
+            "type": "section",
+            "description": "Заголовок письма (From, To, Date, Subject)"
+          },
+          {
+            "selector": ".message-body",
+            "type": "section",
+            "description": "Тело письма"
+          },
+          {
+            "selector": "a:has-text('Inbox')",
+            "type": "link",
+            "description": "Входящие (счетчик писем)"
+          },
+          {
+            "selector": "a:has-text('Delete all messages')",
+            "type": "button",
+            "description": "Удалить все сообщения"
+          }
+        ],
+        "known_emails_for_fin9918": [
+          {
+            "subject": "Создан счет на оплату",
+            "trigger": "Создание счета (workflow: ИНИЦИАЦИЯ)",
+            "recipient": "sergey.zubarev@ifellow.ru"
+          },
+          {
+            "subject": "Изменение плановой даты оплаты",
+            "trigger": "Изменение 'Планируемой даты оплаты' через кнопку workflow",
+            "recipient": "sergey.zubarev@ifellow.ru",
+            "body_contains": ["Плановая дата оплаты счета", "изменена", "Автор изменения"]
+          },
+          {
+            "subject": "Осуществлен перенос Планируемой даты оплаты в счете: FIN-XXXX",
+            "trigger": "Автоматическое уведомление при изменении даты",
+            "recipients": ["inna.nimaeva@ifellow.ru", "elena.sarmanova@ifellow.ru", "irina.shelevey@ifellow.ru", "sergey.zubarev@ifellow.ru", "ekaterina.pchelina@ifellow.ru", "nataliya.sokolova@ifellow.ru"]
+          }
+        ]
+      }
+    },
+    "react_select_patterns": [
+      {
+        "description": "React Select в ScriptRunner SwitchUser",
+        "placeholder_selector": ".sr-rs__placeholder",
+        "input_selector": "#react-select-2-input",
+        "menu_selector": ".sr-rs__menu",
+        "workflow": "click placeholder → type text → wait for options → ArrowDown → Enter"
+      },
+      {
+        "description": "React Select в Jira Forms (Договор проекта, Акт)",
+        "placeholder_selector": ".sr-rs__placeholder",
+        "input_selector": "#react-select-3-input, #react-select-4-input",
+        "menu_selector": ".sr-rs__menu",
+        "workflow": "click placeholder → type text → wait for API response → click option"
+      }
+    ],
+    "workflow_dates": {
+      "jira_date_format": "dd/MMM/yy (напр. 08/Июн/26)",
+      "jira_date_format_ru": "День/Месяц(рус)/Год(2digit)",
+      "date_picker_trigger": "#customfield_11700-trigger, #customfield_13236-trigger",
+      "note": "Ручной ввод даты в формате dd/MMM/yy работает. Формат dd/MM/yyyy — НЕ работает."
+    }
+  }
+}

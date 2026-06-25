@@ -1,0 +1,116 @@
+flowchart TB
+    %% ===== СОСТАВНОЙ ШАГ: Жизненный цикл =====
+    subgraph COMPOSITE_LIFECYCLE["♻️ Жизненный цикл составного шага"]
+        direction LR
+
+        C_DEF["Определение:\ncomposite_steps\n• name, description\n• parameters_json\n  [{name, label, type,\n    options, required}]"]
+        C_ITEMS["Элементы:\ncomposite_step_items\n• sort_order\n• action, selector\n• value, url, text\n• parameter_bindings_json\n  {field: paramName}"]
+        C_SEED["Seed Data:\n• comp-jira-login (4 steps)\n• comp-create-task (4 steps)\n• comp-screenshot-verify (2 steps)"]
+        C_EXPAND["Expand:\nPOST /api/composite-steps/:id/expand\nBody: { bindings: {url, user, pass} }\n\nResolve function:\n{{paramName}} → value\n\nПорядок:\n1. Load composite + params\n2. For each item (sort_order):\n   a. resolve action/selector/value/url/text\n   b. Если library_step_id → наследовать action/text\n3. Return expanded[]"]
+
+        C_DEF --> C_ITEMS --> C_SEED --> C_EXPAND
+    end
+
+    %% ===== ACTION PARSER: Текст → Playwright =====
+    subgraph ACTION_PARSER["🔍 Action Parser: Текст → Playwright"]
+        direction TB
+
+        AP_IN["Вход:\naction (RU/EN текст)\ntestData\nexpectedResult"]
+
+        subgraph AP_PRIORITY["Приоритет парсинга"]
+            direction TB
+            AP1["1. Exact EN match:\nclick/fill/select/navigate/\ncheck/dblclick/rightclick/\nkeypress/wait/screenshot/\nscroll/drag/hover/wheel/\ntouch/fileUpload/switchTab"]
+            AP2["2. RU regex patterns:\n'нажать кнопку X' → click\n'заполнить поле X' → fill\n'проверить текст X' → assertText\n'перейти по URL X' → navigate\n'выбрать из списка X' → select\n'дождаться X' → waitForSelector\n'прокрутить' → scroll\n'навести курсор X' → hover\n'перетащить X в Y' → dragTo"]
+            AP3["3. URL from testData:\n→ navigate"]
+            AP4["4. Canvas coordinates:\n'нажать на canvas X (100, 200)'\n→ click + position"]
+            AP5["5. Default fallback:\n2-60 chars → click text=...\nИначе → screenshot"]
+        end
+
+        AP_OUT["Выход: ParsedCommand[]\n{action, selector?, value?,\n url?, text?, x?, y?}\n\nSelectors: text=... (Playwright)"]
+
+        AP_IN --> AP_PRIORITY --> AP_OUT
+    end
+
+    %% ===== CDP LISTENER =====
+    subgraph CDP_LISTENER["📡 CDPListener: Network + DOM"]
+        direction TB
+
+        CDP_ATTACH["Attach:\npage.context().newCDPSession(page)\nNetwork.enable({\n  maxTotalBufferSize: 10MB,\n  maxResourceBufferSize: 5MB\n})"]
+
+        subgraph CDP_EVENTS["CDP Events"]
+            direction LR
+            CDP_REQ["requestWillBeSent\n→ action: cdp_request\nurl, method, postData, headers"]
+            CDP_RESP["responseReceived\n→ action: cdp_response\nurl, status, body (≤10K chars)\nduration"]
+            CDP_FAIL["loadingFailed\n→ action: cdp_failure\nurl, errorText"]
+            CDP_WS["webSocketCreated\n→ action: cdp_websocket\nurl"]
+        end
+
+        CDP_CONVERT["toRecorderActions()\n→ RecordedAction[]\nОтправляются каждые 2 сек\nPOST /api/recordings/:id/actions"]
+
+        CDP_ATTACH --> CDP_EVENTS --> CDP_CONVERT
+    end
+
+    %% ===== INJECT SCRIPT COMMUNICATION =====
+    subgraph INJECT_COMM["🔌 Inject Script → Node.js"]
+        direction TB
+
+        IN_JSDOM["DOM Events:\n• click, dblclick, fill, select\n• keypress, check, contextmenu\n• dragstart/drop/submit\n• scroll, hover, focus\n• element_appear/remove/resize\n• attr_change, text_change"]
+
+        IN_HTTP["HTTP Interception:\npage.on('request') → record\npage.on('response') → record\npage.on('requestfailed') → record\nФильтр: исключить image/media/font/css"]
+
+        IN_SPA["SPA Navigation:\nmonkey-patch history.pushState\nmonkey-patch history.replaceState\npopstate/hashchange events"]
+
+        IN_CONSOLE["console.debug:\n'__QTEST_ACTION__' + JSON\n→ page.on('console')\n→ pushAction()"]
+
+        IN_EXPOSE["page.exposeFunction:\n__recordAction(data)\n→ прямой вызов pushAction()"]
+
+        IN_IFRAME["Cross-origin iframe:\nwindow.parent.postMessage:\n{__qtestAction: true, data}\n→ parent listener → pushAction()"]
+
+        IN_JSDOM --> IN_CONSOLE
+        IN_HTTP --> IN_CONSOLE
+        IN_SPA --> IN_CONSOLE
+        IN_CONSOLE --> IN_EXPOSE
+        IN_IFRAME --> IN_EXPOSE
+    end
+
+    %% ===== STATUS FLOW =====
+    subgraph STATUS_FLOW["📊 State Machine: Статусы"]
+        direction LR
+
+        subgraph EXEC_STATUS["Execution Status"]
+            ES1["not_started"]
+            ES2["running"]
+            ES3["passed\n(все шаги passed)"]
+            ES4["failed\n(любой шаг failed/blocked)"]
+            ES1 -->|"start()"| ES2
+            ES2 -->|"все шаги done\n+ нет failed"| ES3
+            ES2 -->|"любой шаг\nfailed/blocked"| ES4
+        end
+
+        subgraph STEP_STATUS["Step Status"]
+            SS1["pending"]
+            SS2["running"]
+            SS3["passed\n→ следующий = running"]
+            SS4["failed\n→ execution = failed\n→ стоп"]
+            SS5["skipped"]
+            SS6["blocked"]
+            SS1 -->|"start/advance"| SS2
+            SS2 -->|"Playwright OK"| SS3
+            SS2 -->|"Playwright error"| SS4
+            SS2 -->|"manual skip"| SS5
+            SS2 -->|"manual block"| SS6
+            SS3 -->|"auto-advance"| SS2
+        end
+    end
+
+    classDef lifecycle fill:#1a1a2e,color:#fff,stroke:#4a9eff
+    classDef parser fill:#2d2d44,color:#fff,stroke:#ffa500
+    classDef cdp fill:#2d2d44,color:#fff,stroke:#4caf50
+    classDef inject fill:#2d2d44,color:#fff,stroke:#ff5722
+    classDef status fill:#2d2d44,color:#fff,stroke:#9c27b0
+
+    class COMPOSITE_LIFECYCLE lifecycle
+    class ACTION_PARSER,AP_PRIORITY parser
+    class CDP_LISTENER,CDP_EVENTS cdp
+    class INJECT_COMM inject
+    class STATUS_FLOW status

@@ -1,0 +1,326 @@
+Index: qtest-runner/results/actions-log-IBPA-T2100.json
+===================================================================
+{
+  "testCaseKey": "IBPA-T2100",
+  "testCaseNumericId": 2089,
+  "testCaseSource": "jira.ifellow.ru (PROD)",
+  "testExecution": "devjira.ifellow.ru (DEV)",
+  "profileId": "a942326e-f72d-49eb-ac85-a20850dcf4dc",
+  "sessionId": "a3533864-83b0-495b-9aa1-375835425923",
+  "startedAt": "2026-06-08T09:15:00Z",
+  "finishedAt": "2026-06-08T12:25:00Z",
+  "currentUser": "sergey.zubarev@ifellow.ru (impersonated via ScriptRunner)",
+  "adminUser": "mihail.nikulenkov@ifellow.ru",
+  "actions_log": [
+    {
+      "step": 1,
+      "action": "navigate",
+      "url": "https://devjira.ifellow.ru/secure/Tests.jspa#/testCase/2089?projectId=10904",
+      "description": "Открыть тест-кейс numericId=2089 (оказался IBPA-T2100)",
+      "result": "Страница загружена, ключ = IBPA-T2100",
+      "timestamp": "2026-06-08T09:15:10Z"
+    },
+    {
+      "step": 2,
+      "action": "click",
+      "selector": "text=Шаги",
+      "description": "Перейти на вкладку Шаги",
+      "result": "Вкладка активна, 10 шагов видно",
+      "timestamp": "2026-06-08T09:15:30Z"
+    },
+    {
+      "step": 3,
+      "action": "navigate",
+      "url": "https://devjira.ifellow.ru/plugins/servlet/scriptrunner/admin/builtin/add/com.onresolve.scriptrunner.canned.jira.admin.SwitchUser",
+      "description": "Перейти на страницу ScriptRunner SwitchUser",
+      "result": "Страница загружена",
+      "timestamp": "2026-06-08T09:16:00Z"
+    },
+    {
+      "step": 4,
+      "action": "click",
+      "selector": ".sr-rs__placeholder",
+      "description": "Активировать React Select для выбора пользователя",
+      "result": "Поле активировано",
+      "timestamp": "2026-06-08T09:16:15Z"
+    },
+    {
+      "step": 5,
+      "action": "fill",
+      "selector": "#react-select-2-input",
+      "value": "Зубарев",
+      "description": "Ввести фамилию для поиска",
+      "result": "Найден: Зубарев Сергей Михайлович",
+      "timestamp": "2026-06-08T09:16:20Z"
+    },
+    {
+      "step": 6,
+      "action": "press",
+      "key": "ArrowDown",
+      "description": "Выбрать пользователя из списка",
+      "result": "Пользователь выбран",
+      "timestamp": "2026-06-08T09:16:25Z"
+    },
+    {
+      "step": 7,
+      "action": "press",
+      "key": "Enter",
+      "description": "Подтвердить выбор",
+      "result": "Пользователь selected в React Select",
+      "timestamp": "2026-06-08T09:16:26Z"
+    },
+    {
+      "step": 8,
+      "action": "click",
+      "selector": "button:has-text('Run')",
+      "description": "Нажать Run для переключения на Зубарева",
+      "result": "Impersonation активна: 'You are temporarily impersonating Зубарев Сергей Михайлович'",
+      "timestamp": "2026-06-08T09:16:35Z"
+    },
+    {
+      "step": 9,
+      "action": "navigate",
+      "url": "https://devjira.ifellow.ru/issues/?jql=project = \"Прогнозы и счета\" AND issuetype = Прогноз AND issueFunction in linkedIssuesOf(\"project = 'PRK' AND issuetype = 'Поставка'\")",
+      "description": "Найти прогноз проекта Поставка через JQL",
+      "result": "Найдено 70 прогнозов",
+      "timestamp": "2026-06-08T09:17:00Z"
+    },
+    {
+      "step": 10,
+      "action": "navigate",
+      "url": "https://devjira.ifellow.ru/browse/FIN-9914",
+      "description": "Открыть карточку прогноза FIN-9914",
+      "result": "Прогноз открыт, Связи запроса: Поставка FIN-7954",
+      "timestamp": "2026-06-08T09:17:30Z"
+    },
+    {
+      "step": 11,
+      "action": "click",
+      "selector": "#sr-CreateCheck",
+      "description": "Нажать кнопку 'Создать счет'",
+      "result": "Форма создания подзадачи открыта",
+      "timestamp": "2026-06-08T09:18:00Z"
+    },
+    {
+      "step": 12,
+      "action": "fill",
+      "selector": "textarea[name='customfield_15000']",
+      "value": "Тест",
+      "description": "Заполнить Назначение платежа",
+      "result": "Поле заполнено",
+      "timestamp": "2026-06-08T09:18:15Z"
+    },
+    {
+      "step": 13,
+      "action": "fill",
+      "selector": "input[name='customfield_11700']",
+      "value": "18/05/2026",
+      "description": "Заполнить Планируемую дату оплаты",
+      "result": "Поле заполнено",
+      "timestamp": "2026-06-08T09:18:20Z"
+    },
+    {
+      "step": 14,
+      "action": "fill",
+      "selector": "input[name='customfield_13234']",
+      "value": "7",
+      "description": "Заполнить Плановую сумму",
+      "result": "Поле заполнено",
+      "timestamp": "2026-06-08T09:18:25Z"
+    },
+    {
+      "step": 15,
+      "action": "click",
+      "selector": "#subtask-create-details-submit",
+      "description": "Нажать 'Создать' для создания счета",
+      "result": "Счет FIN-9918 создан, статус ИНИЦИАЦИЯ",
+      "timestamp": "2026-06-08T09:18:40Z"
+    },
+    {
+      "step": 16,
+      "action": "click",
+      "selector": "#action_id_81",
+      "description": "Нажать 'Изменить Планируемую дату оплаты'",
+      "result": "Workflow диалог открыт",
+      "timestamp": "2026-06-08T09:19:10Z"
+    },
+    {
+      "step": 17,
+      "action": "fill",
+      "selector": "#customfield_11700",
+      "value": "25/05/2026",
+      "description": "Изменить дату на 25/05/2026",
+      "result": "Дата введена",
+      "timestamp": "2026-06-08T09:19:25Z"
+    },
+    {
+      "step": 18,
+      "action": "fill",
+      "selector": "#workflow-transition-81-dialog textarea[name='comment']",
+      "value": "Тест",
+      "description": "Добавить комментарий",
+      "result": "Комментарий добавлен",
+      "timestamp": "2026-06-08T09:19:30Z"
+    },
+    {
+      "step": 19,
+      "action": "click",
+      "selector": "input[name='Transition'][value='Изменить Планируемую дату оплаты']",
+      "description": "Отправить форму изменения даты",
+      "result": "Дата изменена на 25/05/2026",
+      "timestamp": "2026-06-08T09:19:45Z"
+    },
+    {
+      "step": 20,
+      "action": "navigate",
+      "url": "http://mailhog.ifellow.ru/",
+      "description": "Открыть MailHog для проверки уведомлений",
+      "result": "MailHog открыт",
+      "timestamp": "2026-06-08T09:20:00Z"
+    },
+    {
+      "step": 21,
+      "action": "fill",
+      "selector": "#search",
+      "value": "Изменение плановой даты оплаты",
+      "description": "Поиск уведомления об изменении даты",
+      "result": "Найдено письмо от 08 Jun 2026 12:09:32",
+      "screenshot": "mailhog-email-1.png",
+      "timestamp": "2026-06-08T09:20:30Z"
+    },
+    {
+      "step": 22,
+      "action": "click",
+      "selector": ".message-list-items tr:nth-child(2)",
+      "description": "Открыть письмо с уведомлением",
+      "result": "Письмо открыто: From jira@devjira.ifellow.ru, To sergey.zubarev@ifellow.ru, Дата: 25.05.2026 → 01.06.2026",
+      "timestamp": "2026-06-08T09:20:45Z"
+    },
+    {
+      "step": 23,
+      "action": "navigate",
+      "url": "https://devjira.ifellow.ru/browse/FIN-9918",
+      "description": "Вернуться к счету FIN-9918",
+      "result": "Страница счета загружена",
+      "timestamp": "2026-06-08T09:21:00Z"
+    },
+    {
+      "step": 24,
+      "action": "click",
+      "selector": "#action_id_11",
+      "description": "Нажать 'Отправить в 1С'",
+      "result": "Диалог 'Отправить в 1С' открыт",
+      "timestamp": "2026-06-08T09:21:15Z"
+    },
+    {
+      "step": 25,
+      "action": "select",
+      "selector": "#customfield_15502",
+      "value": "14106",
+      "description": "ЭДО = Нет",
+      "result": "Выбрано",
+      "timestamp": "2026-06-08T09:21:30Z"
+    },
+    {
+      "step": 26,
+      "action": "select",
+      "selector": "#customfield_22404",
+      "value": "19004",
+      "description": "Тип счета = Авансовый",
+      "result": "Выбрано",
+      "timestamp": "2026-06-08T09:21:35Z"
+    },
+    {
+      "step": 27,
+      "action": "click",
+      "selector": "input[name='Transition'][value='Отправить в 1С']",
+      "description": "Отправить счет в 1С",
+      "result": "Статус изменился на В РАБОТЕ",
+      "timestamp": "2026-06-08T09:22:00Z"
+    },
+    {
+      "step": 28,
+      "action": "click",
+      "selector": "#action_id_81",
+      "description": "Изменить дату оплаты (счет в статусе В РАБОТЕ)",
+      "result": "Диалог открыт",
+      "timestamp": "2026-06-08T09:22:30Z"
+    },
+    {
+      "step": 29,
+      "action": "fill",
+      "selector": "#customfield_11700",
+      "value": "01/06/2026",
+      "description": "Изменить дату на 01/06/2026",
+      "result": "Дата введена",
+      "timestamp": "2026-06-08T09:22:45Z"
+    },
+    {
+      "step": 30,
+      "action": "fill",
+      "selector": "#workflow-transition-81-dialog textarea[name='comment']",
+      "value": "Тест",
+      "description": "Добавить комментарий",
+      "result": "Комментарий добавлен",
+      "timestamp": "2026-06-08T09:22:50Z"
+    },
+    {
+      "step": 31,
+      "action": "click",
+      "selector": "input[name='Transition'][value='Изменить Планируемую дату оплаты']",
+      "description": "Отправить изменение даты",
+      "result": "Дата изменена на 01/06/2026",
+      "timestamp": "2026-06-08T09:23:05Z"
+    },
+    {
+      "step": 32,
+      "action": "navigate",
+      "url": "http://mailhog.ifellow.ru/",
+      "description": "Проверить MailHog (2-е уведомление)",
+      "result": "Найдено 2 письма: Изменение плановой даты оплаты (12:09:32 и 12:14:22)",
+      "timestamp": "2026-06-08T09:23:30Z"
+    },
+    {
+      "step": 33,
+      "action": "navigate",
+      "url": "https://devjira.ifellow.ru/browse/FIN-9918",
+      "description": "Вернуться к счету FIN-9918",
+      "result": "Страница загружена",
+      "timestamp": "2026-06-08T09:24:00Z"
+    },
+    {
+      "step": 34,
+      "action": "click",
+      "selector": "#action_id_41",
+      "description": "Нажать 'Счет оплачен'",
+      "result": "Диалог 'Счет оплачен' открыт",
+      "timestamp": "2026-06-08T09:24:15Z"
+    },
+    {
+      "step": 35,
+      "action": "fill",
+      "selector": "input[name='customfield_13236']",
+      "value": "08/Июн/26",
+      "description": "Дата оплаты = 08/Июн/26",
+      "result": "Поле заполнено",
+      "timestamp": "2026-06-08T09:24:30Z"
+    },
+    {
+      "step": 36,
+      "action": "fill",
+      "selector": "input[name='customfield_13235']",
+      "value": "7",
+      "description": "Фактическая сумма = 7",
+      "result": "Поле заполнено",
+      "timestamp": "2026-06-08T09:24:35Z"
+    },
+    {
+      "step": 37,
+      "action": "click",
+      "selector": "input[name='Transition'][value='Счет оплачен']",
+      "description": "Отправить 'Счет оплачен'",
+      "result": "Статус: ОПЛАЧЕН ✅",
+      "timestamp": "2026-06-08T09:24:50Z"
+    }
+  ]
+}

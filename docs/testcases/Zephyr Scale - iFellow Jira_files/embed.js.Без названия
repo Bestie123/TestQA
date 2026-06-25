@@ -1,0 +1,185 @@
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+var __webpack_exports__ = {};
+
+;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/classCallCheck.js
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  Object.defineProperty(Constructor, "prototype", {
+    writable: false
+  });
+  return Constructor;
+}
+;// CONCATENATED MODULE: ./app/frontend/widget/embed.js
+
+
+/**
+ * <script data-cc-embedded
+ * data-key="fc2edee0-013b-4e3b-95ab-1f5dfb0e6645"
+ * data-base-url="https://widget.customercase.com"
+ * src="https://widget.customercase.com/assets/javascripts/embed.js">
+ * </script>
+ */
+var CCWidgetBootstrap = /*#__PURE__*/function () {
+  function CCWidgetBootstrap(widgetEmbedDataset) {
+    _classCallCheck(this, CCWidgetBootstrap);
+    this.createAndInsertIframe(document.body);
+    this.applyCss();
+    var widgetMainJsUrl = widgetEmbedDataset.baseUrl + '/assets/javascripts/widget-iframe.js';
+    var widgetMainCssUrl = widgetEmbedDataset.baseUrl + '/assets/javascripts/widget-iframe.css';
+    var jsRoutesUrl = widgetEmbedDataset.baseUrl + '/assets/ac/javascripts/routes.js';
+    this.writeDocument(widgetMainJsUrl, widgetMainCssUrl, jsRoutesUrl, widgetEmbedDataset);
+    new WidgetSizer(this.document, this.iframeCss.bind(this));
+  }
+  _createClass(CCWidgetBootstrap, [{
+    key: "iframeCss",
+    value: function iframeCss(prop, value) {
+      this.iframeEl.style[prop] = value;
+    }
+  }, {
+    key: "createAndInsertIframe",
+    value: function createAndInsertIframe(appendTo) {
+      var iframe = document.createElement("iframe");
+      iframe.scrolling = "no";
+      iframe.name = "CC widget";
+      iframe.id = "cc-widget";
+      appendTo.appendChild(iframe);
+      this.iframeEl = iframe;
+      this.document = iframe.contentWindow.document;
+    }
+  }, {
+    key: "applyCss",
+    value: function applyCss() {
+      this.iframeCss("height", "1px");
+      this.iframeCss("width", "1px");
+      this.iframeCss("position", "fixed");
+      this.iframeCss("border", "0");
+      this.iframeCss("bottom", "0");
+      this.iframeCss("right", "0");
+      this.iframeCss("z-index", "9999999999999");
+    }
+  }, {
+    key: "writeDocument",
+    value: function writeDocument(widgetMainJsUrl, widgetMainCssUrl, jsRoutesUrl, widgetEmbedDataset) {
+      var jsRoutesScriptTag = '<script type="application/javascript" src="' + jsRoutesUrl + '"><\/script>',
+        widgetMainScriptTag = '<script type="application/javascript" src="' + widgetMainJsUrl + '"><\/script>',
+        widgetMainStyleTag = '<link rel="stylesheet" type="text/css" href="' + widgetMainCssUrl + '">',
+        bootstrapAttrs = JSON.stringify(widgetEmbedDataset);
+      this.document.open();
+      this.document.write("<head>" + widgetMainStyleTag + "<title>Customer Case</title></head><body data-embeddable=" + bootstrapAttrs + '><div id="react-root"></div>' + jsRoutesScriptTag + widgetMainScriptTag + "</body>");
+      this.document.close();
+    }
+  }]);
+  return CCWidgetBootstrap;
+}();
+var WidgetSizer = /*#__PURE__*/function () {
+  function WidgetSizer(document, iframeCss) {
+    _classCallCheck(this, WidgetSizer);
+    this.document = document;
+    this.iframeCss = iframeCss;
+    this.installObserver();
+  }
+  _createClass(WidgetSizer, [{
+    key: "installObserver",
+    value: function installObserver() {
+      var _this = this;
+      (function () {
+        return Env.isMobile() ? new MutationObserver(_this.mobileMutationCallback.bind(_this)) : new MutationObserver(_this.desktopMutationCallback.bind(_this));
+      })().observe(this.document.body, {
+        childList: !0,
+        subtree: !0,
+        attributes: !0
+      });
+    }
+  }, {
+    key: "desktopMutationCallback",
+    value: function desktopMutationCallback() {
+      this.document.querySelector(".expanded") ? this.iframeCss("transition", "height 1s") : this.iframeCss("transition", "height 0s");
+      this.setSizeToFitContent();
+    }
+  }, {
+    key: "mobileMutationCallback",
+    value: function mobileMutationCallback() {
+      this.document.querySelector("#help-button") ? this.setSizeToFitContent() : this.setSizeToFullScreen();
+    }
+  }, {
+    key: "setSizeToFitContent",
+    value: function setSizeToFitContent() {
+      var t = this.document.querySelector("#react-root");
+      if (t) {
+        this.iframeCss("height", "1px");
+        this.iframeCss("width", "1px");
+        this.iframeCss("height", t.clientHeight + 10 + "px");
+        this.iframeCss("width", this.document.body.scrollWidth + 10 + "px");
+      }
+    }
+  }, {
+    key: "setSizeToFullScreen",
+    value: function setSizeToFullScreen() {
+      this.iframeCss("height", "100%");
+      this.iframeCss("width", "100%");
+    }
+  }]);
+  return WidgetSizer;
+}();
+var Env = /*#__PURE__*/function () {
+  function Env() {
+    _classCallCheck(this, Env);
+  }
+  _createClass(Env, null, [{
+    key: "isMobile",
+    value: function isMobile() {
+      return Env.includesString(Env.getUserAgent(), "Mobi");
+    }
+  }, {
+    key: "getUserAgent",
+    value: function getUserAgent() {
+      return window.navigator.userAgent;
+    }
+  }, {
+    key: "includesString",
+    value: function includesString(t, n) {
+      return -1 !== t.indexOf(n);
+    }
+  }]);
+  return Env;
+}();
+var init = function init() {
+  var scriptTag = document.currentScript || document.querySelector("script[data-cc-embedded]"),
+    ccWidgetEmbedDataset = scriptTag && scriptTag instanceof HTMLScriptElement && scriptTag.dataset;
+  if (!scriptTag) {
+    console.error("CC Widget: could not find cc-embedded script");
+  }
+  if (!ccWidgetEmbedDataset) {
+    console.warn("CC Widget: legacy unsupported browser, cc-embedded script.dataset was undefined");
+  }
+  if (ccWidgetEmbedDataset) {
+    new CCWidgetBootstrap(ccWidgetEmbedDataset);
+  } else {
+    console.error("CC Widget: could not find cc-embedded script");
+  }
+};
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+/******/ })()
+;
